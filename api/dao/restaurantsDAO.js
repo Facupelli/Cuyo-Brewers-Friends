@@ -28,14 +28,14 @@ export default class RestaurantsDAO {
     page = 0,
     restaurantsPerPage = 20, // options created, when call the method we can put filters, pages and perpage
   } = {}) {
-    let query; // first the query is empty and remain empty unless someone pass a filter
-    if (filters) {
+    let query // first the query is empty and remain empty unless someone pass a filter
+    if (filters) { 
       if ("name" in filters) {
-        query = { $text: { $search: filters["name"] } }; // search by name
+        query = { $text: { $search: filters["name"] } }
       } else if ("cuisine" in filters) {
-        query = { cuisine: { $eq: filters["cuisine"] } }; // search by cuisine
+        query = { "cuisine": { $eq: filters["cuisine"] } }
       } else if ("zipcode" in filters) {
-        query = { "adress.zipcode": { $eq: filters["zipcode"] } }; // search by zipcode
+        query = { "address.zipcode": { $eq: filters["zipcode"] } }
       }
     }
 
