@@ -1,7 +1,7 @@
 
 let restaurants; // store a reference to db
 
-export default class RestaurantsDAO {
+export default class RecipesDAO {
   //initialy connect to db, call this method as soon as the server start
   //when the server start we get a reference to the restaurant db
 
@@ -14,7 +14,7 @@ export default class RestaurantsDAO {
       // if restaurant is empty we fill the reference
       restaurants = await conn
         .db(process.env.RESTREVIEWS_NS)
-        .collection("restaurants");
+        .collection("recipes");
     } catch (e) {
       console.error(
         `Unable to establish a collection handle in restaurantsDAO: ${e}`
@@ -22,7 +22,7 @@ export default class RestaurantsDAO {
     }
   }
 
-  static async getRestaurants({
+  static async getRecipes({
     // we call this when we want a list of all restaurants
     filters = null,
     page = 0,
@@ -32,10 +32,10 @@ export default class RestaurantsDAO {
     if (filters) { 
       if ("name" in filters) {
         query = { $text: { $search: filters["name"] } }
-      } else if ("cuisine" in filters) {
-        query = { "cuisine": { $eq: filters["cuisine"] } }
-      } else if ("zipcode" in filters) {
-        query = { "address.zipcode": { $eq: filters["zipcode"] } }
+      } else if ("brewery" in filters) {
+        query = { "brewery": { $eq: filters["brewery"] } }
+      } else if ("style" in filters) {
+        query = { "style": { $eq: filters["style"] } }
       }
     }
 

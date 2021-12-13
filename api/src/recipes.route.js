@@ -1,10 +1,10 @@
 import express from 'express'
-import RestaurantsCtrl from './restaurants.controller.js'
+import RecipesCtrl from './recipes.controller.js'
 import ReviewsCtrl from './reviews.controller.js'
 
 const router = express.Router()  //acess to express router
 
-router.route('/').get(RestaurantsCtrl.apiGetRestaurants) 
+router.route('/').get(RecipesCtrl.apiGetRecipes) 
 
 router
     .route('/review')
