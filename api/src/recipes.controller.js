@@ -3,8 +3,8 @@ import RecipesDAO from "../dao/recipesDAO.js";
 export default class RecipesController {
 
   static async apiGetRecipes(req, res, next) {
-    const restaurantsPerPage = req.query.restaurantsPerPage
-      ? pareseInt(req.query.restaurantsPerPage, 10)
+    const recipesPerPage = req.query.recipesPerPage
+      ? pareseInt(req.query.recipesPerPage, 10)
       : 20;
     const page = req.query.page ? parseInt(req.query.page, 10) : 0;
 
@@ -17,19 +17,19 @@ export default class RecipesController {
       filters.name = req.query.name;
     }
 
-    const { restaurantsList, totalNumRestaurants } =
+    const { recipesList, totalNumrecipes } =
       await RecipesDAO.getRecipes({
         filters,
         page,
-        restaurantsPerPage,
+        recipesPerPage,
       });
 
     let response = {
-        recipes: restaurantsList,
+        recipes: recipesList,
         page: page,
         filters: filters,
-        entries_per_page: restaurantsPerPage,
-        total_results: totalNumRestaurants,
+        entries_per_page: recipesPerPage,
+        total_results: totalNumrecipes,
     };
     res.json(response)
   }
