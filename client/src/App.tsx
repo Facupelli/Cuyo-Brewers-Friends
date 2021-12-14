@@ -1,5 +1,5 @@
 import React from 'react';
-import {RootStore} from '../src/redux/Store';
+
 
 function App() {
   return (

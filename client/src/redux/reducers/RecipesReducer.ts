@@ -1,10 +1,18 @@
 import { RecipeActions } from "../actions/RecipesActions";
 import { ActionType } from "../actions/RecipesActionsTypes";
 
+export interface Recipes {
+    id: number;
+    name: string;
+    style: string;
+    brewery: string;
+    fermented: string;
+}
+
 interface DefaultStateI {
     loading: boolean,
     user: string[],
-    recipes: string[],
+    recipes: Recipes[],
 }
 
 const defaultState: DefaultStateI = {
@@ -25,7 +33,7 @@ export const recipesReducer = (state: DefaultStateI = defaultState, action: Reci
                 ...state,
                 loading: true,
             }
-        case ActionType.RECIPES_SUCCESS:
+        case ActionType.RECIPES_GET:
             return{
                 ...state,
                 loading: false,
