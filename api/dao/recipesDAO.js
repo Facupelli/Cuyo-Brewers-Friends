@@ -1,5 +1,5 @@
 
-let recipes; // store a reference to db
+export let recipes; // store a reference to db
 
 export default class RecipesDAO {
   //initialy connect to db, call this method as soon as the server start
