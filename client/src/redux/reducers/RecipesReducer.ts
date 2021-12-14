@@ -1,27 +1,20 @@
 import { RecipeActions } from "../actions/RecipesActions";
 import { ActionType } from "../actions/RecipesActionsTypes";
+import { Recipe } from "./types";
 
-export interface Recipes {
-    id: number;
-    name: string;
-    style: string;
-    brewery: string;
-    fermented: string;
-}
+export interface InitialState {
+    loading: boolean;
+    user: string[];
+    recipes: Recipe[];
+  }
 
-interface DefaultStateI {
-    loading: boolean,
-    user: string[],
-    recipes: Recipes[],
-}
-
-const defaultState: DefaultStateI = {
+const initialState: InitialState = {
     loading: false,
     user: [],
     recipes: [],
 }
 
-export const recipesReducer = (state: DefaultStateI = defaultState, action: RecipeActions) : DefaultStateI=> {
+export const recipesReducer = (state: InitialState = initialState, action: RecipeActions) : InitialState=> {
     switch(action.type) {
         case ActionType.RECIPES_FAIL:
             return {
