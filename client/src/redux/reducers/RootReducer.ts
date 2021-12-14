@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux'
 import recipesReducer from './RecipesReducer';
 
-const RootReducer = combineReducers({
+export const RootReducer = combineReducers({
     recipes: recipesReducer
 });
 
-export default RootReducer;
+export type RootState = ReturnType<typeof RootReducer>; // retunrtype type of TS 
 

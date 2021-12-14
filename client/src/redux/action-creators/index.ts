@@ -25,16 +25,14 @@ export const getRecipes = () => async (dispatch: Dispatch<RecipeActions>) => {
       type: ActionType.RECIPES_LOADING,
     });
 
-    
-
-    const res  = await axios.get<Recipes[]>("/recipes");
-
+    const res  = await axios.get<Recipes[]>("http://localhost:3001/api/v1/recipes");
 
     return dispatch({
       type: ActionType.RECIPES_GET,
       payload: res.data,
     });
   } catch (e) {
+    console.log(e)
     dispatch({
       type: ActionType.RECIPES_FAIL,
     });
