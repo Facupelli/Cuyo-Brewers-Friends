@@ -1,10 +1,5 @@
-
-import { Dispatch } from "redux";
-
-export const getRecipe = () => async (dispatch: Dispatch) = {
-    try{
-
-    }catch(e){
-        
-    }
-}; 
+export enum ActionType {
+  RECIPES_LOADING = "RECIPES_LOADING",
+  RECIPES_FAIL = "RECIPES_FAIL",
+  RECIPES_SUCCESS = "RECIPES_SUCCESS",
+}

@@ -1,8 +1,9 @@
 import React from 'react';
+import {RootStore} from '../src/redux/Store';
 
 function App() {
   return (
-    <div>CUYO BREWERS FRIENDS</div>
+    <h1>CUYO BREWERS FRIENDS</h1>
   );
 }
 
