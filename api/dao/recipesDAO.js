@@ -45,7 +45,7 @@ export default class RecipesDAO {
         .find(query);
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`);
-      return { restaruantsList: [], totalNumrecipes: 0 };
+      return { restaruantsList: [], totalNumRecipes: 0 };
     }
 
     const displayCursor = cursor
@@ -54,14 +54,14 @@ export default class RecipesDAO {
 
     try {
       const recipesList = await displayCursor.toArray();  // convert to an array
-      const totalNumrecipes = await recipes.countDocuments(query); 
+      const totalNumRecipes = await recipes.countDocuments(query); 
 
-      return { recipesList, totalNumrecipes }; //return the array
+      return { recipesList, totalNumRecipes }; //return the array
     } catch (e) {
       console.error(
         `Unable to convert cursor to array or problem counting documents, ${e}`
       );
-      return { resturantsList: [], totalNumrecipes: 0 };
+      return { recipesList: [], totalNumRecipes: 0 };
     }
   }
 }

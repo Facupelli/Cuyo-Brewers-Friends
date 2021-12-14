@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 // import {
 //   RecipeActions,
 //   RECIPES_FAIL,
@@ -8,8 +8,7 @@ import axios, { AxiosResponse } from "axios";
 // } from "./RecipesActionsTypes";
 
 import { ActionType } from "../actions/RecipesActionsTypes";
-import {RecipeActions} from '../actions/RecipesActions'
-import { Recipe } from "../reducers/types";
+import { RecipeActions} from '../actions/RecipesActions'
 
 export const loadingTrue = () => {
   return (dispatch: Dispatch<RecipeActions>) => {
@@ -25,11 +24,11 @@ export const getRecipes = () => async (dispatch: Dispatch<RecipeActions>) => {
       type: ActionType.RECIPES_LOADING,
     });
 
-    const res  = await axios.get<Recipe[]>("http://localhost:3001/api/v1/recipes");
+    const res  = await axios.get<any>("http://localhost:3001/api/v1/recipes");
 
     return dispatch({
       type: ActionType.RECIPES_GET,
-      payload: res.data,
+      payload: res.data.recipes,
     });
   } catch (e) {
     console.log(e)

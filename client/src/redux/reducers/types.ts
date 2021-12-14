@@ -23,7 +23,7 @@ interface Ingredients {
 }
 
 export interface Recipe {
-  id: number;
+  _id: number;
   title: string;
   style: string;
   brewery: string;

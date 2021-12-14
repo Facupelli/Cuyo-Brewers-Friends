@@ -10,9 +10,15 @@ export interface RecipesFailAction {
   type: ActionType.RECIPES_FAIL;
 }
 
+// export interface Data {
+//   entries_per_page: number;
+//   filters: any;
+//   page: number;
+//   recipes: Recipe[];
+// }
 export interface RecipesGetAction {
   type: ActionType.RECIPES_GET;
-  payload: Recipe[];
+  payload: any;
 }
 
 export type RecipeActions = RecipesFailAction | RecipesLoadingAction | RecipesGetAction;
