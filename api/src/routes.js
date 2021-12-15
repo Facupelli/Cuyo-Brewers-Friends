@@ -1,6 +1,7 @@
 const express = require ('express')
 const recipeModel = require('../models/recipe')
 const RecipesCotroller = require ('./recipesController.js')
+const RegisterController = require('./registerUserController.js')
 
 const router = express.Router()  //acess to express router
 
@@ -9,6 +10,10 @@ router.route('/').get(RecipesCotroller.getRecipes)
 router
     .route('/create')
     .post(RecipesCotroller.postRecipe)
+
+router
+    .route('/register')
+    .post(RegisterController.postUser)
 
 // router
 //     .route('/review')
