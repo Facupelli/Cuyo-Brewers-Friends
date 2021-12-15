@@ -1,6 +1,6 @@
 export const sessionIPA = [
     {
-      title: "La Suculenta",
+      title: "Hop Odisey",
       style: "Session Indian Pale Ale",
       brewery: "",
       parameters: {
@@ -34,7 +34,7 @@ export const sessionIPA = [
       },
     },
     {
-      title: "Rexona",
+      title: "Abrazo de Oso",
       style: "Session Indian Pale Ale",
       brewery: "",
       parameters: {
@@ -68,7 +68,7 @@ export const sessionIPA = [
       },
     },
     {
-      title: "Violencia Rivas",
+      title: "Chicago",
       style: "Session Indian Pale Ale",
       brewery: "",
       parameters: {
