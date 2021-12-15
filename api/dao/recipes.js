@@ -1,4 +1,4 @@
-const recipeModel = require("../models/recipe");
+const { recipeModel } = require("../models/recipe");
 
 class Recipes {
   static async getRecipes({
@@ -11,6 +11,8 @@ class Recipes {
     if (filters) {
       if ("title" in filters) {
         query = { $text: { $search: filters["title"] } };
+      } else if ("username" in filters) {
+        query = { $text: { $search: filters["username"] } };
       } else if ("brewery" in filters) {
         query = { "recipe.brewery": { $eq: filters["brewery"] } };
       } else if ("style" in filters) {

@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const ReviewsDAO = require("./dao/reviewsDAO.js");
 const { loadRecipes } = require("./mock/recipes/index.js");
 const mongoose = require("mongoose");
-const recipeModel = require("./models/recipe.js");
+const { recipeModel, createIndexes } = require("./models/recipe.js");
 dotenv.config();
 
 //-------------------------- MONGO LOCAL DB --------------------------------------
@@ -23,9 +23,11 @@ db.once("open", function () {
 
 app.listen(27017, async () => {
   try {
+
     await recipeModel
       .deleteMany({})
       .then(() => console.log("previous recipes deleted"));
+
     await loadRecipes().then(() => console.log("recipes loaded"));
 
     console.log("Server is running at port 27017");

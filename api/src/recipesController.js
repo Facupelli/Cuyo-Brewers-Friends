@@ -15,6 +15,8 @@ class RecipesController {
         filters.style = req.query.style;
       } else if (req.query.title) {
         filters.title = req.query.title;
+      } else if (req.query.username) {
+        filters.username = req.query.username;
       }
 
       const { allRecipes, totalNumRecipes } =

@@ -5,9 +5,7 @@ const porter = require("../recipes/porter.js");
 const creamStout = require("../recipes/creamStout.js");
 const bock = require("../recipes/bock.js");
 const brownIPA = require("../recipes/brownIPA.js");
-
-
-const recipeModel = require("../../models/recipe");
+const {recipeModel} = require("../../models/recipe");
 
 const recipesMock = [
   ...americanIPA,

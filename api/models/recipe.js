@@ -40,5 +40,8 @@ const RecipeSchema = new mongoose.Schema({
   user_id: String,
 });
 
+
+RecipeSchema.index({ "recipe.title": "text", username: "text" });
+
 const recipeModel = mongoose.model("RecipeModel", RecipeSchema);
-module.exports = recipeModel;
+module.exports = { recipeModel };
