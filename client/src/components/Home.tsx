@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <div>
-      <h3>HOME</h3>
+      <p className="text-2xl font-bold">HOME</p>
       <RecipesCardList  recipesList={recipesList}/>
     </div>
   );
