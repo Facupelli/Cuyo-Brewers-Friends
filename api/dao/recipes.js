@@ -9,12 +9,12 @@ class Recipes {
   } = {}) {
     let query; // first the query is empty and remain empty unless someone pass a filter
     if (filters) {
-      if ("name" in filters) {
-        query = { $text: { $search: filters["name"] } };
+      if ("title" in filters) {
+        query = { $text: { $search: filters["title"] } };
       } else if ("brewery" in filters) {
-        query = { brewery: { $eq: filters["brewery"] } };
+        query = { "recipe.brewery": { $eq: filters["brewery"] } };
       } else if ("style" in filters) {
-        query = { style: { $eq: filters["style"] } };
+        query = { "recipe.style": { $eq: filters["style"] } };
       }
     }
 
@@ -35,7 +35,7 @@ class Recipes {
     //   .skip(recipesPerPage * page);
 
     try {
-      // const recipesList = await allRecipes.toArray(); 
+      // const recipesList = await allRecipes.toArray();
       const totalNumRecipes = await recipeModel.countDocuments(query);
 
       return { allRecipes, totalNumRecipes }; //return the array

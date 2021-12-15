@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const RecipeSchema = new mongoose.Schema({
   recipe: {
-    title: { type: String, required: true },
+    title: { type: String, required: true, index: true },
     style: { type: String, required: true },
     brewery: { type: String, default: null },
     parameters: {
@@ -37,7 +37,7 @@ const RecipeSchema = new mongoose.Schema({
     },
   },
   username: String,
-  user_id: String
+  user_id: String,
 });
 
 const recipeModel = mongoose.model("RecipeModel", RecipeSchema);

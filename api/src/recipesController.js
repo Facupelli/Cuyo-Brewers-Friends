@@ -13,8 +13,8 @@ class RecipesController {
         filters.brewery = req.query.brewery;
       } else if (req.query.style) {
         filters.style = req.query.style;
-      } else if (req.query.name) {
-        filters.name = req.query.name;
+      } else if (req.query.title) {
+        filters.title = req.query.title;
       }
 
       const { allRecipes, totalNumRecipes } =
