@@ -1,3 +1,4 @@
+const recipeModel = require('../models/recipe')
 
 let recipes;
 
@@ -11,7 +12,11 @@ class Recipes {
         date: date,
       };
 
-      return await recipes.insertOne(reviewDoc);
+      const response = await recipeModel.create(reviewDoc)
+
+      console.log(response)
+
+      // return await recipes.insertOne(reviewDoc);
     } catch (e) {
       console.error(`Unable to post review: ${e}`);
       return { error: e };
