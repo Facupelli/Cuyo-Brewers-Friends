@@ -24,7 +24,6 @@ export default function Home() {
         <NavBar />
       </div>
       <div>
-        <p className="text-2xl font-bold">HOME</p>
         <RecipesCardList recipesList={recipesList} />
       </div>
     </div>
