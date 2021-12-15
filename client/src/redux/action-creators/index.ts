@@ -24,7 +24,7 @@ export const getRecipes = () => async (dispatch: Dispatch<RecipeActions>) => {
       type: ActionType.RECIPES_LOADING,
     });
 
-    const res  = await axios.get<any>("http://localhost:3001/api/v1/recipes");
+    const res  = await axios.get<any>("/recipes");
 
     return dispatch({
       type: ActionType.RECIPES_GET,

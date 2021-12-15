@@ -5,7 +5,7 @@ const RecipesCotroller = require ('./recipesController.js')
 
 const router = express.Router()  //acess to express router
 
-router.route('/').get(RecipesCtrl.apiGetRecipes) 
+router.route('/').get(RecipesCotroller.getRecipes) 
 
 router
     .route('/create')
