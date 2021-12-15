@@ -37,7 +37,6 @@ class Recipes {
     try {
       // const recipesList = await allRecipes.toArray(); 
       const totalNumRecipes = await recipeModel.countDocuments(query);
-      console.log(totalNumRecipes)
 
       return { allRecipes, totalNumRecipes }; //return the array
     } catch (e) {

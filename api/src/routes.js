@@ -1,6 +1,5 @@
 const express = require ('express')
 const recipeModel = require('../models/recipe')
-const RecipesCtrl = require ('./recipes.controller.js')
 const RecipesCotroller = require ('./recipesController.js')
 
 const router = express.Router()  //acess to express router
