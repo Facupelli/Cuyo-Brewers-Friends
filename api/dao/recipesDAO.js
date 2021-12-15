@@ -1,7 +1,6 @@
+let recipes; // store a reference to db
 
-export let recipes; // store a reference to db
-
-export default class RecipesDAO {
+class RecipesDAO {
   //initialy connect to db, call this method as soon as the server start
   //when the server start we get a reference to the restaurant db
 
@@ -12,9 +11,7 @@ export default class RecipesDAO {
     }
     try {
       // if restaurant is empty we fill the reference
-      recipes = await conn
-        .db(process.env.RESTREVIEWS_NS)
-        .collection("recipes");
+      recipes = await conn.db(process.env.RESTREVIEWS_NS).collection("recipes");
     } catch (e) {
       console.error(
         `Unable to establish a collection handle in recipesDAO: ${e}`
@@ -28,14 +25,14 @@ export default class RecipesDAO {
     page = 0,
     recipesPerPage = 20, // options created, when call the method we can put filters, pages and perpage
   } = {}) {
-    let query // first the query is empty and remain empty unless someone pass a filter
-    if (filters) { 
+    let query; // first the query is empty and remain empty unless someone pass a filter
+    if (filters) {
       if ("name" in filters) {
-        query = { $text: { $search: filters["name"] } }
+        query = { $text: { $search: filters["name"] } };
       } else if ("brewery" in filters) {
-        query = { "brewery": { $eq: filters["brewery"] } }
+        query = { brewery: { $eq: filters["brewery"] } };
       } else if ("style" in filters) {
-        query = { "style": { $eq: filters["style"] } }
+        query = { style: { $eq: filters["style"] } };
       }
     }
 
@@ -53,8 +50,8 @@ export default class RecipesDAO {
       .skip(recipesPerPage * page);
 
     try {
-      const recipesList = await displayCursor.toArray();  // convert to an array
-      const totalNumRecipes = await recipes.countDocuments(query); 
+      const recipesList = await displayCursor.toArray(); // convert to an array
+      const totalNumRecipes = await recipes.countDocuments(query);
 
       return { recipesList, totalNumRecipes }; //return the array
     } catch (e) {
@@ -65,3 +62,8 @@ export default class RecipesDAO {
     }
   }
 }
+
+module.exports = {
+  RecipesDAO: RecipesDAO,
+  recipes,
+};

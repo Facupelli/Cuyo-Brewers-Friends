@@ -1,11 +1,15 @@
-import express from 'express'
+const express = require ('express')
 const recipeModel = require('../models/recipe')
-import RecipesCtrl from './recipes.controller.js'
-
+const RecipesCtrl = require ('./recipes.controller.js')
+const RecipesCotroller = require ('./recipesController.js')
 
 const router = express.Router()  //acess to express router
 
 router.route('/').get(RecipesCtrl.apiGetRecipes) 
+
+router
+    .route('/create')
+    .post(RecipesCotroller.postRecipe)
 
 // router
 //     .route('/review')
@@ -13,5 +17,4 @@ router.route('/').get(RecipesCtrl.apiGetRecipes)
 //     .put(ReviewsCtrl.apiUpdateReview)
 //     .delete(ReviewsCtrl.apiDeleteReview)
 
-
-export default router
+module.exports = router

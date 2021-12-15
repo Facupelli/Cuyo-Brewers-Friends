@@ -1,7 +1,6 @@
-import RecipesDAO from "../dao/recipesDAO.js";
+const RecipesDAO = require("../dao/recipesDAO.js");
 
-export default class RecipesController {
-
+class RecipesController {
   static async apiGetRecipes(req, res, next) {
     const recipesPerPage = req.query.recipesPerPage
       ? pareseInt(req.query.recipesPerPage, 10)
@@ -17,20 +16,22 @@ export default class RecipesController {
       filters.name = req.query.name;
     }
 
-    const { recipesList, totalNumrecipes } =
-      await RecipesDAO.getRecipes({
-        filters,
-        page,
-        recipesPerPage,
-      });
+
+    const { recipesList, totalNumrecipes } = await RecipesDAO.RecipesDAO.getRecipes({
+      filters,
+      page,
+      recipesPerPage,
+    });
 
     let response = {
-        recipes: recipesList,
-        page: page,
-        filters: filters,
-        entries_per_page: recipesPerPage,
-        total_results: totalNumrecipes,
+      recipes: recipesList,
+      page: page,
+      filters: filters,
+      entries_per_page: recipesPerPage,
+      total_results: totalNumrecipes,
     };
-    res.json(response)
+    res.json(response);
   }
 }
+
+module.exports = RecipesController;

@@ -1,4 +1,4 @@
-export const americanIPA = [
+const americanIPA = [
   {
     title: "La Suculenta",
     style: "American Indian Pale Ale",
@@ -102,5 +102,7 @@ export const americanIPA = [
     },
   },
 ];
+
+module.exports = americanIPA
 
 

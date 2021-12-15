@@ -1,14 +1,10 @@
-import { americanIPA } from './americanIPA.js'
-import { englishIPA } from './englishIPA.js'
-import { sessionIPA } from '../recipes/sessionIPA.js'
-import { recipes } from '../../dao/recipesDAO.js'
+const americanIPA = require("./americanIPA.js");
+const englishIPA = require("./englishIPA.js");
+const sessionIPA = require("../recipes/sessionIPA.js");
+const recipes = require("../../dao/recipesDAO.js");
 
-const recipesMock = [
-    ...americanIPA,
-    ...englishIPA,
-    ...sessionIPA,
-]
+const recipesMock = [...americanIPA, ...englishIPA, ...sessionIPA];
 
-export const loadRecipes = () => recipes.insertMany(recipesMock);
+const loadRecipes = () => recipes.insertMany(recipesMock);
 
-
+module.exports = loadRecipes;

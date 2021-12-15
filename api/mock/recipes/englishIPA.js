@@ -1,4 +1,4 @@
-export const englishIPA = [
+const englishIPA = [
     {
       title: "La Zorruda",
       style: "English Indian Pale Ale",
@@ -103,3 +103,4 @@ export const englishIPA = [
     },
   ];
   
+module.exports = englishIPA

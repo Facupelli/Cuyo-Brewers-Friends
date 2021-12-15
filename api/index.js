@@ -1,10 +1,10 @@
-import app from "./server.js";
-import mongodb from "mongodb";
-import dotenv from "dotenv";
-import RecipesDAO from "./dao/recipesDAO.js";
-import ReviewsDAO from "./dao/reviewsDAO.js";
-import { loadRecipes } from "./mock/recipes/index.js";
-import mongoose from "mongoose";
+const app = require("./server.js");
+const mongodb = require("mongodb");
+const dotenv = require("dotenv");
+const RecipesDAO = require("./dao/recipesDAO.js");
+const ReviewsDAO = require("./dao/reviewsDAO.js");
+const { loadRecipes } = require("./mock/recipes/index.js");
+const mongoose = require("mongoose");
 dotenv.config();
 
 //-------------------------- MONGO LOCAL DB --------------------------------------
