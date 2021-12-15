@@ -28,7 +28,7 @@ export const getRecipes = () => async (dispatch: Dispatch<RecipeActions>) => {
 
     return dispatch({
       type: ActionType.RECIPES_GET,
-      payload: res.data.recipes,
+      payload: res.data.recipesList,
     });
   } catch (e) {
     console.log(e)

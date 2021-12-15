@@ -2,12 +2,11 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import {  useSelector } from "react-redux";
 import { RootState } from "../redux/reducers/RootReducer";
-import {RecipesList} from "./RecipesList";
+import {RecipesCardList} from "./RecipesCardList";
 
 export default function Home() {
   // const recipes = useSelector<RootState, Recipe[]>((state) => state.recipes);
-  const recipes = useSelector((state : RootState) => state.storeRecipes.recipes);
-
+  const recipesList = useSelector((state : RootState) => state.storeRecipes.recipesList);
 
   useEffect(() => {
     axios
@@ -19,7 +18,7 @@ export default function Home() {
   return (
     <div>
       <h3>HOME</h3>
-      <RecipesList  recipes={recipes}/>
+      <RecipesCardList  recipesList={recipesList}/>
     </div>
   );
 }

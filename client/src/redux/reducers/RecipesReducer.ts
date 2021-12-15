@@ -1,17 +1,17 @@
 import { RecipeActions } from "../actions/RecipesActions";
 import { ActionType } from "../actions/RecipesActionsTypes";
-import { Recipe } from "./types";
+import {  RecipeList } from "./types";
 
 export interface InitialState {
     loading: boolean;
     user: string[];
-    recipes: Recipe[];
+    recipesList: RecipeList[];
   }
 
 const initialState: InitialState = {
     loading: false,
     user: [],
-    recipes: [],
+    recipesList: [],
 }
 
 export const recipesReducer = (state: InitialState = initialState, action: RecipeActions) : InitialState=> {
@@ -30,7 +30,7 @@ export const recipesReducer = (state: InitialState = initialState, action: Recip
             return{
                 ...state,
                 loading: false,
-                recipes: action.payload
+                recipesList: action.payload
             }
         default:
             return state;

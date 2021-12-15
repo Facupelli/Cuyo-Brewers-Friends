@@ -25,7 +25,7 @@ class RecipesController {
         });
 
       let response = {
-        recipes: allRecipes,
+        recipesList: allRecipes,
         page: page,
         filters: filters,
         entries_per_page: recipesPerPage,

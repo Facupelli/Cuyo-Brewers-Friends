@@ -33,4 +33,11 @@ export interface Recipe {
   photos: [];
 }
 
+export interface RecipeList {
+  recipe: Recipe;
+  user_id: number;
+  username: String;
+  _id: Number;
+}
+
 
