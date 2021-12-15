@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import { getRecipes } from "./redux/action-creators";
 
 function App() {
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getRecipes());
-  },[dispatch])
+  }, [dispatch]);
 
   return (
     <div>
-      <h1>CUYO BREWERS FRIENDS</h1>
-      <Home />
+      <Routes>
+        <Route path="/home" element={<Home/>}>
+        </Route>
+      </Routes>
     </div>
   );
 }
