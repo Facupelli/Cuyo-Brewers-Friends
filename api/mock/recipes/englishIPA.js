@@ -1,5 +1,8 @@
 const englishIPA = [
-    {
+  {
+    username: "facupelli",
+    user_id: 1234,
+    recipe: {
       title: "La Zorruda",
       style: "English Indian Pale Ale",
       brewery: "",
@@ -33,7 +36,11 @@ const englishIPA = [
         photos: [],
       },
     },
-    {
+  },
+  {
+    username: "facupelli",
+    user_id: 1234,
+    recipe: {
       title: "Samsung",
       style: "English Indian Pale Ale",
       brewery: "",
@@ -67,7 +74,11 @@ const englishIPA = [
         photos: [],
       },
     },
-    {
+  },
+  {
+    username: "facupelli",
+    user_id: 1234,
+    recipe: {
       title: "Pechuganeitor",
       style: "English Indian Pale Ale",
       brewery: "",
@@ -78,7 +89,7 @@ const englishIPA = [
         pre_boil_gravity: 1.048,
         mash_ph: 5.2,
         efficiency: 70,
-      },        
+      },
       characteristics: {
         original_gravity: 1.062,
         final_gravity: 1.013,
@@ -101,6 +112,7 @@ const englishIPA = [
         photos: [],
       },
     },
-  ];
-  
-module.exports = englishIPA
+  },
+];
+
+module.exports = englishIPA;

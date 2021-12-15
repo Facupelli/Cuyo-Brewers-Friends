@@ -1,10 +1,10 @@
 const americanIPA = require("./americanIPA.js");
 const englishIPA = require("./englishIPA.js");
 const sessionIPA = require("../recipes/sessionIPA.js");
-const recipes = require("../../dao/recipesDAO.js");
+const recipeModel = require("../../models/recipe");
 
 const recipesMock = [...americanIPA, ...englishIPA, ...sessionIPA];
 
-const loadRecipes = () => recipes.insertMany(recipesMock);
+const loadRecipes = () => recipeModel.insertMany(recipesMock);
 
-module.exports = loadRecipes;
+module.exports = { loadRecipes };

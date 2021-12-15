@@ -21,8 +21,14 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
-app.listen(27017, () => {
-  console.log("Server is running at port 27017");
+app.listen(27017, async () => {
+  try {
+    await loadRecipes().then(() => console.log("recipes loaded"));
+
+    console.log("Server is running at port 27017");
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 // --------------------- MONGO ATLAS -------------------------------------------
