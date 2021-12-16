@@ -4,12 +4,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 interface FormInputs {
-  username: string;
+  email: string;
   password: string;
 }
 
 const schema = yup.object().shape({
-  username: yup.string().required().min(2).max(25),
+  email: yup.string().required().email(),
   password: yup.string().required().min(8).max(120),
 });
 
@@ -34,13 +34,13 @@ export const Login: React.FC = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <p>Login</p>
       <input
-        {...register("username")}
+        {...register("email")}
         type="text"
-        placeholder="username"
+        placeholder="email"
         required
       />
       <span >
-        {errors && errors.username?.message}
+        {errors && errors.email?.message}
       </span>
       <input
         {...register("password")}

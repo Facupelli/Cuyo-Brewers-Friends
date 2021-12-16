@@ -1,4 +1,6 @@
 const loginValidation = require("../validation/loginValidation");
+const { userModel } = require("../models/user");
+const bcrypt = require("bcrypt");
 
 class LoginController {
   static async loginUser(req, res, next) {
@@ -7,10 +9,10 @@ class LoginController {
       const { error } = loginValidation(req.body);
 
       if (error) {
-        return res.status(400).json({ error: error.details[0].message });
+        return res.status(400).json({ validationError: error.details[0].message });
       }
 
-      const user = await User.findOne({ email: req.body.email });
+      const user = await userModel.findOne({ email: req.body.email });
 
       if (!user) return res.status(400).json({ error: "Email is incorrect" });
 
