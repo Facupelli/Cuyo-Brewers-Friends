@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
+
 
 interface FormInputs {
   email: string;
@@ -9,7 +11,7 @@ interface FormInputs {
 }
 
 const schema = yup.object().shape({
-  email: yup.string().required().email(),
+  email: yup.string().required().min(6).max(255).email(),
   password: yup.string().required().min(8).max(120),
 });
 
@@ -18,16 +20,26 @@ export const Login: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormInputs>({ resolver: yupResolver(schema) });
 
   console.log('ERRORS:', errors);
 
-  const [json, setJson] = useState<string>();
+  const onSubmit = async (data: FormInputs) => {
+    try{
+      const response: any = await axios.post('/recipes/login', data);
+      console.log(response.data)
+      const {token, id} = response.data
+      localStorage.setItem('token', token)
+      localStorage.setItem('userId', id)
 
-  console.log(json);
-
-  const onSubmit = (data: FormInputs) => {
-    setJson(JSON.stringify(data));
+      reset();
+      
+    }catch(e: unknown){
+      if(axios.isAxiosError(e)){
+        console.log('SERVER RESPONSE',e.response?.data)
+      }
+    }
   };
 
   return (

@@ -40,10 +40,8 @@ class LoginController {
       );
 
       res.header("auth-token", token).json({
-        error: null,
-        data: {
-          token,
-        },
+        token,
+        id: user._id,
       });
     } catch (e) {
       res.status(500).json({ error: e.message });
