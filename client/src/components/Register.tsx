@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 
 interface FormInputs {
   name: string;
@@ -14,7 +15,7 @@ interface FormInputs {
 const schema = yup.object().shape({
   name: yup.string().required().min(2).max(25),
   lastname: yup.string().required().min(2).max(25),
-  email: yup.string().required().email(),
+  email: yup.string().required().min(6).max(225).email(),
   username: yup.string().required().min(2).max(25),
   password: yup.string().required().min(8).max(120),
 });
@@ -24,16 +25,21 @@ export const Register: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormInputs>({ resolver: yupResolver(schema) });
 
   console.log("ERRORS:", errors);
 
-  const [json, setJson] = useState<string>();
-
-  console.log(json);
-
-  const onSubmit = (data: FormInputs) => {
-    setJson(JSON.stringify(data));
+  const onSubmit = async (data: FormInputs) => {
+    try{
+      console.log(data)
+      const response = await axios.post('/recipes/register', data);
+      console.log('RESPONSE:', response)
+      reset();
+      
+    }catch(e){
+      console.log({onSubmitError: e})
+    }
   };
 
   return (
@@ -64,7 +70,7 @@ export const Register: React.FC = () => {
         required
       />
       <span>{errors && errors.password?.message}</span>
-      <button type="submit">LOGIN</button>
+      <button type="submit">REGISTER</button>
     </form>
   );
 };
