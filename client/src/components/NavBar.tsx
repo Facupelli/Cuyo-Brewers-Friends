@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { setCookie } from "../redux/action-creators";
 import { RootState } from "../redux/reducers/RootReducer";
 
@@ -32,9 +33,18 @@ export const NavBar: React.FC = () => {
         </div>
         {cookie && (
           <div className="">
-            <p onClick={logOut} className="text-orange-800 cursor-pointer">
+            <p onClick={logOut} className="text-orange-800 cursor-pointer font-semibold">
               Log Out
             </p>
+          </div>
+        )}
+        {!cookie && (
+          <div className="">
+            <Link to="/login">
+              <p onClick={logOut} className="text-orange-800 cursor-pointer font-semibold">
+                Log In
+              </p>
+            </Link>
           </div>
         )}
       </div>
