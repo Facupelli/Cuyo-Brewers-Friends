@@ -2,6 +2,8 @@ const express = require ('express')
 const recipeModel = require('../models/recipe')
 const RecipesCotroller = require ('./recipesController.js')
 const RegisterController = require('./registerUserController.js')
+const LoginController = require('./loginUserController')
+
 
 const router = express.Router()  //acess to express router
 
@@ -13,7 +15,11 @@ router
 
 router
     .route('/register')
-    .post(RegisterController.postUser)
+    .post(RegisterController.registerUser)
+
+router
+    .route('/login')
+    .post(LoginController.loginUser)
 
 // router
 //     .route('/review')

@@ -1,6 +1,6 @@
 const { userModel } = require("../models/user");
 
-class Users {
+class RegisterUsers {
   static async addUser(user) {
     try {
       const response = await userModel.create(user);
@@ -13,4 +13,4 @@ class Users {
   }
 }
 
-module.exports = Users;
+module.exports = {RegisterUsers};
