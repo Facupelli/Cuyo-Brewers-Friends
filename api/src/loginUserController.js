@@ -1,6 +1,8 @@
 const loginValidation = require("../validation/loginValidation");
 const { userModel } = require("../models/user");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 class LoginController {
   static async loginUser(req, res, next) {
@@ -9,7 +11,9 @@ class LoginController {
       const { error } = loginValidation(req.body);
 
       if (error) {
-        return res.status(400).json({ validationError: error.details[0].message });
+        return res
+          .status(400)
+          .json({ validationError: error.details[0].message });
       }
 
       const user = await userModel.findOne({ email: req.body.email });
@@ -25,10 +29,20 @@ class LoginController {
         return res.status(400).json({ error: "Password is incorrect" });
       }
 
-      res.json({
+      // create token
+      const token = jwt.sign(
+        // payload data
+        {
+          name: user.name,
+          id: user._id,
+        },
+        process.env.TOKEN_SECRET
+      );
+
+      res.header("auth-token", token).json({
         error: null,
         data: {
-          message: "Login successful",
+          token,
         },
       });
     } catch (e) {
