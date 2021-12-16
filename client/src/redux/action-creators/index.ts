@@ -1,19 +1,13 @@
 import { Dispatch } from "redux";
 import axios from "axios";
-// import {
-//   RecipeActions,
-//   RECIPES_FAIL,
-//   RECIPES_LOADING,
-//   RECIPES_SUCCESS,
-// } from "./RecipesActionsTypes";
-
-import { ActionType } from "../actions/RecipesActionsTypes";
-import { RecipeActions} from '../actions/RecipesActions'
+import { RecipesActionType, UserActionType } from "../actions/ActionsTypes";
+import { RecipeActions } from "../actions/RecipesActions";
+import { UserActions } from "../actions/UserActions";
 
 export const loadingTrue = () => {
   return (dispatch: Dispatch<RecipeActions>) => {
     dispatch({
-      type: ActionType.RECIPES_LOADING,
+      type: RecipesActionType.RECIPES_LOADING,
     });
   };
 };
@@ -21,19 +15,28 @@ export const loadingTrue = () => {
 export const getRecipes = () => async (dispatch: Dispatch<RecipeActions>) => {
   try {
     dispatch({
-      type: ActionType.RECIPES_LOADING,
+      type: RecipesActionType.RECIPES_LOADING,
     });
 
-    const res  = await axios.get<any>("/recipes");
+    const res = await axios.get<any>("/recipes");
 
     return dispatch({
-      type: ActionType.RECIPES_GET,
+      type: RecipesActionType.RECIPES_GET,
       payload: res.data.recipesList,
     });
   } catch (e) {
-    console.log(e)
+    console.log(e);
     dispatch({
-      type: ActionType.RECIPES_FAIL,
+      type: RecipesActionType.RECIPES_FAIL,
     });
   }
+};
+
+export const setCookie = (cookie: string) => {
+  return (dispatch: Dispatch<UserActions>) => {
+    dispatch({
+      type: UserActionType.SET_COOKIE,
+      payload: cookie
+    });
+  };
 };

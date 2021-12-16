@@ -5,14 +5,28 @@ import { CreateRecipe } from "./components/CreateRecipe";
 import Home from "./components/Home";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
-import { getRecipes } from "./redux/action-creators";
+import { getRecipes, setCookie } from "./redux/action-creators";
 
 function App() {
   const dispatch = useDispatch();
 
+
+  // ------------------------GET RECIPES -------------------------------------
   useEffect(() => {
     dispatch(getRecipes());
   }, [dispatch]);
+
+  // ------------------------GET USER IF TOKEN -------------------------------------
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+
+    if (token && userId) {
+      dispatch(setCookie(userId));
+    }
+    // eslint-disable-next-line
+  }, []);
+
 
   return (
     <div>

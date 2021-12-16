@@ -1,13 +1,14 @@
 
 
 import { Recipe } from '../reducers/types';
-import {ActionType} from './RecipesActionsTypes'
+import {RecipesActionType} from './ActionsTypes'
+
 export interface RecipesLoadingAction {
-  type: ActionType.RECIPES_LOADING;
+  type: RecipesActionType.RECIPES_LOADING;
 }
 
 export interface RecipesFailAction {
-  type: ActionType.RECIPES_FAIL;
+  type: RecipesActionType.RECIPES_FAIL;
 }
 
 // export interface Data {
@@ -17,7 +18,7 @@ export interface RecipesFailAction {
 //   recipes: Recipe[];
 // }
 export interface RecipesGetAction {
-  type: ActionType.RECIPES_GET;
+  type: RecipesActionType.RECIPES_GET;
   payload: any;
 }
 

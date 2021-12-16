@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setCookie } from "../redux/action-creators";
 
 
 interface FormInputs {
@@ -16,6 +18,9 @@ const schema = yup.object().shape({
 });
 
 export const Login: React.FC = () => {
+
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -32,6 +37,8 @@ export const Login: React.FC = () => {
       const {token, id} = response.data
       localStorage.setItem('token', token)
       localStorage.setItem('userId', id)
+
+      dispatch(setCookie(id))
 
       reset();
       
