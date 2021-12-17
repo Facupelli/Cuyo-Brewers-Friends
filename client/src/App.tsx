@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import { CreateRecipe } from "./components/CreateRecipe";
+import { CreateRecipe } from "./components/CreateRecipe/CreateRecipe";
 import Home from "./components/Home";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";

@@ -26,9 +26,15 @@ interface Characteristics {
     bicarbonate: number;
   }
 
+export interface Hops {
+  name: string;
+  quantity: number;
+  boil_time: number;
+}
+
 interface Ingredients {
   fermentables: [];
-  hops: [];
+  hops: Hops[];
   yeast: [];
   water_profile: WaterProfile;
 }

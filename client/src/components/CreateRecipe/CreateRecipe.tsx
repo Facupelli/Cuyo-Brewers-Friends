@@ -1,5 +1,5 @@
 import React from "react";
-import { Recipe } from "../redux/reducers/types";
+import { Recipe } from "../../redux/reducers/types";
 import bjcp from "bjcp";
 import { useForm } from "react-hook-form";
 
@@ -138,6 +138,8 @@ export const CreateRecipe: React.FC<{}> = () => {
           <p>IBU</p>
           <p>SRM</p>
         </div>
+
+        {/* ------------------------ INGREDIENTS ----------------------------- */}
 
         <button type="submit">Submit</button>
       </form>
