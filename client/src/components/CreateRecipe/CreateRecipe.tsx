@@ -2,6 +2,8 @@ import React from "react";
 import { Recipe } from "../../redux/reducers/types";
 import bjcp from "bjcp";
 import { useForm } from "react-hook-form";
+import { HopsForm } from "./HopsForm";
+import { MaltsForm } from "./MaltsForm";
 
 const initialValues: Recipe = {
   _id: 0,
@@ -100,13 +102,16 @@ export const CreateRecipe: React.FC<{}> = () => {
             </div>
 
             <div>
-              <label htmlFor="Sub_Category">Sub Category</label>
               {styleSelected && (
-                <select {...register("sub_category")}>
-                  {beerSubCategories[0].map((el) => (
-                    <option>{el.name}</option>
-                  ))}
-                </select>
+                <>
+                  <label htmlFor="Sub_Category">Sub Category</label>
+
+                  <select {...register("sub_category")}>
+                    {beerSubCategories[0].map((el) => (
+                      <option>{el.name}</option>
+                    ))}
+                  </select>
+                </>
               )}
             </div>
 
@@ -131,7 +136,7 @@ export const CreateRecipe: React.FC<{}> = () => {
         /> */}
 
         {/* --------------------    CHARACTERISTICS ------------------------ */}
-        <div className="flex gap-10 justify-center p-8">
+        <div className="grid-cols-2 flex gap-10 justify-center p-6">
           <p>Original Gravity</p>
           <p>Final Gravity</p>
           <p>ABV</p>
@@ -140,6 +145,15 @@ export const CreateRecipe: React.FC<{}> = () => {
         </div>
 
         {/* ------------------------ INGREDIENTS ----------------------------- */}
+        <div className="grid grid-cols-2">
+          <div className="grid-cols-1">
+            <HopsForm />
+          </div>
+
+          <div className="grid-cols-1">
+            <MaltsForm />
+          </div>
+        </div>
 
         <button type="submit">Submit</button>
       </form>
