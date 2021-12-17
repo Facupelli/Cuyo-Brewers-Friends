@@ -69,6 +69,7 @@ export const CreateRecipe: React.FC<{}> = () => {
               <label htmlFor="Title">Title</label>
               <Controller
                 name="title"
+                defaultValue=""
                 control={methods.control}
                 render={({ field }) => <input placeholder="Hop Odisey" {...field} />}
               />
@@ -76,6 +77,7 @@ export const CreateRecipe: React.FC<{}> = () => {
               <label htmlFor="Brewery">Brewery</label>
               <Controller
                 name="brewery"
+                defaultValue=""
                 control={methods.control}
                 render={({ field }) => <input {...field} />}
               />
@@ -87,6 +89,7 @@ export const CreateRecipe: React.FC<{}> = () => {
                 <Controller
                   name="parameters.batch_size"
                   control={methods.control}
+                defaultValue={0}
                   render={({ field }) => <input placeholder="20" {...field} />}
                 />
               </div>
@@ -96,6 +99,7 @@ export const CreateRecipe: React.FC<{}> = () => {
                 <Controller
                   name="parameters.pre_boil_size"
                   control={methods.control}
+                  defaultValue={0}
                   render={({ field }) => <input placeholder="30" {...field} />}
                 />
               </div>
@@ -105,6 +109,7 @@ export const CreateRecipe: React.FC<{}> = () => {
                 <Controller
                   name="parameters.boil_time"
                   control={methods.control}
+                  defaultValue={0}
                   render={({ field }) => <input placeholder="60" {...field} />}
                 />
               </div>
@@ -139,6 +144,7 @@ export const CreateRecipe: React.FC<{}> = () => {
                 <Controller
                   name="parameters.efficiency"
                   control={methods.control}
+                  defaultValue={0}
                   render={({ field }) => <input placeholder="70" {...field} />}
                 />
               </div>
@@ -148,6 +154,7 @@ export const CreateRecipe: React.FC<{}> = () => {
                 <Controller
                   name="parameters.mash_ph"
                   control={methods.control}
+                  defaultValue={0}
                   render={({ field }) => <input placeholder="5.4" {...field} />}
                 />
               </div>
@@ -173,17 +180,17 @@ export const CreateRecipe: React.FC<{}> = () => {
 
           {/* ------------------------ INGREDIENTS ----------------------------- */}
           <div className="grid grid-cols-2">
-            {/* <div className="grid-cols-1">
+            <div className="grid-cols-1">
               <HopsForm />
-            </div> */}
+            </div>
 
-            {/* <div className="grid-cols-1">
+            <div className="grid-cols-1">
               <MaltsForm />
             </div>
 
             <div className="grid-cols-1">
               <WaterForm />
-            </div> */}
+            </div>
           </div>
 
           <button type="submit">Submit</button>

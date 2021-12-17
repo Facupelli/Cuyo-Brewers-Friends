@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Fermentables } from "../../redux/reducers/types";
-import { useForm } from "react-hook-form";
+import { useForm, Controller, useFormContext } from "react-hook-form";
 
 export const MaltsForm: React.FC<{}> = () => {
   const [count, setCount] = useState(1);
+
+  const { control } = useFormContext();
 
   const {
     register,
@@ -34,7 +36,7 @@ export const MaltsForm: React.FC<{}> = () => {
         )}
       </div>
 
-      {[...Array(count)].map((el) => (
+      {[...Array(count)].map((el, count) => (
         <div className="p-4">
           {/* <div>
             {hopsList && (
@@ -45,9 +47,25 @@ export const MaltsForm: React.FC<{}> = () => {
               </select>
             )}
           </div> */}
-          
-          <input placeholder='Pale' {...register('name')} />
-          <input placeholder="0" {...register("quantity")} />
+          <div className="flex">
+            <label>Malt</label>
+            <Controller
+              name={`ingredients.fermentables[${count}].name`}
+              defaultValue=""
+              control={control}
+              render={({ field }) => <input placeholder="Pale" {...field} />}
+            />
+          </div>
+
+          <div className="flex">
+            <label>Kg</label>
+            <Controller
+              name={`ingredients.fermentables[${count}].quantity`}
+              defaultValue={0}
+              control={control}
+              render={({ field }) => <input placeholder="0" {...field} />}
+            />
+          </div>
         </div>
       ))}
     </div>

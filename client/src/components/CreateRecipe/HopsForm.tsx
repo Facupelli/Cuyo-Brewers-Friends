@@ -41,20 +41,23 @@ export const HopsForm: React.FC<{}> = () => {
         )}
       </div>
 
-      {[...Array(count)].map((el) => (
+      {[...Array(count)].map((el, count) => (
         <div className="p-4">
           <div>
             {hopsList && (
               <Controller
-                name="name"
+                name={`ingredients.hops[${count}].name`}
+                defaultValue=""
                 control={control}
                 render={({ field }) => <Select options={hopNames} {...field} />}
               />
             )}
           </div>
+          
 
           <Controller
-            name="quantity"
+            name={`ingredients.hops[${count}].quantity`}
+            defaultValue={0}
             control={control}
             render={({ field }) => <input placeholder="0" {...field} />}
           />
@@ -62,7 +65,8 @@ export const HopsForm: React.FC<{}> = () => {
           <div>
             <label>Boil Time</label>
             <Controller
-              name="boil_time"
+              name={`ingredients.hops[${count}].boil_time`}
+              defaultValue={0}
               control={control}
               render={({ field }) => <input {...field} />}
             />
