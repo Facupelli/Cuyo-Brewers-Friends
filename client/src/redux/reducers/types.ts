@@ -17,7 +17,7 @@ interface Characteristics {
   srm: number;
 }
 
-  interface WaterProfile {
+  export interface WaterProfile {
     calcium: number;
     magnesium: number;
     sodium: number;
@@ -32,8 +32,13 @@ export interface Hops {
   boil_time: number;
 }
 
+export interface Fermentables {
+  name: string;
+  quantity: number;
+}
+
 interface Ingredients {
-  fermentables: [];
+  fermentables: Fermentables[];
   hops: Hops[];
   yeast: [];
   water_profile: WaterProfile;
@@ -48,7 +53,7 @@ export interface Recipe {
   parameters: Parameters;
   characteristics: Characteristics;
   ingredients: Ingredients;
-  photos: [];
+  photos: string[];
 }
 
 export interface RecipeList {

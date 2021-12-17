@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Hops } from "../../redux/reducers/types";
+import { Fermentables } from "../../redux/reducers/types";
 import { useForm } from "react-hook-form";
 
 export const MaltsForm: React.FC<{}> = () => {
@@ -11,7 +11,7 @@ export const MaltsForm: React.FC<{}> = () => {
     formState: { errors },
     reset,
     watch,
-  } = useForm<Hops>();
+  } = useForm<Fermentables>();
 
   const addMalt = () => {
     setCount(count + 1);
@@ -45,7 +45,8 @@ export const MaltsForm: React.FC<{}> = () => {
               </select>
             )}
           </div> */}
-
+          
+          <input placeholder='Pale' {...register('name')} />
           <input placeholder="0" {...register("quantity")} />
         </div>
       ))}

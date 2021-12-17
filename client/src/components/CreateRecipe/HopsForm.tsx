@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import { Hops } from "../../redux/reducers/types";
-import { useForm } from "react-hook-form";
+import { useFormContext, Controller } from "react-hook-form";
+import Select from "react-select";
 
 import { hopsList } from "../../media/beer_ingredients/hopsList";
+
+interface HopNames {
+  name: string;
+  label: string;
+}
 
 export const HopsForm: React.FC<{}> = () => {
   const [count, setCount] = useState(1);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-    watch,
-  } = useForm<Hops>();
+  const { control } = useFormContext();
+
+  const hopNames: HopNames[] = hopsList.map((el) => ({
+    name: el.Name,
+    label: el.Name,
+  }));
 
   const addHop = () => {
     setCount(count + 1);
   };
-
   const deleteHop = () => {
     setCount(count - 1);
   };
@@ -41,18 +45,27 @@ export const HopsForm: React.FC<{}> = () => {
         <div className="p-4">
           <div>
             {hopsList && (
-              <select {...register("name")}>
-                {hopsList.map((el) => (
-                  <option>{el.Name}</option>
-                ))}
-              </select>
+              <Controller
+                name="name"
+                control={control}
+                render={({ field }) => <Select options={hopNames} {...field} />}
+              />
             )}
           </div>
 
-          <input placeholder="0" {...register("quantity")} />
+          <Controller
+            name="quantity"
+            control={control}
+            render={({ field }) => <input placeholder="0" {...field} />}
+          />
+
           <div>
             <label>Boil Time</label>
-            <input placeholder="0" {...register("boil_time")} />
+            <Controller
+              name="boil_time"
+              control={control}
+              render={({ field }) => <input {...field} />}
+            />
           </div>
         </div>
       ))}
