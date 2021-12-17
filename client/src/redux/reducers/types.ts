@@ -1,3 +1,14 @@
+import { number } from "yup/lib/locale"
+
+interface Parameters {
+  boil_time: number;
+  batch_size:number;
+  pre_boil_size: number;
+  pre_boil_gravity: number;
+  mash_ph: number;
+  efficiency: number;
+}
+
 interface Characteristics {
   original_gravity: number;
   final_gravity: number;
@@ -26,8 +37,9 @@ export interface Recipe {
   _id: number;
   title: string;
   style: string;
+  sub_category: string;
   brewery: string;
-  parameters: string;
+  parameters: Parameters;
   characteristics: Characteristics;
   ingredients: Ingredients;
   photos: [];

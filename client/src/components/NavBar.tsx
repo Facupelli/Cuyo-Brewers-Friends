@@ -26,22 +26,31 @@ export const NavBar: React.FC = () => {
             Recipes
           </a>
         </div>
-        <div className="">
-          <a href="/createrecipe" className="font-semibold">
-            Add Recipe
-          </a>
-        </div>
+
         {cookie && (
-          <div className="">
-            <p onClick={logOut} className="text-orange-800 cursor-pointer font-semibold">
-              Log Out
-            </p>
-          </div>
+          <>
+            <div className="">
+              <a href="/createrecipe" className="font-semibold">
+                Add Recipe
+              </a>
+            </div>
+            <div className="">
+              <p
+                onClick={logOut}
+                className="text-orange-800 cursor-pointer font-semibold"
+              >
+                Log Out
+              </p>
+            </div>
+          </>
         )}
         {!cookie && (
           <div className="">
             <Link to="/login">
-              <p onClick={logOut} className="text-orange-800 cursor-pointer font-semibold">
+              <p
+                onClick={logOut}
+                className="text-orange-800 cursor-pointer font-semibold"
+              >
                 Log In
               </p>
             </Link>
