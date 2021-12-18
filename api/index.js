@@ -28,7 +28,7 @@ app.listen(27017, async () => {
       .deleteMany({})
       .then(() => console.log("previous recipes deleted"));
 
-    await loadRecipes().then(() => console.log("recipes loaded"));
+    // await loadRecipes().then(() => console.log("recipes loaded"));
 
     console.log("Server is running at port 27017");
   } catch (e) {

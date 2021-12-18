@@ -55,7 +55,13 @@ export const CreateRecipe: React.FC<{}> = () => {
   const formSubmitHandler: SubmitHandler<Recipe> = async (data: Recipe) => {
     try{
       console.log("FORM DATA IS", data);
-      const response = await axios.post('/recipes/create', data);
+      const newRecipe = {
+        recipe: data,
+        name: '',
+        user_id: '',
+        date: '',
+      }
+      const response = await axios.post('/recipes/create', newRecipe);
       console.log('RESPONSE:', response)
       methods.reset();
     }catch(e){

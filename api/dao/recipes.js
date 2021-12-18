@@ -60,7 +60,7 @@ class Recipes {
 
       const response = await recipeModel.create(reviewDoc);
 
-      console.log(response);
+      console.log('MONGO CREATE', response);
 
       // return await recipes.insertOne(reviewDoc);
     } catch (e) {

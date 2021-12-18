@@ -33,13 +33,12 @@ const RecipeSchema = new mongoose.Schema({
         bicarbonate: Number,
       },
       photos: { type: Array, default: [] },
-      date: { type: Number, default: Date.now },
     },
+    date: { type: Number, default: Date.now },
   },
   username: String,
   user_id: String,
 });
-
 
 RecipeSchema.index({ "recipe.title": "text", username: "text" });
 
