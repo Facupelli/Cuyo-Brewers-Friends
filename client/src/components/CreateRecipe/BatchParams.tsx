@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import bjcp from "bjcp";
 
 import { useFormContext, Controller } from "react-hook-form";
@@ -7,11 +7,18 @@ export const BatchParams: React.FC = () => {
   const { control, watch, register } = useFormContext();
 
   const beerStyles = bjcp.beers.map((el) => `${el.number}. ${el.name}`);
-  const styleSelected = watch("style", "any").split(". ")[1];
+  // const styleSelected = watch("style", "any").split(". ")[1];
+  let styleSelected = watch("style", "1. American Standard");
+  let styleSelectedAfter = '1. American Standard';
+  if (styleSelected !== undefined) {
+    styleSelectedAfter = styleSelected.split(". ")[1];
+  }
 
   const beerSubCategories = bjcp.beers
-    .filter((el) => el.name === styleSelected)
+    .filter((el) => el.name === styleSelectedAfter)
     .map((el) => el.subcategories);
+
+
 
   return (
     <div className="grid grid-cols-2 p-8">
@@ -78,7 +85,12 @@ export const BatchParams: React.FC = () => {
           <label className="my-2 text-gray-700 text-md font-semibold">
             Style
           </label>
-          <select {...register("style")} className="ml-4  bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500">
+          <select
+            {...register("style")}
+            defaultValue="1. American Standard"
+            className="ml-4  bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+          >
+            <option key={150}>--</option>
             {beerStyles.map((el) => (
               <option key={el}>{el}</option>
             ))}
@@ -92,7 +104,11 @@ export const BatchParams: React.FC = () => {
                 Sub Category
               </label>
 
-              <select {...register("sub_category")} className="ml-4 bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500">
+              <select
+                {...register("sub_category")}
+                defaultValue=""
+                className="ml-4 bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+              >
                 {beerSubCategories[0].map((el) => (
                   <option key={el.name}>{el.name}</option>
                 ))}

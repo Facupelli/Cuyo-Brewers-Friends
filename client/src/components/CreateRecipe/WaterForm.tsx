@@ -1,14 +1,9 @@
 import React from "react";
-import { WaterProfile } from "../../redux/reducers/types";
-import { useForm, Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 
 export const WaterForm: React.FC<{}> = () => {
 
   const { control } = useFormContext();
-
-  const {
-    formState: { errors },
-  } = useForm<WaterProfile>();
 
   return (
     <div className="m-8 p-4 bg-orange-100">

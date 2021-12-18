@@ -10,6 +10,7 @@ import { HopsForm } from "./HopsForm";
 import { MaltsForm } from "./MaltsForm";
 import { WaterForm } from "./WaterForm";
 import { BatchParams } from "./BatchParams";
+import axios from 'axios';
 
 const initialValues: Recipe = {
   _id: 0,
@@ -51,9 +52,17 @@ const initialValues: Recipe = {
 export const CreateRecipe: React.FC<{}> = () => {
   const methods = useForm<Recipe>();
 
-  const formSubmitHandler: SubmitHandler<Recipe> = (data: Recipe) => {
-    console.log("FORM DATA IS", data);
+  const formSubmitHandler: SubmitHandler<Recipe> = async (data: Recipe) => {
+    try{
+      console.log("FORM DATA IS", data);
+      const response = await axios.post('/recipes/create', data);
+      console.log('RESPONSE:', response)
+      methods.reset();
+    }catch(e){
+      console.log({onSubmitError: e})
+    }
   };
+
   return (
     <div>
       <FormProvider {...methods}>

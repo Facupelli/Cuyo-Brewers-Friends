@@ -50,7 +50,7 @@ export const HopsForm: React.FC<{}> = () => {
       </div>
 
       {[...Array(count)].map((el, count) => (
-        <div className="p-4 mt-4 bg-orange-200">
+        <div key={count} className="p-4 mt-4 bg-orange-200">
           <div className="flex gap-4 items-center">
             {hopsList && (
               <Controller
