@@ -68,25 +68,25 @@ export const HopsForm: React.FC<{}> = () => {
                 )}
               />
             )}
-            <label>g</label>
+            <label className='my-2 text-gray-700 text-md font-semibold'>g</label>
             <Controller
               name={`ingredients.hops[${count}].quantity`}
               defaultValue={0}
               control={control}
               render={({ field }) => (
-                <input className="w-12 py-2" placeholder="0" {...field} />
+                <input className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="0" {...field} />
               )}
             />
           </div>
 
           <div>
-            <label className="my-2">Boil Time</label>
+            <label className="my-2 text-gray-700 text-md font-semibold">Boil Time</label>
             <Controller
               name={`ingredients.hops[${count}].boil_time`}
               defaultValue={0}
               control={control}
               render={({ field }) => (
-                <input className="my-2 ml-4 p-2" {...field} />
+                <input className="my-2 ml-4 p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="0" {...field} />
               )}
             />
           </div>

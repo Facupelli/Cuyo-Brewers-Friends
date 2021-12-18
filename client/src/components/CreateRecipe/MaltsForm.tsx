@@ -51,22 +51,22 @@ export const MaltsForm: React.FC<{}> = () => {
             )}
           </div> */}
           <div className="flex items-center">
-            <label className="my-2">Malt</label>
+            <label className="my-2 w-8 text-gray-700 text-md font-semibold">Malt</label>
             <Controller
               name={`ingredients.fermentables[${count}].name`}
               defaultValue=""
               control={control}
-              render={({ field }) => <input className="my-2 ml-4 p-2" placeholder="Pale" {...field} />}
+              render={({ field }) => <input className="my-2 ml-4 p-2 shadow appearance-none rounded w-full  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Pale" {...field} />}
             />
           </div>
 
           <div className="flex items-center">
-            <label className="my-2">Kg</label>
+            <label className="my-2 w-8 text-gray-700 text-md font-semibold">Kg</label>
             <Controller
               name={`ingredients.fermentables[${count}].quantity`}
               defaultValue={0}
               control={control}
-              render={({ field }) => <input className="my-2 ml-4 p-2" placeholder="0" {...field} />}
+              render={({ field }) => <input className="my-2 ml-4 p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="0" {...field} />}
             />
           </div>
         </div>
