@@ -8,11 +8,7 @@ export const MaltsForm: React.FC<{}> = () => {
   const { control } = useFormContext();
 
   const {
-    register,
-    handleSubmit,
     formState: { errors },
-    reset,
-    watch,
   } = useForm<Fermentables>();
 
   const addMalt = () => {

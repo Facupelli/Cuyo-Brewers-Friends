@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Recipe } from "../../redux/reducers/types";
-import bjcp from "bjcp";
 import {
   useForm,
   SubmitHandler,
@@ -8,10 +7,8 @@ import {
   Controller,
 } from "react-hook-form";
 import { HopsForm } from "./HopsForm";
-import Select from "react-select";
 import { MaltsForm } from "./MaltsForm";
 import { WaterForm } from "./WaterForm";
-import { hopsList } from "../../media/beer_ingredients/hopsList";
 import { BatchParams } from "./BatchParams";
 
 const initialValues: Recipe = {

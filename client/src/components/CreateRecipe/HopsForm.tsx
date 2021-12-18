@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Hops } from "../../redux/reducers/types";
 import { useFormContext, Controller } from "react-hook-form";
 import Select from "react-select";
 

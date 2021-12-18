@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { WaterProfile } from "../../redux/reducers/types";
 import { useForm, Controller, useFormContext } from "react-hook-form";
 
 export const WaterForm: React.FC<{}> = () => {
-  const [count, setCount] = useState(1);
 
   const { control } = useFormContext();
 
   const {
-    register,
-    handleSubmit,
     formState: { errors },
-    reset,
-    watch,
   } = useForm<WaterProfile>();
 
   return (
