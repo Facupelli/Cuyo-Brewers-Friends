@@ -24,20 +24,23 @@ export const MaltsForm: React.FC<{}> = () => {
   };
 
   return (
-    <div>
-      <div className="flex gap-8">
-        <p onClick={addMalt} className="cursor-pointer">
+    <div className="m-8 p-4 bg-orange-100">
+      <div>
+        <p className="font-semibold text-2xl">Fermentables</p>
+      </div>
+      <div className="flex gap-8 py-4 ">
+        <p onClick={addMalt} className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-blue-500 hover:border-transparent rounded">
           Add Malt +
         </p>
         {count === 1 ? null : (
-          <p onClick={deleteMalt} className="cursor-pointer">
+          <p onClick={deleteMalt} className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-blue-500 hover:border-transparent rounded">
             Delete Last Malt -
           </p>
         )}
       </div>
 
       {[...Array(count)].map((el, count) => (
-        <div className="p-4">
+        <div className="p-4 mt-4 bg-orange-200">
           {/* <div>
             {hopsList && (
               <select {...register("name")}>
@@ -47,23 +50,23 @@ export const MaltsForm: React.FC<{}> = () => {
               </select>
             )}
           </div> */}
-          <div className="flex">
-            <label>Malt</label>
+          <div className="flex items-center">
+            <label className="my-2">Malt</label>
             <Controller
               name={`ingredients.fermentables[${count}].name`}
               defaultValue=""
               control={control}
-              render={({ field }) => <input placeholder="Pale" {...field} />}
+              render={({ field }) => <input className="my-2 ml-4 p-2" placeholder="Pale" {...field} />}
             />
           </div>
 
-          <div className="flex">
-            <label>Kg</label>
+          <div className="flex items-center">
+            <label className="my-2">Kg</label>
             <Controller
               name={`ingredients.fermentables[${count}].quantity`}
               defaultValue={0}
               control={control}
-              render={({ field }) => <input placeholder="0" {...field} />}
+              render={({ field }) => <input className="my-2 ml-4 p-2" placeholder="0" {...field} />}
             />
           </div>
         </div>
