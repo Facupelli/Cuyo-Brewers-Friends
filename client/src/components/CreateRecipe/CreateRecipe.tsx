@@ -10,7 +10,9 @@ import { HopsForm } from "./HopsForm";
 import { MaltsForm } from "./MaltsForm";
 import { WaterForm } from "./WaterForm";
 import { BatchParams } from "./BatchParams";
-import axios from 'axios';
+import axios from "axios";
+import { Characteristics } from "./Characteristics";
+import { NavBar } from "../NavBar";
 
 const initialValues: Recipe = {
   _id: 0,
@@ -53,28 +55,38 @@ export const CreateRecipe: React.FC<{}> = () => {
   const methods = useForm<Recipe>();
 
   const formSubmitHandler: SubmitHandler<Recipe> = async (data: Recipe) => {
-    try{
+    try {
       console.log("FORM DATA IS", data);
       const newRecipe = {
         recipe: data,
-        name: '',
-        user_id: '',
-        date: '',
-      }
-      const response = await axios.post('/recipes/create', newRecipe);
-      console.log('RESPONSE:', response)
+        name: "",
+        user_id: "",
+        date: "",
+      };
+      const response = await axios.post("/recipes/create", newRecipe);
+      console.log("RESPONSE:", response);
       methods.reset();
-    }catch(e){
-      console.log({onSubmitError: e})
+    } catch (e) {
+      console.log({ onSubmitError: e });
     }
   };
 
   return (
     <div>
+      <NavBar route='createrecipe' />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
           {/* ------------    PART 1 ------------------------ */}
-          <div className="flex m-8 gap-8 bg-orange-100">
+          <div className="mx-8 mt-8 flex justify-between ">
+            <p className="text-2xl">Editing Recipe</p>
+            <button
+              type="submit"
+              className="bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
+            >
+              SAVE
+            </button>
+          </div>
+          <div className="flex mx-8 mt-8 gap-8 bg-orange-100">
             <div className="p-4">
               <label className="my-2 text-gray-700 text-md font-semibold">
                 Title
@@ -123,13 +135,8 @@ export const CreateRecipe: React.FC<{}> = () => {
         /> */}
 
           {/* --------------------    CHARACTERISTICS ------------------------ */}
-          <div className="grid-cols-2 flex gap-10 justify-center p-6">
-            <p>Original Gravity</p>
-            <p>Final Gravity</p>
-            <p>ABV</p>
-            <p>IBU</p>
-            <p>SRM</p>
-          </div>
+
+          <Characteristics />
 
           {/* ------------------------ INGREDIENTS ----------------------------- */}
           <div className="grid grid-cols-2">
@@ -145,8 +152,6 @@ export const CreateRecipe: React.FC<{}> = () => {
               <WaterForm />
             </div>
           </div>
-
-          <button type="submit">Submit</button>
         </form>
       </FormProvider>
     </div>

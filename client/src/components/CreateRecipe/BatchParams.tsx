@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import bjcp from "bjcp";
-
 import { useFormContext, Controller } from "react-hook-form";
 
 export const BatchParams: React.FC = () => {

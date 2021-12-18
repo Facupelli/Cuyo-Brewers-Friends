@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div>
       <div>
-        <NavBar />
+        <NavBar route='home' />
       </div>
       <div>
         <RecipesCardList recipesList={recipesList} />

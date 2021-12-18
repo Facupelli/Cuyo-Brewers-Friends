@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { setCookie } from "../redux/action-creators";
 import { RootState } from "../redux/reducers/RootReducer";
 
-export const NavBar: React.FC = () => {
+type Props = {
+  route: string;
+};
+
+export const NavBar: React.FC<Props> = ({ route }) => {
   const dispatch = useDispatch();
 
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
@@ -21,19 +25,25 @@ export const NavBar: React.FC = () => {
         <p className="font-semibold text-xl font-serif">CUYO BREWERS FRIENDS</p>
       </div>
       <div className="flex justify-center items-center gap-10">
-        <div className="">
-          <a href="#ref" className="font-semibold">
-            Recipes
-          </a>
-        </div>
+        {cookie && route === "createrecipe" ? (
+          <div className="">
+            <a href="#ref" className="font-semibold">
+              Recipes
+            </a>
+          </div>
+        ) : null}
 
-        {cookie && (
-          <>
+        {cookie &&
+          (route === "createrecipe" ? null : (
             <div className="">
               <a href="/createrecipe" className="font-semibold">
                 Add Recipe
               </a>
             </div>
+          ))}
+
+        {cookie && (
+          <>
             <div className="">
               <p
                 onClick={logOut}
@@ -44,6 +54,7 @@ export const NavBar: React.FC = () => {
             </div>
           </>
         )}
+
         {!cookie && (
           <div className="">
             <Link to="/login">
