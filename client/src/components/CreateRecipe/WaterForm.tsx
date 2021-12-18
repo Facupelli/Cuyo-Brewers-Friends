@@ -17,12 +17,12 @@ export const WaterForm: React.FC<{}> = () => {
 
   return (
     <div className="m-8 p-4 bg-orange-100">
-      <div>
-        <p className="font-semibold text-2xl mb-4">Water Chemistry</p>
+      <div className="flex justify-center border-b-2 border-orange-300">
+        <p className="font-semibold text-2xl pb-4">Water Chemistry</p>
       </div>
       <div className="flex gap-6 p-6 justify-around bg-orange-200">
         <div className="flex flex-col items-center gap-4">
-          <label className="text-gray-700 text-md font-semibold">Ca+2</label>
+          <label className="text-gray-700 text-md font-semibold ">Ca+2</label>
           <Controller
             name={`ingredients.water_profile.calcium`}
             defaultValue={0}

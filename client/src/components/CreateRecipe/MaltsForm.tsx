@@ -25,15 +25,15 @@ export const MaltsForm: React.FC<{}> = () => {
 
   return (
     <div className="m-8 p-4 bg-orange-100">
-      <div>
-        <p className="font-semibold text-2xl">Fermentables</p>
+      <div  className="flex justify-center border-b-2 border-orange-300">
+        <p className="font-semibold text-2xl pb-4">Fermentables</p>
       </div>
       <div className="flex gap-8 py-4 ">
-        <p onClick={addMalt} className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-blue-500 hover:border-transparent rounded">
+        <p onClick={addMalt} className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-orange-500 hover:border-transparent rounded">
           Add Malt +
         </p>
         {count === 1 ? null : (
-          <p onClick={deleteMalt} className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-blue-500 hover:border-transparent rounded">
+          <p onClick={deleteMalt} className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-orange-500 hover:border-transparent rounded">
             Delete Last Malt -
           </p>
         )}
