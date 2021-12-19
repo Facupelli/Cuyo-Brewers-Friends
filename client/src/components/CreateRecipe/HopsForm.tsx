@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useFormContext, Controller } from "react-hook-form";
-import Select from "react-select";
 
 import { hopsList } from "../../media/beer_ingredients/hopsList";
 

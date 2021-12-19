@@ -25,13 +25,13 @@ export const NavBar: React.FC<Props> = ({ route }) => {
         <p className="font-semibold text-xl font-serif">CUYO BREWERS FRIENDS</p>
       </div>
       <div className="flex justify-center items-center gap-10">
-        {cookie && route === "createrecipe" ? (
+        {cookie && route === "home" ? null : (
           <div className="">
             <Link to="/home">
               <p className="font-semibold">Recipes</p>
             </Link>
           </div>
-        ) : null}
+        ) }
 
         {cookie &&
           (route === "createrecipe" ? null : (

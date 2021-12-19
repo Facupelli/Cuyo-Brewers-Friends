@@ -1,6 +1,6 @@
 import { number } from "yup/lib/locale"
 
-interface Parameters {
+export interface Parameters {
   boil_time: number;
   batch_size:number;
   pre_boil_size: number;
@@ -9,7 +9,7 @@ interface Parameters {
   efficiency: number;
 }
 
-interface Characteristics {
+export interface Characteristics {
   original_gravity: number;
   final_gravity: number;
   alcohol_by_volume: number;
