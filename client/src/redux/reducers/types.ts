@@ -45,7 +45,6 @@ interface Ingredients {
 }
 
 export interface Recipe {
-  _id: number;
   title: string;
   style: string;
   sub_category: string;
@@ -60,7 +59,7 @@ export interface RecipeList {
   recipe: Recipe;
   user_id: number;
   username: string;
-  _id: number;
+  _id: string;
 }
 
 

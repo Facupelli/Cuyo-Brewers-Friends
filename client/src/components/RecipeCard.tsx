@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 
 type Props = {
   recipe: Recipe;
+  id: string;
 };
 
-export const RecipeCard: React.FC<Props> = ({ recipe }) => {
+export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
+
   return (
     <div className="bg-amber-100 rounded m-2 p-6">
       <div>
         <div>
-          <Link to="recipe/:id">
+          <Link to={`recipe/${id}`}>
             <p className="text-gray-800 font-semibold">{recipe.title}</p>
           </Link>
         </div>

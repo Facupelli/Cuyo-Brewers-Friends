@@ -14,7 +14,7 @@ export const RecipesCardList: React.FC<Props> = ({ recipesList }) => {
       <div>
         {recipesList &&
           recipesList.map((recipe, i) => (
-            <RecipeCard key={i}  recipe={recipe.recipe} />
+            <RecipeCard key={i}  recipe={recipe.recipe} id={recipe._id} />
           ))}
       </div>
     </div>
