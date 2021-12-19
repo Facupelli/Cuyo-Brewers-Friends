@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import bjcp from "bjcp";
 import { useFormContext, Controller } from "react-hook-form";
 
+
 export const BatchParams: React.FC = () => {
-  const { control, watch, register } = useFormContext();
+  const { control, watch, register, formState: {errors} } = useFormContext();
 
   const beerStyles = bjcp.beers.map((el) => `${el.number}. ${el.name}`);
   // const styleSelected = watch("style", "any").split(". ")[1];
@@ -27,7 +28,7 @@ export const BatchParams: React.FC = () => {
             Batch Size
           </label>
           <Controller
-            name="parameters.batch_size"
+            name="recipe.parameters.batch_size"
             control={control}
             defaultValue={20}
             render={({ field }) => (
@@ -38,6 +39,7 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
+          <span>{errors && errors.recipe?.parameters?.batch_size?.message}</span>
         </div>
 
         <div className=" my-2">
@@ -45,7 +47,7 @@ export const BatchParams: React.FC = () => {
             Pre Boil Size
           </label>
           <Controller
-            name="parameters.pre_boil_size"
+            name="recipe.parameters.pre_boil_size"
             control={control}
             defaultValue={30}
             render={({ field }) => (
@@ -56,6 +58,7 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
+          <span>{errors && errors.recipe?.parameters?.pre_boil_size?.message}</span>
         </div>
 
         <div className=" my-2">
@@ -63,7 +66,7 @@ export const BatchParams: React.FC = () => {
             Boil Time
           </label>
           <Controller
-            name="parameters.boil_time"
+            name="recipe.parameters.boil_time"
             control={control}
             defaultValue={60}
             render={({ field }) => (
@@ -75,6 +78,7 @@ export const BatchParams: React.FC = () => {
             )}
           />
         </div>
+        <span>{errors && errors.recipe?.parameters?.boil_time?.message}</span>
       </div>
 
       {/* ---------------------- SEGUNDA COLUMNA --------------------------------- */}
@@ -121,7 +125,7 @@ export const BatchParams: React.FC = () => {
             Efficiency
           </label>
           <Controller
-            name="parameters.efficiency"
+            name="recipe.parameters.efficiency"
             control={control}
             defaultValue={70}
             render={({ field }) => (
@@ -132,6 +136,7 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
+          <span>{errors && errors.recipe?.parameters?.efficiency?.message}</span>
         </div>
 
         <div className=" my-2">
@@ -139,7 +144,7 @@ export const BatchParams: React.FC = () => {
             Mash Ph
           </label>
           <Controller
-            name="parameters.mash_ph"
+            name="recipe.parameters.mash_ph"
             control={control}
             defaultValue={5.4}
             render={({ field }) => (
@@ -150,6 +155,7 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
+          <span>{errors && errors.recipe?.parameters?.mash_ph?.message}</span>
         </div>
       </div>
     </div>

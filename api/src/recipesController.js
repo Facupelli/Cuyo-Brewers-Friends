@@ -4,8 +4,8 @@ class RecipesController {
   static async getRecipes(req, res, next) {
     try {
       const recipesPerPage = req.query.recipesPerPage
-        ? pareseInt(req.query.recipesPerPage, 10)
-        : 20;
+        ? parseInt(req.query.recipesPerPage, 10)
+        : 30;
       const page = req.query.page ? parseInt(req.query.page, 10) : 0;
 
       let filters = {}; //filters start as an empty object

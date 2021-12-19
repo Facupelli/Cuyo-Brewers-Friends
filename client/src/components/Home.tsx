@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("/recipes")
+      .get("/recipes?page=1")
       .then((res) => res.data)
       .catch((e) => console.log(e));
   }, []);

@@ -35,7 +35,6 @@ function App() {
         <Route path='/createrecipe' element={<CreateRecipe />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-\
       </Routes>
     </div>
   );

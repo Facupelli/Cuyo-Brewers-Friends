@@ -1,4 +1,5 @@
 import React from "react";
+import * as yup from "yup";
 import { Recipe } from "../../redux/reducers/types";
 import {
   useForm,
@@ -13,6 +14,7 @@ import { BatchParams } from "./BatchParams";
 import axios from "axios";
 import { Characteristics } from "./Characteristics";
 import { NavBar } from "../NavBar";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const initialValues: Recipe = {
   _id: 0,
@@ -51,8 +53,60 @@ const initialValues: Recipe = {
   photos: [],
 };
 
+const schema = yup.object().shape({
+  recipe: yup.object().shape({
+    title: yup.string().required().min(2).max(25),
+    style: yup.string().required().min(2).max(25),
+    sub_category: yup.string().required().min(2).max(25),
+    brewery: yup.string().min(2).max(25),
+    parameters: yup.object().shape({
+      boil_time: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
+      batch_size: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
+      pre_boil_size: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
+      pre_boil_gravity: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
+      mash_ph: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
+      efficiency: yup.number().typeError('Must be a number').required().positive().min(0).max(100),
+    }),
+    characteristics: yup.object().shape({
+      original_gravity: yup.number().typeError('Must be a number').positive().min(1).max(25),
+      final_gravity: yup.number().typeError('Must be a number').positive().min(1).max(25),
+      alcohol_by_volume: yup.number().typeError('Must be a number').positive().min(1).max(25),
+      ibu: yup.number().typeError('Must be a number').min(1).max(25),
+      srm: yup.number().typeError('Must be a number').min(1).max(25),
+    }),
+    ingredients: yup.object().shape({
+      fermentables: yup
+        .array()
+        .of(yup.object().shape({ name: yup.string(), quantity: yup.number().positive() })),
+      hops: yup
+        .array()
+        .of(
+          yup
+            .object()
+            .shape({
+              name: yup.string(),
+              quantity: yup.number().typeError('Must be a number').positive(),
+              boil_time: yup.number().typeError('Must be a number').positive(),
+            })
+        ),
+      water_profile: yup.object().shape({
+        calcium: yup.number().typeError('Must be a number').positive(),
+        magnesium: yup.number().typeError('Must be a number').positive(),
+        sodium: yup.number().typeError('Must be a number').positive(),
+        chlorine: yup.number().typeError('Must be a number').positive(),
+        sulfate: yup.number().typeError('Must be a number').positive(),
+        bicarbonate: yup.number().typeError('Must be a number').positive(),
+      }),
+    }),
+  }),
+});
+
 export const CreateRecipe: React.FC<{}> = () => {
-  const methods = useForm<Recipe>();
+  const methods = useForm<Recipe>({resolver: yupResolver(schema)});
+
+  const errors = methods.formState.errors
+
+  console.log('ERRORS', errors)
 
   const formSubmitHandler: SubmitHandler<Recipe> = async (data: Recipe) => {
     try {
@@ -73,7 +127,7 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   return (
     <div>
-      <NavBar route='createrecipe' />
+      <NavBar route="createrecipe" />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
           {/* ------------    PART 1 ------------------------ */}
@@ -103,6 +157,7 @@ export const CreateRecipe: React.FC<{}> = () => {
                   />
                 )}
               />
+              <span>{errors && errors.title?.message}</span>
             </div>
 
             <div className="p-4">
