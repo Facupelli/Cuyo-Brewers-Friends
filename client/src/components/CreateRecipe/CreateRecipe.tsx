@@ -15,6 +15,7 @@ import axios from "axios";
 import { Characteristics } from "./Characteristics";
 import { NavBar } from "../NavBar";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { TitleInfo } from "./TItleInfo";
 
 const initialValues: Recipe = {
   _id: 0,
@@ -56,13 +57,13 @@ const initialValues: Recipe = {
 const schema = yup.object().shape({
   recipe: yup.object().shape({
     title: yup.string().required().min(2).max(25),
-    style: yup.string().required().min(2).max(25),
+    style: yup.string().required().min(2).max(200),
     sub_category: yup.string().required().min(2).max(25),
-    brewery: yup.string().min(2).max(25),
+    brewery: yup.string().min(0).max(50),
     parameters: yup.object().shape({
-      boil_time: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
+      boil_time: yup.number().typeError('Must be a number').required().positive().min(0).max(500),
       batch_size: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
-      pre_boil_size: yup.number().typeError('Must be a number').required().positive().min(1).max(1000),
+      // pre_boil_size: yup.number().typeError('Must be a number').required().positive().min(1).max(1000),
       pre_boil_gravity: yup.number().typeError('Must be a number').required().positive().min(1).max(2000),
       mash_ph: yup.number().typeError('Must be a number').required().positive().min(0).max(10),
       efficiency: yup.number().typeError('Must be a number').required().positive().min(0).max(100),
@@ -140,54 +141,12 @@ export const CreateRecipe: React.FC<{}> = () => {
               SAVE
             </button>
           </div>
-          <div className="flex mx-8 mt-8 gap-8 bg-orange-100">
-            <div className="p-4">
-              <label className="my-2 text-gray-700 text-md font-semibold">
-                Title
-              </label>
-              <Controller
-                name="title"
-                defaultValue=""
-                control={methods.control}
-                render={({ field }) => (
-                  <input
-                    placeholder="Hop Odisey"
-                    className="ml-4 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    {...field}
-                  />
-                )}
-              />
-              <span>{errors && errors.title?.message}</span>
-            </div>
-
-            <div className="p-4">
-              <label className="my-2 text-gray-700 text-md font-semibold">
-                Brewery
-              </label>
-              <Controller
-                name="brewery"
-                defaultValue=""
-                control={methods.control}
-                render={({ field }) => (
-                  <input
-                    placeholder="--"
-                    className="ml-4 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    {...field}
-                  />
-                )}
-              />
-            </div>
-          </div>
-
-          <BatchParams />
+          
+          <TitleInfo />
 
           {/* -------------------    PARAMETERS ------------------------ */}
 
-          {/* <label htmlFor="Pre_Boil_Gravity">Pre Boil Gravity</label>
-        <input
-          placeholder="pre boil gravity"
-          {...register("parameters.pre_boil_gravity")}
-        /> */}
+          <BatchParams />
 
           {/* --------------------    CHARACTERISTICS ------------------------ */}
 

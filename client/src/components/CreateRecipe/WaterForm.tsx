@@ -22,7 +22,7 @@ export const WaterForm: React.FC<{}> = () => {
               <input
                 placeholder="0"
                 {...field}
-                className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="p-2 text-center w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             )}
           />
@@ -37,7 +37,7 @@ export const WaterForm: React.FC<{}> = () => {
               <input
                 placeholder="0"
                 {...field}
-                className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="p-2 text-center w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             )}
           />
@@ -52,7 +52,7 @@ export const WaterForm: React.FC<{}> = () => {
               <input
                 placeholder="0"
                 {...field}
-                className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="p-2 text-center w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             )}
           />
@@ -67,7 +67,7 @@ export const WaterForm: React.FC<{}> = () => {
               <input
                 placeholder="0"
                 {...field}
-                className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="p-2 text-center w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             )}
           />
@@ -82,7 +82,7 @@ export const WaterForm: React.FC<{}> = () => {
               <input
                 placeholder="0"
                 {...field}
-                className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="p-2 text-center w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             )}
           />
@@ -97,7 +97,7 @@ export const WaterForm: React.FC<{}> = () => {
               <input
                 placeholder="0"
                 {...field}
-                className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="p-2 text-center w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             )}
           />

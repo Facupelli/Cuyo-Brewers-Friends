@@ -21,7 +21,7 @@ export const Characteristics: React.FC = () => {
             <input
               placeholder="0"
               {...field}
-              className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="p-2 w-14 text-center shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           )}
         />
@@ -30,7 +30,7 @@ export const Characteristics: React.FC = () => {
 
       <div className="flex flex-col items-center gap-4">
         <label className="text-gray-700 text-md font-semibold ">
-          Fianal Gravity
+          Final Gravity
         </label>
         <Controller
           name={`recipe.characteristics.final_gravity`}
@@ -40,7 +40,7 @@ export const Characteristics: React.FC = () => {
             <input
               placeholder="0"
               {...field}
-              className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="p-2 w-14 text-center shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           )}
         />
@@ -57,7 +57,7 @@ export const Characteristics: React.FC = () => {
             <input
               placeholder="0"
               {...field}
-              className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="p-2 w-14 text-center shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           )}
         />
@@ -74,7 +74,7 @@ export const Characteristics: React.FC = () => {
             <input
               placeholder="0"
               {...field}
-              className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="p-2 w-14 text-center shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           )}
         />
@@ -91,7 +91,7 @@ export const Characteristics: React.FC = () => {
             <input
               placeholder="0"
               {...field}
-              className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="p-2 w-14 text-center shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           )}
         />

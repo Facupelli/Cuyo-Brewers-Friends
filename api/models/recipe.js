@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const RecipeSchema = new mongoose.Schema({
   recipe: {
-    title: { type: String, required: true, index: true },
-    style: { type: String, required: true },
+    title: { type: String, index: true },
+    style: { type: String },
     brewery: { type: String, default: null },
     parameters: {
       boil_time: Number,
