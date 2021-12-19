@@ -14,7 +14,7 @@ export const TitleInfo: React.FC = () => {
           Title
         </label>
         <Controller
-          name="recipe.title"
+          name="title"
           defaultValue=""
           control={control}
           render={({ field }) => (
@@ -33,7 +33,7 @@ export const TitleInfo: React.FC = () => {
           Brewery
         </label>
         <Controller
-          name="recipe.brewery"
+          name="brewery"
           defaultValue=""
           control={control}
           render={({ field }) => (

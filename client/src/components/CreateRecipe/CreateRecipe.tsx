@@ -1,11 +1,10 @@
 import React from "react";
 import * as yup from "yup";
-import { Recipe } from "../../redux/reducers/types";
+import { RecipeList } from "../../redux/reducers/types";
 import {
   useForm,
   SubmitHandler,
   FormProvider,
-  Controller,
 } from "react-hook-form";
 import { HopsForm } from "./HopsForm";
 import { MaltsForm } from "./MaltsForm";
@@ -17,45 +16,44 @@ import { NavBar } from "../NavBar";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TitleInfo } from "./TItleInfo";
 
-const initialValues: Recipe = {
-  _id: 0,
-  title: "",
-  style: "",
-  sub_category: "",
-  brewery: "",
-  parameters: {
-    boil_time: 0,
-    batch_size: 0,
-    pre_boil_size: 0,
-    pre_boil_gravity: 0,
-    mash_ph: 0,
-    efficiency: 0,
-  },
-  characteristics: {
-    original_gravity: 0,
-    final_gravity: 0,
-    alcohol_by_volume: 0,
-    ibu: 0,
-    srm: 0,
-  },
-  ingredients: {
-    fermentables: [],
-    hops: [{ name: "", quantity: 0, boil_time: 0 }],
-    yeast: [],
-    water_profile: {
-      calcium: 0,
-      magnesium: 0,
-      sodium: 0,
-      chlorine: 0,
-      sulfate: 0,
-      bicarbonate: 0,
-    },
-  },
-  photos: [],
-};
+// const initialValues: Recipe = {
+//   _id: 0,
+//   title: "",
+//   style: "",
+//   sub_category: "",
+//   brewery: "",
+//   parameters: {
+//     boil_time: 0,
+//     batch_size: 0,
+//     pre_boil_size: 0,
+//     pre_boil_gravity: 0,
+//     mash_ph: 0,
+//     efficiency: 0,
+//   },
+//   characteristics: {
+//     original_gravity: 0,
+//     final_gravity: 0,
+//     alcohol_by_volume: 0,
+//     ibu: 0,
+//     srm: 0,
+//   },
+//   ingredients: {
+//     fermentables: [],
+//     hops: [{ name: "", quantity: 0, boil_time: 0 }],
+//     yeast: [],
+//     water_profile: {
+//       calcium: 0,
+//       magnesium: 0,
+//       sodium: 0,
+//       chlorine: 0,
+//       sulfate: 0,
+//       bicarbonate: 0,
+//     },
+//   },
+//   photos: [],
+// };
 
 const schema = yup.object().shape({
-  recipe: yup.object().shape({
     title: yup.string().required().min(2).max(25),
     style: yup.string().required().min(2).max(200),
     sub_category: yup.string().required().min(2).max(25),
@@ -86,8 +84,8 @@ const schema = yup.object().shape({
             .object()
             .shape({
               name: yup.string(),
-              quantity: yup.number().typeError('Must be a number').positive(),
-              boil_time: yup.number().typeError('Must be a number').positive(),
+              quantity: yup.number().typeError('Must be a number').positive().min(1),
+              boil_time: yup.number().typeError('Must be a number').min(0),
             })
         ),
       water_profile: yup.object().shape({
@@ -99,24 +97,22 @@ const schema = yup.object().shape({
         bicarbonate: yup.number().typeError('Must be a number').positive(),
       }),
     }),
-  }),
 });
 
 export const CreateRecipe: React.FC<{}> = () => {
-  const methods = useForm<Recipe>({resolver: yupResolver(schema)});
+  const methods = useForm<RecipeList>({resolver: yupResolver(schema)});
 
   const errors = methods.formState.errors
 
   console.log('ERRORS', errors)
 
-  const formSubmitHandler: SubmitHandler<Recipe> = async (data: Recipe) => {
+  const formSubmitHandler: SubmitHandler<RecipeList> = async (data: RecipeList) => {
     try {
       console.log("FORM DATA IS", data);
       const newRecipe = {
         recipe: data,
-        name: "",
+        username: "",
         user_id: "",
-        date: "",
       };
       const response = await axios.post("/recipes/create", newRecipe);
       console.log("RESPONSE:", response);
@@ -153,6 +149,7 @@ export const CreateRecipe: React.FC<{}> = () => {
           <Characteristics />
 
           {/* ------------------------ INGREDIENTS ----------------------------- */}
+
           <div className="grid grid-cols-2">
             <div className="grid-cols-1">
               <HopsForm />

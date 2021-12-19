@@ -59,8 +59,8 @@ export interface Recipe {
 export interface RecipeList {
   recipe: Recipe;
   user_id: number;
-  username: String;
-  _id: Number;
+  username: string;
+  _id: number;
 }
 
 

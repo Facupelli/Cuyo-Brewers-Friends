@@ -19,7 +19,7 @@ export const MaltsForm: React.FC<{}> = () => {
       <div  className="flex justify-center border-b-2 border-orange-300">
         <p className="font-semibold text-2xl pb-4">Fermentables</p>
       </div>
-      <div className="flex gap-8 py-4 ">
+      <div className="flex gap-8 pt-4 ">
         <p onClick={addMalt} className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-orange-500 hover:border-transparent rounded">
           Add Malt +
         </p>

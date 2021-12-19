@@ -14,7 +14,7 @@ export const Characteristics: React.FC = () => {
           Original Gravity
         </label>
         <Controller
-          name={`recipe.characteristics.original_gravity`}
+          name={`characteristics.original_gravity`}
           defaultValue={0}
           control={control}
           render={({ field }) => (
@@ -33,7 +33,7 @@ export const Characteristics: React.FC = () => {
           Final Gravity
         </label>
         <Controller
-          name={`recipe.characteristics.final_gravity`}
+          name={`characteristics.final_gravity`}
           defaultValue={0}
           control={control}
           render={({ field }) => (
@@ -50,7 +50,7 @@ export const Characteristics: React.FC = () => {
       <div className="flex flex-col items-center gap-4">
         <label className="text-gray-700 text-md font-semibold ">ABV</label>
         <Controller
-          name={`recipe.characteristics.alcohol_by_volume`}
+          name={`characteristics.alcohol_by_volume`}
           defaultValue={0}
           control={control}
           render={({ field }) => (
@@ -67,7 +67,7 @@ export const Characteristics: React.FC = () => {
       <div className="flex flex-col items-center gap-4">
         <label className="text-gray-700 text-md font-semibold ">IBU</label>
         <Controller
-          name={`recipe.characteristics.ibu`}
+          name={`characteristics.ibu`}
           defaultValue={0}
           control={control}
           render={({ field }) => (
@@ -84,7 +84,7 @@ export const Characteristics: React.FC = () => {
       <div className="flex flex-col items-center gap-4">
         <label className="text-gray-700 text-md font-semibold ">SRM</label>
         <Controller
-          name={`recipe.characteristics.srm`}
+          name={`characteristics.srm`}
           defaultValue={0}
           control={control}
           render={({ field }) => (

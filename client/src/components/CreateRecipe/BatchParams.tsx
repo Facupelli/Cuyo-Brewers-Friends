@@ -30,7 +30,7 @@ export const BatchParams: React.FC = () => {
             Batch Size
           </label>
           <Controller
-            name="recipe.parameters.batch_size"
+            name="parameters.batch_size"
             control={control}
             defaultValue={20}
             render={({ field }) => (
@@ -52,7 +52,7 @@ export const BatchParams: React.FC = () => {
             Pre Boil Gravity
           </label>
           <Controller
-            name="recipe.parameters.pre_boil_gravity"
+            name="parameters.pre_boil_gravity"
             control={control}
             defaultValue={30}
             render={({ field }) => (
@@ -74,7 +74,7 @@ export const BatchParams: React.FC = () => {
             Boil Time
           </label>
           <Controller
-            name="recipe.parameters.boil_time"
+            name="parameters.boil_time"
             control={control}
             defaultValue={60}
             render={({ field }) => (
@@ -98,7 +98,7 @@ export const BatchParams: React.FC = () => {
             Style
           </label>
           <select
-            {...register("recipe.style")}
+            {...register("style")}
             defaultValue="1. American Standard"
             className="ml-4  bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
           >
@@ -117,7 +117,7 @@ export const BatchParams: React.FC = () => {
               </label>
 
               <select
-                {...register("recipe.sub_category")}
+                {...register("sub_category")}
                 defaultValue=""
                 className="ml-4 bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
               >
@@ -134,7 +134,7 @@ export const BatchParams: React.FC = () => {
             Efficiency
           </label>
           <Controller
-            name="recipe.parameters.efficiency"
+            name="parameters.efficiency"
             control={control}
             defaultValue={70}
             render={({ field }) => (
@@ -156,7 +156,7 @@ export const BatchParams: React.FC = () => {
             Mash Ph
           </label>
           <Controller
-            name="recipe.parameters.mash_ph"
+            name="parameters.mash_ph"
             control={control}
             defaultValue={5.4}
             render={({ field }) => (
