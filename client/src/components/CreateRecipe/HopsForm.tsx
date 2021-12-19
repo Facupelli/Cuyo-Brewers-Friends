@@ -51,18 +51,6 @@ export const HopsForm: React.FC<{}> = () => {
       {[...Array(count)].map((el, count) => (
         <div key={count} className="p-4 mt-4 bg-orange-200">
           <div className="flex gap-4 items-center">
-            {hopsList && (
-              <select
-                {...register(`ingredients.hops[${count}].name`)}
-                defaultValue=""
-                className="bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
-              >
-                {hopNames.map((el, i) => (
-                  <option key={i}>{el.name}</option>
-                ))}
-              </select>
-            )}
-
             <label className="my-2 text-gray-700 text-md font-semibold">
               g
             </label>
@@ -78,24 +66,70 @@ export const HopsForm: React.FC<{}> = () => {
                 />
               )}
             />
+
+            {hopsList && (
+              <select
+                {...register(`ingredients.hops[${count}].name`)}
+                defaultValue=""
+                className="bg-white border border-orange-200 text-gray-700 p-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+              >
+                {hopNames.map((el, i) => (
+                  <option key={i}>{el.name}</option>
+                ))}
+              </select>
+            )}
           </div>
 
-          <div>
-            <label className="my-2 text-gray-700 text-md font-semibold">
-              Boil Time
-            </label>
-            <Controller
-              name={`ingredients.hops[${count}].boil_time`}
-              defaultValue={0}
-              control={control}
-              render={({ field }) => (
-                <input
-                  className="my-2 ml-4 p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="0"
-                  {...field}
-                />
-              )}
-            />
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <label className=" text-gray-700 text-md font-semibold">
+                Time
+              </label>
+              <Controller
+                name={`ingredients.hops[${count}].time`}
+                defaultValue={0}
+                control={control}
+                render={({ field }) => (
+                  <input
+                    className="my-2 ml-4 p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="0"
+                    {...field}
+                  />
+                )}
+              />
+              <p className="text-xs">min (days for DH)</p>
+            </div>
+            <div>
+              <select
+                {...register(`ingredients.hops[${count}].use`)}
+                defaultValue=""
+                className="bg-white border border-orange-200 text-gray-700 p-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+              >
+                <option disabled>Select Use</option>
+                <option>Dry Hop</option>
+                <option selected>Boil</option>
+                <option>First Wort Hop</option>
+                <option>Hop Stand</option>
+                <option>Hop Back</option>
+                <option>Mash</option>
+              </select>
+            </div>
+            <div className="flex items-center gap-2">
+              <label>T°</label>
+              <Controller
+                name={`ingredients.hops[${count}].temperature`}
+                defaultValue={0}
+                control={control}
+                render={({ field }) => (
+                  <input
+                    className="my-2 ml-4 p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="0"
+                    {...field}
+                  />
+                )}
+              />
+              <p>°C</p>
+            </div>
           </div>
         </div>
       ))}

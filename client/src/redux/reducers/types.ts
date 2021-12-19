@@ -29,7 +29,9 @@ export interface Characteristics {
 export interface Hops {
   name: string;
   quantity: number;
-  boil_time: number;
+  use: string;
+  time: number;
+  temperature: number;
 }
 
 export interface Fermentables {

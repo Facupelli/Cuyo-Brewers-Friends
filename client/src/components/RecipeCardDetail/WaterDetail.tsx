@@ -6,13 +6,12 @@ type Props = {
 };
 
 export const WaterDetail: React.FC<Props> = ({ water }) => {
-  console.log(water);
 
   const { bicarbonate, calcium, chlorine, magnesium, sodium, sulfate } = water;
 
   return (
     <div>
-      <div className="pt-4 font-semibold text-xl">
+      <div className="pt-4 font-semibold text-2xl">
         <p>Water Chemistry</p>
       </div>
 

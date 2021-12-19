@@ -85,16 +85,18 @@ const schema = yup.object().shape({
             .shape({
               name: yup.string(),
               quantity: yup.number().typeError('Must be a number').positive().min(1),
-              boil_time: yup.number().typeError('Must be a number').min(0),
+              time: yup.number().typeError('Must be a number'),
+              use: yup.string(),
+              temperature: yup.number().typeError('Must be a number')
             })
         ),
       water_profile: yup.object().shape({
-        calcium: yup.number().typeError('Must be a number').positive(),
-        magnesium: yup.number().typeError('Must be a number').positive(),
-        sodium: yup.number().typeError('Must be a number').positive(),
-        chlorine: yup.number().typeError('Must be a number').positive(),
-        sulfate: yup.number().typeError('Must be a number').positive(),
-        bicarbonate: yup.number().typeError('Must be a number').positive(),
+        calcium: yup.number().typeError('Must be a number'),
+        magnesium: yup.number().typeError('Must be a number'),
+        sodium: yup.number().typeError('Must be a number'),
+        chlorine: yup.number().typeError('Must be a number'),
+        sulfate: yup.number().typeError('Must be a number'),
+        bicarbonate: yup.number().typeError('Must be a number'),
       }),
     }),
 });
