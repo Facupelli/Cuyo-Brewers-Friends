@@ -5,6 +5,9 @@ import { Recipe } from "../../redux/reducers/types";
 import { NavBar } from "../NavBar";
 import { CharacteristicsDetail } from "./CharacteristicsDetail";
 import { ParametersDetail } from "./ParametersDetail";
+import { FermentablesDetail } from "./FermentablesDetail";
+import { HopsDetail } from "./HopsDetail";
+import { WaterDetail } from "./WaterDetail";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -84,7 +87,11 @@ export const RecipeCardDetail: React.FC = () => {
           characteristics={recipe.recipe.characteristics}
         />
 
-        
+        <WaterDetail water={recipe.recipe.ingredients.water_profile} />
+
+        <FermentablesDetail fermentables={recipe.recipe.ingredients.fermentables} />
+
+        <HopsDetail hops={recipe.recipe.ingredients.hops} />
       </div>
     </>
   );
