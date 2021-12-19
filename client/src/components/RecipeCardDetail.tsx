@@ -8,11 +8,11 @@ export const RecipeCardDetail: React.FC = () => {
   const { id } = useParams();
   console.log("ID", id);
 
-  useEffect(() => {
-    getRecipeById(id)
-      .then((data) => setRecipe({ recipe: data.recipe, user: data.user }))
-      .catch((e) => console.log(e));
-  }, [id]);
+  // useEffect(() => {
+  //   getRecipeById(id)
+  //     .then((data) => setRecipe({ recipe: data.recipe, user: data.user }))
+  //     .catch((e) => console.log(e));
+  // }, [id]);
 
   return <div>DETAIL</div>;
 };

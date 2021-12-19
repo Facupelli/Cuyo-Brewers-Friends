@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
 const RecipeSchema = new mongoose.Schema({
+  username: String,
+  user_id: String,
   recipe: {
     title: { type: String, index: true },
     style: { type: String },
@@ -36,8 +38,6 @@ const RecipeSchema = new mongoose.Schema({
     },
     date: { type: Number, default: Date.now },
   },
-  username: String,
-  user_id: String,
 });
 
 RecipeSchema.index({ "recipe.title": "text", username: "text" });

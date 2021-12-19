@@ -1,5 +1,6 @@
-const { recipeModel } = require("../models/recipe");
-
+const { recipeModel } = require("../models/recipe")
+const mongodb = require("mongodb");
+const ObjectId = mongodb.ObjectId;
 class Recipes {
   static async getRecipes({
     // we call this when we want a list of all recipes
@@ -49,6 +50,16 @@ class Recipes {
     }
   }
 
+  static async getRecipeById(id) {
+    try {
+      
+      return await recipeModel.findById(id)
+    } catch (e) {
+      console.error(`Something went wrong in getRecipeByID: ${e}`)
+      throw e
+    }
+  }
+
   static async addRecipe(recipe, user, date) {
     try {
       const reviewDoc = {
@@ -60,7 +71,7 @@ class Recipes {
 
       const response = await recipeModel.create(reviewDoc);
 
-      console.log('MONGO CREATE', response);
+      console.log("MONGO CREATE", response);
 
       // return await recipes.insertOne(reviewDoc);
     } catch (e) {

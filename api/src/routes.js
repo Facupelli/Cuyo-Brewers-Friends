@@ -12,6 +12,10 @@ router
     .get(RecipesCotroller.getRecipes) 
 
 router
+    .route('/:id')
+    .get(RecipesCotroller.getRecipeById)
+
+router
     .route('/create')
     .post(RecipesCotroller.postRecipe)
 

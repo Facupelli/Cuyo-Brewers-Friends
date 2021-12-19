@@ -1,4 +1,6 @@
+const { ObjectId } = require("mongodb");
 const Recipes = require("../dao/recipes.js");
+const { recipeModel } = require("../models/recipe");
 
 class RecipesController {
   static async getRecipes(req, res, next) {
@@ -19,12 +21,11 @@ class RecipesController {
         filters.username = req.query.username;
       }
 
-      const { allRecipes, totalNumRecipes } =
-        await Recipes.getRecipes({
-          filters,
-          page,
-          recipesPerPage,
-        });
+      const { allRecipes, totalNumRecipes } = await Recipes.getRecipes({
+        filters,
+        page,
+        recipesPerPage,
+      });
 
       let response = {
         recipesList: allRecipes,
@@ -35,6 +36,24 @@ class RecipesController {
       };
       res.json(response);
     } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
+
+  static async getRecipeById(req, res, next) {
+    try {
+      const { id } = req.params;
+
+      const recipe = await Recipes.getRecipeById(id)
+
+      if(!recipe){
+        res.status(404).json({error: "Not found !recipe"})
+        return
+      }
+
+      res.json(recipe);
+    } catch (e) {
+      console.log(`api, ${e}`)
       res.status(500).json({ error: e.message });
     }
   }
