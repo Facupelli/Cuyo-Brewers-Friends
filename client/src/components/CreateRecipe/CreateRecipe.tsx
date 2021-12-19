@@ -62,17 +62,17 @@ const schema = yup.object().shape({
     parameters: yup.object().shape({
       boil_time: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
       batch_size: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
-      pre_boil_size: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
-      pre_boil_gravity: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
-      mash_ph: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
+      pre_boil_size: yup.number().typeError('Must be a number').required().positive().min(1).max(1000),
+      pre_boil_gravity: yup.number().typeError('Must be a number').required().positive().min(1).max(2000),
+      mash_ph: yup.number().typeError('Must be a number').required().positive().min(0).max(10),
       efficiency: yup.number().typeError('Must be a number').required().positive().min(0).max(100),
     }),
     characteristics: yup.object().shape({
-      original_gravity: yup.number().typeError('Must be a number').positive().min(1).max(25),
-      final_gravity: yup.number().typeError('Must be a number').positive().min(1).max(25),
-      alcohol_by_volume: yup.number().typeError('Must be a number').positive().min(1).max(25),
-      ibu: yup.number().typeError('Must be a number').min(1).max(25),
-      srm: yup.number().typeError('Must be a number').min(1).max(25),
+      original_gravity: yup.number().typeError('Must be a number').positive().min(0).max(1200),
+      final_gravity: yup.number().typeError('Must be a number').positive().min(0).max(1200),
+      alcohol_by_volume: yup.number().typeError('Must be a number').positive().min(0).max(20),
+      ibu: yup.number().typeError('Must be a number').min(0).max(200),
+      srm: yup.number().typeError('Must be a number').min(0).max(100),
     }),
     ingredients: yup.object().shape({
       fermentables: yup

@@ -2,14 +2,18 @@ import React, { useEffect } from "react";
 import bjcp from "bjcp";
 import { useFormContext, Controller } from "react-hook-form";
 
-
 export const BatchParams: React.FC = () => {
-  const { control, watch, register, formState: {errors} } = useFormContext();
+  const {
+    control,
+    watch,
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   const beerStyles = bjcp.beers.map((el) => `${el.number}. ${el.name}`);
   // const styleSelected = watch("style", "any").split(". ")[1];
   let styleSelected = watch("style", "1. American Standard");
-  let styleSelectedAfter = '1. American Standard';
+  let styleSelectedAfter = "1. American Standard";
   if (styleSelected !== undefined) {
     styleSelectedAfter = styleSelected.split(". ")[1];
   }
@@ -17,8 +21,6 @@ export const BatchParams: React.FC = () => {
   const beerSubCategories = bjcp.beers
     .filter((el) => el.name === styleSelectedAfter)
     .map((el) => el.subcategories);
-
-
 
   return (
     <div className="grid grid-cols-2 p-8">
@@ -39,7 +41,9 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
-          <span>{errors && errors.recipe?.parameters?.batch_size?.message}</span>
+          <span>
+            {errors && errors.recipe?.parameters?.batch_size?.message}
+          </span>
         </div>
 
         <div className=" my-2">
@@ -58,7 +62,9 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
-          <span>{errors && errors.recipe?.parameters?.pre_boil_size?.message}</span>
+          <span>
+            {errors && errors.recipe?.parameters?.pre_boil_size?.message}
+          </span>
         </div>
 
         <div className=" my-2">
@@ -136,7 +142,9 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
-          <span>{errors && errors.recipe?.parameters?.efficiency?.message}</span>
+          <span>
+            {errors && errors.recipe?.parameters?.efficiency?.message}
+          </span>
         </div>
 
         <div className=" my-2">
