@@ -11,7 +11,7 @@ interface HopNames {
 export const HopsForm: React.FC<{}> = () => {
   const [count, setCount] = useState(1);
 
-  const { control } = useFormContext();
+  const { control, register } = useFormContext();
 
   const hopNames: HopNames[] = hopsList.map((el) => ({
     name: el.Name,
@@ -52,48 +52,48 @@ export const HopsForm: React.FC<{}> = () => {
         <div key={count} className="p-4 mt-4 bg-orange-200">
           <div className="flex gap-4 items-center">
             {hopsList && (
-              <Controller
-                name={`ingredients.hops[${count}].name`}
+              <select
+                {...register(`ingredients.hops[${count}].name`)}
                 defaultValue=""
-                control={control}
-                render={({ field }) => (
-                  // <Select
-                  //   className="my-2 w-full"
-                  //   placeholder="Select Hop.."
-                  //   options={hopNames}
-                  //   {...field}
-                  // />
-                  <select
-                  // {...register("recipe.sub_category")}
-                  defaultValue=""
-                  className="bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
-                >
-                  {hopNames.map((el, i) => (
-                    <option key={i}>{el.name}</option>
-                  ))}
-                </select>
-                )}
-              />
+                className="bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+              >
+                {hopNames.map((el, i) => (
+                  <option key={i}>{el.name}</option>
+                ))}
+              </select>
             )}
-            <label className='my-2 text-gray-700 text-md font-semibold'>g</label>
+
+            <label className="my-2 text-gray-700 text-md font-semibold">
+              g
+            </label>
             <Controller
               name={`ingredients.hops[${count}].quantity`}
               defaultValue={0}
               control={control}
               render={({ field }) => (
-                <input className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="0" {...field} />
+                <input
+                  className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  placeholder="0"
+                  {...field}
+                />
               )}
             />
           </div>
 
           <div>
-            <label className="my-2 text-gray-700 text-md font-semibold">Boil Time</label>
+            <label className="my-2 text-gray-700 text-md font-semibold">
+              Boil Time
+            </label>
             <Controller
               name={`ingredients.hops[${count}].boil_time`}
               defaultValue={0}
               control={control}
               render={({ field }) => (
-                <input className="my-2 ml-4 p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="0" {...field} />
+                <input
+                  className="my-2 ml-4 p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  placeholder="0"
+                  {...field}
+                />
               )}
             />
           </div>
