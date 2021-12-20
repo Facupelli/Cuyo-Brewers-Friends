@@ -15,7 +15,7 @@ class ReviewsController {
         username: req.body.username,
         user_id: req.body.user_id
       }
-      const date = dayjs().format('DD/MM/YYYY')
+      const date = dayjs().format('DD/MM/YYYY HH:mm')
 
       const ReviewResponse = await ReviewsDAO.addReview(
         userInfo,
