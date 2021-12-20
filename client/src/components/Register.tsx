@@ -33,7 +33,7 @@ export const Register: React.FC = () => {
   const onSubmit = async (data: FormInputs) => {
     try{
       console.log(data)
-      const response = await axios.post('/recipes/register', data);
+      const response = await axios.post('/register', data);
       console.log('RESPONSE:', response)
       reset();
       

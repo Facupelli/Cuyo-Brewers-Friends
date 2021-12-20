@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { CreateRecipe } from "./components/CreateRecipe/CreateRecipe";
 import Home from "./components/Home";
 import { Login } from "./components/Login";
 import { RecipeCardDetail } from "./components/RecipeCardDetail/RecipeCardDetail";
 import { Register } from "./components/Register";
-import { getRecipes, setCookie } from "./redux/action-creators";
+import { getRecipes, getUserData, setCookie } from "./redux/action-creators";
+import { RootState } from "./redux/reducers/RootReducer";
 
 function App() {
   const dispatch = useDispatch();
+
+  const cookie = useSelector((state: RootState) => state.storeUser.cookie)
 
   // ------------------------GET RECIPES -------------------------------------
   useEffect(() => {
@@ -29,8 +32,11 @@ function App() {
 
   // -------------------- IF COOKIE --------------------------------
   useEffect(() => {
-    
-  }, [])
+    const userId = localStorage.getItem("userId");
+    if(cookie){
+      dispatch(getUserData(userId))
+    }
+  }, [cookie])
 
   return (
     <div>

@@ -15,6 +15,8 @@ import { Characteristics } from "./Characteristics";
 import { NavBar } from "../NavBar";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TitleInfo } from "./TItleInfo";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/reducers/RootReducer";
 
 // const initialValues: Recipe = {
 //   _id: 0,
@@ -102,6 +104,10 @@ const schema = yup.object().shape({
 });
 
 export const CreateRecipe: React.FC<{}> = () => {
+
+  const username = useSelector((state:RootState) => state.storeUser.userData.username)
+  const user_id = useSelector((state:RootState) => state.storeUser.userData.id)
+
   const methods = useForm<RecipeList>({resolver: yupResolver(schema)});
 
   const errors = methods.formState.errors
@@ -113,10 +119,10 @@ export const CreateRecipe: React.FC<{}> = () => {
       console.log("FORM DATA IS", data);
       const newRecipe = {
         recipe: data,
-        username: "",
-        user_id: "",
+        username,
+        user_id,
       };
-      const response = await axios.post("/recipes/create", newRecipe);
+      const response = await axios.post("/recipe", newRecipe);
       console.log("RESPONSE:", response);
       methods.reset();
     } catch (e) {

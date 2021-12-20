@@ -11,7 +11,7 @@ import "./index.css";
 dotenv.config();
 
 axios.defaults.baseURL =
-  process.env.REACT_APP_API || "http://localhost:27017/api/v1";
+  process.env.REACT_APP_API || "http://localhost:27017/";
 
 ReactDOM.render(
   <React.StrictMode>

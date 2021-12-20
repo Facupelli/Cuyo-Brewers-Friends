@@ -32,7 +32,7 @@ export const Login: React.FC = () => {
 
   const onSubmit = async (data: FormInputs) => {
     try{
-      const response: any = await axios.post('/recipes/login', data);
+      const response: any = await axios.post('/login', data);
       console.log(response.data)
       const {token, id} = response.data
       localStorage.setItem('token', token)
