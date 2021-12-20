@@ -10,9 +10,8 @@ import { HopsDetail } from "./HopsDetail";
 import { WaterDetail } from "./WaterDetail";
 import { CommentForm } from "./CommentForm";
 import { UserData } from "./UserData";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/RootReducer";
 import { CommentList } from "./CommentList";
+import { getReviewsByRecipeId } from "../../utils/reviewsUtils";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -22,7 +21,18 @@ interface State {
   recipe: RecipeList;
 }
 
+export interface Review {
+  _id: string;
+  recipe_id: string;
+  comment: string;
+  score: number;
+  user_id: string;
+  username: string;
+}
+
 export const RecipeCardDetail: React.FC = () => {
+  const { id } = useParams<RecipeCardDetailParams>();
+
   const [recipeState, setRecipeState] = useState<State>({
     recipe: {
       recipe: {
@@ -66,10 +76,18 @@ export const RecipeCardDetail: React.FC = () => {
     },
   });
 
+  const [comment, setComment] = useState<Array<Review>>([]);
+
+  console.log("COMMENT STATE", comment);
+
+  useEffect(() => {
+    getReviewsByRecipeId(id)
+      .then((res) => setComment(res))
+      .catch((e) => console.log(e));
+  }, [id]);
 
   console.log("RECIPE STATE", recipeState);
 
-  const { id } = useParams<RecipeCardDetailParams>();
 
   useEffect(() => {
     getRecipeById(id)
@@ -119,9 +137,9 @@ export const RecipeCardDetail: React.FC = () => {
 
         <HopsDetail hops={recipeState.recipe.recipe.ingredients.hops} />
 
-        <CommentForm recipe_id={id} />
+        <CommentForm recipe_id={id} setComment={setComment} />
 
-        <CommentList />
+        <CommentList comment={comment}/>
      
       </div>
     </>

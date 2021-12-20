@@ -1,6 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../redux/reducers/RootReducer'
 
 type Props = {
     username: string

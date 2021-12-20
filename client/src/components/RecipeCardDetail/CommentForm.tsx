@@ -1,11 +1,12 @@
 import React from "react";
-import { FaStar } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
-import axios from 'axios'
+import axios from "axios";
+import { getReviewsByRecipeId } from "../../utils/reviewsUtils";
+import { Review } from "./RecipeCardDetail";
 
 interface FormInputs {
   score: number;
@@ -13,15 +14,19 @@ interface FormInputs {
 }
 
 type Props = {
-  recipe_id: any
-}
+  recipe_id: unknown;
+  setComment: React.Dispatch<React.SetStateAction<Review[]>>;
+};
 
 const schema = yup.object().shape({
   score: yup.number().required().min(1).max(5),
   comment: yup.string().required().min(1).max(2000),
 });
 
-export const CommentForm: React.FC<Props> = ({recipe_id}) => {
+export const CommentForm: React.FC<Props> = ({
+  recipe_id,
+  setComment = () => {},
+}) => {
   const {
     register,
     handleSubmit,
@@ -30,26 +35,29 @@ export const CommentForm: React.FC<Props> = ({recipe_id}) => {
   } = useForm<FormInputs>({ resolver: yupResolver(schema) });
 
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
-  const userData = useSelector((state:RootState) => state.storeUser.userData)
+  const userData = useSelector((state: RootState) => state.storeUser.userData);
 
   const onSubmit = async (data: FormInputs) => {
-    try{
-      console.log(data)
+    try {
+      console.log(data);
       const review = {
         review: {
           comment: data.comment,
           score: data.score,
-          recipe_id: recipe_id
+          recipe_id: recipe_id,
         },
         user_id: userData._id,
         username: userData.username,
-      }
-      const response = await axios.post('/review', review);
-      console.log('RESPONSE:', response)
+      };
+      const response = await axios.post("/review", review);
+      console.log("RESPONSE:", response);
       reset();
-      
-    }catch(e){
-      console.log({onSubmitError: e})
+      //get reviews post comment
+      getReviewsByRecipeId(recipe_id)
+        .then((res) => setComment(res))
+        .catch((e) => console.log(e));
+    } catch (e) {
+      console.log({ onSubmitError: e });
     }
   };
 
@@ -58,7 +66,7 @@ export const CommentForm: React.FC<Props> = ({recipe_id}) => {
     <form onSubmit={handleSubmit(onSubmit)} className="mt-16">
       <p className="text-2xl font-semibold pb-8"> Recipe discussion</p>
       <div className="grid grid-cols-5 ">
-        <div className="col-span-1 items-start justify-self-center flex gap-6">
+        <div className="col-span-1 justify-center mb-auto flex gap-6 ">
           <label className="flex flex-col-reverse">
             <input type="radio" value="5" {...register("score")} name="score" />
             5
