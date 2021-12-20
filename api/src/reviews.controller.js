@@ -1,4 +1,7 @@
 const ReviewsDAO = require ('../dao/reviewsDAO.js')
+const dayjs =  require ('dayjs');
+var customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
 
 class ReviewsController {
   static async apiPostReview(req, res, next) {
@@ -12,7 +15,7 @@ class ReviewsController {
         username: req.body.username,
         user_id: req.body.user_id
       }
-      const date = new Date()
+      const date = dayjs().format('DD/MM/YYYY')
 
       const ReviewResponse = await ReviewsDAO.addReview(
         userInfo,

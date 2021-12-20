@@ -28,6 +28,7 @@ export interface Review {
   score: number;
   user_id: string;
   username: string;
+  date: number;
 }
 
 export const RecipeCardDetail: React.FC = () => {

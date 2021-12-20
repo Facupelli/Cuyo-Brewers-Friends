@@ -33,8 +33,6 @@ export const CommentForm: React.FC<Props> = ({
     reset,
   } = useForm<FormInputs>({ resolver: yupResolver(schema) });
 
-  console.log(errors)
-
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
   const userData = useSelector((state: RootState) => state.storeUser.userData);
 

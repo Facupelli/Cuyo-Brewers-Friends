@@ -12,10 +12,11 @@ export const CommentList: React.FC<Props> = ({ comment }) => {
       {comment &&
         comment.map((el) => (
           <div key={el._id} className="grid grid-cols-5 my-6">
-            <div className="col-span-1 bg-gray-200">
+            <div className="col-span-1 ">
               <p className="text-orange-500 font-semibold text-2xl mb-2">
                 {el.username}
               </p>
+
               {el.score ? (
                 <div className="flex gap-2 text-yellow-400">
                   {[...Array(el.score)].map((el, i) => (
@@ -24,7 +25,9 @@ export const CommentList: React.FC<Props> = ({ comment }) => {
                 </div>
               ) : null}
             </div>
-            <div className="col-span-4 bg-gray-300">
+
+            <div className="col-span-4 ">
+              <p className="text-xs text-gray-500 mb-2">{el.date}</p>
               <p>{el.comment}</p>
             </div>
           </div>

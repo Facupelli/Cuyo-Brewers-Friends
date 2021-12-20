@@ -6,6 +6,7 @@ const ReviewSchema = new mongoose.Schema({
   score: { type: Number, min: 0, max: 5 },
   user_id: { type: String, required: true, min: 2, max: 225 },
   username: { type: String, required: true, min: 2, max: 500 },
+  date: { type: String, default: Date.now },
 });
 
 const reviewModel = mongoose.model("ReviewModel", ReviewSchema);
