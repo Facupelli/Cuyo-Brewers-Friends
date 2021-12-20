@@ -9,6 +9,7 @@ import { FermentablesDetail } from "./FermentablesDetail";
 import { HopsDetail } from "./HopsDetail";
 import { WaterDetail } from "./WaterDetail";
 import { Comments } from "./Comments";
+import { UserData } from "./UserData";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -76,12 +77,22 @@ export const RecipeCardDetail: React.FC = () => {
     <>
       <NavBar route="recipeDetail" />
 
-      <div className="m-8">
+      <div className="my-8 mx-24">
         <div className="py-4">
           <p className="font-semibold text-4xl">{title}</p>
         </div>
 
-        <ParametersDetail style={style} parameters={recipe.recipe.parameters} />
+        <div className="grid grid-cols-5 gap-4 ">
+          <div className="col-span-1 border border-gray-800 rounded h-full ">
+            <UserData />
+          </div>
+          <div className="col-span-4">
+            <ParametersDetail
+              style={style}
+              parameters={recipe.recipe.parameters}
+            />
+          </div>
+        </div>
 
         <CharacteristicsDetail
           mash_ph={mash_ph}
@@ -90,7 +101,9 @@ export const RecipeCardDetail: React.FC = () => {
 
         <WaterDetail water={recipe.recipe.ingredients.water_profile} />
 
-        <FermentablesDetail fermentables={recipe.recipe.ingredients.fermentables} />
+        <FermentablesDetail
+          fermentables={recipe.recipe.ingredients.fermentables}
+        />
 
         <HopsDetail hops={recipe.recipe.ingredients.hops} />
 

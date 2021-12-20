@@ -25,32 +25,32 @@ export const CharacteristicsDetail: React.FC<Props> = ({characteristics, mash_ph
     <div className="flex justify-around gap-12 py-8">
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">Original Gravity:</p>
-        <p className="text-xl text-orange-700">{original_gravity}</p>
+        <p className="text-2xl text-orange-700">{original_gravity}</p>
       </div>
 
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">Final Gravity:</p>
-        <p className="text-xl text-orange-700">{final_gravity}</p>
+        <p className="text-2xl text-orange-700">{final_gravity}</p>
       </div>
 
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">ABV:</p>
-        <p className="text-xl text-orange-700">{alcohol_by_volume}</p>
+        <p className="text-2xl text-orange-700">{alcohol_by_volume}</p>
       </div>
 
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">IBU:</p>
-        <p className="text-xl text-orange-700">{ibu}</p>
+        <p className="text-2xl text-orange-700">{ibu}</p>
       </div>
 
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">SRM:</p>
-        <p className="text-xl text-orange-700">{srm}</p>
+        <p className="text-2xl text-orange-700">{srm}</p>
       </div>
 
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">Mash Ph:</p>
-        <p className="text-xl text-orange-700">{mash_ph}</p>
+        <p className="text-2xl text-orange-700">{mash_ph}</p>
       </div>
     </div>
   );
