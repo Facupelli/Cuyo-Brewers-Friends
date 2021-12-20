@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setCookie } from "../redux/action-creators";
+import { useNavigate } from "react-router-dom";
 
 
 interface FormInputs {
@@ -20,6 +21,8 @@ const schema = yup.object().shape({
 export const Login: React.FC = () => {
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -39,9 +42,8 @@ export const Login: React.FC = () => {
       localStorage.setItem('userId', id)
 
       dispatch(setCookie(id))
-
       reset();
-      
+      navigate('/home')
     }catch(e: unknown){
       if(axios.isAxiosError(e)){
         console.log('SERVER RESPONSE',e.response?.data)

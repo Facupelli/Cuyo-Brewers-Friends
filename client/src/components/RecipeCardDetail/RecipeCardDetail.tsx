@@ -10,6 +10,8 @@ import { HopsDetail } from "./HopsDetail";
 import { WaterDetail } from "./WaterDetail";
 import { Comments } from "./Comments";
 import { UserData } from "./UserData";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/reducers/RootReducer";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -59,9 +61,10 @@ export const RecipeCardDetail: React.FC = () => {
       },
       user_id: "",
       username: "",
-      _id: '',
+      _id: "",
     },
   });
+
 
   console.log("RECIPE STATE", recipeState);
 
@@ -90,7 +93,7 @@ export const RecipeCardDetail: React.FC = () => {
 
         <div className="grid grid-cols-5 gap-4 ">
           <div className="col-span-1 border border-gray-800 rounded h-full ">
-            <UserData username={username}/>
+            <UserData username={username} />
           </div>
           <div className="col-span-4">
             <ParametersDetail
@@ -105,15 +108,18 @@ export const RecipeCardDetail: React.FC = () => {
           characteristics={recipeState.recipe.recipe.characteristics}
         />
 
-        <WaterDetail water={recipeState.recipe.recipe.ingredients.water_profile} />
+        <WaterDetail
+          water={recipeState.recipe.recipe.ingredients.water_profile}
+        />
 
         <FermentablesDetail
           fermentables={recipeState.recipe.recipe.ingredients.fermentables}
         />
 
         <HopsDetail hops={recipeState.recipe.recipe.ingredients.hops} />
-      
+
         <Comments />
+     
       </div>
     </>
   );
