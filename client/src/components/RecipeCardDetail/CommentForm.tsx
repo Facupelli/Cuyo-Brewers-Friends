@@ -7,6 +7,7 @@ import { RootState } from "../../redux/reducers/RootReducer";
 import axios from "axios";
 import { getReviewsByRecipeId } from "../../utils/reviewsUtils";
 import { Review } from "./RecipeCardDetail";
+import { FaStar, FaRegStar } from "react-icons/fa";
 
 interface FormInputs {
   score: number;
@@ -31,10 +32,13 @@ export const CommentForm: React.FC<Props> = ({
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm<FormInputs>({ resolver: yupResolver(schema) });
 
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
   const userData = useSelector((state: RootState) => state.storeUser.userData);
+
+  const scoreSelected = watch("score");
 
   const onSubmit = async (data: FormInputs) => {
     try {
@@ -62,31 +66,71 @@ export const CommentForm: React.FC<Props> = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-16">
       <p className="text-2xl font-semibold pb-8"> Recipe discussion</p>
-      <div className="grid grid-cols-5 ">
-        <div className="col-span-1 justify-center mb-auto flex gap-6 ">
-          <label className="flex flex-col-reverse">
-            <input type="radio" value="5" {...register("score")} name="score" />
-            5
-          </label>
-
-          <label className="flex flex-col-reverse">
-            <input type="radio" value="4" {...register("score")} name="score" />
-            4
-          </label>
-
-          <label className="flex flex-col-reverse">
-            <input type="radio" value="3" {...register("score")} name="score" />
-            3
-          </label>
-
-          <label className="flex flex-col-reverse">
-            <input type="radio" value="2" {...register("score")} name="score" />
-            2
-          </label>
-
-          <label className="flex flex-col-reverse">
+      <div className="grid grid-cols-5 gap-4">
+        <div className="col-span-1 justify-center mb-auto flex gap-2 ">
+          <label className="flex flex-col-reverse items-center ">
             <input type="radio" value="1" {...register("score")} name="score" />
-            1
+            {scoreSelected && scoreSelected !== undefined ? (
+              <div className="text-yellow-400 my-2 text-3xl">
+                <FaStar />
+              </div>
+            ) : (
+              <div className="text-yellow-400 my-2 text-3xl">
+                <FaRegStar />
+              </div>
+            )}
+          </label>
+
+          <label className="flex items-center flex-col-reverse">
+            <input type="radio" value="2" {...register("score")} name="score" />
+            {scoreSelected && scoreSelected > 1 ? (
+              <div className="text-yellow-400 my-2 text-3xl">
+                <FaStar />
+              </div>
+            ) : (
+              <div className="text-yellow-400 my-2 text-3xl">
+                <FaRegStar />
+              </div>
+            )}
+          </label>
+
+          <label className="flex items-center flex-col-reverse">
+            <input type="radio" value="3" {...register("score")} name="score" />
+            {scoreSelected && scoreSelected > 2 ? (
+              <div className="text-yellow-400 my-2 text-3xl">
+                <FaStar />
+              </div>
+            ) : (
+              <div className="text-yellow-400 my-2 text-3xl">
+                <FaRegStar />
+              </div>
+            )}
+          </label>
+
+          <label className="flex items-center flex-col-reverse">
+            <input type="radio" value="4" {...register("score")} name="score" />
+            {scoreSelected && scoreSelected > 3 ? (
+              <div className="text-yellow-400 my-2 text-3xl">
+                <FaStar />
+              </div>
+            ) : (
+              <div className="text-yellow-400 my-2 text-3xl">
+                <FaRegStar />
+              </div>
+            )}
+          </label>
+
+          <label className="flex items-center flex-col-reverse">
+            <input type="radio" value="5" {...register("score")} name="score" />
+            {scoreSelected && scoreSelected > 4 ? (
+              <div className="text-yellow-400 my-2 text-3xl">
+                <FaStar />
+              </div>
+            ) : (
+              <div className="text-yellow-400 my-2 text-3xl">
+                <FaRegStar />
+              </div>
+            )}
           </label>
         </div>
 
