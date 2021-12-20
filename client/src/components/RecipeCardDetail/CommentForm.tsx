@@ -19,7 +19,6 @@ type Props = {
 };
 
 const schema = yup.object().shape({
-  score: yup.number().required().min(1).max(5),
   comment: yup.string().required().min(1).max(2000),
 });
 
@@ -34,12 +33,13 @@ export const CommentForm: React.FC<Props> = ({
     reset,
   } = useForm<FormInputs>({ resolver: yupResolver(schema) });
 
+  console.log(errors)
+
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
   const userData = useSelector((state: RootState) => state.storeUser.userData);
 
   const onSubmit = async (data: FormInputs) => {
     try {
-      console.log(data);
       const review = {
         review: {
           comment: data.comment,
@@ -61,7 +61,6 @@ export const CommentForm: React.FC<Props> = ({
     }
   };
 
-  console.log("ERRORS:", errors);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-16">
       <p className="text-2xl font-semibold pb-8"> Recipe discussion</p>

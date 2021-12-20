@@ -78,16 +78,11 @@ export const RecipeCardDetail: React.FC = () => {
 
   const [comment, setComment] = useState<Array<Review>>([]);
 
-  console.log("COMMENT STATE", comment);
-
   useEffect(() => {
     getReviewsByRecipeId(id)
       .then((res) => setComment(res))
       .catch((e) => console.log(e));
   }, [id]);
-
-  console.log("RECIPE STATE", recipeState);
-
 
   useEffect(() => {
     getRecipeById(id)
@@ -99,7 +94,6 @@ export const RecipeCardDetail: React.FC = () => {
     recipeState.recipe.recipe;
   const { mash_ph }: { mash_ph: number } = recipeState.recipe.recipe.parameters;
   const { username }: { username: string } = recipeState.recipe;
-  console.log(username);
 
   return (
     <>

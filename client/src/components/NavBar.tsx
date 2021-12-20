@@ -19,7 +19,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     dispatch(setCookie(""));
-    navigate('/home')
+    navigate("/home");
   };
 
   return (
@@ -34,7 +34,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
               <p className="font-semibold">Recipes</p>
             </Link>
           </div>
-        ) }
+        )}
 
         {cookie &&
           (route === "createrecipe" ? null : (
@@ -59,16 +59,25 @@ export const NavBar: React.FC<Props> = ({ route }) => {
         )}
 
         {!cookie && (
-          <div className="">
-            <Link to="/login">
-              <p
-                onClick={logOut}
-                className="text-orange-800 cursor-pointer font-semibold"
-              >
-                Log In
-              </p>
-            </Link>
-          </div>
+          <>
+            <div className="">
+              <Link to="/login">
+                <p
+                  onClick={logOut}
+                  className="text-orange-800 cursor-pointer font-semibold"
+                >
+                  Log In
+                </p>
+              </Link>
+            </div>
+            <div>
+              <Link to="/register">
+                <p className="text-orange-800 cursor-pointer font-semibold">
+                  Register
+                </p>
+              </Link>
+            </div>
+          </>
         )}
       </div>
     </nav>

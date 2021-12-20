@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface FormInputs {
   name: string;
@@ -21,6 +22,8 @@ const schema = yup.object().shape({
 });
 
 export const Register: React.FC = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -36,7 +39,7 @@ export const Register: React.FC = () => {
       const response = await axios.post('/register', data);
       console.log('RESPONSE:', response)
       reset();
-      
+      navigate('/home')
     }catch(e){
       console.log({onSubmitError: e})
     }
