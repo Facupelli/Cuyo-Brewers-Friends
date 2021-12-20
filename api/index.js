@@ -5,6 +5,8 @@ const ReviewsDAO = require("./dao/reviewsDAO.js");
 const { loadRecipes } = require("./mock/recipes/index.js");
 const mongoose = require("mongoose");
 const { recipeModel, createIndexes } = require("./models/recipe.js");
+const { reviewModel } = require("./models/review");
+
 dotenv.config();
 
 //-------------------------- MONGO LOCAL DB --------------------------------------
@@ -23,6 +25,7 @@ db.once("open", function () {
 
 app.listen(27017, async () => {
   try {
+    await reviewModel.deleteMany({}).then(() => console.log("previous reviews deleted"));
 
     await recipeModel
       .deleteMany({})

@@ -8,10 +8,11 @@ import { ParametersDetail } from "./ParametersDetail";
 import { FermentablesDetail } from "./FermentablesDetail";
 import { HopsDetail } from "./HopsDetail";
 import { WaterDetail } from "./WaterDetail";
-import { Comments } from "./Comments";
+import { CommentForm } from "./CommentForm";
 import { UserData } from "./UserData";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
+import { CommentList } from "./CommentList";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -118,7 +119,9 @@ export const RecipeCardDetail: React.FC = () => {
 
         <HopsDetail hops={recipeState.recipe.recipe.ingredients.hops} />
 
-        <Comments recipe_id={id} />
+        <CommentForm recipe_id={id} />
+
+        <CommentList />
      
       </div>
     </>

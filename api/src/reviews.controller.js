@@ -28,6 +28,17 @@ class ReviewsController {
     }
   }
 
+  static async apiGetReviewByRecipeId(req,res,next){
+    try{
+      const {id} = req.params
+      const reviews = await ReviewsDAO.getReviewsByRecipeId(id);
+
+      res.json(reviews)
+    }catch(e){
+      res.status(500).json({error:e.message})
+    }
+  }
+
   // static async apiUpdateReview(req, res, next) {
   //   try {
   //     const reviewId = req.body.review_id

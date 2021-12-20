@@ -21,7 +21,7 @@ const schema = yup.object().shape({
   comment: yup.string().required().min(1).max(2000),
 });
 
-export const Comments: React.FC<Props> = ({recipe_id}) => {
+export const CommentForm: React.FC<Props> = ({recipe_id}) => {
   const {
     register,
     handleSubmit,
@@ -31,8 +31,6 @@ export const Comments: React.FC<Props> = ({recipe_id}) => {
 
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
   const userData = useSelector((state:RootState) => state.storeUser.userData)
-
-  console.log('RECIPE ID',recipe_id)
 
   const onSubmit = async (data: FormInputs) => {
     try{

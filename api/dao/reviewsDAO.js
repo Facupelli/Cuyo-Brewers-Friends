@@ -33,6 +33,15 @@ class ReviewsDAO {
     }
   }
 
+  static async getReviewsByRecipeId(recipe_id) {
+    try{
+      return await reviewModel.find({recipe_id: recipe_id})
+    }catch(e){
+      console.error(`Unable to post review: ${e}`);
+      return { error: e };
+    }
+  }
+
   // static async updateReview(reviewId, userId, text, date) {
   //   try {
   //     const updateResponse = await reviews.updateOne(
