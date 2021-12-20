@@ -3,6 +3,7 @@ import axios from "axios";
 import { RecipesActionType, UserActionType } from "../actions/ActionsTypes";
 import { RecipeActions } from "../actions/RecipesActions";
 import { UserActions } from "../actions/UserActions";
+import { UserData } from "../reducers/types";
 
 export const loadingTrue = () => {
   return (dispatch: Dispatch<RecipeActions>) => {
@@ -32,11 +33,25 @@ export const getRecipes = () => async (dispatch: Dispatch<RecipeActions>) => {
   }
 };
 
+// ------------------------ USER ACTIONS
+
 export const setCookie = (cookie: string) => {
   return (dispatch: Dispatch<UserActions>) => {
     dispatch({
       type: UserActionType.SET_COOKIE,
-      payload: cookie
+      payload: cookie,
     });
   };
+};
+
+export const getUserData = () => async (dispatch: Dispatch<UserActions>) => {
+  try {
+
+    const res = await axios.get<any>("/recipes");
+
+    return dispatch({
+      type: UserActionType.GET_USER_DATA,
+      payload: userData,
+    });
+  } catch (e) {}
 };

@@ -1,13 +1,16 @@
 import { UserActionType } from "../actions/ActionsTypes";
 import { UserActions } from "../actions/UserActions";
+import { UserData } from "./types";
 
 export interface InitialUserState {
     cookie: string;
+    userData: UserData;
 
   }
 
 const initialUserState: InitialUserState = {
-    cookie: ''
+    cookie: '',
+    userData: {id: '', name: '', username: '' }
 }
 
 export const userReducer = (state: InitialUserState = initialUserState, action: UserActions) : InitialUserState=> {
@@ -16,6 +19,11 @@ export const userReducer = (state: InitialUserState = initialUserState, action: 
             return {
                 ...state,
                 cookie: action.payload,
+            }
+        case UserActionType.GET_USER_DATA:
+            return{
+                ...state,
+                userData: action.payload
             }
         default:
             return state;

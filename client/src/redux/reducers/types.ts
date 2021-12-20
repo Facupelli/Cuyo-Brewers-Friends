@@ -1,5 +1,3 @@
-import { number } from "yup/lib/locale"
-
 export interface Parameters {
   boil_time: number;
   batch_size:number;
@@ -65,3 +63,11 @@ export interface RecipeList {
 }
 
 
+
+// USER REDUCER ----------------------
+
+export interface UserData {
+  id: string;
+  name: string;
+  username: string;
+}

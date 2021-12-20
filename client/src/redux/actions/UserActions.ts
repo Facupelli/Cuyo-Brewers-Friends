@@ -1,5 +1,5 @@
 
-import { Recipe } from '../reducers/types';
+import { Recipe, UserData } from '../reducers/types';
 import {UserActionType} from './ActionsTypes'
 
 export interface SetCookie {
@@ -7,4 +7,9 @@ export interface SetCookie {
   payload: string;
 }
 
-export type UserActions = SetCookie;
+export interface GetUserData {
+  type: UserActionType.GET_USER_DATA;
+  payload: UserData
+}
+
+export type UserActions = SetCookie | GetUserData;

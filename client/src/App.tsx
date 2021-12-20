@@ -27,6 +27,11 @@ function App() {
     // eslint-disable-next-line
   }, []);
 
+  // -------------------- IF COOKIE --------------------------------
+  useEffect(() => {
+    
+  }, [])
+
   return (
     <div>
       <Routes>

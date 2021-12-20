@@ -6,4 +6,5 @@ export enum RecipesActionType {
 
 export enum UserActionType {
   SET_COOKIE = "SET_COOKIE",
+  GET_USER_DATA = "GET_USER_DATA"
 }
