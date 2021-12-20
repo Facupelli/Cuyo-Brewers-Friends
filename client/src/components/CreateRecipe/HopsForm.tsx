@@ -5,7 +5,7 @@ import { hopsList } from "../../media/beer_ingredients/hopsList";
 
 interface HopNames {
   name: string;
-  label: string;
+  id: number;
 }
 
 export const HopsForm: React.FC<{}> = () => {
@@ -15,7 +15,7 @@ export const HopsForm: React.FC<{}> = () => {
 
   const hopNames: HopNames[] = hopsList.map((el) => ({
     name: el.Name,
-    label: el.Name,
+    id: el.Id,
   }));
 
   const addHop = () => {
@@ -48,6 +48,8 @@ export const HopsForm: React.FC<{}> = () => {
         )}
       </div>
 
+      {/* --------------------- PRIMERA LINEA ---------------------------------------- */}
+
       {[...Array(count)].map((el, count) => (
         <div key={count} className="p-4 mt-4 bg-orange-200">
           <div className="flex gap-4 items-center">
@@ -78,7 +80,15 @@ export const HopsForm: React.FC<{}> = () => {
                 ))}
               </select>
             )}
+
+            {/* <div>
+              <label className="my-2 text-gray-700 text-md font-semibold">
+                AA
+              </label>
+            </div> */}
           </div>
+
+          {/* ----------------------- SEGUNDA LINEA ----------------------------------------------- */}
 
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
@@ -106,8 +116,8 @@ export const HopsForm: React.FC<{}> = () => {
                 className="bg-white border border-orange-200 text-gray-700 p-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
               >
                 <option disabled>Select Use</option>
+                <option >Boil</option>
                 <option>Dry Hop</option>
-                <option selected>Boil</option>
                 <option>First Wort Hop</option>
                 <option>Hop Stand</option>
                 <option>Hop Back</option>

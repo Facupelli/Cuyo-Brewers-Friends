@@ -18,7 +18,7 @@ export const FermentablesDetail: React.FC<Props> = ({ fermentables }) => {
       </div>
 
       <div className="grid grid-cols-4 py-4">
-        <p className="col-span-1 font-semibold">Quantity</p>
+        <p className="col-span-1 font-semibold">Quantity kg</p>
         <p className="col-span-2 font-semibold">Fermentable</p>
         <p className="col-span-1 font-semibold">Bill</p>
       </div>
@@ -30,6 +30,8 @@ export const FermentablesDetail: React.FC<Props> = ({ fermentables }) => {
           <p className="col-span-1">{(el.quantity / bill * 100).toFixed(1)}%</p>
         </div>
       ))}
+
+      <p className="font-semibold">{bill} kg</p>
     </div>
   );
 };
