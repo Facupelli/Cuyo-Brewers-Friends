@@ -48,6 +48,11 @@ export const NavBar: React.FC<Props> = ({ route }) => {
         {cookie && (
           <>
             <div className="">
+              <Link to="/myrecipes">
+                <p className="font-semibold">My Recipes</p>
+              </Link>
+            </div>
+            <div className="">
               <p
                 onClick={logOut}
                 className="text-orange-800 cursor-pointer font-semibold"
