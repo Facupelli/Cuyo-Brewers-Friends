@@ -2,16 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const dashboardRoutes = require('./src/dashboard')
 const tokenValidation = require('./validation/tokenValidation')
-const dotenv = require("dotenv");
-dotenv.config();
-
+//ROUTES
 const recipeRoutes = require('./routes/recipeRoutes')
 const userRoutes = require('./routes/userRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
 const registerRoutes = require('./routes/registerRoutes')
 const loginRoutes = require('./routes/loginRoutes')
 
-
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express(); //server
 

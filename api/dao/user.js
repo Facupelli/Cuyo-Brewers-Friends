@@ -5,7 +5,7 @@ const ObjectId = mongodb.ObjectId;
 class User {
   static async getUserInfo(id) {
     try {
-      return await userModel.findById(id);
+      return await userModel.findById(ObjectId(id));
     } catch (e) {
       console.error(`Something went wrong in getUserInfo: ${e}`);
       throw e;

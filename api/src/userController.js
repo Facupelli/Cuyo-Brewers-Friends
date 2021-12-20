@@ -5,9 +5,7 @@ class UserController {
   static async getUserInfo(req, res, next) {
     try {
 
-      const userId = req.params.id
-
-      console.log(userId)
+      const userId = req.query.id
 
       const user = await User.getUserInfo(userId);
 
