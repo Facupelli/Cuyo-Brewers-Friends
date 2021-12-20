@@ -3,16 +3,18 @@ const ReviewsDAO = require ('../dao/reviewsDAO.js')
 class ReviewsController {
   static async apiPostReview(req, res, next) {
     try {
-      const recipeId = req.body.recipe_id
-      const review = req.body.text
+      const review = {
+        score: req.body.score,
+        comment: req.body.comment,
+        recipe_id: req.body.recipe_id,
+      }
       const userInfo = {
-        name: req.body.name,
-        _id: req.body.user_id
+        username: req.body.username,
+        user_id: req.body.user_id
       }
       const date = new Date()
 
       const ReviewResponse = await ReviewsDAO.addReview(
-        recipeId,
         userInfo,
         review,
         date,

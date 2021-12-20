@@ -2,9 +2,6 @@ const mongodb = require("mongodb");
 const ObjectId = mongodb.ObjectId;
 const { reviewModel } = require("../models/review");
 
-
-let reviews;
-
 class ReviewsDAO {
   // static async injectDB(conn) {
   //   if (reviews) {
@@ -17,14 +14,15 @@ class ReviewsDAO {
   //   }
   // }
 
-  static async addReview(recipeId, user, review, date) {
+  static async addReview(userInfo, review, date) {
     try {
       const reviewDoc = {
-        name: user.name,
-        user_id: user._id,
+        username: userInfo.username,
+        user_id: userInfo.user_id,
         date: date,
-        text: review,
-        recipe_id: ObjectId(recipeId),
+        comment: review.comment,
+        score: review.score,
+        recipe_id: review.recipe_id,
       };
 
       return await reviewModel.create(reviewDoc);

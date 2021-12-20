@@ -118,7 +118,7 @@ export const RecipeCardDetail: React.FC = () => {
 
         <HopsDetail hops={recipeState.recipe.recipe.ingredients.hops} />
 
-        <Comments />
+        <Comments recipe_id={id} />
      
       </div>
     </>

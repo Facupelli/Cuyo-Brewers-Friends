@@ -5,10 +5,15 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
+import axios from 'axios'
 
 interface FormInputs {
   score: number;
   comment: string;
+}
+
+type Props = {
+  recipe_id: any
 }
 
 const schema = yup.object().shape({
@@ -16,7 +21,7 @@ const schema = yup.object().shape({
   comment: yup.string().required().min(1).max(2000),
 });
 
-export const Comments: React.FC = () => {
+export const Comments: React.FC<Props> = ({recipe_id}) => {
   const {
     register,
     handleSubmit,
@@ -25,10 +30,31 @@ export const Comments: React.FC = () => {
   } = useForm<FormInputs>({ resolver: yupResolver(schema) });
 
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
+  const userData = useSelector((state:RootState) => state.storeUser.userData)
+
+  const onSubmit = async (data: FormInputs) => {
+    try{
+      console.log(data)
+      const review = {
+        review: {
+          data: data,
+          recipe_id: recipe_id
+        },
+        user_id: userData._id,
+        username: userData.username,
+      }
+      const response = await axios.post('/review', review);
+      console.log('RESPONSE:', response)
+      reset();
+      
+    }catch(e){
+      console.log({onSubmitError: e})
+    }
+  };
 
   console.log("ERRORS:", errors);
   return (
-    <form className="mt-16">
+    <form onSubmit={handleSubmit(onSubmit)} className="mt-16">
       <p className="text-2xl font-semibold pb-8"> Recipe discussion</p>
       <div className="grid grid-cols-5 ">
         <div className="col-span-1 items-start justify-self-center flex gap-6">
