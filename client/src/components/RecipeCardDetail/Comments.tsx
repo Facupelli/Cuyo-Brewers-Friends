@@ -32,12 +32,15 @@ export const Comments: React.FC<Props> = ({recipe_id}) => {
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
   const userData = useSelector((state:RootState) => state.storeUser.userData)
 
+  console.log('RECIPE ID',recipe_id)
+
   const onSubmit = async (data: FormInputs) => {
     try{
       console.log(data)
       const review = {
         review: {
-          data: data,
+          comment: data.comment,
+          score: data.score,
           recipe_id: recipe_id
         },
         user_id: userData._id,

@@ -4,9 +4,9 @@ class ReviewsController {
   static async apiPostReview(req, res, next) {
     try {
       const review = {
-        score: req.body.score,
-        comment: req.body.comment,
-        recipe_id: req.body.recipe_id,
+        score: req.body.review.score,
+        comment: req.body.review.comment,
+        recipe_id: req.body.review.recipe_id,
       }
       const userInfo = {
         username: req.body.username,
