@@ -8,6 +8,7 @@ import { ParametersDetail } from "./ParametersDetail";
 import { FermentablesDetail } from "./FermentablesDetail";
 import { HopsDetail } from "./HopsDetail";
 import { WaterDetail } from "./WaterDetail";
+import { Comments } from "./Comments";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -92,6 +93,8 @@ export const RecipeCardDetail: React.FC = () => {
         <FermentablesDetail fermentables={recipe.recipe.ingredients.fermentables} />
 
         <HopsDetail hops={recipe.recipe.ingredients.hops} />
+
+        <Comments />
       </div>
     </>
   );
