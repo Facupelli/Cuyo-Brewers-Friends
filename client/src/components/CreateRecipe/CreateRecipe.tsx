@@ -15,8 +15,9 @@ import { Characteristics } from "./Characteristics";
 import { NavBar } from "../NavBar";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TitleInfo } from "./TItleInfo";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
+import { getRecipes } from "../../redux/action-creators";
 
 // const initialValues: Recipe = {
 //   _id: 0,
@@ -104,6 +105,7 @@ const schema = yup.object().shape({
 });
 
 export const CreateRecipe: React.FC<{}> = () => {
+  const dispatch = useDispatch()
 
   const username = useSelector((state:RootState) => state.storeUser.userData.username)
   const user_id = useSelector((state:RootState) => state.storeUser.userData._id)
@@ -127,6 +129,7 @@ export const CreateRecipe: React.FC<{}> = () => {
       const response = await axios.post("/recipe", newRecipe);
       console.log("RESPONSE:", response);
       methods.reset();
+      dispatch(getRecipes());
     } catch (e) {
       console.log({ onSubmitError: e });
     }
