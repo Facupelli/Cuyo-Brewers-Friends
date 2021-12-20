@@ -64,7 +64,7 @@ class Recipes {
     try {
       const reviewDoc = {
         recipe: recipe,
-        name: user.name,
+        username: user.username,
         user_id: user._id,
         date: date,
       };

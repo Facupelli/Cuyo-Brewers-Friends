@@ -62,7 +62,7 @@ class RecipesController {
     try {
       const recipe = req.body.recipe;
       const userInfo = {
-        name: req.body.name,
+        username: req.body.username,
         _id: req.body.user_id,
       };
       const date = new Date();

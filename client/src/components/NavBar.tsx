@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { setCookie } from "../redux/action-creators";
 import { RootState } from "../redux/reducers/RootReducer";
@@ -10,6 +11,7 @@ type Props = {
 
 export const NavBar: React.FC<Props> = ({ route }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
 
@@ -17,6 +19,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     dispatch(setCookie(""));
+    navigate('/home')
   };
 
   return (

@@ -36,7 +36,7 @@ function App() {
     if(cookie){
       dispatch(getUserData(userId))
     }
-  }, [cookie])
+  }, [dispatch, cookie])
 
   return (
     <div>

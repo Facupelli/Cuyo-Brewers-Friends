@@ -57,7 +57,7 @@ export interface Recipe {
 
 export interface RecipeList {
   recipe: Recipe;
-  user_id: number;
+  user_id: string;
   username: string;
   _id: string;
 }
@@ -67,7 +67,7 @@ export interface RecipeList {
 // USER REDUCER ----------------------
 
 export interface UserData {
-  id: string;
+  _id: string;
   name: string;
   username: string;
 }

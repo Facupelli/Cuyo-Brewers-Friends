@@ -12,7 +12,7 @@ export const BatchParams: React.FC = () => {
 
   const beerStyles = bjcp.beers.map((el) => `${el.number}. ${el.name}`);
   // const styleSelected = watch("style", "any").split(". ")[1];
-  let styleSelected = watch("recipe.style", "1. American Standard");
+  let styleSelected = watch("style", "1. American Standard");
   let styleSelectedAfter = "1. American Standard";
   if (styleSelected !== undefined) {
     styleSelectedAfter = styleSelected.split(". ")[1];

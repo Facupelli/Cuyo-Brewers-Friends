@@ -10,7 +10,7 @@ export interface InitialUserState {
 
 const initialUserState: InitialUserState = {
     cookie: '',
-    userData: {id: '', name: '', username: '' }
+    userData: {_id: '', name: '', username: '' }
 }
 
 export const userReducer = (state: InitialUserState = initialUserState, action: UserActions) : InitialUserState=> {
