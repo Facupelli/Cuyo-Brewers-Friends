@@ -4,7 +4,7 @@ const porter = [
       user_id: 1234,
       recipe: {
         title: "Rabieta",
-        style: "Porter",
+        style: "1. Porter",
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -42,7 +42,7 @@ const porter = [
       user_id: 1234,
       recipe: {
         title: "Patagonia",
-        style: "Porter",
+        style: "1. Porter",
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -80,7 +80,7 @@ const porter = [
       user_id: 1234,
       recipe: {
         title: "HLP",
-        style: "Porter",
+        style: "1. Porter",
         brewery: "",
         parameters: {
           boil_time: 60,

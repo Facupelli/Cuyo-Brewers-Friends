@@ -4,7 +4,7 @@ const creamStout = [
       user_id: 1234,
       recipe: {
         title: "Beata",
-        style: "Cream Stout",
+        style: "1. Cream Stout",
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -42,7 +42,7 @@ const creamStout = [
       user_id: 1234,
       recipe: {
         title: "Ortuzar",
-        style: "Cream Stout",
+        style: "1. Cream Stout",
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -80,7 +80,7 @@ const creamStout = [
       user_id: 1234,
       recipe: {
         title: "BrewHouse",
-        style: "Cream Stout",
+        style: "1. Cream Stout",
         brewery: "",
         parameters: {
           boil_time: 60,

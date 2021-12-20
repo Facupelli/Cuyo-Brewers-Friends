@@ -4,7 +4,7 @@ const americanIPA = [
     user_id: 1234,
     recipe: {
       title: "La Suculenta",
-      style: "American Indian Pale Ale",
+      style: "1. American Indian Pale Ale",
       brewery: "",
       parameters: {
         boil_time: 60,
@@ -42,7 +42,7 @@ const americanIPA = [
     user_id: 1234,
     recipe: {
       title: "Rexona",
-      style: "American Indian Pale Ale",
+      style: "1. American Indian Pale Ale",
       brewery: "",
       parameters: {
         boil_time: 60,
@@ -80,7 +80,7 @@ const americanIPA = [
     user_id: 1234,
     recipe: {
       title: "Violencia Rivas",
-      style: "American Indian Pale Ale",
+      style: "1. American Indian Pale Ale",
       brewery: "",
       parameters: {
         boil_time: 60,

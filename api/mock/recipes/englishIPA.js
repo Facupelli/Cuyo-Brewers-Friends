@@ -4,7 +4,7 @@ const englishIPA = [
     user_id: 1234,
     recipe: {
       title: "La Zorruda",
-      style: "English Indian Pale Ale",
+      style: "1. English Indian Pale Ale",
       brewery: "",
       parameters: {
         boil_time: 60,
@@ -42,7 +42,7 @@ const englishIPA = [
     user_id: 1234,
     recipe: {
       title: "Samsung",
-      style: "English Indian Pale Ale",
+      style: "1. English Indian Pale Ale",
       brewery: "",
       parameters: {
         boil_time: 60,
@@ -80,7 +80,7 @@ const englishIPA = [
     user_id: 1234,
     recipe: {
       title: "Pechuganeitor",
-      style: "English Indian Pale Ale",
+      style: "1. English Indian Pale Ale",
       brewery: "",
       parameters: {
         boil_time: 60,

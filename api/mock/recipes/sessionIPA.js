@@ -4,7 +4,7 @@ const sessionIPA = [
     user_id: 1234,
     recipe: {
       title: "Hop Odisey",
-      style: "Session Indian Pale Ale",
+      style: "1. Session Indian Pale Ale",
       brewery: "",
       parameters: {
         boil_time: 60,
@@ -42,7 +42,7 @@ const sessionIPA = [
     user_id: 1234,
     recipe: {
       title: "Abrazo de Oso",
-      style: "Session Indian Pale Ale",
+      style: "1. Session Indian Pale Ale",
       brewery: "",
       parameters: {
         boil_time: 60,
@@ -80,7 +80,7 @@ const sessionIPA = [
     user_id: 1234,
     recipe: {
       title: "Chicago",
-      style: "Session Indian Pale Ale",
+      style: "1. Session Indian Pale Ale",
       brewery: "",
       parameters: {
         boil_time: 60,

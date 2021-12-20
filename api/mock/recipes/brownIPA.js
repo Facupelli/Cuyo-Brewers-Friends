@@ -4,7 +4,7 @@ const brownIPA = [
       user_id: 1234,
       recipe: {
         title: "Fundamental",
-        style: "Brown Indian Pale Ale",
+        style: "1. Brown Indian Pale Ale",
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -42,7 +42,7 @@ const brownIPA = [
       user_id: 1234,
       recipe: {
         title: "El Rengo",
-        style: "Brown Indian Pale Ale",
+        style: "1. Brown Indian Pale Ale",
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -80,7 +80,7 @@ const brownIPA = [
       user_id: 1234,
       recipe: {
         title: "DelFin",
-        style: "Brown Indian Pale Ale",
+        style: "1. Brown Indian Pale Ale",
         brewery: "",
         parameters: {
           boil_time: 60,

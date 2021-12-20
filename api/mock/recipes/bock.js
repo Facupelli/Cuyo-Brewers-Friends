@@ -4,7 +4,7 @@ const bock = [
       user_id: 1234,
       recipe: {
         title: "El Indio",
-        style: "Bock",
+        style: "1. Bock",
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -42,7 +42,7 @@ const bock = [
       user_id: 1234,
       recipe: {
         title: "Maltas All In",
-        style: "Bock",
+        style: "1. Bock",
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -80,7 +80,7 @@ const bock = [
       user_id: 1234,
       recipe: {
         title: "Palmer",
-        style: "Bock",
+        style: "1. Bock",
         brewery: "",
         parameters: {
           boil_time: 60,
