@@ -1,7 +1,7 @@
 const porter = [
     {
       username: "facupelli",
-      author: 1234,
+      author: '61c0d87b9f09bc94fa62da61',
       recipe: {
         title: "Rabieta",
         style: "1. Porter",
@@ -39,7 +39,7 @@ const porter = [
     },
     {
       username: "facupelli",
-      author: 1234,
+      author: '61c0d87b9f09bc94fa62da61',
       recipe: {
         title: "Patagonia",
         style: "1. Porter",
@@ -77,7 +77,7 @@ const porter = [
     },
     {
       username: "facupelli",
-      author: 1234,
+      author: '61c0d87b9f09bc94fa62da61',
       recipe: {
         title: "HLP",
         style: "1. Porter",
