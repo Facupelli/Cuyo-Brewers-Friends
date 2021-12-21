@@ -18,6 +18,9 @@ export const BatchParams: React.FC = () => {
     styleSelectedAfter = styleSelected.split(". ")[1];
   }
 
+  const sub = watch("sub_category");
+  console.log("SUB", sub);
+
   const beerSubCategories = bjcp.beers
     .filter((el) => el.name === styleSelectedAfter)
     .map((el) => el.subcategories);
@@ -102,7 +105,7 @@ export const BatchParams: React.FC = () => {
             defaultValue="1. American Standard"
             className="ml-4  bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
           >
-            <option key={150}>--</option>
+            <option disabled>Select Style...</option>
             {beerStyles.map((el) => (
               <option key={el}>{el}</option>
             ))}
@@ -118,9 +121,10 @@ export const BatchParams: React.FC = () => {
 
               <select
                 {...register("sub_category")}
-                defaultValue=""
+                defaultValue="Select Category..."
                 className="ml-4 bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
               >
+                <option disabled>Select Category...</option>
                 {beerSubCategories[0].map((el) => (
                   <option key={el.name}>{el.name}</option>
                 ))}

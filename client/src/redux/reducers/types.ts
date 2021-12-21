@@ -57,9 +57,10 @@ export interface Recipe {
 
 export interface RecipeList {
   recipe: Recipe;
-  user_id: string;
+  username: string;
   author: string;
   _id: string;
+  date: string;
 }
 
 

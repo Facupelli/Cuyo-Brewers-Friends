@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 
 const RecipeSchema = new mongoose.Schema({
   username: String,
+  date: {type: String, default: Date.now},
   // user_id: String,
   author: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel" },
   recipe: {
     title: { type: String, index: true },
     style: { type: String },
+    sub_category: { type: String },
     brewery: { type: String, default: null },
     parameters: {
       boil_time: Number,
@@ -37,7 +39,6 @@ const RecipeSchema = new mongoose.Schema({
       },
       photos: { type: Array, default: [] },
     },
-    date: { type: Number, default: Date.now },
   },
 });
 

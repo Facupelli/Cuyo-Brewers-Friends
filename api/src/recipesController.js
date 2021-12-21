@@ -1,6 +1,9 @@
 const { ObjectId } = require("mongodb");
 const Recipes = require("../dao/recipes.js");
 const { recipeModel } = require("../models/recipe");
+const dayjs =  require ('dayjs');
+var customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
 
 class RecipesController {
   static async getRecipes(req, res, next) {
@@ -65,7 +68,7 @@ class RecipesController {
         username: req.body.username,
         _id: req.body.user_id,
       };
-      const date = new Date();
+      const date = dayjs().format('DD/MM/YYYY');
 
       const ReviewResponse = await Recipes.addRecipe(recipe, userInfo, date);
       res.json({ status: "success" });
