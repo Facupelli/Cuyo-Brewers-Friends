@@ -23,11 +23,11 @@ export const NavBar: React.FC<Props> = ({ route }) => {
   };
 
   return (
-    <nav className="flex items-center bg-orange-400 p-6">
-      <div className="text-white mr-24">
-        <p className="font-semibold text-xl font-serif">CUYO BREWERS FRIENDS</p>
+    <nav className="grid grid-cols-7 bg-orange-400 px-6 py-2">
+      <div className="col-span-2 flex text-white mr-24">
+        <p className="font-semibold text-xl font-serif bg-orange-300">CUYO BREWERS FRIENDS</p>
       </div>
-      <div className="flex justify-center items-center gap-10">
+      <div className="col-span-5 flex justify-start items-center  gap-10">
         {cookie && route === "home" ? null : (
           <div className="">
             <Link to="/home">
@@ -55,7 +55,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
           ))}
 
         {cookie && (
-          <div className="">
+          <div className="ml-auto ">
             <p
               onClick={logOut}
               className="text-orange-800 cursor-pointer font-semibold"
@@ -67,7 +67,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
 
         {!cookie && (
           <>
-            <div className="">
+            <div className="ml-auto">
               <Link to="/login">
                 <p
                   onClick={logOut}

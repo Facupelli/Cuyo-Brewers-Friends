@@ -26,13 +26,13 @@ export const MyRecipes: React.FC = () => {
         </div>
         {ownRecipes &&
           ownRecipes.map((el) => (
-            <div className="grid grid-cols-7 mx-4 p-2 bg-orange-100">
+            <div key={el._id} className="grid grid-cols-7 mx-4 p-2 bg-orange-100">
               <div className="col-span-2">
                 <Link to={`/recipe/${el._id}`}>
                   <p className="font-semibold">{el.recipe.title}</p>
                 </Link>
                 <p>{el.recipe.style}</p>
-                <p>{el.recipe.sub_category}</p>
+                <p className="font-semibold text-gray-600">{el.recipe.sub_category}</p>
               </div>
               <p className="col-span-1">
                 {el.recipe.parameters.batch_size} Liters
