@@ -72,7 +72,7 @@ export const RecipeCardDetail: React.FC = () => {
         photos: [],
       },
       user_id: "",
-      username: "",
+      author: "",
       _id: "",
     },
   });
@@ -94,7 +94,7 @@ export const RecipeCardDetail: React.FC = () => {
   const { title, style }: { title: string; style: string } =
     recipeState.recipe.recipe;
   const { mash_ph }: { mash_ph: number } = recipeState.recipe.recipe.parameters;
-  const { username }: { username: string } = recipeState.recipe;
+  const { author }: { author: string } = recipeState.recipe;
 
   return (
     <>
@@ -107,7 +107,7 @@ export const RecipeCardDetail: React.FC = () => {
 
         <div className="grid grid-cols-5 gap-4 ">
           <div className="col-span-1 border border-gray-800 rounded h-full ">
-            <UserData username={username} />
+            <UserData username={author} />
           </div>
           <div className="col-span-4">
             <ParametersDetail

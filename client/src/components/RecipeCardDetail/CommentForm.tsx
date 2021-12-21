@@ -30,7 +30,7 @@ export const CommentForm: React.FC<Props> = ({
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
     reset,
     watch,
   } = useForm<FormInputs>({ resolver: yupResolver(schema) });

@@ -17,7 +17,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { TitleInfo } from "./TItleInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
-import { getRecipes } from "../../redux/action-creators";
+import { getRecipes, getUserData } from "../../redux/action-creators";
 
 // const initialValues: Recipe = {
 //   _id: 0,
@@ -130,6 +130,7 @@ export const CreateRecipe: React.FC<{}> = () => {
       console.log("RESPONSE:", response);
       methods.reset();
       dispatch(getRecipes());
+      dispatch(getUserData(user_id))
     } catch (e) {
       console.log({ onSubmitError: e });
     }

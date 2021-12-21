@@ -58,7 +58,7 @@ export interface Recipe {
 export interface RecipeList {
   recipe: Recipe;
   user_id: string;
-  username: string;
+  author: string;
   _id: string;
 }
 
@@ -66,8 +66,9 @@ export interface RecipeList {
 
 // USER REDUCER ----------------------
 
+
 export interface UserData {
   _id: string;
-  name: string;
   username: string;
+  ownRecipes: RecipeList[];
 }

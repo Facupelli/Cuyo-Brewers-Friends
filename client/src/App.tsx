@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { CreateRecipe } from "./components/CreateRecipe/CreateRecipe";
 import Home from "./components/Home";
 import { Login } from "./components/Login";
+import { MyRecipes } from "./components/MyRecipes";
 import { RecipeCardDetail } from "./components/RecipeCardDetail/RecipeCardDetail";
 import { Register } from "./components/Register";
 import { getRecipes, getUserData, setCookie } from "./redux/action-creators";
@@ -43,7 +44,8 @@ function App() {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/createrecipe" element={<CreateRecipe />} />
-        <Route path="/home/recipe/:id" element={<RecipeCardDetail />} />
+        <Route path="/recipe/:id" element={<RecipeCardDetail />} />
+        <Route path="/myrecipes" element={<MyRecipes />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

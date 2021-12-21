@@ -45,22 +45,24 @@ export const NavBar: React.FC<Props> = ({ route }) => {
             </div>
           ))}
 
-        {cookie && (
-          <>
+        {cookie &&
+          (route === "myrecipes" ? null : (
             <div className="">
               <Link to="/myrecipes">
                 <p className="font-semibold">My Recipes</p>
               </Link>
             </div>
-            <div className="">
-              <p
-                onClick={logOut}
-                className="text-orange-800 cursor-pointer font-semibold"
-              >
-                Log Out
-              </p>
-            </div>
-          </>
+          ))}
+
+        {cookie && (
+          <div className="">
+            <p
+              onClick={logOut}
+              className="text-orange-800 cursor-pointer font-semibold"
+            >
+              Log Out
+            </p>
+          </div>
         )}
 
         {!cookie && (

@@ -13,7 +13,7 @@ export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
     <div className="bg-amber-100 rounded m-2 p-6 w-1/2">
       <div>
         <div>
-          <Link to={`recipe/${id}`}>
+          <Link to={`/recipe/${id}`}>
             <p className="text-gray-800 font-semibold">{recipe.title}</p>
           </Link>
         </div>
