@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const RecipeSchema = new mongoose.Schema({
   username: String,
-  user_id: String,
+  // user_id: String,
+  author: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel" },
   recipe: {
     title: { type: String, index: true },
     style: { type: String },

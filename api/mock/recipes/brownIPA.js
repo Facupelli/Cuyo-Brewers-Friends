@@ -1,7 +1,7 @@
 const brownIPA = [
     {
-      username: "facupelli",
-      user_id: 1234,
+      username: "juliana",
+      author: '61c102e1f9fd8773ab05d54b',
       recipe: {
         title: "Fundamental",
         style: "1. Brown Indian Pale Ale",
@@ -38,8 +38,8 @@ const brownIPA = [
       },
     },
     {
-      username: "facupelli",
-      user_id: 1234,
+      username: "juliana",
+      author: '61c102e1f9fd8773ab05d54b',
       recipe: {
         title: "El Rengo",
         style: "1. Brown Indian Pale Ale",
@@ -76,8 +76,8 @@ const brownIPA = [
       },
     },
     {
-      username: "facupelli",
-      user_id: 1234,
+      username: "juliana",
+      author: '61c102e1f9fd8773ab05d54b',
       recipe: {
         title: "DelFin",
         style: "1. Brown Indian Pale Ale",

@@ -1,6 +1,8 @@
-const { recipeModel } = require("../models/recipe")
 const mongodb = require("mongodb");
+const { userModel } = require("../models/user");
+const { recipeModel } = require("../models/recipe");
 const ObjectId = mongodb.ObjectId;
+
 class Recipes {
   static async getRecipes({
     // we call this when we want a list of all recipes
@@ -26,6 +28,7 @@ class Recipes {
       allRecipes = await recipeModel
         .find(query)
         .limit(recipesPerPage)
+        .populate("author", "_id name")
         .skip(recipesPerPage * page);
       // find all the recipes that go along with the query
     } catch (e) {
@@ -52,11 +55,10 @@ class Recipes {
 
   static async getRecipeById(id) {
     try {
-      
-      return await recipeModel.findById(id)
+      return await recipeModel.findById(id);
     } catch (e) {
-      console.error(`Something went wrong in getRecipeByID: ${e}`)
-      throw e
+      console.error(`Something went wrong in getRecipeByID: ${e}`);
+      throw e;
     }
   }
 
@@ -65,11 +67,14 @@ class Recipes {
       const reviewDoc = {
         recipe: recipe,
         username: user.username,
-        user_id: user._id,
+        author: user._id,
         date: date,
       };
-
       const response = await recipeModel.create(reviewDoc);
+      const addAuthor = await userModel.findOneAndUpdate(
+        { _id: user._id },
+        { $push: { ownRecipes: response._id } }
+      );
 
       console.log("MONGO CREATE", response);
 
