@@ -1,7 +1,7 @@
 const bock = [
     {
       username: "elZorro",
-      user_id: 1234,
+      author: 1234,
       recipe: {
         title: "El Indio",
         style: "1. Bock",
@@ -39,7 +39,7 @@ const bock = [
     },
     {
       username: "elZorro",
-      user_id: 1234,
+      author: 1234,
       recipe: {
         title: "Maltas All In",
         style: "1. Bock",
@@ -77,7 +77,7 @@ const bock = [
     },
     {
       username: "elZorro",
-      user_id: 1234,
+      author: 1234,
       recipe: {
         title: "Palmer",
         style: "1. Bock",

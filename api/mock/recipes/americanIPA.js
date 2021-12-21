@@ -1,7 +1,7 @@
 const americanIPA = [
   {
     username: "facupelli",
-    user_id: 1234,
+    author: 1234,
     recipe: {
       title: "La Suculenta",
       style: "1. American Indian Pale Ale",
@@ -39,7 +39,7 @@ const americanIPA = [
   },
   {
     username: "facupelli",
-    user_id: 1234,
+    author: 1234,
     recipe: {
       title: "Rexona",
       style: "1. American Indian Pale Ale",
@@ -77,7 +77,7 @@ const americanIPA = [
   },
   {
     username: "facupelli",
-    user_id: 1234,
+    author: 1234,
     recipe: {
       title: "Violencia Rivas",
       style: "1. American Indian Pale Ale",

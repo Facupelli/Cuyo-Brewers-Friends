@@ -1,7 +1,7 @@
 const sessionIPA = [
   {
     username: "facupelli",
-    user_id: 1234,
+    author: 1234,
     recipe: {
       title: "Hop Odisey",
       style: "1. Session Indian Pale Ale",
@@ -39,7 +39,7 @@ const sessionIPA = [
   },
   {
     username: "facupelli",
-    user_id: 1234,
+    author: 1234,
     recipe: {
       title: "Abrazo de Oso",
       style: "1. Session Indian Pale Ale",
@@ -77,7 +77,7 @@ const sessionIPA = [
   },
   {
     username: "facupelli",
-    user_id: 1234,
+    author: 1234,
     recipe: {
       title: "Chicago",
       style: "1. Session Indian Pale Ale",

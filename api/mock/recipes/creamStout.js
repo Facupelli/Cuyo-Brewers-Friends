@@ -1,7 +1,7 @@
 const creamStout = [
     {
       username: "facupelli",
-      user_id: 1234,
+      author: 1234,
       recipe: {
         title: "Beata",
         style: "1. Cream Stout",
@@ -39,7 +39,7 @@ const creamStout = [
     },
     {
       username: "facupelli",
-      user_id: 1234,
+      author: 1234,
       recipe: {
         title: "Ortuzar",
         style: "1. Cream Stout",
@@ -77,7 +77,7 @@ const creamStout = [
     },
     {
       username: "facupelli",
-      user_id: 1234,
+      author: 1234,
       recipe: {
         title: "BrewHouse",
         style: "1. Cream Stout",

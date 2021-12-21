@@ -28,7 +28,7 @@ class Recipes {
       allRecipes = await recipeModel
         .find(query)
         .limit(recipesPerPage)
-        .populate("author", "_id name")
+        .populate("author", "_id name username")
         .skip(recipesPerPage * page);
       // find all the recipes that go along with the query
     } catch (e) {

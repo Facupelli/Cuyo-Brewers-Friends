@@ -1,7 +1,7 @@
 const englishIPA = [
   {
     username: "facupelli",
-    user_id: 1234,
+    author: 1234,
     recipe: {
       title: "La Zorruda",
       style: "1. English Indian Pale Ale",
@@ -39,7 +39,7 @@ const englishIPA = [
   },
   {
     username: "facupelli",
-    user_id: 1234,
+    author: 1234,
     recipe: {
       title: "Samsung",
       style: "1. English Indian Pale Ale",
@@ -77,7 +77,7 @@ const englishIPA = [
   },
   {
     username: "facupelli",
-    user_id: 1234,
+    author: 1234,
     recipe: {
       title: "Pechuganeitor",
       style: "1. English Indian Pale Ale",
