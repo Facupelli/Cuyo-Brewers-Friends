@@ -12,6 +12,8 @@ import { CommentForm } from "./CommentForm";
 import { UserData } from "./UserData";
 import { CommentList } from "./CommentList";
 import { getReviewsByRecipeId } from "../../utils/reviewsUtils";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/reducers/RootReducer";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -33,6 +35,8 @@ export interface Review {
 
 export const RecipeCardDetail: React.FC = () => {
   const { id } = useParams<RecipeCardDetailParams>();
+
+  const userData = useSelector((state: RootState) => state.storeUser.userData);
 
   const [recipeState, setRecipeState] = useState<State>({
     recipe: {
@@ -74,7 +78,7 @@ export const RecipeCardDetail: React.FC = () => {
       username: "",
       author: "",
       _id: "",
-      date: '',
+      date: "",
     },
   });
 
@@ -133,10 +137,14 @@ export const RecipeCardDetail: React.FC = () => {
 
         <HopsDetail hops={recipeState.recipe.recipe.ingredients.hops} />
 
-        <CommentForm recipe_id={id} setComment={setComment} />
+        <div className="my-16">
+          <p className="font-semibold text-xl">Reviews</p>
+          {username === userData.username ? null : (
+            <CommentForm recipe_id={id} setComment={setComment} />
+          )}
 
-        <CommentList comment={comment}/>
-     
+          <CommentList comment={comment} />
+        </div>
       </div>
     </>
   );

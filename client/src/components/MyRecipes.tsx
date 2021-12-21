@@ -15,14 +15,14 @@ export const MyRecipes: React.FC = () => {
     <>
       <NavBar route="myrecipes" />
       <div>
-        <p>MY RECIPES</p>
+        <p className="m-4 py-4 font-semibold text-2xl">MY RECIPES</p>
         <div className="grid grid-cols-7 m-4 ">
-          <p className="col-span-2">Recipe</p>
-          <p className="col-span-1">Batch Size</p>
-          <p className="col-span-1">ABV</p>
-          <p className="col-span-1">IBU</p>
-          <p className="col-span-1">SRM</p>
-          <p className="col-span-1">Created</p>
+          <p className="col-span-2 font-semibold text-sm">Recipe</p>
+          <p className="col-span-1 font-semibold text-sm">Batch Size</p>
+          <p className="col-span-1 font-semibold text-sm">ABV</p>
+          <p className="col-span-1 font-semibold text-sm">IBU</p>
+          <p className="col-span-1 font-semibold text-sm">SRM</p>
+          <p className="col-span-1 font-semibold text-sm">Created</p>
         </div>
         {ownRecipes &&
           ownRecipes.map((el) => (
