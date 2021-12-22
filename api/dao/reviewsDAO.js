@@ -1,4 +1,5 @@
 const mongodb = require("mongodb");
+const { recipeModel } = require("../models/recipe");
 const ObjectId = mongodb.ObjectId;
 const { reviewModel } = require("../models/review");
 
@@ -14,7 +15,7 @@ class ReviewsDAO {
   //   }
   // }
 
-  static async addReview(userInfo, review, date) {
+  static async addReview(userInfo, review, date, recipe_id) {
     try {
       const reviewDoc = {
         username: userInfo.username,
@@ -22,10 +23,14 @@ class ReviewsDAO {
         date: date,
         comment: review.comment,
         score: review.score,
-        recipe_id: review.recipe_id,
       };
-
-      return await reviewModel.create(reviewDoc);
+      const response = await reviewModel.create(reviewDoc);
+      const addReviewToRecipe = await recipeModel.findOneAndUpdate(
+        { _id: review.recipe_id},
+        { $push: { reviews: response._id } }
+      );
+      return response
+      
 
     } catch (e) {
       console.error(`Unable to post review: ${e}`);

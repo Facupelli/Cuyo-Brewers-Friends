@@ -25,11 +25,11 @@ db.once("open", function () {
 
 app.listen(27017, async () => {
   try {
-    // await reviewModel.deleteMany({}).then(() => console.log("previous reviews deleted"));
+    await reviewModel.deleteMany({}).then(() => console.log("previous reviews deleted"));
 
-    // await recipeModel
-    //   .deleteMany({})
-    //   .then(() => console.log("previous recipes deleted"));
+    await recipeModel
+      .deleteMany({})
+      .then(() => console.log("previous recipes deleted"));
 
     await loadRecipes().then(() => console.log("recipes loaded"));
 

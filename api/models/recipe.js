@@ -5,6 +5,7 @@ const RecipeSchema = new mongoose.Schema({
   date: {type: String, default: Date.now},
   // user_id: String,
   author: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel" },
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "ReviewModel" }],
   recipe: {
     title: { type: String, index: true },
     style: { type: String },

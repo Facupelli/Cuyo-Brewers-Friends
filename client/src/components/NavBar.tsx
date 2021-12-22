@@ -25,7 +25,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
   return (
     <nav className="grid grid-cols-7 bg-orange-400 px-6 py-2">
       <div className="col-span-2 flex text-white mr-24">
-        <p className="font-semibold text-xl font-serif bg-orange-300">CUYO BREWERS FRIENDS</p>
+        <p className="font-semibold text-xl font-serif ">CUYO BREWERS FRIENDS</p>
       </div>
       <div className="col-span-5 flex justify-start items-center  gap-10">
         {cookie && route === "home" ? null : (

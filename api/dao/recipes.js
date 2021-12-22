@@ -55,7 +55,8 @@ class Recipes {
 
   static async getRecipeById(id) {
     try {
-      return await recipeModel.findById(id);
+      return await recipeModel.findById(id)
+      .populate('reviews', "_id score comment username");
     } catch (e) {
       console.error(`Something went wrong in getRecipeByID: ${e}`);
       throw e;
