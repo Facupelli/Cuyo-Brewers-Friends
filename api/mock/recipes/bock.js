@@ -1,10 +1,11 @@
-const bock = [
+const Bock = [
     {
       username: "elZorro",
       author: '61c13c053b9f098e82371999',
       recipe: {
         title: "El Indio",
-        style: "1. Bock",
+        style: "1. Pale Malty European Lager",
+        sub_category: 'Bock',
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -42,7 +43,8 @@ const bock = [
       author: '61c13c053b9f098e82371999',
       recipe: {
         title: "Maltas All In",
-        style: "1. Bock",
+        style: "1. Pale Malty European Lager",
+        sub_category: 'Bock',
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -80,7 +82,8 @@ const bock = [
       author: '61c13c053b9f098e82371999',
       recipe: {
         title: "Palmer",
-        style: "1. Bock",
+        style: "1. Pale Malty European Lager",
+        sub_category: 'Bock',
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -115,4 +118,4 @@ const bock = [
     },
   ];
   
-  module.exports = bock;
+  module.exports = Bock;

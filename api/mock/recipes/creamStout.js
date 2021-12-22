@@ -4,7 +4,8 @@ const creamStout = [
       author: '61c0d87b9f09bc94fa62da61',
       recipe: {
         title: "Beata",
-        style: "1. Cream Stout",
+        style: "1. American Porter and Stout",
+        sub_category: 'American Stout',
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -42,7 +43,8 @@ const creamStout = [
       author: '61c0d87b9f09bc94fa62da61',
       recipe: {
         title: "Ortuzar",
-        style: "1. Cream Stout",
+        style: "1. American Porter and Stout",
+        sub_category: 'American Stout',
         brewery: "",
         parameters: {
           boil_time: 60,
@@ -80,7 +82,8 @@ const creamStout = [
       author: '61c0d87b9f09bc94fa62da61',
       recipe: {
         title: "BrewHouse",
-        style: "1. Cream Stout",
+        style: "1. American Porter and Stout",
+        sub_category: 'American Stout',
         brewery: "",
         parameters: {
           boil_time: 60,

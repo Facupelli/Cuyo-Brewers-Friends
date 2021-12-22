@@ -1,10 +1,11 @@
 const sessionIPA = [
   {
     username: "facupelli",
-    author: '61c0c36cd52d694f78e8b009',
+    author: "61c0c36cd52d694f78e8b009",
     recipe: {
       title: "Hop Odisey",
-      style: "1. Session Indian Pale Ale",
+      style: "1. IPA",
+      sub_category: 'Specialty IPA',
       brewery: "",
       parameters: {
         boil_time: 60,
@@ -39,10 +40,11 @@ const sessionIPA = [
   },
   {
     username: "facupelli",
-    author: '61c0c36cd52d694f78e8b009',
+    author: "61c0c36cd52d694f78e8b009",
     recipe: {
       title: "Abrazo de Oso",
-      style: "1. Session Indian Pale Ale",
+      style: "1. IPA",
+      sub_category: "Specialty IPA",
       brewery: "",
       parameters: {
         boil_time: 60,
@@ -77,10 +79,11 @@ const sessionIPA = [
   },
   {
     username: "facupelli",
-    author: '61c0c36cd52d694f78e8b009',
+    author: "61c0c36cd52d694f78e8b009",
     recipe: {
       title: "Chicago",
-      style: "1. Session Indian Pale Ale",
+      style: "1. IPA",
+      sub_category: "Specialty IPA",
       brewery: "",
       parameters: {
         boil_time: 60,

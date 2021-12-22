@@ -4,7 +4,8 @@ const americanIPA = [
     author: '61c13c053b9f098e82371999',
     recipe: {
       title: "La Suculenta",
-      style: "1. American Indian Pale Ale",
+      style: "1. IPA",
+      sub_category: "American IPA",
       brewery: "",
       parameters: {
         boil_time: 60,
@@ -42,7 +43,8 @@ const americanIPA = [
     author: '61c13c053b9f098e82371999',
     recipe: {
       title: "Rexona",
-      style: "1. American Indian Pale Ale",
+      style: "1. IPA",
+      sub_category: "American IPA",
       brewery: "",
       parameters: {
         boil_time: 60,
@@ -80,7 +82,8 @@ const americanIPA = [
     author: '61c13c053b9f098e82371999',
     recipe: {
       title: "Violencia Rivas",
-      style: "1. American Indian Pale Ale",
+      style: "1. IPA",
+      sub_category: "American IPA",
       brewery: "",
       parameters: {
         boil_time: 60,
