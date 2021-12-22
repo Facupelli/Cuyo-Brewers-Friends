@@ -5,9 +5,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import axios from "axios";
-import { getReviewsByRecipeId } from "../../utils/reviewsUtils";
-import { Review } from "./RecipeCardDetail";
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { getRecipeById } from "../../utils/recipesUtils";
+import { Review } from "../../redux/reducers/types";
+import { State } from "./RecipeCardDetail";
 
 interface FormInputs {
   score: number;
@@ -16,7 +17,7 @@ interface FormInputs {
 
 type Props = {
   recipe_id: unknown;
-  setComment: React.Dispatch<React.SetStateAction<Review[]>>;
+  setRecipeState: React.Dispatch<React.SetStateAction<State>>;
 };
 
 const schema = yup.object().shape({
@@ -25,7 +26,7 @@ const schema = yup.object().shape({
 
 export const CommentForm: React.FC<Props> = ({
   recipe_id,
-  setComment = () => {},
+  setRecipeState = () => {}
 }) => {
   const {
     register,
@@ -54,10 +55,9 @@ export const CommentForm: React.FC<Props> = ({
       const response = await axios.post("/review", review);
       console.log("RESPONSE:", response);
       reset();
-      //get reviews post comment
-      getReviewsByRecipeId(recipe_id)
-        .then((res) => setComment(res))
-        .catch((e) => console.log(e));
+      getRecipeById(recipe_id)
+      .then((data) => setRecipeState({ recipe: data }))
+      .catch((e) => console.log(e));
     } catch (e) {
       console.log({ onSubmitError: e });
     }

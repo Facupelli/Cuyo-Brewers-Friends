@@ -44,6 +44,14 @@ interface Ingredients {
   water_profile: WaterProfile;
 }
 
+export interface Review {
+  _id: string;
+  comment: string;
+  score: number;
+  username: string;
+  date: string;
+}
+
 export interface Recipe {
   title: string;
   style: string;
@@ -61,6 +69,7 @@ export interface RecipeList {
   author: string;
   _id: string;
   date: string;
+  reviews: Review[];
 }
 
 

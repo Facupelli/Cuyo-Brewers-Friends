@@ -1,16 +1,16 @@
 import React from "react";
-import { Review } from "./RecipeCardDetail";
 import { FaStar } from "react-icons/fa";
+import { Review } from "../../redux/reducers/types";
 
 type Props = {
-  comment: Review[];
+  reviews: Review[];
 };
 
-export const CommentList: React.FC<Props> = ({ comment }) => {
+export const CommentList: React.FC<Props> = ({ reviews }) => {
   return (
     <div>
-      {comment &&
-        comment.map((el) => (
+      {reviews &&
+        reviews.map((el) => (
           <div key={el._id} className="grid grid-cols-5 my-6">
             <div className="col-span-1 ">
               <p className="text-orange-500 font-semibold text-xl mb-2">

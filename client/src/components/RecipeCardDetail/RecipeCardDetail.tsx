@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getRecipeById } from "../../utils/recipesUtils";
-import { RecipeList } from "../../redux/reducers/types";
+import { RecipeList, Review } from "../../redux/reducers/types";
 import { NavBar } from "../NavBar";
 import { CharacteristicsDetail } from "./CharacteristicsDetail";
 import { ParametersDetail } from "./ParametersDetail";
@@ -11,7 +11,6 @@ import { WaterDetail } from "./WaterDetail";
 import { CommentForm } from "./CommentForm";
 import { UserData } from "./UserData";
 import { CommentList } from "./CommentList";
-import { getReviewsByRecipeId } from "../../utils/reviewsUtils";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 
@@ -19,19 +18,11 @@ type RecipeCardDetailParams = {
   id: string;
 };
 
-interface State {
+export interface State {
   recipe: RecipeList;
 }
 
-export interface Review {
-  _id: string;
-  recipe_id: string;
-  comment: string;
-  score: number;
-  user_id: string;
-  username: string;
-  date: number;
-}
+
 
 export const RecipeCardDetail: React.FC = () => {
   const { id } = useParams<RecipeCardDetailParams>();
@@ -79,16 +70,11 @@ export const RecipeCardDetail: React.FC = () => {
       author: "",
       _id: "",
       date: "",
+      reviews:[],
     },
   });
 
-  const [comment, setComment] = useState<Array<Review>>([]);
-
-  useEffect(() => {
-    getReviewsByRecipeId(id)
-      .then((res) => setComment(res))
-      .catch((e) => console.log(e));
-  }, [id]);
+  console.log('RECIPE', recipeState)
 
   useEffect(() => {
     getRecipeById(id)
@@ -99,7 +85,7 @@ export const RecipeCardDetail: React.FC = () => {
   const { title, style }: { title: string; style: string } =
     recipeState.recipe.recipe;
   const { mash_ph }: { mash_ph: number } = recipeState.recipe.recipe.parameters;
-  const { username }: { username: string } = recipeState.recipe;
+  const { username, reviews }: { username: string, reviews: Review[] } = recipeState.recipe;
 
   return (
     <>
@@ -140,10 +126,10 @@ export const RecipeCardDetail: React.FC = () => {
         <div className="my-16">
           <p className="font-semibold text-xl">Reviews</p>
           {username === userData.username ? null : (
-            <CommentForm recipe_id={id} setComment={setComment} />
+            <CommentForm recipe_id={id} setRecipeState={setRecipeState}/>
           )}
 
-          <CommentList comment={comment} />
+          <CommentList reviews={reviews}  />
         </div>
       </div>
     </>
