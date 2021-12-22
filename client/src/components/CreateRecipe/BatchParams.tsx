@@ -19,7 +19,6 @@ export const BatchParams: React.FC = () => {
   }
 
   const sub = watch("sub_category");
-  console.log("SUB", sub);
 
   const beerSubCategories = bjcp.beers
     .filter((el) => el.name === styleSelectedAfter)

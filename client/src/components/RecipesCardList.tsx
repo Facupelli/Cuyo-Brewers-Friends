@@ -7,7 +7,6 @@ type Props = {
 };
 
 export const RecipesCardList: React.FC<Props> = ({ recipesList }) => {
-  console.log("PROP RECIPELIST:", recipesList);
 
   return (
     <div>

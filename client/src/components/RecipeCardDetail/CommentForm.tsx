@@ -7,7 +7,6 @@ import { RootState } from "../../redux/reducers/RootReducer";
 import axios from "axios";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { getRecipeById } from "../../utils/recipesUtils";
-import { Review } from "../../redux/reducers/types";
 import { State } from "./RecipeCardDetail";
 import { getUserData } from "../../redux/action-creators";
 
@@ -43,7 +42,6 @@ export const CommentForm: React.FC<Props> = ({
   const userData = useSelector((state: RootState) => state.storeUser.userData);
 
   const isRecipeRated = userData.ownReviews?.filter((el) => el === recipe_id);
-  console.log("IS", isRecipeRated);
 
   const scoreSelected = watch("score");
 

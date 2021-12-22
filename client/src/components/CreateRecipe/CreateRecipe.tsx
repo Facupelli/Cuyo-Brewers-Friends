@@ -110,8 +110,6 @@ export const CreateRecipe: React.FC<{}> = () => {
   const username = useSelector((state:RootState) => state.storeUser.userData.username)
   const user_id = useSelector((state:RootState) => state.storeUser.userData._id)
 
-  console.log('USER DATA', username, user_id)
-
   const methods = useForm<RecipeList>({resolver: yupResolver(schema)});
 
   const errors = methods.formState.errors
