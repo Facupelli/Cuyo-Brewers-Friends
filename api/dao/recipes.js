@@ -13,13 +13,13 @@ class Recipes {
     let query; // first the query is empty and remain empty unless someone pass a filter
     if (filters) {
       if ("title" in filters) {
-        query = { $text: { $search: filters["title"] } };
+        query = { "recipe.title" : { "$regex": filters["title"], "$options": "i" } };
       } else if ("username" in filters) {
-        query = { $text: { $search: filters["username"] } };
-      } else if ("brewery" in filters) {
-        query = { "recipe.brewery": { $eq: filters["brewery"] } };
+        query = { "username" : { "$regex": filters["username"], "$options": "i" } };
+      } else if ("sub_category" in filters) {
+        query = { "recipe.sub_category" : filters["sub_category"] };
       } else if ("style" in filters) {
-        query = { "recipe.style": { $eq: filters["style"] } };
+        query = { "recipe.style" :  filters["style"] };
       }
     }
 
@@ -55,8 +55,9 @@ class Recipes {
 
   static async getRecipeById(id) {
     try {
-      return await recipeModel.findById(id)
-      .populate('reviews', "_id score comment username date");
+      return await recipeModel
+        .findById(id)
+        .populate("reviews", "_id score comment username date");
     } catch (e) {
       console.error(`Something went wrong in getRecipeByID: ${e}`);
       throw e;

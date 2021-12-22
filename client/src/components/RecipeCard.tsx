@@ -17,8 +17,9 @@ export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
             <p className="text-gray-800 font-semibold">{recipe.title}</p>
           </Link>
         </div>
-        <div>
-          <p className="text-gray-800">{recipe.style.split(". ")[1]}</p>
+        <div className="flex items-baseline gap-2">
+          <p className="text-gray-600 text-sm ">{recipe.style.split(". ")[1]}</p>
+          <p className="text-gray-900">{recipe.sub_category}</p>
         </div>
       </div>
 
