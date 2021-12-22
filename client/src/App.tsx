@@ -7,7 +7,7 @@ import { Login } from "./components/Login";
 import { MyRecipes } from "./components/MyRecipes";
 import { RecipeCardDetail } from "./components/RecipeCardDetail/RecipeCardDetail";
 import { Register } from "./components/Register";
-import { SearchRecipes } from "./components/SearchRecipes";
+import { SearchRecipes } from "./components/SearchRecipes/SearchRecipes";
 import { getRecipes, getUserData, setCookie } from "./redux/action-creators";
 import { RootState } from "./redux/reducers/RootReducer";
 
