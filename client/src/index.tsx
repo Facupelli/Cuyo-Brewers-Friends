@@ -7,17 +7,18 @@ import axios from "axios";
 import dotenv from "dotenv";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
+import ScrollToTop from "./components/ScrollToTp";
 
 dotenv.config();
 
-axios.defaults.baseURL =
-  process.env.REACT_APP_API || "http://localhost:27017/";
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:27017/";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-          <App />
+        <ScrollToTop />
+        <App />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
