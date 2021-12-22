@@ -7,17 +7,20 @@ import { Login } from "./components/Login";
 import { MyRecipes } from "./components/MyRecipes";
 import { RecipeCardDetail } from "./components/RecipeCardDetail/RecipeCardDetail";
 import { Register } from "./components/Register";
+import { SearchRecipes } from "./components/SearchRecipes";
 import { getRecipes, getUserData, setCookie } from "./redux/action-creators";
 import { RootState } from "./redux/reducers/RootReducer";
 
 function App() {
   const dispatch = useDispatch();
 
-  const cookie = useSelector((state: RootState) => state.storeUser.cookie)
+  const cookie = useSelector((state: RootState) => state.storeUser.cookie);
 
   // ------------------------GET RECIPES -------------------------------------
   useEffect(() => {
-    dispatch(getRecipes());
+    dispatch(
+      getRecipes()
+    );
   }, [dispatch]);
 
   // ------------------------GET USER IF TOKEN -------------------------------------
@@ -34,10 +37,10 @@ function App() {
   // -------------------- IF COOKIE --------------------------------
   useEffect(() => {
     const userId = localStorage.getItem("userId");
-    if(cookie){
-      dispatch(getUserData(userId))
+    if (cookie) {
+      dispatch(getUserData(userId));
     }
-  }, [dispatch, cookie])
+  }, [dispatch, cookie]);
 
   return (
     <div>
@@ -46,6 +49,7 @@ function App() {
         <Route path="/createrecipe" element={<CreateRecipe />} />
         <Route path="/recipe/:id" element={<RecipeCardDetail />} />
         <Route path="/myrecipes" element={<MyRecipes />} />
+        <Route path="/searchrecipes" element={<SearchRecipes />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

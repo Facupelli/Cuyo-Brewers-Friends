@@ -12,13 +12,31 @@ export const loadingTrue = () => {
   };
 };
 
-export const getRecipes = () => async (dispatch: Dispatch<RecipeActions>) => {
+type Filters = {
+  style: string;
+  sub_category: string;
+  beer_title: string;
+  username: string;
+}
+
+export const getRecipes = (filters?: Filters) => async (dispatch: Dispatch<RecipeActions>) => {
   try {
     dispatch({
       type: RecipesActionType.RECIPES_LOADING,
     });
-
-    const res = await axios.get<any>("/recipe");
+    let res : any;
+    
+    if(filters){
+      if(filters.username){
+        res = await axios.get<any>(`/recipe?username=${filters.username}`);
+      }
+      if(filters.beer_title){
+        res = await axios.get<any>(`/recipe?title=${filters.beer_title}`);
+      }
+    }
+    if(!filters){
+      res = await axios.get<any>("/recipe");
+    }
 
     return dispatch({
       type: RecipesActionType.RECIPES_GET,

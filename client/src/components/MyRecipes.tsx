@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { RootState } from "../redux/reducers/RootReducer";
 import { NavBar } from "./NavBar";
 
-export const MyRecipes: React.FC = () => {
+export const MyRecipes: React.FC = (z) => {
   const ownRecipes = useSelector(
     (state: RootState) => state.storeUser.userData.ownRecipes
   );

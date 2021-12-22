@@ -127,7 +127,7 @@ export const CreateRecipe: React.FC<{}> = () => {
       const response = await axios.post("/recipe", newRecipe);
       console.log("RESPONSE:", response);
       methods.reset();
-      dispatch(getRecipes());
+      dispatch(getRecipes())
       dispatch(getUserData(user_id))
     } catch (e) {
       console.log({ onSubmitError: e });
