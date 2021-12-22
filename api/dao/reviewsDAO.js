@@ -2,6 +2,7 @@ const mongodb = require("mongodb");
 const { recipeModel } = require("../models/recipe");
 const ObjectId = mongodb.ObjectId;
 const { reviewModel } = require("../models/review");
+const { userModel } = require("../models/user");
 
 class ReviewsDAO {
   // static async injectDB(conn) {
@@ -19,19 +20,21 @@ class ReviewsDAO {
     try {
       const reviewDoc = {
         username: userInfo.username,
-        user_id: userInfo.user_id,
+        author: userInfo.user_id,
         date: date,
         comment: review.comment,
         score: review.score,
       };
       const response = await reviewModel.create(reviewDoc);
       const addReviewToRecipe = await recipeModel.findOneAndUpdate(
-        { _id: review.recipe_id},
+        { _id: review.recipe_id },
         { $push: { reviews: response._id } }
       );
-      return response
-      
-
+      const addReviewToUser = await userModel.findOneAndUpdate(
+        { _id: userInfo.user_id },
+        { $push: { ownReviews: review.recipe_id } }
+      );
+      return response;
     } catch (e) {
       console.error(`Unable to post review: ${e}`);
       return { error: e };
@@ -39,9 +42,9 @@ class ReviewsDAO {
   }
 
   static async getReviewsByRecipeId(recipe_id) {
-    try{
-      return await reviewModel.find({recipe_id: recipe_id})
-    }catch(e){
+    try {
+      return await reviewModel.find({ recipe_id: recipe_id });
+    } catch (e) {
       console.error(`Unable to post review: ${e}`);
       return { error: e };
     }

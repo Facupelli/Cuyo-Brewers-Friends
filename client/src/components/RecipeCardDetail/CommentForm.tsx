@@ -2,13 +2,14 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import axios from "axios";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { getRecipeById } from "../../utils/recipesUtils";
 import { Review } from "../../redux/reducers/types";
 import { State } from "./RecipeCardDetail";
+import { getUserData } from "../../redux/action-creators";
 
 interface FormInputs {
   score: number;
@@ -26,7 +27,7 @@ const schema = yup.object().shape({
 
 export const CommentForm: React.FC<Props> = ({
   recipe_id,
-  setRecipeState = () => {}
+  setRecipeState = () => {},
 }) => {
   const {
     register,
@@ -36,8 +37,13 @@ export const CommentForm: React.FC<Props> = ({
     watch,
   } = useForm<FormInputs>({ resolver: yupResolver(schema) });
 
+  const dispatch = useDispatch();
+
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
   const userData = useSelector((state: RootState) => state.storeUser.userData);
+
+  const isRecipeRated = userData.ownReviews?.filter((el) => el === recipe_id);
+  console.log("IS", isRecipeRated);
 
   const scoreSelected = watch("score");
 
@@ -54,10 +60,11 @@ export const CommentForm: React.FC<Props> = ({
       };
       const response = await axios.post("/review", review);
       console.log("RESPONSE:", response);
-      reset();
       getRecipeById(recipe_id)
-      .then((data) => setRecipeState({ recipe: data }))
-      .catch((e) => console.log(e));
+        .then((data) => setRecipeState({ recipe: data }))
+        .catch((e) => console.log(e));
+      dispatch(getUserData(userData._id));
+      reset();
     } catch (e) {
       console.log({ onSubmitError: e });
     }
@@ -135,33 +142,43 @@ export const CommentForm: React.FC<Props> = ({
         </div>
 
         <div className="col-span-4">
-          {!cookie ? (
+          {!cookie && (
             <div className="">
               <p className="text-gray-600 text-xl font-semibold">
                 You need to be loged to post a comment!
               </p>
             </div>
-          ) : (
+          )}
+
+          {cookie && isRecipeRated.length > 0 ? (
+            <div className="">
+              <p className="text-gray-600 text-xl font-semibold">
+                You already post a comment on this recipe!
+              </p>
+            </div>
+          ) : null}
+
+          {cookie && isRecipeRated.length === 0 ? (
             <>
               <textarea
                 placeholder="What you love and what you don't like about this recipe"
                 {...register("comment")}
                 required
                 className="form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
+                  block
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  font-normal
+                  text-gray-700
+                  bg-white bg-clip-padding
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
               />
               <button
                 type="submit"
@@ -170,7 +187,7 @@ export const CommentForm: React.FC<Props> = ({
                 Share Comment
               </button>
             </>
-          )}
+          ) : null}
         </div>
       </div>
     </form>

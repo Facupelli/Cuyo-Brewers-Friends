@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, min: 6, max: 225 },
   date: { type: Date, default: Date.now },
   ownRecipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "RecipeModel" }],
+  ownReviews:[{type: mongoose.Schema.Types.ObjectId, ref: "ReviewModel" }]
 });
 
 const userModel = mongoose.model("UserModel", UserSchema);

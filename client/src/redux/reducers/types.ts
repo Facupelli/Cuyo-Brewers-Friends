@@ -81,4 +81,5 @@ export interface UserData {
   _id: string;
   username: string;
   ownRecipes: RecipeList[];
+  ownReviews: string[];
 }
