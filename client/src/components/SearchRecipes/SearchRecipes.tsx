@@ -5,6 +5,7 @@ import { RootState } from "../../redux/reducers/RootReducer";
 import { useForm } from "react-hook-form";
 import { NavBar } from "../NavBar";
 import { SearchRecipesTable } from "./SearchRecipesTable";
+import bjcp from "bjcp";
 
 interface Form {
   style: string;
@@ -19,6 +20,11 @@ export const SearchRecipes: React.FC = () => {
   const recipes = useSelector(
     (state: RootState) => state.storeRecipes.recipesList
   );
+
+  const beerSubCategories = bjcp.beers
+    .map((el) => el.subcategories)
+    .map((el) => el.map((el) => el.name))
+    .flat();
 
   const { register, handleSubmit, reset } = useForm<Form>();
 
@@ -44,15 +50,9 @@ export const SearchRecipes: React.FC = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-2 mb-4">
               <label className="col-span-1">Style</label>
-              <select {...register("style")} className="col-span-1">
+              <select {...register("sub_category")} autoComplete="on" className="col-span-1">
                 <option disabled>Style</option>
-              </select>
-            </div>
-
-            <div className="grid grid-cols-2 mb-4">
-              <label className="col-span-1">Sub Category</label>
-              <select {...register("sub_category")} className="col-span-1">
-                <option disabled>Sub Category</option>
+                {beerSubCategories.map(el => <option>{el}</option>)}
               </select>
             </div>
 

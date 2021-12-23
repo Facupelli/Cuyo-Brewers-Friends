@@ -57,7 +57,11 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable<any>({ columns, data });
+  useTable<any>(
+    {
+      columns,
+      data
+    });
 
   return (
     <div>
