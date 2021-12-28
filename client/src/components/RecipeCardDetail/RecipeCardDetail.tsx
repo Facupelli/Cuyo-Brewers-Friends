@@ -82,7 +82,7 @@ export const RecipeCardDetail: React.FC = () => {
       .catch((e) => console.log(e));
   }, [id]);
 
-  const { title, style }: { title: string; style: string } =
+  const { title, sub_category }: { title: string; sub_category: string } =
     recipeState.recipe.recipe;
   const { mash_ph }: { mash_ph: number } = recipeState.recipe.recipe.parameters;
   const { username, reviews }: { username: string, reviews: Review[] } = recipeState.recipe;
@@ -102,7 +102,7 @@ export const RecipeCardDetail: React.FC = () => {
           </div>
           <div className="col-span-4">
             <ParametersDetail
-              style={style}
+              style={sub_category}
               parameters={recipeState.recipe.recipe.parameters}
             />
           </div>

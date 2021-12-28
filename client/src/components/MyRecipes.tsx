@@ -15,9 +15,10 @@ export const MyRecipes: React.FC = (z) => {
     <>
       <NavBar route="myrecipes" />
       <div>
-        <p className="m-4 py-4 font-semibold text-2xl">MY RECIPES</p>
-        <div className="grid grid-cols-7 m-4 ">
+        <p className="m-4 py-4  font-semibold text-2xl">MY RECIPES</p>
+        <div className="grid grid-cols-9 m-4 px-4 ">
           <p className="col-span-2 font-semibold text-sm">Recipe</p>
+          <p className="col-span-2 font-semibold text-sm">Style</p>
           <p className="col-span-1 font-semibold text-sm">Batch Size</p>
           <p className="col-span-1 font-semibold text-sm">ABV</p>
           <p className="col-span-1 font-semibold text-sm">IBU</p>
@@ -26,13 +27,20 @@ export const MyRecipes: React.FC = (z) => {
         </div>
         {ownRecipes &&
           ownRecipes.map((el) => (
-            <div key={el._id} className="grid grid-cols-7 mx-4 p-2 bg-orange-100">
+            <div
+              key={el._id}
+              className="grid grid-cols-9 mx-4 py-6 px-4 bg-orange-100"
+            >
               <div className="col-span-2">
                 <Link to={`/recipe/${el._id}`}>
                   <p className="font-semibold">{el.recipe.title}</p>
                 </Link>
-                <p>{el.recipe.style}</p>
-                <p className="font-semibold text-gray-600">{el.recipe.sub_category}</p>
+              </div>
+              <div className="col-span-2 flex gap-4">
+                <p>{el.recipe.style.split(". ")[1]}</p>
+                <p className="font-semibold text-gray-600">
+                  {el.recipe.sub_category}
+                </p>
               </div>
               <p className="col-span-1">
                 {el.recipe.parameters.batch_size} Liters
