@@ -8,17 +8,6 @@ interface Props {
 
 export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
 
-  const recipeRating = () => {
-    const reviews = recipes
-      .map((el) => el.reviews)
-      .map((el) => el.map((el) => el.score));
-    return reviews.map((el) => {
-      if (el.length === 0) return 0;
-      if (el.length > 0) return el.reduce((a, b) => a + b) / el.length;
-    });
-  };
-
-  const averages = recipeRating();
 
   const data = React.useMemo(() => recipes, [recipes]);
 
@@ -65,15 +54,13 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
       },
       {
         Header: "Rating",
-        accessor: "reviews.score",
+        accessor: "rating",
       },
     ],
     []
   );
 
   
-  console.log("RATING", averages);
-
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable<any>({
       columns,
@@ -84,7 +71,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
     <div>
       <table {...getTableProps()} className="w-full">
         <thead>
-          {headerGroups.map((headerGroup) => (
+          {headerGroups.map((headerGroup, i) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th className="pb-4 text-left" {...column.getHeaderProps()}>
