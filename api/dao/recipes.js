@@ -13,13 +13,13 @@ class Recipes {
     let query; // first the query is empty and remain empty unless someone pass a filter
     if (filters) {
       if ("title" in filters) {
-        query = { "recipe.title" : { "$regex": filters["title"], "$options": "i" } };
+        query = { "recipe.title": { $regex: filters["title"], $options: "i" } };
       } else if ("username" in filters) {
-        query = { "username" : { "$regex": filters["username"], "$options": "i" } };
+        query = { username: { $regex: filters["username"], $options: "i" } };
       } else if ("sub_category" in filters) {
-        query = { "recipe.sub_category" : filters["sub_category"] };
+        query = { "recipe.sub_category": filters["sub_category"] };
       } else if ("style" in filters) {
-        query = { "recipe.style" :  filters["style"] };
+        query = { "recipe.style": filters["style"] };
       }
     }
 
@@ -29,16 +29,24 @@ class Recipes {
         .find(query)
         .limit(recipesPerPage)
         .populate("author", "_id name username")
+        .populate("reviews", "_id score")
         .skip(recipesPerPage * page);
-      // find all the recipes that go along with the query
+
+      const reviews = allRecipes.forEach((el) => {
+        const reviewsLength = el.reviews.length
+        if(reviewsLength === 0){
+          el.rating = 0
+        }
+        if(reviewsLength > 0){
+          el.rating = el.reviews.map(el => el.score).reduce((a, b) => a + b) / reviewsLength;
+        }
+        
+      });
+
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`);
       return { recipesList: [], totalNumRecipes: 0 };
     }
-
-    // const homeDisplayRecipes = allRecipes
-    //   .limit(recipesPerPage)
-    //   .skip(recipesPerPage * page);
 
     try {
       // const recipesList = await allRecipes.toArray();

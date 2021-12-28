@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const RecipeSchema = new mongoose.Schema({
   username: String,
   date: {type: String, default: Date.now},
+  rating: { type: Number},
   // user_id: String,
   author: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel" },
   reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "ReviewModel" }],

@@ -7,11 +7,26 @@ interface Props {
 }
 
 export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
+
+  const recipeRating = () => {
+    const reviews = recipes
+      .map((el) => el.reviews)
+      .map((el) => el.map((el) => el.score));
+    return reviews.map((el) => {
+      if (el.length === 0) return 0;
+      if (el.length > 0) return el.reduce((a, b) => a + b) / el.length;
+    });
+  };
+
+  const averages = recipeRating();
+
   const data = React.useMemo(() => recipes, [recipes]);
 
+  console.log('RECIPES', recipes)
+
   type Cell = {
-      value: string
-  }
+    value: string;
+  };
 
   const columns = React.useMemo(
     () => [
@@ -22,7 +37,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
       {
         Header: "Style",
         accessor: "recipe.style",
-        Cell: ({ cell: { value } }:{cell: Cell}) => value.split(". ")[1]
+        Cell: ({ cell: { value } }: { cell: Cell }) => value.split(". ")[1],
       },
       {
         Header: "Size",
@@ -50,17 +65,19 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
       },
       {
         Header: "Rating",
-        accessor: "col9",
+        accessor: "reviews.score",
       },
     ],
     []
   );
 
+  
+  console.log("RATING", averages);
+
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-  useTable<any>(
-    {
+    useTable<any>({
       columns,
-      data
+      data,
     });
 
   return (
