@@ -8,10 +8,7 @@ interface Props {
 
 export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
 
-
   const data = React.useMemo(() => recipes, [recipes]);
-
-  console.log('RECIPES', recipes)
 
   type Cell = {
     value: string;
@@ -60,7 +57,6 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
     []
   );
 
-  
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable<any>({
       columns,
@@ -71,7 +67,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
     <div>
       <table {...getTableProps()} className="w-full">
         <thead>
-          {headerGroups.map((headerGroup, i) => (
+          {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th className="pb-4 text-left" {...column.getHeaderProps()}>
