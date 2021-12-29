@@ -10,7 +10,7 @@ type Props = {
 export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
 
   return (
-    <div className="bg-amber-100 rounded m-2 p-6 w-1/2">
+    <div className="border border-blueLight rounded m-2 p-6 w-1/2">
       <div>
         <div>
           <Link to={`/recipe/${id}`}>
@@ -18,34 +18,34 @@ export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
           </Link>
         </div>
         <div className="flex items-baseline gap-2">
-          <p className="text-gray-600 text-sm ">{recipe.style.split(". ")[1]}</p>
+          <p className="text-brownLight text-sm ">{recipe.style.split(". ")[1]}</p>
           <p className="text-gray-900">{recipe.sub_category}</p>
         </div>
       </div>
 
       <div className="flex justify-start gap-6">
         <div className="flex items-center gap-2">
-          <p className="text-gray-600">OG:</p>
+          <p className="text-brown1">OG:</p>
           <p>{recipe.characteristics.original_gravity}</p>
         </div>
 
         <div className="flex items-center gap-2">
-          <p className="text-gray-600">FG:</p>
+          <p className="text-brown1">FG:</p>
           <p>{recipe.characteristics.final_gravity}</p>
         </div>
 
         <div className="flex items-center gap-2">
-          <p className="text-gray-600">ABV:</p>
+          <p className="text-brown1">ABV:</p>
           <p>{recipe.characteristics.alcohol_by_volume}</p>
         </div>
 
         <div className="flex items-center gap-2">
-          <p className="text-gray-600">IBU:</p>
+          <p className="text-brown1">IBU:</p>
           <p>{recipe.characteristics.ibu}</p>
         </div>
 
         <div className="flex items-center gap-2">
-          <p className="text-gray-600">SRM:</p>
+          <p className="text-brown1">SRM:</p>
           <p>{recipe.characteristics.srm}</p>
         </div>
       </div>

@@ -14,22 +14,21 @@ export const MyRecipes: React.FC = (z) => {
   return (
     <>
       <NavBar route="myrecipes" />
-      <div>
-        <p className="m-4 py-4  font-semibold text-2xl">MY RECIPES</p>
+      <div className="mt-16">
         <div className="grid grid-cols-9 m-4 px-4 ">
-          <p className="col-span-2 font-semibold text-sm">Recipe</p>
-          <p className="col-span-2 font-semibold text-sm">Style</p>
-          <p className="col-span-1 font-semibold text-sm">Batch Size</p>
-          <p className="col-span-1 font-semibold text-sm">ABV</p>
-          <p className="col-span-1 font-semibold text-sm">IBU</p>
-          <p className="col-span-1 font-semibold text-sm">SRM</p>
-          <p className="col-span-1 font-semibold text-sm">Created</p>
+          <p className="col-span-2 font-semibold text-sm text-brown1">Recipe</p>
+          <p className="col-span-2 font-semibold text-sm text-brown1">Style</p>
+          <p className="col-span-1 font-semibold text-sm text-brown1">Batch Size</p>
+          <p className="col-span-1 font-semibold text-sm text-brown1">ABV</p>
+          <p className="col-span-1 font-semibold text-sm text-brown1">IBU</p>
+          <p className="col-span-1 font-semibold text-sm text-brown1">SRM</p>
+          <p className="col-span-1 font-semibold text-sm text-brown1">Created</p>
         </div>
         {ownRecipes &&
           ownRecipes.map((el) => (
             <div
               key={el._id}
-              className="grid grid-cols-9 mx-4 py-6 px-4 bg-orange-100"
+              className="grid grid-cols-9 mx-4 py-6 px-4 bg-gray-100 mb-2 border-b border-blueLight"
             >
               <div className="col-span-2">
                 <Link to={`/recipe/${el._id}`}>

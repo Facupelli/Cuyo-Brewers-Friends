@@ -22,8 +22,8 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
       },
       {
         Header: "Style",
-        accessor: "recipe.style",
-        Cell: ({ cell: { value } }: { cell: Cell }) => value.split(". ")[1],
+        accessor: "recipe.sub_category",
+        // Cell: ({ cell: { value } }: { cell: Cell }) => value.split(". ")[1],
       },
       {
         Header: "Size",
@@ -70,7 +70,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th className="pb-4 text-left" {...column.getHeaderProps()}>
+                <th className="pb-4 text-left text-brown1" {...column.getHeaderProps()}>
                   {column.render("Header")}
                 </th>
               ))}
@@ -84,7 +84,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                    <td className="pb-4" {...cell.getCellProps()}>
+                    <td className="pb-4 pt-2 border-t border-blueLight" {...cell.getCellProps()} >
                       {cell.render("Cell")}
                     </td>
                   );

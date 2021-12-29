@@ -23,53 +23,50 @@ export const NavBar: React.FC<Props> = ({ route }) => {
   };
 
   return (
-    <nav className="grid grid-cols-7 bg-orange-400 px-6 py-2">
+    <nav className="grid grid-cols-7 bg-blue1 px-6 py-4 shadow-md">
       <div className="col-span-2 flex text-white mr-24">
         <p className="font-semibold text-xl font-serif ">
           CUYO BREWERS FRIENDS
         </p>
       </div>
       <div className="col-span-5 flex justify-start items-center  gap-10">
-        {cookie && route === "home" ? null : (
+        {cookie && (
           <div className="">
             <Link to="/home">
-              <p className="font-semibold">Recipes</p>
+              <p className="font-semibold">RECIPES</p>
             </Link>
           </div>
         )}
 
-        {cookie &&
-          (route === "searchrecipes" ? null : (
-            <div className="">
-              <Link to="/searchrecipes">
-                <p className="font-semibold">Search</p>
-              </Link>
-            </div>
-          ))}
+        {cookie && (
+          <div className="">
+            <Link to="/searchrecipes">
+              <p className="font-semibold">SEARCH</p>
+            </Link>
+          </div>
+        )}
 
-        {cookie &&
-          (route === "myrecipes" ? null : (
-            <div className="">
-              <Link to="/myrecipes">
-                <p className="font-semibold">My Recipes</p>
-              </Link>
-            </div>
-          ))}
+        {cookie && (
+          <div className="">
+            <Link to="/myrecipes">
+              <p className="font-semibold">MY RECIPES</p>
+            </Link>
+          </div>
+        )}
 
-        {cookie &&
-          (route === "createrecipe" ? null : (
-            <div className="">
-              <Link to="/createrecipe">
-                <p className="font-semibold">Add Recipe</p>
-              </Link>
-            </div>
-          ))}
+        {cookie && (
+          <div className="">
+            <Link to="/createrecipe">
+              <p className="font-semibold">ADD RECIPE</p>
+            </Link>
+          </div>
+        )}
 
         {cookie && (
           <div className="ml-auto ">
             <p
               onClick={logOut}
-              className="text-orange-800 cursor-pointer font-semibold"
+              className=" cursor-pointer font-semibold"
             >
               Log Out
             </p>
@@ -82,7 +79,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
               <Link to="/login">
                 <p
                   onClick={logOut}
-                  className="text-orange-800 cursor-pointer font-semibold"
+                  className="cursor-pointer font-semibold"
                 >
                   Log In
                 </p>
@@ -90,7 +87,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
             </div>
             <div>
               <Link to="/register">
-                <p className="text-orange-800 cursor-pointer font-semibold">
+                <p className="cursor-pointer font-semibold">
                   Register
                 </p>
               </Link>

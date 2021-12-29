@@ -45,11 +45,11 @@ export const SearchRecipes: React.FC = () => {
   return (
     <>
       <NavBar route="searchrecipes" />
-      <div className="grid grid-cols-10 bg-orange-400 p-4 m-8 gap-2">
-        <div className="col-span-2 bg-orange-100">
+      <div className="grid grid-cols-11  p-4 m-8 gap-2">
+        <div className="col-span-3 px-2 border-r border-brown1">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-2 mb-4">
-              <label className="col-span-1">Style</label>
+              <label className="col-span-1 text-brown1">Style</label>
               <select {...register("sub_category")} autoComplete="on" className="col-span-1">
                 <option disabled>Style</option>
                 {beerSubCategories.map(el => <option>{el}</option>)}
@@ -57,7 +57,7 @@ export const SearchRecipes: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-2 mb-4">
-              <label className="col-span-1">Beer Title</label>
+              <label className="col-span-1 text-brown1">Beer Title</label>
               <input
                 type="text"
                 {...register("beer_title")}
@@ -66,7 +66,7 @@ export const SearchRecipes: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-2 mb-4">
-              <label className="col-span-1">Username</label>
+              <label className="col-span-1 text-brown1">Username</label>
               <input
                 type="text"
                 {...register("username")}
@@ -83,7 +83,7 @@ export const SearchRecipes: React.FC = () => {
           </form>
         </div>
 
-        <div className="col-span-8 bg-orange-200">
+        <div className="col-span-8 ">
           <SearchRecipesTable recipes={recipes} />
         </div>
 
