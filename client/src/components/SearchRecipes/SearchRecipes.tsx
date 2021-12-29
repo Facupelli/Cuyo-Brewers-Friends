@@ -46,7 +46,7 @@ export const SearchRecipes: React.FC = () => {
     <>
       <NavBar route="searchrecipes" />
       <div className="grid grid-cols-11  p-4 m-8 gap-2">
-        <div className="col-span-3 px-2 border-r border-brown1">
+        <div className="col-span-3 p-4 border-r border-blueDark bg-gray-200">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-2 mb-4">
               <label className="col-span-1 text-brown1">Style</label>
@@ -83,7 +83,7 @@ export const SearchRecipes: React.FC = () => {
           </form>
         </div>
 
-        <div className="col-span-8 ">
+        <div className="col-span-8 px-4 bg-gray-100">
           <SearchRecipesTable recipes={recipes} />
         </div>
 
