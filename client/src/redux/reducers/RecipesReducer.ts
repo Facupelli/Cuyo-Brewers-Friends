@@ -5,11 +5,13 @@ import {  RecipeList } from "./types";
 export interface InitialState {
     loading: boolean;
     recipesList: RecipeList[];
+    topRecipesList: RecipeList[],
   }
 
 const initialState: InitialState = {
     loading: false,
     recipesList: [],
+    topRecipesList : [],
 }
 
 export const recipesReducer = (state: InitialState = initialState, action: RecipeActions) : InitialState=> {
@@ -29,6 +31,12 @@ export const recipesReducer = (state: InitialState = initialState, action: Recip
                 ...state,
                 loading: false,
                 recipesList: action.payload
+            }
+        case RecipesActionType.RECIPES_GET_TOP:
+            return{
+                ...state,
+                loading: false,
+                topRecipesList: action.payload
             }
         default:
             return state;

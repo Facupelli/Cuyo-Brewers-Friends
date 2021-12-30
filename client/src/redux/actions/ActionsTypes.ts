@@ -2,6 +2,7 @@ export enum RecipesActionType {
   RECIPES_LOADING = "RECIPES_LOADING",
   RECIPES_FAIL = "RECIPES_FAIL",
   RECIPES_GET = "RECIPES_GET",
+  RECIPES_GET_TOP = "RECIPES_GET_TOP"
 }
 
 export enum UserActionType {

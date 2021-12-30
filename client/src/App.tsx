@@ -8,7 +8,7 @@ import { MyRecipes } from "./components/MyRecipes";
 import { RecipeCardDetail } from "./components/RecipeCardDetail/RecipeCardDetail";
 import { Register } from "./components/Register";
 import { SearchRecipes } from "./components/SearchRecipes/SearchRecipes";
-import { getRecipes, getUserData, setCookie } from "./redux/action-creators";
+import { getRecipes, getTopRecipes, getUserData, setCookie } from "./redux/action-creators";
 import { RootState } from "./redux/reducers/RootReducer";
 
 function App() {
@@ -20,6 +20,9 @@ function App() {
   useEffect(() => {
     dispatch(
       getRecipes()
+    );
+    dispatch(
+      getTopRecipes()
     );
   }, [dispatch]);
 

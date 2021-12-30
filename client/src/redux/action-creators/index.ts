@@ -17,38 +17,52 @@ type Filters = {
   sub_category: string;
   beer_title: string;
   username: string;
-}
-
-export const getRecipes = (filters?: Filters) => async (dispatch: Dispatch<RecipeActions>) => {
-  try {
-    dispatch({
-      type: RecipesActionType.RECIPES_LOADING,
-    });
-    let res : any;
-    
-    if(filters){
-      if(filters.username){
-        res = await axios.get<any>(`/recipe?username=${filters.username}`);
-      }
-      if(filters.beer_title){
-        res = await axios.get<any>(`/recipe?title=${filters.beer_title}`);
-      }
-    }
-    if(!filters){
-      res = await axios.get<any>("/recipe");
-    }
-
-    return dispatch({
-      type: RecipesActionType.RECIPES_GET,
-      payload: res.data.recipesList,
-    });
-  } catch (e) {
-    console.log(e);
-    dispatch({
-      type: RecipesActionType.RECIPES_FAIL,
-    });
-  }
 };
+
+export const getRecipes =
+  (filters?: Filters) => async (dispatch: Dispatch<RecipeActions>) => {
+    try {
+      dispatch({
+        type: RecipesActionType.RECIPES_LOADING,
+      });
+      let res: any;
+
+      if (filters) {
+        if (filters.username) {
+          res = await axios.get<any>(`/recipe?username=${filters.username}`);
+        }
+        if (filters.beer_title) {
+          res = await axios.get<any>(`/recipe?title=${filters.beer_title}`);
+        }
+      }
+      if (!filters) {
+        res = await axios.get<any>("/recipe");
+      }
+
+      return dispatch({
+        type: RecipesActionType.RECIPES_GET,
+        payload: res.data.recipesList,
+      });
+    } catch (e) {
+      console.log(e);
+      dispatch({
+        type: RecipesActionType.RECIPES_FAIL,
+      });
+    }
+  };
+
+export const getTopRecipes = () => async (dispatch: Dispatch<RecipeActions>) => {
+    try {
+      let res: any;
+
+      res = await axios.get<any>("/recipe?top=true");
+
+      return dispatch({
+        type: RecipesActionType.RECIPES_GET_TOP,
+        payload: res.data.recipesList,
+      });
+    } catch (e) {}
+  };
 
 // ------------------------ USER ACTIONS
 

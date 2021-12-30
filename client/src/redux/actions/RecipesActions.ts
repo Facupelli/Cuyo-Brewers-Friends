@@ -1,6 +1,6 @@
 
 
-import { Recipe } from '../reducers/types';
+import { Recipe, RecipeList } from '../reducers/types';
 import {RecipesActionType} from './ActionsTypes'
 
 export interface RecipesLoadingAction {
@@ -19,7 +19,12 @@ export interface RecipesFailAction {
 // }
 export interface RecipesGetAction {
   type: RecipesActionType.RECIPES_GET;
-  payload: any;
+  payload: RecipeList[];
 }
 
-export type RecipeActions = RecipesFailAction | RecipesLoadingAction | RecipesGetAction;
+export interface RecipesGetTopAction {
+  type: RecipesActionType.RECIPES_GET_TOP;
+  payload: RecipeList[];
+}
+
+export type RecipeActions = RecipesFailAction | RecipesLoadingAction | RecipesGetAction | RecipesGetTopAction;

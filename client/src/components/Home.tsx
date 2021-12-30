@@ -10,6 +10,10 @@ export default function Home() {
     (state: RootState) => state.storeRecipes.recipesList
   );
 
+  const topRecipesList = useSelector(
+    (state: RootState) => state.storeRecipes.topRecipesList
+  );
+
   return (
     <div>
       <div>
@@ -26,6 +30,7 @@ export default function Home() {
           <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
             Top Recipes
           </p>
+          <RecipesCardList recipesList={topRecipesList} />
         </div>
       </div>
     </div>
