@@ -107,7 +107,7 @@ export const BatchParams: React.FC = () => {
           <select
             {...register("style")}
             defaultValue="1. American Standard"
-            className="ml-4  bg-white border border-orange-200 text-gray-700 py-2 pl-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+            className="ml-4  bg-white border border-blueLight text-gray-700 py-2 pl-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
           >
             <option disabled>Select Style...</option>
             {beerStyles.map((el) => (
@@ -127,7 +127,7 @@ export const BatchParams: React.FC = () => {
               <select
                 {...register("sub_category")}
                 defaultValue="Select Category..."
-                className="ml-4 bg-white border border-orange-200 text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+                className="ml-4 bg-white border border-blueLight text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
               >
                 <option disabled>Select Category...</option>
                 {beerSubCategories[0].map((el) => (

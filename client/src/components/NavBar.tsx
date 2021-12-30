@@ -32,33 +32,63 @@ export const NavBar: React.FC<Props> = ({ route }) => {
       <div className="col-span-5 flex justify-start items-center  gap-10">
         {cookie && (
           <div className="">
-            <Link to="/home">
-              <p className="font-semibold">RECIPES</p>
-            </Link>
+            {route === "home" ? (
+              <Link to="/home">
+                <p className="font-semibold text-white border-b-2 border-blueLight">
+                  RECIPES
+                </p>
+              </Link>
+            ) : (
+              <Link to="/home">
+                <p className="font-semibold">RECIPES</p>
+              </Link>
+            )}
           </div>
         )}
 
         {cookie && (
           <div className="">
-            <Link to="/searchrecipes">
-              <p className="font-semibold">SEARCH</p>
-            </Link>
+            {route === "searchrecipes" ? (
+              <Link to="/searchrecipes">
+                <p className="font-semibold text-white border-b-2 border-blueLight">
+                  SEARCH
+                </p>
+              </Link>
+            ) : (
+              <Link to="/searchrecipes">
+                <p className="font-semibold">SEARCH</p>
+              </Link>
+            )}
           </div>
         )}
 
         {cookie && (
           <div className="">
-            <Link to="/myrecipes">
-              <p className="font-semibold">MY RECIPES</p>
-            </Link>
+            {route === "myrecipes" ? (
+              <Link to="/myrecipes">
+                <p className="font-semibold text-white border-b-2 border-blueLight">
+                  MY RECIPES
+                </p>
+              </Link>
+            ) : (
+              <Link to="/myrecipes">
+                <p className="font-semibold">MY RECIPES</p>
+              </Link>
+            )}
           </div>
         )}
 
         {cookie && (
           <div className="">
-            <Link to="/createrecipe">
-              <p className="font-semibold">ADD RECIPE</p>
-            </Link>
+            {route === "createrecipe" ? (
+              <Link to="/createrecipe">
+                <p className="font-semibold text-white border-b-2 border-blueLight">ADD RECIPE</p>
+              </Link>
+            ) : (
+              <Link to="/createrecipe">
+                <p className="font-semibold">ADD RECIPE</p>
+              </Link>
+            )}
           </div>
         )}
 
@@ -66,7 +96,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
           <div className="ml-auto ">
             <p
               onClick={logOut}
-              className=" cursor-pointer font-semibold"
+              className=" cursor-pointer font-semibold "
             >
               Log Out
             </p>
@@ -77,19 +107,14 @@ export const NavBar: React.FC<Props> = ({ route }) => {
           <>
             <div className="ml-auto">
               <Link to="/login">
-                <p
-                  onClick={logOut}
-                  className="cursor-pointer font-semibold"
-                >
+                <p onClick={logOut} className="cursor-pointer font-semibold">
                   Log In
                 </p>
               </Link>
             </div>
             <div>
               <Link to="/register">
-                <p className="cursor-pointer font-semibold">
-                  Register
-                </p>
+                <p className="cursor-pointer font-semibold">Register</p>
               </Link>
             </div>
           </>
