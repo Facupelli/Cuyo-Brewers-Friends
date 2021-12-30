@@ -24,8 +24,8 @@ export const ParametersDetail: React.FC<Props> = ({parameters, style}) => {
       } = parameters;
 
     return(
-        <div className="grid grid-cols-6 gap-2 p-4 border border-gray-800 rounded bg-orange-100">
-          <div className="col-span-6 border-b border-orange-500">
+        <div className="grid grid-cols-6 gap-2 p-4 border border-gray-800 rounded bg-blue-50">
+          <div className="col-span-6 border-b border-blueLight">
             <p className="text-gray-700 font-semibold">Beer Stats</p>
           </div>
 

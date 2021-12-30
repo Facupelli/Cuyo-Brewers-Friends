@@ -13,7 +13,7 @@ export const CommentList: React.FC<Props> = ({ reviews }) => {
         reviews.map((el) => (
           <div key={el._id} className="grid grid-cols-5 my-6">
             <div className="col-span-1 ">
-              <p className="text-orange-500 font-semibold text-xl mb-2">
+              <p className="text-blueLight font-semibold text-xl mb-2">
                 {el.username}
               </p>
 

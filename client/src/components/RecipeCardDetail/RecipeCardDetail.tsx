@@ -93,7 +93,7 @@ export const RecipeCardDetail: React.FC = () => {
 
       <div className="my-8 mx-24">
         <div className="py-4">
-          <p className="font-semibold text-4xl">{title}</p>
+          <p className="font-semibold text-4xl text-brown1">{title}</p>
         </div>
 
         <div className="grid grid-cols-5 gap-4 ">

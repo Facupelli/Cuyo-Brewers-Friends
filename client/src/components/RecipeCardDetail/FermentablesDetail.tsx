@@ -12,12 +12,12 @@ export const FermentablesDetail: React.FC<Props> = ({ fermentables }) => {
   }, 0);
 
   return (
-    <div>
-      <div className="pt-4 font-semibold text-2xl">
+    <div className="mb-6">
+      <div className="py-4 font-semibold text-2xl text-brown1">
         <p>Fermentables</p>
       </div>
 
-      <div className="grid grid-cols-4 py-4">
+      <div className="grid grid-cols-4 pb-4">
         <p className="col-span-1 font-semibold">Quantity kg</p>
         <p className="col-span-2 font-semibold">Fermentable</p>
         <p className="col-span-1 font-semibold">Bill</p>

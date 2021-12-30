@@ -13,12 +13,12 @@ export const HopsDetail: React.FC<Props> = ({ hops }) => {
 
 
   return (
-    <div>
-      <div className="pt-4 font-semibold text-2xl">
+    <div className="mb-6">
+      <div className="py-4 font-semibold text-2xl text-brown1">
         <p>Hops</p>
       </div>
 
-      <div className="grid grid-cols-7 py-4">
+      <div className="grid grid-cols-7 pb-4">
         <p className="col-span-1 font-semibold">Quantity g</p>
         <p className="col-span-1 font-semibold">Variety</p>
         <p className="col-span-1 font-semibold">AA</p>

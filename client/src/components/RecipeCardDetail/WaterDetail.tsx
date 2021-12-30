@@ -10,12 +10,12 @@ export const WaterDetail: React.FC<Props> = ({ water }) => {
   const { bicarbonate, calcium, chlorine, magnesium, sodium, sulfate } = water;
 
   return (
-    <div>
-      <div className="pt-4 font-semibold text-2xl">
+    <div className="mb-6">
+      <div className="py-4 font-semibold text-2xl text-brown1">
         <p>Water Chemistry</p>
       </div>
 
-      <div className="grid grid-cols-6 justify-items-center py-4 bg-orange-200">
+      <div className="grid grid-cols-6 justify-items-center py-4 bg-blue-200">
         <p className="col-span-1 font-semibold">Ca+2</p>
         <p className="col-span-1 font-semibold">Mg+2</p>
         <p className="col-span-1 font-semibold">Na+</p>
@@ -24,7 +24,7 @@ export const WaterDetail: React.FC<Props> = ({ water }) => {
         <p className="col-span-1 font-semibold">HCO3-</p>
       </div>
 
-      <div className="grid grid-cols-6 justify-items-center py-4 bg-orange-100">
+      <div className="grid grid-cols-6 justify-items-center py-4 bg-blue-100">
         <p className="col-span-1">{calcium}</p>
         <p className="col-span-1">{magnesium}</p>
         <p className="col-span-1">{sodium}</p>
