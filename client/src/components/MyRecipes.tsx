@@ -37,7 +37,7 @@ export const MyRecipes: React.FC = (z) => {
               </div>
               <div className="col-span-2 flex gap-4">
                 <p>{el.recipe.style.split(". ")[1]}</p>
-                <p className="font-semibold text-gray-600">
+                <p className="font-semibold text-blueDark">
                   {el.recipe.sub_category}
                 </p>
               </div>
