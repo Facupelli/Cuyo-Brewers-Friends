@@ -48,35 +48,35 @@ export const SearchRecipes: React.FC = () => {
       <div className="grid grid-cols-11  p-4 m-8">
         <div className="col-span-3 p-4 border-r border-blueDark bg-gray-200">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="grid grid-cols-2 mb-4">
+            <div className="grid grid-cols-3 items-center mb-4">
               <label className="col-span-1 text-brown1">Style</label>
-              <select {...register("sub_category")} autoComplete="on" className="col-span-1">
-                <option disabled>Style</option>
+              <select {...register("sub_category")} autoComplete="on" className="col-span-2 p-2 bg-white border border-blueLight text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-blueDark">
+                <option disabled>Style:</option>
                 {beerSubCategories.map(el => <option>{el}</option>)}
               </select>
             </div>
 
-            <div className="grid grid-cols-2 mb-4">
-              <label className="col-span-1 text-brown1">Beer Title</label>
+            <div className="grid grid-cols-2 items-center mb-4">
+              <label className="col-span-1 text-brown1">Beer Title:</label>
               <input
                 type="text"
                 {...register("beer_title")}
-                className="col-span-1"
+                className="col-span-1 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
 
-            <div className="grid grid-cols-2 mb-4">
-              <label className="col-span-1 text-brown1">Username</label>
+            <div className="grid grid-cols-2 items-center mb-4">
+              <label className="col-span-1 text-brown1">Username:</label>
               <input
                 type="text"
                 {...register("username")}
-                className="col-span-1"
+                className="col-span-1 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
 
-            <div className="flex gap-4">
-              <button type="submit">Search</button>
-              <p onClick={clean} className="cursor-pointer">
+            <div className="flex gap-4 mt-16 justify-center">
+              <button type="submit" className="cursor-pointer bg-transparent hover:bg-blueLight font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded">Search</button>
+              <p onClick={clean} className="cursor-pointer bg-transparent hover:bg-blueLight  font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded">
                 Clean
               </p>
             </div>
