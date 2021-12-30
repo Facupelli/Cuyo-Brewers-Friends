@@ -24,7 +24,10 @@ class RecipesController {
         filters.username = req.query.username;
       }
 
+      const top = req.query.top ? true : false;
+
       const { allRecipes, totalNumRecipes } = await Recipes.getRecipes({
+        top,
         filters,
         page,
         recipesPerPage,

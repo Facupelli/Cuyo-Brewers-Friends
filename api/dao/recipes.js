@@ -6,6 +6,7 @@ const ObjectId = mongodb.ObjectId;
 class Recipes {
   static async getRecipes({
     // we call this when we want a list of all recipes
+    top,
     filters = null,
     page = 0,
     recipesPerPage = 30, // options created, when call the method we can put filters, pages and perpage
@@ -25,23 +26,32 @@ class Recipes {
 
     let allRecipes;
     try {
+      const sortBy = top ? "-rating" : "-date";
+
+      const addRating = await recipeModel.updateMany({}, [
+        { $set: { rating: {$avg: "$reviewsScores"} } },
+      ]);
+
       allRecipes = await recipeModel
         .find(query)
+        .sort(sortBy)
         .limit(recipesPerPage)
         .populate("author", "_id name username")
         .populate("reviews", "_id score")
         .skip(recipesPerPage * page);
 
-      const reviews = allRecipes.forEach((el) => {
-        const reviewsLength = el.reviews.length
-        if(reviewsLength === 0){
-          el.rating = 0
-        }
-        if(reviewsLength > 0){
-          el.rating = el.reviews.map(el => el.score).reduce((a, b) => a + b) / reviewsLength;
-        }
-        
-      });
+
+      // const reviews = allRecipes.forEach((el) => {
+      //   const reviewsLength = el.reviews.length;
+      //   if (reviewsLength === 0) {
+      //     el.rating = 0;
+      //   }
+      //   if (reviewsLength > 0) {
+      //     el.rating =
+      //       el.reviews.map((el) => el.score).reduce((a, b) => a + b) /
+      //       reviewsLength;
+      //   }
+      // });
 
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`);

@@ -13,10 +13,20 @@ export default function Home() {
   return (
     <div>
       <div>
-        <NavBar route='home' />
+        <NavBar route="home" />
       </div>
-      <div>
-        <RecipesCardList recipesList={recipesList} />
+      <div className="grid grid-cols-2">
+        <div className="col-span-1 px-6">
+          <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
+            New Recipes
+          </p>
+          <RecipesCardList recipesList={recipesList} />
+        </div>
+        <div className="col-span-1">
+          <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
+            Top Recipes
+          </p>
+        </div>
       </div>
     </div>
   );

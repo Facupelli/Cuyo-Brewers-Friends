@@ -10,7 +10,7 @@ type Props = {
 export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
 
   return (
-    <div className="bg-gray-200  rounded m-2 p-6 w-1/2">
+    <div className="bg-gray-200  rounded m-2 p-6 ">
       <div>
         <div>
           <Link to={`/recipe/${id}`}>

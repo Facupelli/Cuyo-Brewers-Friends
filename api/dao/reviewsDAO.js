@@ -30,6 +30,10 @@ class ReviewsDAO {
         { _id: review.recipe_id },
         { $push: { reviews: response._id } }
       );
+      const addScoreToRecipe = await recipeModel.findOneAndUpdate(
+        { _id: review.recipe_id },
+        { $push: { reviewsScores: review.score } }
+      );
       const addReviewToUser = await userModel.findOneAndUpdate(
         { _id: userInfo.user_id },
         { $push: { ownReviews: review.recipe_id } }
