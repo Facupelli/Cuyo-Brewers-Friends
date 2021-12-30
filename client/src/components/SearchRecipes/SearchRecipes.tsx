@@ -45,7 +45,7 @@ export const SearchRecipes: React.FC = () => {
   return (
     <>
       <NavBar route="searchrecipes" />
-      <div className="grid grid-cols-11  p-4 m-8 gap-2">
+      <div className="grid grid-cols-11  p-4 m-8">
         <div className="col-span-3 p-4 border-r border-blueDark bg-gray-200">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-2 mb-4">

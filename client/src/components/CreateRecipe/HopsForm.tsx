@@ -26,14 +26,14 @@ export const HopsForm: React.FC<{}> = () => {
   };
 
   return (
-    <div className="m-8 p-4 bg-orange-100">
-      <div className="flex justify-center border-b-2 border-orange-300">
+    <div className="m-8 p-4 bg-gray-100">
+      <div className="flex justify-center border-b-2 border-blueLight">
         <p className="font-semibold text-2xl pb-4">Hops</p>
       </div>
       <div className="flex gap-8 pt-4">
         <p
           onClick={addHop}
-          className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-orange-500 hover:border-transparent rounded"
+          className="cursor-pointer bg-transparent hover:bg-blueLight text-brown1 font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded"
         >
           Add Hop +
         </p>
@@ -41,7 +41,7 @@ export const HopsForm: React.FC<{}> = () => {
         {count === 1 ? null : (
           <p
             onClick={deleteHop}
-            className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-orange-500 hover:border-transparent rounded"
+            className="cursor-pointer bg-transparent hover:bg-blueLight text-brown1 font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded"
           >
             Delete Last Hop -
           </p>
@@ -51,47 +51,50 @@ export const HopsForm: React.FC<{}> = () => {
       {/* --------------------- PRIMERA LINEA ---------------------------------------- */}
 
       {[...Array(count)].map((el, count) => (
-        <div key={count} className="p-4 mt-4 bg-orange-200">
-          <div className="flex gap-4 items-center">
-            <label className="my-2 text-gray-700 text-md font-semibold">
-              g
-            </label>
-            <Controller
-              name={`ingredients.hops[${count}].quantity`}
-              defaultValue={0}
-              control={control}
-              render={({ field }) => (
-                <input
-                  className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="0"
-                  {...field}
-                />
+        <div key={count} className="p-4 mt-4 bg-blue-100">
+          <div className="grid grid-cols-3 items-center">
+            <div className="col-span-1">
+              <label className="mr-6 text-gray-700 text-md font-semibold">
+                g
+              </label>
+              <Controller
+                name={`ingredients.hops[${count}].quantity`}
+                defaultValue={0}
+                control={control}
+                render={({ field }) => (
+                  <input
+                    className="p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="0"
+                    {...field}
+                  />
+                )}
+              />
+            </div>
+            <div className="col-span-2">
+              {hopsList && (
+                <select
+                  {...register(`ingredients.hops[${count}].name`)}
+                  defaultValue=""
+                  className="bg-white border w-full border-blue-200 text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                >
+                  {hopNames.map((el, i) => (
+                    <option key={i}>{el.name}</option>
+                  ))}
+                </select>
               )}
-            />
 
-            {hopsList && (
-              <select
-                {...register(`ingredients.hops[${count}].name`)}
-                defaultValue=""
-                className="bg-white border border-orange-200 text-gray-700 p-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
-              >
-                {hopNames.map((el, i) => (
-                  <option key={i}>{el.name}</option>
-                ))}
-              </select>
-            )}
-
-            {/* <div>
+              {/* <div>
               <label className="my-2 text-gray-700 text-md font-semibold">
                 AA
               </label>
             </div> */}
+            </div>
           </div>
 
           {/* ----------------------- SEGUNDA LINEA ----------------------------------------------- */}
 
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+          <div className="grid grid-cols-3 items-center gap-2">
+            <div className="col-span-1 items-center ">
               <label className=" text-gray-700 text-md font-semibold">
                 Time
               </label>
@@ -107,16 +110,15 @@ export const HopsForm: React.FC<{}> = () => {
                   />
                 )}
               />
-              <p className="text-xs">min (days for DH)</p>
             </div>
-            <div>
+            <div className="col-span-1">
               <select
                 {...register(`ingredients.hops[${count}].use`)}
                 defaultValue=""
-                className="bg-white border border-orange-200 text-gray-700 p-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+                className="bg-white border border-blue-200 text-gray-700 p-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
               >
                 <option disabled>Select Use</option>
-                <option >Boil</option>
+                <option>Boil</option>
                 <option>Dry Hop</option>
                 <option>First Wort Hop</option>
                 <option>Hop Stand</option>
@@ -124,8 +126,8 @@ export const HopsForm: React.FC<{}> = () => {
                 <option>Mash</option>
               </select>
             </div>
-            <div className="flex items-center gap-2">
-              <label>T°</label>
+            <div className="col-span-1 items-center">
+              <label>T° °C</label>
               <Controller
                 name={`ingredients.hops[${count}].temperature`}
                 defaultValue={0}
@@ -138,8 +140,8 @@ export const HopsForm: React.FC<{}> = () => {
                   />
                 )}
               />
-              <p>°C</p>
             </div>
+            <p className="text-xs text-gray-400">minutes (days for DH)</p>
           </div>
         </div>
       ))}

@@ -25,12 +25,14 @@ export const BatchParams: React.FC = () => {
     .map((el) => el.subcategories);
 
   return (
-    <div className="grid grid-cols-2 p-8">
-      <div className="grid-cols-1 flex flex-col p-4 bg-orange-100">
-        <div className="flex items-center gap-4 my-2">
+    <div className="grid grid-cols-2 border border-gray-200 m-4 p-4">
+      <div className="col-span-1 grid grid-cols-2 gap-4 p-4 bg-gray-100">
+        <div className="col-span-1 items-center">
           <label className="my-2 text-gray-700 text-md font-semibold">
-            Batch Size
+            Batch Size (L.)
           </label>
+        </div>
+        <div className="col-span-1">
           <Controller
             name="parameters.batch_size"
             control={control}
@@ -43,16 +45,17 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
-          <p className="text-gray-700 text-md font-semibold">L.</p>
           <span>
             {errors && errors.recipe?.parameters?.batch_size?.message}
           </span>
         </div>
 
-        <div className="flex items-center gap-4 my-2">
+        <div className="col-span-1 items-center">
           <label className="my-2 text-gray-700 text-md font-semibold">
-            Pre Boil Gravity
+            Pre Boil Gravity (L.)
           </label>
+        </div>
+        <div className="col-span-1">
           <Controller
             name="parameters.pre_boil_gravity"
             control={control}
@@ -65,16 +68,17 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
-          <p className="text-gray-700 text-md font-semibold">L.</p>
           <span>
             {errors && errors.recipe?.parameters?.pre_boil_gravity?.message}
           </span>
         </div>
 
-        <div className="flex items-center gap-4 my-2">
+        <div className="col-span-1 items-center">
           <label className="my-2 text-gray-700 text-md font-semibold">
-            Boil Time
+            Boil Time (min.)
           </label>
+        </div>
+        <div className="col-span-1">
           <Controller
             name="parameters.boil_time"
             control={control}
@@ -87,22 +91,23 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
-          <p className="text-gray-700 text-md font-semibold">min.</p>
+          <span>{errors && errors.recipe?.parameters?.boil_time?.message}</span>
         </div>
-        <span>{errors && errors.recipe?.parameters?.boil_time?.message}</span>
       </div>
 
       {/* ---------------------- SEGUNDA COLUMNA --------------------------------- */}
 
-      <div className="grid-cols-1 flex flex-col p-4 bg-orange-100">
-        <div className="flex items-center my-2">
+      <div className="col-span-1 grid grid-cols-2 gap-4 p-4 bg-gray-100">
+        <div className="col-span-1 items-center ">
           <label className="my-2 text-gray-700 text-md font-semibold">
             Style
           </label>
+        </div>
+        <div className="col-span-1">
           <select
             {...register("style")}
             defaultValue="1. American Standard"
-            className="ml-4  bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+            className="ml-4  bg-white border border-orange-200 text-gray-700 py-2 pl-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
           >
             <option disabled>Select Style...</option>
             {beerStyles.map((el) => (
@@ -111,31 +116,34 @@ export const BatchParams: React.FC = () => {
           </select>
         </div>
 
-        <div className="flex items-center my-2">
-          {styleSelected && (
-            <>
+        {styleSelected && (
+          <>
+            <div className="col-span-1 items-center my-2">
               <label className="my-2 text-gray-700 text-md font-semibold">
                 Sub Category
               </label>
-
+            </div>
+            <div className="col-span-1">
               <select
                 {...register("sub_category")}
                 defaultValue="Select Category..."
-                className="ml-4 bg-white border border-orange-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+                className="ml-4 bg-white border border-orange-200 text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
               >
                 <option disabled>Select Category...</option>
                 {beerSubCategories[0].map((el) => (
                   <option key={el.name}>{el.name}</option>
                 ))}
               </select>
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
 
-        <div className="flex items-center gap-4 my-2">
+        <div className="col-span-1 items-center gap-4 my-2">
           <label className="my-2 text-gray-700 text-md font-semibold">
-            Efficiency
+            Efficiency (%)
           </label>
+        </div>
+        <div className="col-span-1">
           <Controller
             name="parameters.efficiency"
             control={control}
@@ -148,16 +156,17 @@ export const BatchParams: React.FC = () => {
               />
             )}
           />
-          <p className="text-gray-700 text-md font-semibold">%</p>
           <span>
             {errors && errors.recipe?.parameters?.efficiency?.message}
           </span>
         </div>
 
-        <div className=" my-2">
+        <div className="col-span-1 my-2">
           <label className="my-2 text-gray-700 text-md font-semibold">
             Mash Ph
           </label>
+        </div>
+        <div className="col-span-1">
           <Controller
             name="parameters.mash_ph"
             control={control}

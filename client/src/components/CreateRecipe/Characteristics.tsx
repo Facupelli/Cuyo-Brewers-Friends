@@ -8,7 +8,7 @@ export const Characteristics: React.FC = () => {
   } = useFormContext();
 
   return (
-    <div className="grid-cols-2 flex gap-10 justify-center mx-8 p-6 bg-orange-100">
+    <div className="grid-cols-2 flex gap-10 justify-center mx-8 p-6 bg-gray-100">
       <div className="flex flex-col items-center gap-4">
         <label className="text-gray-700 text-md font-semibold ">
           Original Gravity

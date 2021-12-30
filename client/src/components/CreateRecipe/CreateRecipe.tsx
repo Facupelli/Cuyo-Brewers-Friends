@@ -135,13 +135,13 @@ export const CreateRecipe: React.FC<{}> = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gray-50">
       <NavBar route="createrecipe" />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
           {/* ------------    PART 1 ------------------------ */}
           <div className="mx-8 mt-8 flex justify-between ">
-            <p className="text-2xl">Editing Recipe</p>
+            <p className="text-2xl font-semibold text-brown1">Editing Recipe</p>
             <button
               type="submit"
               className="bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"

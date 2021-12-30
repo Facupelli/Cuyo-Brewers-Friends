@@ -8,7 +8,7 @@ export const TitleInfo: React.FC = () => {
   } = useFormContext();
 
   return (
-    <div className="flex mx-8 mt-8 gap-8 bg-orange-100">
+    <div className="flex mx-8 mt-8 gap-8 bg-gray-50">
       <div className="p-4">
         <label className="my-2 text-gray-700 text-md font-semibold">
           Title

@@ -15,23 +15,23 @@ export const MaltsForm: React.FC<{}> = () => {
   };
 
   return (
-    <div className="m-8 p-4 bg-orange-100">
-      <div  className="flex justify-center border-b-2 border-orange-300">
+    <div className="m-8 p-4 bg-gray-100">
+      <div  className="flex justify-center border-b-2 border-blueLight">
         <p className="font-semibold text-2xl pb-4">Fermentables</p>
       </div>
       <div className="flex gap-8 pt-4 ">
-        <p onClick={addMalt} className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-orange-500 hover:border-transparent rounded">
+        <p onClick={addMalt} className="cursor-pointer bg-transparent hover:bg-blue-500 text-brown1 font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded">
           Add Malt +
         </p>
         {count === 1 ? null : (
-          <p onClick={deleteMalt} className="cursor-pointer bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white p-2 border border-orange-500 hover:border-transparent rounded">
+          <p onClick={deleteMalt} className="cursor-pointer bg-transparent hover:bg-blue-500 text-brown1 font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded">
             Delete Last Malt -
           </p>
         )}
       </div>
 
       {[...Array(count)].map((el, count) => (
-        <div key={count} className="p-4 mt-4 bg-orange-200">
+        <div key={count} className="p-4 mt-4 bg-blue-100">
           {/* <div>
             {hopsList && (
               <select {...register("name")}>

@@ -6,12 +6,12 @@ export const WaterForm: React.FC<{}> = () => {
   const { control } = useFormContext();
 
   return (
-    <div className="mx-8 p-4 bg-orange-100">
+    <div className="mx-8 mb-6 p-4 bg-gray-100">
       
-      <div className="flex justify-center border-b-2 border-orange-300">
-        <p className="font-semibold text-2xl pb-4">Water Chemistry</p>
+      <div className="flex justify-center border-b-2 border-blueLight">
+        <p className=" font-semibold text-2xl pb-4">Water Chemistry</p>
       </div>
-      <div className="flex gap-6 p-6 justify-around bg-orange-200">
+      <div className="flex gap-6 mt-4 p-6 justify-around bg-blue-100">
         <div className="flex flex-col items-center gap-4">
           <label className="text-gray-700 text-md font-semibold ">Ca+2</label>
           <Controller
