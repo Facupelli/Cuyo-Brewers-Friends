@@ -1,11 +1,7 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import * as yup from "yup";
 import { RecipeList } from "../../redux/reducers/types";
-import {
-  useForm,
-  SubmitHandler,
-  FormProvider,
-} from "react-hook-form";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { HopsForm } from "./HopsForm";
 import { MaltsForm } from "./MaltsForm";
 import { WaterForm } from "./WaterForm";
@@ -57,66 +53,149 @@ import { getRecipes, getUserData } from "../../redux/action-creators";
 // };
 
 const schema = yup.object().shape({
-    title: yup.string().required().min(2).max(25),
-    style: yup.string().required().min(2).max(200),
-    sub_category: yup.string().required().min(2).max(25),
-    brewery: yup.string().min(0).max(50),
-    parameters: yup.object().shape({
-      boil_time: yup.number().typeError('Must be a number').required().positive().min(0).max(500),
-      batch_size: yup.number().typeError('Must be a number').required().positive().min(1).max(25),
-      // pre_boil_size: yup.number().typeError('Must be a number').required().positive().min(1).max(1000),
-      pre_boil_gravity: yup.number().typeError('Must be a number').required().positive().min(1).max(2000),
-      mash_ph: yup.number().typeError('Must be a number').required().positive().min(0).max(10),
-      efficiency: yup.number().typeError('Must be a number').required().positive().min(0).max(100),
+  title: yup.string().required().min(2).max(25),
+  style: yup.string().required().min(2).max(200),
+  sub_category: yup.string().required().min(2).max(25),
+  brewery: yup.string().min(0).max(50),
+  parameters: yup.object().shape({
+    boil_time: yup
+      .number()
+      .typeError("Must be a number")
+      .required()
+      .positive()
+      .min(0)
+      .max(500),
+    batch_size: yup
+      .number()
+      .typeError("Must be a number")
+      .required()
+      .positive()
+      .min(1)
+      .max(25),
+    // pre_boil_size: yup.number().typeError('Must be a number').required().positive().min(1).max(1000),
+    pre_boil_gravity: yup
+      .number()
+      .typeError("Must be a number")
+      .required()
+      .positive()
+      .min(1)
+      .max(2000),
+    mash_ph: yup
+      .number()
+      .typeError("Must be a number")
+      .required()
+      .positive()
+      .min(0)
+      .max(10),
+    efficiency: yup
+      .number()
+      .typeError("Must be a number")
+      .required()
+      .positive()
+      .min(0)
+      .max(100),
+  }),
+  characteristics: yup.object().shape({
+    original_gravity: yup
+      .number()
+      .typeError("Must be a number")
+      .positive()
+      .min(0)
+      .max(1200),
+    final_gravity: yup
+      .number()
+      .typeError("Must be a number")
+      .positive()
+      .min(0)
+      .max(1200),
+    alcohol_by_volume: yup
+      .number()
+      .typeError("Must be a number")
+      .positive()
+      .min(0)
+      .max(20),
+    ibu: yup.number().typeError("Must be a number").min(0).max(200),
+    srm: yup.number().typeError("Must be a number").min(0).max(100),
+  }),
+  ingredients: yup.object().shape({
+    fermentables: yup
+      .array()
+      .of(
+        yup
+          .object()
+          .shape({ name: yup.string(), quantity: yup.number().positive() })
+      ),
+    hops: yup.array().of(
+      yup.object().shape({
+        name: yup.string(),
+        quantity: yup.number().typeError("Must be a number").positive().min(1),
+        time: yup.number().typeError("Must be a number"),
+        use: yup.string(),
+        temperature: yup.number().typeError("Must be a number"),
+      })
+    ),
+    water_profile: yup.object().shape({
+      calcium: yup.number().typeError("Must be a number"),
+      magnesium: yup.number().typeError("Must be a number"),
+      sodium: yup.number().typeError("Must be a number"),
+      chlorine: yup.number().typeError("Must be a number"),
+      sulfate: yup.number().typeError("Must be a number"),
+      bicarbonate: yup.number().typeError("Must be a number"),
     }),
-    characteristics: yup.object().shape({
-      original_gravity: yup.number().typeError('Must be a number').positive().min(0).max(1200),
-      final_gravity: yup.number().typeError('Must be a number').positive().min(0).max(1200),
-      alcohol_by_volume: yup.number().typeError('Must be a number').positive().min(0).max(20),
-      ibu: yup.number().typeError('Must be a number').min(0).max(200),
-      srm: yup.number().typeError('Must be a number').min(0).max(100),
-    }),
-    ingredients: yup.object().shape({
-      fermentables: yup
-        .array()
-        .of(yup.object().shape({ name: yup.string(), quantity: yup.number().positive() })),
-      hops: yup
-        .array()
-        .of(
-          yup
-            .object()
-            .shape({
-              name: yup.string(),
-              quantity: yup.number().typeError('Must be a number').positive().min(1),
-              time: yup.number().typeError('Must be a number'),
-              use: yup.string(),
-              temperature: yup.number().typeError('Must be a number')
-            })
-        ),
-      water_profile: yup.object().shape({
-        calcium: yup.number().typeError('Must be a number'),
-        magnesium: yup.number().typeError('Must be a number'),
-        sodium: yup.number().typeError('Must be a number'),
-        chlorine: yup.number().typeError('Must be a number'),
-        sulfate: yup.number().typeError('Must be a number'),
-        bicarbonate: yup.number().typeError('Must be a number'),
-      }),
-    }),
+  }),
 });
 
 export const CreateRecipe: React.FC<{}> = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const username = useSelector((state:RootState) => state.storeUser.userData.username)
-  const user_id = useSelector((state:RootState) => state.storeUser.userData._id)
+  
 
-  const methods = useForm<RecipeList>({resolver: yupResolver(schema)});
 
-  const errors = methods.formState.errors
+  const username = useSelector(
+    (state: RootState) => state.storeUser.userData.username
+  );
+  const user_id = useSelector(
+    (state: RootState) => state.storeUser.userData._id
+  );
 
-  console.log('ERRORS', errors)
+  const methods = useForm<RecipeList>({ resolver: yupResolver(schema) });
 
-  const formSubmitHandler: SubmitHandler<RecipeList> = async (data: RecipeList) => {
+  const errors = methods.formState.errors;
+
+  console.log("ERRORS", errors);
+
+
+
+
+  // ------------------- MALTS STATE----------------------------
+  const [malts, setMalts] = useState<string[]>([]);
+
+  console.log(malts);
+
+  const handleMaltsChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setMalts([...malts, e.target.value]);
+  };
+  // -------------------------------------------
+  // ------------------- MALTS QTY STATE----------------------------
+  const [maltsQty, setMaltsQty] = useState<string[]>([]);
+
+  console.log(maltsQty);
+
+  const handleMaltsQtyChange = () => {
+    // setMaltsQty();
+  };
+
+  const maltQty = methods.watch('recipe.ingredients.fermentables.0.name')
+  console.log('QTY', maltQty)
+  // -------------------------------------------
+
+console.log('WATCH', methods.watch())
+
+
+
+  const formSubmitHandler: SubmitHandler<RecipeList> = async (
+    data: RecipeList
+  ) => {
     try {
       console.log("FORM DATA IS", data);
       const newRecipe = {
@@ -127,8 +206,8 @@ export const CreateRecipe: React.FC<{}> = () => {
       const response = await axios.post("/recipe", newRecipe);
       console.log("RESPONSE:", response);
       methods.reset();
-      dispatch(getRecipes())
-      dispatch(getUserData(user_id))
+      dispatch(getRecipes());
+      dispatch(getUserData(user_id));
     } catch (e) {
       console.log({ onSubmitError: e });
     }
@@ -149,7 +228,7 @@ export const CreateRecipe: React.FC<{}> = () => {
               SAVE
             </button>
           </div>
-          
+
           <TitleInfo />
 
           {/* -------------------    PARAMETERS ------------------------ */}
@@ -158,7 +237,7 @@ export const CreateRecipe: React.FC<{}> = () => {
 
           {/* --------------------    CHARACTERISTICS ------------------------ */}
 
-          <Characteristics />
+          <Characteristics malts={malts} />
 
           {/* ------------------------ INGREDIENTS ----------------------------- */}
 
@@ -168,7 +247,7 @@ export const CreateRecipe: React.FC<{}> = () => {
             </div>
 
             <div className="grid-cols-1">
-              <MaltsForm />
+              <MaltsForm handleMaltsChange={handleMaltsChange} handleMaltsQtyChange={handleMaltsQtyChange} />
             </div>
 
             <div className="grid-cols-1">

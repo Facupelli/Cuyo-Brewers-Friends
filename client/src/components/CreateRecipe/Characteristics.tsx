@@ -1,11 +1,17 @@
 import React from "react";
 import { useFormContext, Controller } from "react-hook-form";
 
-export const Characteristics: React.FC = () => {
+type Props = {
+  malts: string[]
+}
+
+export const Characteristics: React.FC<Props> = ({malts}) => {
   const {
     control,
     formState: { errors },
   } = useFormContext();
+
+  
 
   return (
     <div className="grid-cols-2 flex gap-10 justify-center mx-8 p-6 bg-gray-100">
@@ -13,7 +19,7 @@ export const Characteristics: React.FC = () => {
         <label className="text-gray-700 text-md font-semibold ">
           Original Gravity
         </label>
-        <Controller
+        {/* <Controller
           name={`characteristics.original_gravity`}
           defaultValue={0}
           control={control}
@@ -25,7 +31,8 @@ export const Characteristics: React.FC = () => {
             />
           )}
         />
-        <span>{errors && errors.recipe?.characteristics?.original_gravity?.message}</span>
+        <span>{errors && errors.recipe?.characteristics?.original_gravity?.message}</span> */}
+
       </div>
 
       <div className="flex flex-col items-center gap-4">
