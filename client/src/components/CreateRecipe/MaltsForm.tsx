@@ -16,19 +16,9 @@ export const MaltsForm: React.FC<Props> = ({
   handleMaltsChange,
   handleMaltsQtyChange,
 }) => {
-  const [count, setCount] = useState(1);
 
   const { control, register, watch } = useFormContext();
-  const { fields, append, remove } = useFieldArray({ control, name: "malt" });
-
-  const addMalt = () => {
-    setCount(count + 1);
-  };
-
-  const deleteMalt = () => {
-    setCount(count - 1);
-  };
-
+  const { fields, append, remove } = useFieldArray({ name: "ingredients.fermentables", control });
 
   return (
     <div className="m-8 p-4 bg-gray-100">
@@ -93,7 +83,7 @@ export const MaltsForm: React.FC<Props> = ({
             quantity: 0,
           })
         }
-        className="my-4 bg-transparent hover:bg-blue-500 text-brown1 font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded"
+        className="my-4 text-sm bg-transparent hover:bg-blue-500 text-brown1 font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded"
       >
         ADD MALT +
       </button>
