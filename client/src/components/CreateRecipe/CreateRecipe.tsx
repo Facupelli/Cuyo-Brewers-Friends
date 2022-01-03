@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import { RecipeList } from "../../redux/reducers/types";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
@@ -14,13 +14,7 @@ import { TitleInfo } from "./TItleInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import { getRecipes, getUserData } from "../../redux/action-creators";
-import { fermentables } from "../../media/beer_ingredients/fermentables";
 
-export type PotentialState = {
-  index: number;
-  potential: number;
-  quantity: number;
-};
 
 // const initialValues: Recipe = {
 //   _id: 0,

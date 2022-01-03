@@ -11,6 +11,6 @@ export const ogCalculator = (malts: Argument[]) => {
     console.log('maltsPerKgMA',maltsPerKg)
     const sumMaltsPerKg = maltsPerKg.reduce((acc, a) => acc + a, 0);
     console.log('SUMA',sumMaltsPerKg)
-    return sumMaltsPerKg.toFixed(2)
+    return sumMaltsPerKg
 
 }

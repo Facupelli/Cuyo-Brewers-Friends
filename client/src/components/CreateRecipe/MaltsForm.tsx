@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect } from "react";
+import React, {  useEffect } from "react";
 import { Controller, useFieldArray, useFormContext } from "react-hook-form";
 import { fermentables } from "../../media/beer_ingredients/fermentables";
 import { FaTrash } from "react-icons/fa";
@@ -27,7 +27,6 @@ export const MaltsForm: React.FC<Props> = ({ setOgPoints }) => {
 
   useEffect(() => {
     if (watchFieldArray) {
-      ogCalculator(watchFieldArray);
       setOgPoints(ogCalculator(watchFieldArray));
     }
   }, [watchFieldArray, setOgPoints]);

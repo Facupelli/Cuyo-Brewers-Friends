@@ -1,20 +1,21 @@
 import React from "react";
 import { useFormContext, Controller } from "react-hook-form";
-import { PotentialState } from "./CreateRecipe";
 
 type Props = {
   eff: number;
   ogPoints: number;
   batch_size: number;
-}
+};
 
-export const Characteristics: React.FC<Props> = ({eff, ogPoints, batch_size}) => {
+export const Characteristics: React.FC<Props> = ({
+  eff,
+  ogPoints,
+  batch_size,
+}) => {
   const {
     control,
     formState: { errors },
   } = useFormContext();
-
-  
 
   return (
     <div className="grid-cols-2 flex gap-10 justify-center mx-8 p-6 bg-gray-100">
@@ -35,8 +36,11 @@ export const Characteristics: React.FC<Props> = ({eff, ogPoints, batch_size}) =>
           )}
         />
         <span>{errors && errors.recipe?.characteristics?.original_gravity?.message}</span> */}
-        {eff && ogPoints && batch_size &&  <p>{((ogPoints * eff)/100) / (batch_size * 0.2641722)}</p> }
-
+        {eff && ogPoints && batch_size && (
+          <p className="text-blueLight font-semibold text-2xl">
+            {'1.0' + (((ogPoints * eff) / 100 ) / (batch_size * 0.2641722)).toFixed(0) }
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col items-center gap-4">
@@ -55,7 +59,9 @@ export const Characteristics: React.FC<Props> = ({eff, ogPoints, batch_size}) =>
             />
           )}
         />
-        <span>{errors && errors.recipe?.characteristics?.final_gravity?.message}</span>
+        <span>
+          {errors && errors.recipe?.characteristics?.final_gravity?.message}
+        </span>
       </div>
 
       <div className="flex flex-col items-center gap-4">
@@ -72,7 +78,9 @@ export const Characteristics: React.FC<Props> = ({eff, ogPoints, batch_size}) =>
             />
           )}
         />
-        <span>{errors && errors.recipe?.characteristics?.alcohol_by_volume?.message}</span>
+        <span>
+          {errors && errors.recipe?.characteristics?.alcohol_by_volume?.message}
+        </span>
       </div>
 
       <div className="flex flex-col items-center gap-4">

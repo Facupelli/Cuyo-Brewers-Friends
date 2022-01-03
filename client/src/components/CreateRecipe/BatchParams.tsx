@@ -23,8 +23,6 @@ export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
     styleSelectedAfter = styleSelected.split(". ")[1];
   }
 
-  const sub = watch("sub_category");
-
   const efficiency = watch('parameters.efficiency')
   const batch_size = watch('parameters.batch_size')
 
