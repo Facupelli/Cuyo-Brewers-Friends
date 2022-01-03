@@ -1,11 +1,9 @@
 import React from "react";
 import { useFormContext, Controller } from "react-hook-form";
+import { PotentialState } from "./CreateRecipe";
 
-type Props = {
-  malts: string[]
-}
 
-export const Characteristics: React.FC<Props> = ({malts}) => {
+export const Characteristics: React.FC = () => {
   const {
     control,
     formState: { errors },
@@ -32,6 +30,7 @@ export const Characteristics: React.FC<Props> = ({malts}) => {
           )}
         />
         <span>{errors && errors.recipe?.characteristics?.original_gravity?.message}</span> */}
+        {}
 
       </div>
 

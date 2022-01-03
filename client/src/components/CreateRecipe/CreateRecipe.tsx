@@ -14,6 +14,13 @@ import { TitleInfo } from "./TItleInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import { getRecipes, getUserData } from "../../redux/action-creators";
+import { fermentables } from "../../media/beer_ingredients/fermentables";
+
+export type PotentialState = {
+  index: number,
+  potential : number,
+  quantity: number,
+}
 
 // const initialValues: Recipe = {
 //   _id: 0,
@@ -148,9 +155,6 @@ const schema = yup.object().shape({
 export const CreateRecipe: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
-  
-
-
   const username = useSelector(
     (state: RootState) => state.storeUser.userData.username
   );
@@ -164,33 +168,13 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   console.log("ERRORS", errors);
 
-
-
-
   // ------------------- MALTS STATE----------------------------
-  const [malts, setMalts] = useState<string[]>([]);
 
-  console.log(malts);
 
-  const handleMaltsChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setMalts([...malts, e.target.value]);
-  };
-  // -------------------------------------------
-  // ------------------- MALTS QTY STATE----------------------------
-  const [maltsQty, setMaltsQty] = useState<string[]>([]);
+  
+  
 
-  console.log(maltsQty);
-
-  const handleMaltsQtyChange = () => {
-    // setMaltsQty();
-  };
-
-  const maltQty = methods.watch('recipe.ingredients.fermentables.0.name')
-  console.log('QTY', maltQty)
-  // -------------------------------------------
-
-console.log('WATCH', methods.watch())
-
+// console.log('WATCH', methods.watch())
 
 
   const formSubmitHandler: SubmitHandler<RecipeList> = async (
@@ -237,7 +221,7 @@ console.log('WATCH', methods.watch())
 
           {/* --------------------    CHARACTERISTICS ------------------------ */}
 
-          <Characteristics malts={malts} />
+          <Characteristics  />
 
           {/* ------------------------ INGREDIENTS ----------------------------- */}
 
@@ -247,7 +231,7 @@ console.log('WATCH', methods.watch())
             </div>
 
             <div className="grid-cols-1">
-              <MaltsForm handleMaltsChange={handleMaltsChange} handleMaltsQtyChange={handleMaltsQtyChange} />
+              <MaltsForm />
             </div>
 
             <div className="grid-cols-1">
