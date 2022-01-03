@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import * as yup from "yup";
 import { RecipeList } from "../../redux/reducers/types";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
@@ -17,10 +17,10 @@ import { getRecipes, getUserData } from "../../redux/action-creators";
 import { fermentables } from "../../media/beer_ingredients/fermentables";
 
 export type PotentialState = {
-  index: number,
-  potential : number,
-  quantity: number,
-}
+  index: number;
+  potential: number;
+  quantity: number;
+};
 
 // const initialValues: Recipe = {
 //   _id: 0,
@@ -170,12 +170,16 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   // ------------------- MALTS STATE----------------------------
 
+  const [ogPoints, setOgPoints] = useState<number>(0);
+  console.log("OGPOINTS", ogPoints);
 
-  
-  
+  const [eff, setEff] = useState<number>(70);
+  console.log("EFF", eff);
 
-// console.log('WATCH', methods.watch())
+  const [batch_size, setBatch_size] = useState<number>(20);
+  console.log('BATCH', batch_size)
 
+  // console.log('WATCH', methods.watch())
 
   const formSubmitHandler: SubmitHandler<RecipeList> = async (
     data: RecipeList
@@ -217,11 +221,11 @@ export const CreateRecipe: React.FC<{}> = () => {
 
           {/* -------------------    PARAMETERS ------------------------ */}
 
-          <BatchParams />
+          <BatchParams setEff={setEff} setBatch_size={setBatch_size} />
 
           {/* --------------------    CHARACTERISTICS ------------------------ */}
 
-          <Characteristics  />
+          <Characteristics  eff={eff} batch_size={batch_size} ogPoints={ogPoints} />
 
           {/* ------------------------ INGREDIENTS ----------------------------- */}
 
@@ -231,7 +235,7 @@ export const CreateRecipe: React.FC<{}> = () => {
             </div>
 
             <div className="grid-cols-1">
-              <MaltsForm />
+              <MaltsForm setOgPoints={setOgPoints} />
             </div>
 
             <div className="grid-cols-1">

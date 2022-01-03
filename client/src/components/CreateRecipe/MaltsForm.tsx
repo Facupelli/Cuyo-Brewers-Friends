@@ -4,7 +4,11 @@ import { fermentables } from "../../media/beer_ingredients/fermentables";
 import { FaTrash } from "react-icons/fa";
 import { ogCalculator } from "../../utils/OGCalculator";
 
-export const MaltsForm: React.FC = () => {
+type Props = {
+  setOgPoints: React.Dispatch<React.SetStateAction<any>>;
+};
+
+export const MaltsForm: React.FC<Props> = ({ setOgPoints }) => {
   const { control, register, watch } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: "ingredients.fermentables",
@@ -24,8 +28,9 @@ export const MaltsForm: React.FC = () => {
   useEffect(() => {
     if (watchFieldArray) {
       ogCalculator(watchFieldArray);
+      setOgPoints(ogCalculator(watchFieldArray));
     }
-  }, [watchFieldArray]);
+  }, [watchFieldArray, setOgPoints]);
 
   return (
     <div className="m-8 p-4 bg-gray-100">

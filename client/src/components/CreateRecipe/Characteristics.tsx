@@ -2,8 +2,13 @@ import React from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import { PotentialState } from "./CreateRecipe";
 
+type Props = {
+  eff: number;
+  ogPoints: number;
+  batch_size: number;
+}
 
-export const Characteristics: React.FC = () => {
+export const Characteristics: React.FC<Props> = ({eff, ogPoints, batch_size}) => {
   const {
     control,
     formState: { errors },
@@ -30,7 +35,7 @@ export const Characteristics: React.FC = () => {
           )}
         />
         <span>{errors && errors.recipe?.characteristics?.original_gravity?.message}</span> */}
-        {}
+        {eff && ogPoints && batch_size &&  <p>{((ogPoints * eff)/100) / (batch_size * 0.2641722)}</p> }
 
       </div>
 

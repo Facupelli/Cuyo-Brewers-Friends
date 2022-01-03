@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import bjcp from "bjcp";
 import { useFormContext, Controller } from "react-hook-form";
 
-export const BatchParams: React.FC = () => {
+type Props = {
+  setEff: React.Dispatch<React.SetStateAction<any>>;
+  setBatch_size: React.Dispatch<React.SetStateAction<any>>;
+}
+
+export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
   const {
     control,
     watch,
@@ -19,6 +24,17 @@ export const BatchParams: React.FC = () => {
   }
 
   const sub = watch("sub_category");
+
+  const efficiency = watch('parameters.efficiency')
+  const batch_size = watch('parameters.batch_size')
+
+  useEffect(() => {
+    setEff(efficiency)
+  }, [efficiency, setEff])
+
+  useEffect(() => {
+    setBatch_size(batch_size)
+  }, [batch_size, setBatch_size])
 
   const beerSubCategories = bjcp.beers
     .filter((el) => el.name === styleSelectedAfter)
