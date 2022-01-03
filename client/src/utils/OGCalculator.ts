@@ -24,3 +24,8 @@ export const srmCalculator = (malts: Argument[], batch_size: number) => {
   const sumMcu = mcu.reduce((acc, a) => acc + a, 0);
   return sumMcu;
 };
+
+export const srmToHex = (srm: string) => {
+   const color : string  = Math.round(Number(srm)).toString();
+   return color
+}

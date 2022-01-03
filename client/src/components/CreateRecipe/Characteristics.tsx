@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFormContext, Controller } from "react-hook-form";
+import { srmToHex } from "../../utils/OGCalculator";
 
 type Props = {
   eff: number;
@@ -14,7 +15,7 @@ export const Characteristics: React.FC<Props> = ({
   ogPoints,
   batch_size,
   yeastAtt,
-  mcu
+  mcu,
 }) => {
   const {
     control,
@@ -25,14 +26,25 @@ export const Characteristics: React.FC<Props> = ({
     "1.0" + ((ogPoints * eff) / 100 / (batch_size * 0.2641722)).toFixed(0)
   );
 
-  const finalGravity = Number((
-    originalGravity -
-    (originalGravity - 1) * (yeastAtt / 100)
-  ).toFixed(3));
+  const finalGravity = Number(
+    (originalGravity - (originalGravity - 1) * (yeastAtt / 100)).toFixed(3)
+  );
 
-  const abv = ((originalGravity - finalGravity) * 131.25).toFixed(2)
+  const abv = ((originalGravity - finalGravity) * 131.25).toFixed(2);
 
-  const srm = (1.4922 * (mcu * 0.6859)).toFixed(2)
+  const srm: string = (1.4922 * (mcu * 0.6859)).toFixed(1);
+
+  const [color, setColor] = useState<string>();
+
+  console.log("CODE", color);
+
+  useEffect(() => {
+    if (Number(srm) > 30) {
+      setColor("black");
+    } else {
+      setColor(srmToHex(srm));
+    }
+  }, [srm]);
 
   return (
     <div className="grid-cols-2 flex gap-10 justify-center mx-8 p-6 bg-gray-100">
@@ -140,9 +152,12 @@ export const Characteristics: React.FC<Props> = ({
           )}
         />
         <span>{errors && errors.recipe?.characteristics?.srm?.message}</span> */}
-         {srm && (
-          <p className="text-blueLight font-semibold text-3xl">{srm}</p>
-        )}
+        {srm && <p className="text-blueLight font-semibold text-3xl">{srm}</p>}
+      </div>
+
+      <div className="flex flex-col items-center gap-4">
+        <label className="text-gray-700 text-md font-semibold ">Color</label>
+        {srm && <div className={`p-4 bg-${color}`}></div>}
       </div>
     </div>
   );

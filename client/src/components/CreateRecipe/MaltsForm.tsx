@@ -38,7 +38,7 @@ export const MaltsForm: React.FC<Props> = ({
       setOgPoints(ogCalculator(maltSelected));
       setMcu(srmCalculator(maltSelected, batch_size));
     }
-  }, [maltSelected, setOgPoints]);
+  }, [maltSelected, setOgPoints, setMcu, batch_size]);
 
   return (
     <div className="m-8 p-4 bg-gray-100">
