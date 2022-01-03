@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent } from "react";
 import { Controller, useFieldArray, useFormContext } from "react-hook-form";
 import { fermentables } from "../../media/beer_ingredients/fermentables";
 import { FaTrash } from "react-icons/fa";
@@ -6,10 +6,6 @@ import { FaTrash } from "react-icons/fa";
 type Props = {
   handleMaltsChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   handleMaltsQtyChange: (e: ChangeEvent<HTMLInputElement>) => void;
-};
-
-type Malts = {
-  malt: { name: string; quantity: number }[];
 };
 
 export const MaltsForm: React.FC<Props> = ({
@@ -51,7 +47,7 @@ export const MaltsForm: React.FC<Props> = ({
               </label>
 
               <Controller
-              name={`ingredients.fermentables[${index}].quantity`}
+              name={`ingredients.fermentables[${index}].quantity` as const}
               defaultValue={0}
               control={control}
               render={({ field }) => (
