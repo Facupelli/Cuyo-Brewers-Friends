@@ -24,9 +24,25 @@ export const Characteristics: React.FC<Props> = ({
 
   //----------------- CHARACTERISTICS VALUES ---------------------------------
 
-  const originalGravity = Number(
-    "1.0" + ((ogPoints * eff) / 100 / (batch_size * 0.2641722)).toFixed(0)
-  );
+
+  const getOg = () => {
+    const originalGravity = Number(((ogPoints * eff) / 100 / (batch_size * 0.2641722)).toFixed(0))
+    
+    if( originalGravity >= 100){
+      return '1.' + originalGravity
+    }
+    if( originalGravity >= 10){
+      return '1.0' + originalGravity
+    }
+    if( originalGravity < 10){
+      return '1.00' + originalGravity
+    }
+    
+    
+  }
+
+  const originalGravity : number = Number(getOg())
+
 
   const finalGravity = Number(
     (originalGravity - (originalGravity - 1) * (yeastAtt / 100)).toFixed(3)
@@ -67,7 +83,7 @@ export const Characteristics: React.FC<Props> = ({
           )}
         />
         <span>{errors && errors.recipe?.characteristics?.original_gravity?.message}</span> */}
-        {eff && ogPoints && batch_size && originalGravity && (
+        {originalGravity && (
           <p className="text-blueLight font-semibold text-3xl">
             {originalGravity}
           </p>
