@@ -54,7 +54,11 @@ export const RecipeCardDetail: React.FC = () => {
         ingredients: {
           fermentables: [],
           hops: [{ name: "", quantity: 0, time: 0, use: "", temperature: 0 }],
-          yeast: [],
+          yeast: {
+            name:'',
+            quantity: 0,
+            attenuation: 75,
+          },
           water_profile: {
             calcium: 0,
             magnesium: 0,

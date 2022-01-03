@@ -5,17 +5,29 @@ type Props = {
   eff: number;
   ogPoints: number;
   batch_size: number;
+  yeastAtt: number;
 };
 
 export const Characteristics: React.FC<Props> = ({
   eff,
   ogPoints,
   batch_size,
+  yeastAtt,
 }) => {
   const {
     control,
     formState: { errors },
   } = useFormContext();
+
+  const originalGravity = Number(
+    "1.0" + ((ogPoints * eff) / 100 / (batch_size * 0.2641722)).toFixed(0)
+  );
+
+  const finalGravity = (
+    originalGravity -
+    (originalGravity - 1) * (yeastAtt / 100)
+  ).toFixed(3);
+  console.log("FG", finalGravity);
 
   return (
     <div className="grid-cols-2 flex gap-10 justify-center mx-8 p-6 bg-gray-100">
@@ -36,9 +48,9 @@ export const Characteristics: React.FC<Props> = ({
           )}
         />
         <span>{errors && errors.recipe?.characteristics?.original_gravity?.message}</span> */}
-        {eff && ogPoints && batch_size && (
-          <p className="text-blueLight font-semibold text-2xl">
-            {'1.0' + (((ogPoints * eff) / 100 ) / (batch_size * 0.2641722)).toFixed(0) }
+        {eff && ogPoints && batch_size && originalGravity && (
+          <p className="text-blueLight font-semibold text-3xl">
+            {originalGravity}
           </p>
         )}
       </div>
@@ -47,7 +59,7 @@ export const Characteristics: React.FC<Props> = ({
         <label className="text-gray-700 text-md font-semibold ">
           Final Gravity
         </label>
-        <Controller
+        {/* <Controller
           name={`characteristics.final_gravity`}
           defaultValue={0}
           control={control}
@@ -61,7 +73,12 @@ export const Characteristics: React.FC<Props> = ({
         />
         <span>
           {errors && errors.recipe?.characteristics?.final_gravity?.message}
-        </span>
+        </span> */}
+        {yeastAtt && finalGravity && (
+          <p className="text-blueLight font-semibold text-3xl">
+            {finalGravity}
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col items-center gap-4">

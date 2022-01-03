@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import { RecipeList } from "../../redux/reducers/types";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
+import axios from "axios";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/reducers/RootReducer";
+import { getRecipes, getUserData } from "../../redux/action-creators";
+//Components
+import { YeastForm } from "./YeastForm";
+import { TitleInfo } from "./TItleInfo";
+import { Characteristics } from "./Characteristics";
+import { NavBar } from "../NavBar";
 import { HopsForm } from "./HopsForm";
 import { MaltsForm } from "./MaltsForm";
 import { WaterForm } from "./WaterForm";
 import { BatchParams } from "./BatchParams";
-import axios from "axios";
-import { Characteristics } from "./Characteristics";
-import { NavBar } from "../NavBar";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { TitleInfo } from "./TItleInfo";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/RootReducer";
-import { getRecipes, getUserData } from "../../redux/action-creators";
 
 
 // const initialValues: Recipe = {
@@ -40,7 +42,7 @@ import { getRecipes, getUserData } from "../../redux/action-creators";
 //   ingredients: {
 //     fermentables: [],
 //     hops: [{ name: "", quantity: 0, boil_time: 0 }],
-//     yeast: [],
+//     yeast: {name: '', attenuation: 75, quantity: 0},
 //     water_profile: {
 //       calcium: 0,
 //       magnesium: 0,
@@ -135,6 +137,11 @@ const schema = yup.object().shape({
         temperature: yup.number().typeError("Must be a number"),
       })
     ),
+    yeast: yup.object().shape({
+      name: yup.string(),
+      attenuation: yup.number(),
+      quantity: yup.number(),
+    }),
     water_profile: yup.object().shape({
       calcium: yup.number().typeError("Must be a number"),
       magnesium: yup.number().typeError("Must be a number"),
@@ -162,7 +169,7 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   console.log("ERRORS", errors);
 
-  // ------------------- MALTS STATE----------------------------
+  // ------------------- OG STATE----------------------------
 
   const [ogPoints, setOgPoints] = useState<number>(0);
   console.log("OGPOINTS", ogPoints);
@@ -172,6 +179,13 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   const [batch_size, setBatch_size] = useState<number>(20);
   console.log('BATCH', batch_size)
+
+  //--------------------------------------------------------
+
+  //------------------ FG STATE ------------------------------
+
+  const [yeastAtt, setYeastAtt] = useState<number>(75)
+  console.log('ATT', yeastAtt)
 
   // console.log('WATCH', methods.watch())
 
@@ -219,7 +233,7 @@ export const CreateRecipe: React.FC<{}> = () => {
 
           {/* --------------------    CHARACTERISTICS ------------------------ */}
 
-          <Characteristics  eff={eff} batch_size={batch_size} ogPoints={ogPoints} />
+          <Characteristics  eff={eff} batch_size={batch_size} ogPoints={ogPoints} yeastAtt={yeastAtt} />
 
           {/* ------------------------ INGREDIENTS ----------------------------- */}
 
@@ -230,6 +244,10 @@ export const CreateRecipe: React.FC<{}> = () => {
 
             <div className="grid-cols-1">
               <MaltsForm setOgPoints={setOgPoints} />
+            </div>
+
+            <div className="grid-cols-1">
+              <YeastForm setYeastAtt={setYeastAtt} />
             </div>
 
             <div className="grid-cols-1">

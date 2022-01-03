@@ -37,10 +37,16 @@ export interface Fermentables {
   quantity: number;
 }
 
+export interface Yeast {
+  name: string;
+  attenuation: number;
+  quantity: number;
+}
+
 interface Ingredients {
   fermentables: Fermentables[];
   hops: Hops[];
-  yeast: [];
+  yeast: Yeast;
   water_profile: WaterProfile;
 }
 
