@@ -22,6 +22,8 @@ export const Characteristics: React.FC<Props> = ({
     formState: { errors },
   } = useFormContext();
 
+  //----------------- CHARACTERISTICS VALUES ---------------------------------
+
   const originalGravity = Number(
     "1.0" + ((ogPoints * eff) / 100 / (batch_size * 0.2641722)).toFixed(0)
   );
@@ -36,7 +38,7 @@ export const Characteristics: React.FC<Props> = ({
 
   const [color, setColor] = useState<string>();
 
-  console.log("CODE", color);
+  //---------------------------------------------------------------------------
 
   useEffect(() => {
     if (Number(srm) > 30) {

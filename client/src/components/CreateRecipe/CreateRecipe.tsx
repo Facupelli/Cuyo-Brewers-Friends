@@ -171,26 +171,20 @@ export const CreateRecipe: React.FC<{}> = () => {
   // ------------------- OG STATE----------------------------
 
   const [ogPoints, setOgPoints] = useState<number>(0);
-  console.log("OGPOINTS", ogPoints);
 
   const [eff, setEff] = useState<number>(70);
-  console.log("EFF", eff);
 
   const [batch_size, setBatch_size] = useState<number>(20);
-  console.log("BATCH", batch_size);
 
   //--------------------------------------------------------
 
   //------------------ FG STATE ------------------------------
 
   const [yeastAtt, setYeastAtt] = useState<number>(75);
-  console.log("ATT", yeastAtt);
 
-  //----------------------------------------------------
 
   // ----------------- SRM --------------------------
   const [mcu, setMcu] = useState<number>(0);
-  console.log("MCU", mcu);
 
   //----------------------------------------------
 

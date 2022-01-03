@@ -31,8 +31,6 @@ export const MaltsForm: React.FC<Props> = ({
     control,
   });
 
-  console.log("WATCH FIELD ARRAY", maltSelected);
-
   useEffect(() => {
     if (maltSelected) {
       setOgPoints(ogCalculator(maltSelected));
