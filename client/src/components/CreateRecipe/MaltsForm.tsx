@@ -1,5 +1,10 @@
-import React, {  useEffect } from "react";
-import { Controller, useFieldArray, useFormContext } from "react-hook-form";
+import React, { useEffect } from "react";
+import {
+  Controller,
+  useFieldArray,
+  useFormContext,
+  useWatch,
+} from "react-hook-form";
 import { fermentables } from "../../media/beer_ingredients/fermentables";
 import { FaTrash } from "react-icons/fa";
 import { ogCalculator } from "../../utils/OGCalculator";
@@ -9,27 +14,24 @@ type Props = {
 };
 
 export const MaltsForm: React.FC<Props> = ({ setOgPoints }) => {
-  const { control, register, watch } = useFormContext();
+  const { control, register } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: "ingredients.fermentables",
     control,
   });
 
-  const watchFieldArray = watch("ingredients.fermentables");
-  const controlledFields = fields.map((field, index) => {
-    return {
-      ...field,
-      ...watchFieldArray[index],
-    };
+  const maltSelected = useWatch({
+    name: "ingredients.fermentables",
+    control,
   });
 
-  console.log("WATCH FIELD ARRAY", watchFieldArray);
+  console.log("WATCH FIELD ARRAY", maltSelected);
 
   useEffect(() => {
-    if (watchFieldArray) {
-      setOgPoints(ogCalculator(watchFieldArray));
+    if (maltSelected) {
+      setOgPoints(ogCalculator(maltSelected));
     }
-  }, [watchFieldArray, setOgPoints]);
+  }, [maltSelected, setOgPoints]);
 
   return (
     <div className="m-8 p-4 bg-gray-100">
@@ -37,7 +39,7 @@ export const MaltsForm: React.FC<Props> = ({ setOgPoints }) => {
         <p className="font-semibold text-2xl pb-4">Fermentables</p>
       </div>
 
-      {controlledFields.map((field, index) => (
+      {fields.map((field, index) => (
         <div key={field.id}>
           <section key={field.id} className="bg-blue-100">
             <div className="grid grid-cols-3 items-center gap-4 p-4 mt-4 ">
