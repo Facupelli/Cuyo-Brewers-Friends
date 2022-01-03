@@ -17,7 +17,6 @@ import { MaltsForm } from "./MaltsForm";
 import { WaterForm } from "./WaterForm";
 import { BatchParams } from "./BatchParams";
 
-
 // const initialValues: Recipe = {
 //   _id: 0,
 //   title: "",
@@ -178,14 +177,22 @@ export const CreateRecipe: React.FC<{}> = () => {
   console.log("EFF", eff);
 
   const [batch_size, setBatch_size] = useState<number>(20);
-  console.log('BATCH', batch_size)
+  console.log("BATCH", batch_size);
 
   //--------------------------------------------------------
 
   //------------------ FG STATE ------------------------------
 
-  const [yeastAtt, setYeastAtt] = useState<number>(75)
-  console.log('ATT', yeastAtt)
+  const [yeastAtt, setYeastAtt] = useState<number>(75);
+  console.log("ATT", yeastAtt);
+
+  //----------------------------------------------------
+
+  // ----------------- SRM --------------------------
+  const [mcu, setMcu] = useState<number>(0);
+  console.log("MCU", mcu);
+
+  //----------------------------------------------
 
   // console.log('WATCH', methods.watch())
 
@@ -233,7 +240,13 @@ export const CreateRecipe: React.FC<{}> = () => {
 
           {/* --------------------    CHARACTERISTICS ------------------------ */}
 
-          <Characteristics  eff={eff} batch_size={batch_size} ogPoints={ogPoints} yeastAtt={yeastAtt} />
+          <Characteristics
+            eff={eff}
+            batch_size={batch_size}
+            ogPoints={ogPoints}
+            yeastAtt={yeastAtt}
+            mcu={mcu}
+          />
 
           {/* ------------------------ INGREDIENTS ----------------------------- */}
 
@@ -243,7 +256,11 @@ export const CreateRecipe: React.FC<{}> = () => {
             </div>
 
             <div className="grid-cols-1">
-              <MaltsForm setOgPoints={setOgPoints} />
+              <MaltsForm
+                setOgPoints={setOgPoints}
+                batch_size={batch_size}
+                setMcu={setMcu}
+              />
             </div>
 
             <div className="grid-cols-1">

@@ -7,13 +7,19 @@ import {
 } from "react-hook-form";
 import { fermentables } from "../../media/beer_ingredients/fermentables";
 import { FaTrash } from "react-icons/fa";
-import { ogCalculator } from "../../utils/OGCalculator";
+import { ogCalculator, srmCalculator } from "../../utils/OGCalculator";
 
 type Props = {
   setOgPoints: React.Dispatch<React.SetStateAction<any>>;
+  batch_size: number;
+  setMcu: React.Dispatch<React.SetStateAction<any>>;
 };
 
-export const MaltsForm: React.FC<Props> = ({ setOgPoints }) => {
+export const MaltsForm: React.FC<Props> = ({
+  setOgPoints,
+  batch_size,
+  setMcu,
+}) => {
   const { control, register } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: "ingredients.fermentables",
@@ -30,6 +36,7 @@ export const MaltsForm: React.FC<Props> = ({ setOgPoints }) => {
   useEffect(() => {
     if (maltSelected) {
       setOgPoints(ogCalculator(maltSelected));
+      setMcu(srmCalculator(maltSelected, batch_size));
     }
   }, [maltSelected, setOgPoints]);
 
@@ -54,7 +61,10 @@ export const MaltsForm: React.FC<Props> = ({ setOgPoints }) => {
               >
                 <option disabled>Select Malt</option>
                 {fermentables.map((el) => (
-                  <option key={el.name} value={el.name + "-" + el.potential}>
+                  <option
+                    key={el.name}
+                    value={el.name + "-" + el.potential + "-" + el.color}
+                  >
                     {el.name}
                   </option>
                 ))}
