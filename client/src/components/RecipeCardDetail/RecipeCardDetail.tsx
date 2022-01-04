@@ -13,6 +13,7 @@ import { UserData } from "./UserData";
 import { CommentList } from "./CommentList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
+import { YeastDetail } from "./YeastDetail";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -126,6 +127,8 @@ export const RecipeCardDetail: React.FC = () => {
         />
 
         <HopsDetail hops={recipeState.recipe.recipe.ingredients.hops} />
+
+        <YeastDetail yeast={recipeState.recipe.recipe.ingredients.yeast} />
 
         <div className="my-16">
           <p className="font-semibold text-xl">Reviews</p>

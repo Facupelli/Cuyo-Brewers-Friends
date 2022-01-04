@@ -31,7 +31,11 @@ const RecipeSchema = new mongoose.Schema({
     ingredients: {
       fermentables: { type: Array, default: [] },
       hops: { type: Array, default: [] },
-      yeast: { type: Array, default: [] },
+      yeast: { 
+        name: String,
+        quantity: Number,
+        attenuation: Number,
+      },
       water_profile: {
         calcium: Number,
         magnesium: Number,
