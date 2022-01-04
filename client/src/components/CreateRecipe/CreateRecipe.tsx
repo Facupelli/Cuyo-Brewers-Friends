@@ -163,25 +163,19 @@ export const CreateRecipe: React.FC<{}> = () => {
   );
 
   const methods = useForm<RecipeList>({ resolver: yupResolver(schema) });
-
   const errors = methods.formState.errors;
-
   console.log("ERRORS", errors);
 
   // ------------------- OG STATE----------------------------
-
   const [ogPoints, setOgPoints] = useState<number>(0);
 
   const [eff, setEff] = useState<number>(70);
 
   const [batch_size, setBatch_size] = useState<number>(20);
 
-  //--------------------------------------------------------
 
   //------------------ FG STATE ------------------------------
-
   const [yeastAtt, setYeastAtt] = useState<number>(75);
-
 
   // ----------------- SRM --------------------------
   const [mcu, setMcu] = useState<number>(0);

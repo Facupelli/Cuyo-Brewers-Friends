@@ -21,6 +21,7 @@ export const Characteristics: React.FC<Props> = ({
 }) => {
   const {
     control,
+    setValue,
     formState: { errors },
   } = useFormContext();
 
@@ -76,6 +77,13 @@ export const Characteristics: React.FC<Props> = ({
       setColor(srmToHex(srm));
     }
   }, [srm]);
+
+  useEffect(() => {
+    setValue('characteristics.original_gravity', originalGravity);
+    setValue('characteristics.final_gravity', finalGravity);
+    setValue('characteristics.alcohol_by_volume', abv);
+    setValue('characteristics.srm', srm);
+  },[originalGravity, finalGravity, abv, srm])
 
   return (
     <div className="mx-8 p-6 bg-gray-100">
