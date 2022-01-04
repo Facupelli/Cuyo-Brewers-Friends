@@ -8,6 +8,7 @@ import {
 import { fermentables } from "../../media/beer_ingredients/fermentables";
 import { FaTrash } from "react-icons/fa";
 import { ogCalculator, srmCalculator } from "../../utils/OGCalculator";
+import { GiWheat } from "react-icons/gi";
 
 type Props = {
   setOgPoints: React.Dispatch<React.SetStateAction<any>>;
@@ -40,8 +41,11 @@ export const MaltsForm: React.FC<Props> = ({
 
   return (
     <div className="m-8 p-4 bg-gray-100">
-      <div className="flex justify-center border-b-2 border-blueLight">
+      <div className="flex justify-center items-baseline gap-2 border-b-2 border-blueLight">
         <p className="font-semibold text-2xl pb-4">Fermentables</p>
+        <div className="text-2xl">
+          <GiWheat />
+        </div>
       </div>
 
       {fields.map((field, index) => (

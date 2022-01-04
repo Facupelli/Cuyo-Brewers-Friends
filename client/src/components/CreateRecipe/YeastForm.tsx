@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Controller, useFormContext } from "react-hook-form";
+import {FaMicroscope} from 'react-icons/fa'
 
 type Props = {
     setYeastAtt: React.Dispatch<React.SetStateAction<any>>;
@@ -16,8 +17,11 @@ export const YeastForm: React.FC<Props> = ({setYeastAtt}) => {
 
   return (
     <div className="m-8 p-4 bg-gray-100">
-      <div className="flex justify-center border-b-2 border-blueLight">
+      <div className="flex justify-center items-baseline gap-2 border-b-2 border-blueLight">
         <p className="font-semibold text-2xl pb-4">Yeast</p>
+        <div className="text-xl">
+            <FaMicroscope />
+        </div>
       </div>
       <div className="flex items-center my-4 gap-4">
         <label className="text-gray-700 text-md font-semibold ">Attenuation (%)</label>

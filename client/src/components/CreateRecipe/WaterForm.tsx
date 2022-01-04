@@ -1,5 +1,6 @@
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
+import {BiWater} from 'react-icons/bi'
 
 export const WaterForm: React.FC<{}> = () => {
 
@@ -8,8 +9,11 @@ export const WaterForm: React.FC<{}> = () => {
   return (
     <div className="mx-8 mb-6 p-4 bg-gray-100">
       
-      <div className="flex justify-center border-b-2 border-blueLight">
+      <div className="flex justify-center items-baseline gap-2 border-b-2 border-blueLight">
         <p className=" font-semibold text-2xl pb-4">Water Chemistry</p>
+        <div className="text-2xl">
+          <BiWater />
+        </div>
       </div>
       <div className="flex gap-6 mt-4 p-6 justify-around bg-blue-100">
         <div className="flex flex-col items-center gap-4">

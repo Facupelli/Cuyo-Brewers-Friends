@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormContext, Controller, useFieldArray } from "react-hook-form";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaLeaf } from "react-icons/fa";
 import { hopsList } from "../../media/beer_ingredients/hopsList";
 
 interface HopNames {
@@ -22,8 +22,11 @@ export const HopsForm: React.FC<{}> = () => {
 
   return (
     <div className="m-8 p-4 bg-gray-100">
-      <div className="flex justify-center border-b-2 border-blueLight">
+      <div className="flex justify-center items-baseline gap-2 border-b-2 border-blueLight">
         <p className="font-semibold text-2xl pb-4">Hops</p>
+        <div className="text-xl">
+          <FaLeaf />
+        </div>
       </div>
 
       {fields.map((field, index) => (
