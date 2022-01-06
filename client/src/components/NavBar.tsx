@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { setCookie } from "../redux/action-creators";
 import { RootState } from "../redux/reducers/RootReducer";
+import { FaSearch } from "react-icons/fa";
 
 type Props = {
   route: string;
@@ -50,13 +51,23 @@ export const NavBar: React.FC<Props> = ({ route }) => {
           <div className="">
             {route === "searchrecipes" ? (
               <Link to="/searchrecipes">
-                <p className="font-semibold text-white border-b-2 border-blueLight">
-                  SEARCH
-                </p>
+                <div className="flex items-center gap-2">
+                  <p className="font-semibold text-white border-b-2 border-blueLight">
+                    SEARCH
+                  </p>
+                  <div className="text-white">
+                    <FaSearch />
+                  </div>
+                </div>
               </Link>
             ) : (
               <Link to="/searchrecipes">
-                <p className="font-semibold">SEARCH</p>
+                <div className="flex items-center gap-2">
+                  <p className="font-semibold ">SEARCH</p>
+                  <div className="text-xs">
+                    <FaSearch />
+                  </div>
+                </div>
               </Link>
             )}
           </div>
@@ -82,7 +93,9 @@ export const NavBar: React.FC<Props> = ({ route }) => {
           <div className="">
             {route === "createrecipe" ? (
               <Link to="/createrecipe">
-                <p className="font-semibold text-white border-b-2 border-blueLight">ADD RECIPE</p>
+                <p className="font-semibold text-white border-b-2 border-blueLight">
+                  ADD RECIPE
+                </p>
               </Link>
             ) : (
               <Link to="/createrecipe">
@@ -94,10 +107,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
 
         {cookie && (
           <div className="ml-auto ">
-            <p
-              onClick={logOut}
-              className=" cursor-pointer font-semibold "
-            >
+            <p onClick={logOut} className=" cursor-pointer font-semibold ">
               Log Out
             </p>
           </div>

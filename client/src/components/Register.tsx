@@ -34,46 +34,83 @@ export const Register: React.FC = () => {
   console.log("ERRORS:", errors);
 
   const onSubmit = async (data: FormInputs) => {
-    try{
-      console.log(data)
-      const response = await axios.post('/register', data);
-      console.log('RESPONSE:', response)
+    try {
+      console.log(data);
+      const response = await axios.post("/register", data);
+      console.log("RESPONSE:", response);
       reset();
-      navigate('/home')
-    }catch(e){
-      console.log({onSubmitError: e})
+      navigate("/home");
+    } catch (e) {
+      console.log({ onSubmitError: e });
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <p>Register</p>
-      <input type="text" placeholder="name" {...register("name")} required />
-      <span>{errors && errors.name?.message}</span>
-      <input
-        type="text"
-        placeholder="lastname"
-        {...register("lastname")}
-        required
-      />
-      <span>{errors && errors.lastname?.message}</span>
-      <input type="text" placeholder="email" {...register("email")} required />
-      <span>{errors && errors.email?.message}</span>
-      <input
-        type="text"
-        placeholder="username"
-        {...register("username")}
-        required
-      />
-      <span>{errors && errors.username?.message}</span>
-      <input
-        type="password"
-        placeholder="password"
-        {...register("password")}
-        required
-      />
-      <span>{errors && errors.password?.message}</span>
-      <button type="submit">REGISTER</button>
-    </form>
+    <div className="fixed h-full w-full flex items-center justify-center ">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full max-w-md bg-white border border-blueLight hover:border-brown1 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
+        <div className="mb-4 text-center">
+          <p className="text-3xl text-brown1 font-semibold ">Register</p>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <input
+            className="appearance-none block shadow shadow-blue-600 w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            type="text"
+            placeholder="name"
+            {...register("name")}
+            required
+          />
+          <span>{errors && errors.name?.message}</span>
+
+          <input
+            className="appearance-none block shadow w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            type="text"
+            placeholder="lastname"
+            {...register("lastname")}
+            required
+          />
+          <span>{errors && errors.lastname?.message}</span>
+
+          <input
+            className="appearance-none block shadow w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            type="text"
+            placeholder="email"
+            {...register("email")}
+            required
+          />
+          <span>{errors && errors.email?.message}</span>
+
+          <input
+            className="appearance-none block shadow w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            type="text"
+            placeholder="username"
+            {...register("username")}
+            required
+          />
+          <span>{errors && errors.username?.message}</span>
+
+          <input
+            className="appearance-none block shadow w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            type="password"
+            placeholder="password"
+            {...register("password")}
+            required
+          />
+          <span>{errors && errors.password?.message}</span>
+        </div>
+
+        <div className="">
+          <button
+            type="submit"
+            className="p-2 mt-4 w-full text-white font-semibold  rounded bg-blue1 hover:bg-brown1"
+          >
+            REGISTER
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
