@@ -6,6 +6,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setCookie } from "../redux/action-creators";
 import { useNavigate } from "react-router-dom";
+import { FaArrowCircleLeft } from "react-icons/fa";
 
 interface FormInputs {
   email: string;
@@ -21,6 +22,10 @@ export const Login: React.FC = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   const {
     register,
@@ -50,43 +55,55 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="fixed h-full w-full flex items-center justify-center ">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-md bg-white border border-blueLight hover:border-brown1 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+    <div className="">
+      <div
+        className="text-3xl text-gray-300 cursor-pointer m-8"
+        onClick={handleGoBack}
       >
-        <div  className="mb-4 text-center">
-          <p className="text-3xl text-brown1 font-semibold ">Login</p>
-        </div>
+        <FaArrowCircleLeft />
+      </div>
+      <div className="fixed w-full flex items-center justify-center ">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full max-w-md bg-white border border-blueLight hover:border-brown1 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        >
+          <div className="mb-4 text-center">
+            <p className="text-3xl text-brown1 font-semibold ">Login</p>
+          </div>
 
-        <div className="flex flex-col gap-2">
-          <input
-            className="appearance-none block shadow shadow-blue-600 w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            {...register("email")}
-            type="text"
-            placeholder="email"
-            required
-          />
-          <span className="text-red-500">{errors && errors.email?.message}</span>
-          <input
-            className="appearance-none block shadow shadow-blue-600 w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            {...register("password")}
-            type="password"
-            placeholder="password"
-            required
-          />
-          <span className="text-red-500">{errors && errors.password?.message}</span>
-        </div>
+          <div className="flex flex-col gap-2">
+            <input
+              className="appearance-none block shadow shadow-blue-600 w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              {...register("email")}
+              type="text"
+              placeholder="email"
+              required
+            />
+            <span className="text-red-500">
+              {errors && errors.email?.message}
+            </span>
+            <input
+              className="appearance-none block shadow shadow-blue-600 w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              {...register("password")}
+              type="password"
+              placeholder="password"
+              required
+            />
+            <span className="text-red-500">
+              {errors && errors.password?.message}
+            </span>
+          </div>
 
-        <div>
-          <button
-            type="submit"
-            className="p-2 mt-4 w-full text-white font-semibold  rounded bg-blue1 hover:bg-brown1"
-          >
-            LOGIN
-          </button>
-        </div>
-      </form>
+          <div>
+            <button
+              type="submit"
+              className="p-2 mt-4 w-full text-white font-semibold  rounded bg-blue1 hover:bg-brown1"
+            >
+              LOGIN
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

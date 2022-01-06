@@ -31,7 +31,6 @@ export const NavBar: React.FC<Props> = ({ route }) => {
         </p>
       </div>
       <div className="col-span-5 flex justify-start items-center  gap-10">
-        {cookie && (
           <div className="">
             {route === "home" ? (
               <Link to="/home">
@@ -45,9 +44,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
               </Link>
             )}
           </div>
-        )}
 
-        {cookie && (
           <div className="">
             {route === "searchrecipes" ? (
               <Link to="/searchrecipes">
@@ -71,7 +68,6 @@ export const NavBar: React.FC<Props> = ({ route }) => {
               </Link>
             )}
           </div>
-        )}
 
         {cookie && (
           <div className="">
