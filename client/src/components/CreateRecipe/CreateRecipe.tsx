@@ -63,36 +63,36 @@ const schema = yup.object().shape({
     boil_time: yup
       .number()
       .typeError("Must be a number")
-      .required()
+      .required("Boil Time is required")
       .positive()
       .min(0)
       .max(500),
     batch_size: yup
       .number()
       .typeError("Must be a number")
-      .required()
+      .required("Batch Size is required")
       .positive()
       .min(1)
-      .max(25),
+      .max(5000),
     // pre_boil_size: yup.number().typeError('Must be a number').required().positive().min(1).max(1000),
     pre_boil_gravity: yup
       .number()
       .typeError("Must be a number")
-      .required()
+      .required("Pre Boil Gravity is required")
       .positive()
       .min(1)
       .max(2000),
     mash_ph: yup
       .number()
       .typeError("Must be a number")
-      .required()
+      .required("Mash Ph is required")
       .positive()
       .min(0)
       .max(10),
     efficiency: yup
       .number()
       .typeError("Must be a number")
-      .required()
+      .required("Efficiency is required")
       .positive()
       .min(0)
       .max(100),

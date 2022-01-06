@@ -5,9 +5,9 @@ import { useFormContext, Controller } from "react-hook-form";
 type Props = {
   setEff: React.Dispatch<React.SetStateAction<any>>;
   setBatch_size: React.Dispatch<React.SetStateAction<any>>;
-}
+};
 
-export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
+export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
   const {
     control,
     watch,
@@ -23,16 +23,16 @@ export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
     styleSelectedAfter = styleSelected.split(". ")[1];
   }
 
-  const efficiency = watch('parameters.efficiency')
-  const batch_size = watch('parameters.batch_size')
+  const efficiency = watch("parameters.efficiency");
+  const batch_size = watch("parameters.batch_size");
 
   useEffect(() => {
-    setEff(efficiency)
-  }, [efficiency, setEff])
+    setEff(efficiency);
+  }, [efficiency, setEff]);
 
   useEffect(() => {
-    setBatch_size(batch_size)
-  }, [batch_size, setBatch_size])
+    setBatch_size(batch_size);
+  }, [batch_size, setBatch_size]);
 
   const beerSubCategories = bjcp.beers
     .filter((el) => el.name === styleSelectedAfter)
@@ -54,14 +54,14 @@ export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
             render={({ field }) => (
               <input
                 placeholder="20"
-                className="ml-4 p-2  shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="p-2  shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}
           />
-          <span>
-            {errors && errors.recipe?.parameters?.batch_size?.message}
-          </span>
+          <div className="pt-4 text-orange-600 text-sm">
+            <span>{errors && errors.parameters?.batch_size?.message}</span>
+          </div>
         </div>
 
         <div className="col-span-1 items-center">
@@ -77,14 +77,16 @@ export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
             render={({ field }) => (
               <input
                 placeholder="30"
-                className="ml-4 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}
           />
-          <span>
-            {errors && errors.recipe?.parameters?.pre_boil_gravity?.message}
-          </span>
+          <div className="pt-4 text-orange-600 text-sm">
+            <span>
+              {errors && errors.parameters?.pre_boil_gravity?.message}
+            </span>
+          </div>
         </div>
 
         <div className="col-span-1 items-center">
@@ -100,12 +102,14 @@ export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
             render={({ field }) => (
               <input
                 placeholder="60"
-                className="ml-4 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}
           />
-          <span>{errors && errors.recipe?.parameters?.boil_time?.message}</span>
+          <div className="pt-4 text-orange-600 text-sm">
+            <span>{errors && errors.parameters?.boil_time?.message}</span>
+          </div>
         </div>
       </div>
 
@@ -121,7 +125,7 @@ export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
           <select
             {...register("style")}
             defaultValue="1. American Standard"
-            className="ml-4  bg-white border border-blueLight text-gray-700 py-2 pl-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+            className="  bg-white border border-blueLight text-gray-700 py-2 pl-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
           >
             <option disabled>Select Style...</option>
             {beerStyles.map((el) => (
@@ -141,7 +145,7 @@ export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
               <select
                 {...register("sub_category")}
                 defaultValue="Select Category..."
-                className="ml-4 bg-white border border-blueLight text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                className=" bg-white border border-blueLight text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
               >
                 <option disabled>Select Category...</option>
                 {beerSubCategories[0].map((el) => (
@@ -165,14 +169,14 @@ export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
             render={({ field }) => (
               <input
                 placeholder="70"
-                className="ml-4 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}
           />
-          <span>
-            {errors && errors.recipe?.parameters?.efficiency?.message}
-          </span>
+          <div className="pt-4 text-orange-600 text-sm">
+            <span>{errors && errors.parameters?.efficiency?.message}</span>
+          </div>
         </div>
 
         <div className="col-span-1 my-2">
@@ -188,12 +192,14 @@ export const BatchParams: React.FC<Props> = ({setEff, setBatch_size}) => {
             render={({ field }) => (
               <input
                 placeholder="5.4"
-                className="ml-4 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}
           />
-          <span>{errors && errors.recipe?.parameters?.mash_ph?.message}</span>
+          <div className="pt-4 text-orange-600 text-sm">
+            <span>{errors && errors.parameters?.mash_ph?.message}</span>
+          </div>
         </div>
       </div>
     </div>
