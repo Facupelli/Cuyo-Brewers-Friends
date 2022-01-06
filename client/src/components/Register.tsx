@@ -63,7 +63,7 @@ export const Register: React.FC = () => {
             {...register("name")}
             required
           />
-          <span>{errors && errors.name?.message}</span>
+          <span className="text-red-500">{errors && errors.name?.message}</span>
 
           <input
             className="appearance-none block shadow w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -72,7 +72,7 @@ export const Register: React.FC = () => {
             {...register("lastname")}
             required
           />
-          <span>{errors && errors.lastname?.message}</span>
+          <span className="text-red-500">{errors && errors.lastname?.message}</span>
 
           <input
             className="appearance-none block shadow w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -81,7 +81,7 @@ export const Register: React.FC = () => {
             {...register("email")}
             required
           />
-          <span>{errors && errors.email?.message}</span>
+          <span className="text-red-500">{errors && errors.email?.message}</span>
 
           <input
             className="appearance-none block shadow w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -90,7 +90,7 @@ export const Register: React.FC = () => {
             {...register("username")}
             required
           />
-          <span>{errors && errors.username?.message}</span>
+          <span className="text-red-500">{errors && errors.username?.message}</span>
 
           <input
             className="appearance-none block shadow w-full bg-blue-50 text-gray-700 border border-blue-50 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -99,7 +99,7 @@ export const Register: React.FC = () => {
             {...register("password")}
             required
           />
-          <span>{errors && errors.password?.message}</span>
+          <span className="text-red-500">{errors && errors.password?.message}</span>
         </div>
 
         <div className="">
