@@ -52,12 +52,13 @@ export const HopsForm: React.FC<{}> = () => {
                   )}
                 />
               </div>
-
+              
+              <div className="col-span-2 ">
               {hopsList && (
                 <select
                   {...register(`ingredients.hops[${index}].name`)}
                   defaultValue=""
-                  className="col-span-2 bg-white border w-full border-blue-200 text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  className=" bg-white border w-full border-blue-200 text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                 >
                   <option disabled>Select Hop</option>
                   {hopNames.map((el, i) => (
@@ -65,6 +66,7 @@ export const HopsForm: React.FC<{}> = () => {
                   ))}
                 </select>
               )}
+              </div>
 
               <button
                 type="button"
@@ -95,11 +97,12 @@ export const HopsForm: React.FC<{}> = () => {
                   )}
                 />
               </div>
-              <div className="col-span-2">
+
+              <div className="col-span-2 ">
                 <select
                   {...register(`ingredients.hops[${index}].use`)}
                   defaultValue=""
-                  className="bg-white border border-blue-200 text-gray-700 p-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  className="bg-white border ml-2 border-blue-200 text-gray-700 p-2  rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                 >
                   <option disabled>Select Use</option>
                   <option>Boil</option>
@@ -126,7 +129,7 @@ export const HopsForm: React.FC<{}> = () => {
                   )}
                 />
               </div>
-              <p className="text-xs text-gray-400 pb-2">minutes (days for DH)</p>
+              <p className="text-xs text-gray-400 pb-2 pl-2">minutes (days for DH)</p>
             </div>
           </section>
         </div>
