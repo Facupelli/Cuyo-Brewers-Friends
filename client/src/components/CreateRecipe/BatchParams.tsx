@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import bjcp from "bjcp";
 import { useFormContext, Controller } from "react-hook-form";
+import Select from "react-select";
 
 type Props = {
   setEff: React.Dispatch<React.SetStateAction<any>>;
@@ -15,13 +16,32 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
     formState: { errors },
   } = useFormContext();
 
-  const beerStyles = bjcp.beers.map((el) => `${el.number}. ${el.name}`);
+  type Options = {
+    value: string;
+    label: string;
+  };
+
+  // const getBeerStyles = () => {
+  //   const beerStyles = bjcp.beers.map((el) => ({
+  //     value: `${el.number}. ${el.name}`,
+  //     label: `${el.number}. ${el.name}`,
+  //   }));
+  //   return beerStyles;
+  // };
+
+  const beerStyles: Options[] = bjcp.beers.map((el) => ({
+    value: `${el.number}. ${el.name}`,
+    label: `${el.number}. ${el.name}`,
+  }));
+
   // const styleSelected = watch("style", "any").split(". ")[1];
-  let styleSelected = watch("style", "1. American Standard");
-  let styleSelectedAfter = "1. American Standard";
-  if (styleSelected !== undefined) {
-    styleSelectedAfter = styleSelected.split(". ")[1];
-  }
+
+  let styleSelected = watch("style", {
+    value: "1. American Standard",
+    label: "1. American Standard",
+  });
+
+  const styleSelectedAfter = styleSelected.label.split(". ")[1];
 
   const efficiency = watch("parameters.efficiency");
   const batch_size = watch("parameters.batch_size");
@@ -122,7 +142,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
           </label>
         </div>
         <div className="col-span-1">
-          <select
+          {/* <select
             {...register("style")}
             defaultValue="1. American Standard"
             className="  bg-white border border-blueLight text-gray-700 py-2 pl-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
@@ -131,7 +151,18 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             {beerStyles.map((el) => (
               <option key={el}>{el}</option>
             ))}
-          </select>
+          </select> */}
+          <Controller
+            control={control}
+            name="style"
+            defaultValue={{
+              name: "1. American Standard",
+              label: "1. American Standard",
+            }}
+            render={({ field: { onChange, value, name, ref } }) => (
+              <Select options={beerStyles} onChange={onChange} />
+            )}
+          />
         </div>
 
         {styleSelected && (
