@@ -2,15 +2,15 @@ const mongoose = require("mongoose");
 
 const RecipeSchema = new mongoose.Schema({
   username: String,
-  date: {type: String, default: Date.now},
+  date: { type: String, default: Date.now },
   // rating: { type: Number},
   // user_id: String,
   author: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel" },
   reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "ReviewModel" }],
-  reviewsScores: [{type: Number}],
+  reviewsScores: [{ type: Number }],
   recipe: {
     title: { type: String, index: true },
-    style: { type: String },
+    style: { value: String, label: String },
     sub_category: { type: String },
     brewery: { type: String, default: null },
     parameters: {
@@ -31,7 +31,7 @@ const RecipeSchema = new mongoose.Schema({
     ingredients: {
       fermentables: { type: Array, default: [] },
       hops: { type: Array, default: [] },
-      yeast: { 
+      yeast: {
         name: String,
         quantity: Number,
         attenuation: Number,

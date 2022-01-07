@@ -55,8 +55,11 @@ import { BatchParams } from "./BatchParams";
 // };
 
 const schema = yup.object().shape({
-  title: yup.string().required().min(2).max(25),
-  style: yup.string().required().min(2).max(200),
+  title: yup.string().required().min(2),
+  style: yup
+    .object()
+    .shape({ name: yup.string(), label: yup.string() })
+    .required(),
   sub_category: yup.string().required().min(2).max(25),
   brewery: yup.string().min(0).max(50),
   parameters: yup.object().shape({
@@ -120,16 +123,21 @@ const schema = yup.object().shape({
     srm: yup.number().typeError("Must be a number").min(0).max(100),
   }),
   ingredients: yup.object().shape({
-    fermentables: yup
-      .array()
-      .of(
-        yup
-          .object()
-          .shape({ name: yup.string(), quantity: yup.number().positive() })
-      ),
+    fermentables: yup.array().of(
+      yup.object().shape({
+        name: yup.object().shape({
+          name: yup.string(),
+          label: yup.string(),
+          color: yup.number(),
+          potential: yup.number(),
+          yield: yup.number(),
+        }),
+        quantity: yup.number().positive(),
+      })
+    ),
     hops: yup.array().of(
       yup.object().shape({
-        name: yup.string(),
+        name: yup.object().shape({ name: yup.string(), label: yup.string() }),
         quantity: yup.number().typeError("Must be a number").positive().min(1),
         time: yup.number().typeError("Must be a number"),
         use: yup.string(),
@@ -173,7 +181,6 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   const [batch_size, setBatch_size] = useState<number>(20);
 
-
   //------------------ FG STATE ------------------------------
   const [yeastAtt, setYeastAtt] = useState<number>(75);
 
@@ -182,7 +189,7 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   //----------------------------------------------
 
-  console.log('WATCH', methods.watch())
+  // console.log('WATCH', methods.watch())
 
   const formSubmitHandler: SubmitHandler<RecipeList> = async (
     data: RecipeList
@@ -196,7 +203,6 @@ export const CreateRecipe: React.FC<{}> = () => {
       };
       const response = await axios.post("/recipe", newRecipe);
       console.log("RESPONSE:", response);
-      methods.reset();
       dispatch(getRecipes());
       dispatch(getUserData(user_id));
     } catch (e) {

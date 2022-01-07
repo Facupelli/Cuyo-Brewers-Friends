@@ -41,7 +41,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
     label: "1. American Standard",
   });
 
-  const styleSelectedAfter = styleSelected.label.split(". ")[1];
+  // const styleSelectedAfter = styleSelected.label.split(". ")[1];
 
   const efficiency = watch("parameters.efficiency");
   const batch_size = watch("parameters.batch_size");
@@ -55,7 +55,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
   }, [batch_size, setBatch_size]);
 
   const beerSubCategories = bjcp.beers
-    .filter((el) => el.name === styleSelectedAfter)
+    .filter((el) => el.name === styleSelected.label?.split(". ")[1])
     .map((el) => el.subcategories);
 
   return (
