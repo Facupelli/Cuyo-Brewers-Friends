@@ -25,13 +25,13 @@ db.once("open", function () {
 
 app.listen(27017, async () => {
   try {
-    await reviewModel.deleteMany({}).then(() => console.log("previous reviews deleted"));
+    // await reviewModel.deleteMany({}).then(() => console.log("previous reviews deleted"));
 
-    await recipeModel
-      .deleteMany({})
-      .then(() => console.log("previous recipes deleted"));
+    // await recipeModel
+    //   .deleteMany({})
+    //   .then(() => console.log("previous recipes deleted"));
 
-    await loadRecipes().then(() => console.log("recipes loaded"));
+    // await loadRecipes().then(() => console.log("recipes loaded"));
 
     console.log("Server is running at port 27017");
   } catch (e) {

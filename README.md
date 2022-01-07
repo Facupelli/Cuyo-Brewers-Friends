@@ -28,3 +28,12 @@ You can create a recipe where the OG, FG, ABV and SRM are calculated automatical
 <img src="./images/my_recipes.png" alt="start_screen"/>
 
 You can see all your recipes.
+
+<img src='./images/recipe_detail1.png' alt="recipe_detail" >
+<img src='./images/recipe_detail2.png' alt="recipe_detail" >
+
+You can view the recipe detail, with all the parameters.
+
+<img src='./images/recipe_detail3.png' alt="recipe_detail" >
+
+You can rate it and post a comment.

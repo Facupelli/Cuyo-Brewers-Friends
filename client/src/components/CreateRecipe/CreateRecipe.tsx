@@ -182,7 +182,7 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   //----------------------------------------------
 
-  // console.log('WATCH', methods.watch())
+  console.log('WATCH', methods.watch())
 
   const formSubmitHandler: SubmitHandler<RecipeList> = async (
     data: RecipeList

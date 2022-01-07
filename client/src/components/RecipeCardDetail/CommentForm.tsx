@@ -8,7 +8,7 @@ import axios from "axios";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { getRecipeById } from "../../utils/recipesUtils";
 import { State } from "./RecipeCardDetail";
-import { getUserData } from "../../redux/action-creators";
+import { getTopRecipes, getUserData } from "../../redux/action-creators";
 
 interface FormInputs {
   score: number;
@@ -62,6 +62,7 @@ export const CommentForm: React.FC<Props> = ({
         .then((data) => setRecipeState({ recipe: data }))
         .catch((e) => console.log(e));
       dispatch(getUserData(userData._id));
+      dispatch(getTopRecipes());
       reset();
     } catch (e) {
       console.log({ onSubmitError: e });
