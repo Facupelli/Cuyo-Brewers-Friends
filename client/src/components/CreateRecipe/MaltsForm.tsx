@@ -9,6 +9,7 @@ import { fermentables } from "../../media/beer_ingredients/fermentables";
 import { FaTrash } from "react-icons/fa";
 import { ogCalculator, srmCalculator } from "../../utils/OGCalculator";
 import { GiWheat } from "react-icons/gi";
+import Select from "react-select";
 
 type Props = {
   setOgPoints: React.Dispatch<React.SetStateAction<any>>;
@@ -27,10 +28,20 @@ export const MaltsForm: React.FC<Props> = ({
     control,
   });
 
+  const fermentableOptions = fermentables.map((el) => ({
+    name: el.name,
+    label: el.name,
+    potential: el.potential,
+    color: el.color,
+    yield: el.yield,
+  }));
+
   const maltSelected = useWatch({
     name: "ingredients.fermentables",
     control,
   });
+
+  
 
   useEffect(() => {
     if (maltSelected) {
@@ -55,7 +66,7 @@ export const MaltsForm: React.FC<Props> = ({
               <label className="col-span-1  text-gray-700 text-md font-semibold">
                 Malt:
               </label>
-              <select
+              {/* <select
                 {...register(
                   `ingredients.fermentables[${index}].name` as const
                 )}
@@ -70,7 +81,19 @@ export const MaltsForm: React.FC<Props> = ({
                     {el.name}
                   </option>
                 ))}
-              </select>
+              </select> */}
+
+              <Controller
+                control={control}
+                name={`ingredients.fermentables[${index}].name`}
+                defaultValue={{
+                  name: "1. American Standard",
+                  label: "1. American Standard",
+                }}
+                render={({ field: { onChange, value, name, ref } }) => (
+                  <Select options={fermentableOptions} onChange={onChange} />
+                )}
+              />
 
               <label className="col-span-1 text-gray-700 text-md font-semibold">
                 Kg:

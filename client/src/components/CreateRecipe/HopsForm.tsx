@@ -2,6 +2,7 @@ import React from "react";
 import { useFormContext, Controller, useFieldArray } from "react-hook-form";
 import { FaTrash, FaLeaf } from "react-icons/fa";
 import { hopsList } from "../../media/beer_ingredients/hopsList";
+import Select from "react-select";
 
 interface HopNames {
   name: string;
@@ -17,6 +18,7 @@ export const HopsForm: React.FC<{}> = () => {
 
   const hopNames: HopNames[] = hopsList.map((el) => ({
     name: el.Name,
+    label: el.Name,
     id: el.Id,
   }));
 
@@ -52,20 +54,31 @@ export const HopsForm: React.FC<{}> = () => {
                   )}
                 />
               </div>
-              
+
               <div className="col-span-2 ">
-              {hopsList && (
-                <select
-                  {...register(`ingredients.hops[${index}].name`)}
-                  defaultValue=""
-                  className=" bg-white border w-full border-blue-200 text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-                >
-                  <option disabled>Select Hop</option>
-                  {hopNames.map((el, i) => (
-                    <option key={i}>{el.name}</option>
-                  ))}
-                </select>
-              )}
+                {hopsList && (
+                  // <select
+                  //   {...register(`ingredients.hops[${index}].name`)}
+                  //   defaultValue=""
+                  //   className=" bg-white border w-full border-blue-200 text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  // >
+                  //   <option disabled>Select Hop</option>
+                  //   {hopNames.map((el, i) => (
+                  //     <option key={i}>{el.name}</option>
+                  //   ))}
+                  // </select>
+                  <Controller
+                    control={control}
+                    name={`ingredients.hops[${index}].name`}
+                    defaultValue={{
+                      name: "1. American Standard",
+                      label: "1. American Standard",
+                    }}
+                    render={({ field: { onChange, value, name, ref } }) => (
+                      <Select options={hopNames} onChange={onChange} />
+                    )}
+                  />
+                )}
               </div>
 
               <button
@@ -129,7 +142,9 @@ export const HopsForm: React.FC<{}> = () => {
                   )}
                 />
               </div>
-              <p className="text-xs text-gray-400 pb-2 pl-2">minutes (days for DH)</p>
+              <p className="text-xs text-gray-400 pb-2 pl-2">
+                minutes (days for DH)
+              </p>
             </div>
           </section>
         </div>
