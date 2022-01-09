@@ -16,6 +16,7 @@ export const HopsForm: React.FC<{}> = () => {
     control,
   });
 
+  console.log(hopsList)
   const hopNames: HopNames[] = hopsList.map((el) => ({
     name: el.Name,
     label: el.Name,
