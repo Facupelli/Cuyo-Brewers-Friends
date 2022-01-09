@@ -100,7 +100,16 @@ class Recipes {
 
       // return await recipes.insertOne(reviewDoc);
     } catch (e) {
-      console.error(`Unable to post review: ${e}`);
+      console.error(`Unable to post recipe: ${e}`);
+      return { error: e };
+    }
+  }
+
+  static async deleteRecipe(id){
+    try{
+      const deleteOne = await recipeModel.deleteOne({id: id})
+    }catch(e){
+      console.error(`Unable to delete recipe: ${e}`);
       return { error: e };
     }
   }

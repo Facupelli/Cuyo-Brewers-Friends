@@ -1,9 +1,9 @@
 const { ObjectId } = require("mongodb");
 const Recipes = require("../dao/recipes.js");
 const { recipeModel } = require("../models/recipe");
-const dayjs =  require ('dayjs');
-var customParseFormat = require('dayjs/plugin/customParseFormat')
-dayjs.extend(customParseFormat)
+const dayjs = require("dayjs");
+var customParseFormat = require("dayjs/plugin/customParseFormat");
+dayjs.extend(customParseFormat);
 
 class RecipesController {
   static async getRecipes(req, res, next) {
@@ -50,16 +50,16 @@ class RecipesController {
     try {
       const { id } = req.params;
 
-      const recipe = await Recipes.getRecipeById(id)
+      const recipe = await Recipes.getRecipeById(id);
 
-      if(!recipe){
-        res.status(404).json({error: "Not found !recipe"})
-        return
+      if (!recipe) {
+        res.status(404).json({ error: "Not found !recipe" });
+        return;
       }
 
       res.json(recipe);
     } catch (e) {
-      console.log(`api, ${e}`)
+      console.log(`api, ${e}`);
       res.status(500).json({ error: e.message });
     }
   }
@@ -71,10 +71,22 @@ class RecipesController {
         username: req.body.username,
         _id: req.body.user_id,
       };
-      const date = dayjs().format('DD/MM/YYYY');
+      const date = dayjs().format("DD/MM/YYYY");
 
       const ReviewResponse = await Recipes.addRecipe(recipe, userInfo, date);
       res.json({ status: "success" });
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
+
+  static async deleteRecipe(req, res, next) {
+    try {
+
+      const {id} = req.query
+      const deleteRecipe = await Recipes.deleteRecipe(id)
+
+      res.json({status: "success"})
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
