@@ -26,7 +26,7 @@ export const FermentablesDetail: React.FC<Props> = ({ fermentables }) => {
       {fermentables.map((el, i) => (
         <div key={i} className="grid grid-cols-4 py-2">
           <p className="col-span-1">{el.quantity}</p>
-          <p className="col-span-2">{el.name.split('-')[0]}</p>
+          <p className="col-span-2">{el.name.name}</p>
           <p className="col-span-1">{(el.quantity / bill * 100).toFixed(1)}%</p>
         </div>
       ))}

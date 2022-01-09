@@ -1,6 +1,6 @@
 export interface Parameters {
   boil_time: number;
-  batch_size:number;
+  batch_size: number;
   pre_boil_size: number;
   pre_boil_gravity: number;
   mash_ph: number;
@@ -15,25 +15,38 @@ export interface Characteristics {
   srm: number;
 }
 
-  export interface WaterProfile {
-    calcium: number;
-    magnesium: number;
-    sodium: number;
-    chlorine: number;
-    sulfate: number;
-    bicarbonate: number;
-  }
+export interface WaterProfile {
+  calcium: number;
+  magnesium: number;
+  sodium: number;
+  chlorine: number;
+  sulfate: number;
+  bicarbonate: number;
+}
 
-export interface Hops {
+export interface HopsName {
+  id: number;
+  label: string;
   name: string;
+}
+export interface Hops {
+  name: HopsName;
   quantity: number;
   use: string;
   time: number;
   temperature: number;
 }
 
-export interface Fermentables {
+export interface FermentablesName {
   name: string;
+  label: string;
+  color: number;
+  potential: number;
+  yield: number;
+}
+
+export interface Fermentables {
+  name: FermentablesName;
   quantity: number;
 }
 
@@ -58,9 +71,14 @@ export interface Review {
   date: string;
 }
 
+export interface Style {
+  label: string;
+  value: string;
+}
+
 export interface Recipe {
   title: string;
-  style: string;
+  style: Style;
   sub_category: string;
   brewery: string;
   parameters: Parameters;
@@ -78,10 +96,7 @@ export interface RecipeList {
   reviews: Review[];
 }
 
-
-
 // USER REDUCER ----------------------
-
 
 export interface UserData {
   _id: string;

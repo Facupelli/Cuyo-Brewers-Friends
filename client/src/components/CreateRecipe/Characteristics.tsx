@@ -83,7 +83,7 @@ export const Characteristics: React.FC<Props> = ({
     setValue('characteristics.final_gravity', finalGravity);
     setValue('characteristics.alcohol_by_volume', abv);
     setValue('characteristics.srm', srm);
-  },[originalGravity, finalGravity, abv, srm])
+  },[setValue, originalGravity, finalGravity, abv, srm])
 
   return (
     <div className="mx-8 p-6 bg-gray-100">

@@ -31,7 +31,7 @@ export const HopsDetail: React.FC<Props> = ({ hops }) => {
       {hops.map((el, i) => (
         <div key={i} className="grid grid-cols-7 py-2">
           <p className="col-span-1">{el.quantity}</p>
-          <p className="col-span-1">{el.name}</p>
+          <p className="col-span-1">{el.name.name}</p>
           <p className="col-span-1">-</p>
           <p className="col-span-1">{el.use}</p>
           <p className="col-span-1">{el.time}</p>

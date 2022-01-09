@@ -23,8 +23,6 @@ export interface State {
   recipe: RecipeList;
 }
 
-
-
 export const RecipeCardDetail: React.FC = () => {
   const { id } = useParams<RecipeCardDetailParams>();
 
@@ -34,7 +32,10 @@ export const RecipeCardDetail: React.FC = () => {
     recipe: {
       recipe: {
         title: "",
-        style: "",
+        style: {
+          value: "",
+          label: "",
+        },
         sub_category: "",
         brewery: "",
         parameters: {
@@ -54,9 +55,17 @@ export const RecipeCardDetail: React.FC = () => {
         },
         ingredients: {
           fermentables: [],
-          hops: [{ name: "", quantity: 0, time: 0, use: "", temperature: 0 }],
+          hops: [
+            {
+              name: { name: "", label: "", id: 0 },
+              quantity: 0,
+              time: 0,
+              use: "",
+              temperature: 0,
+            },
+          ],
           yeast: {
-            name:'',
+            name: "",
             quantity: 0,
             attenuation: 75,
           },
@@ -75,11 +84,11 @@ export const RecipeCardDetail: React.FC = () => {
       author: "",
       _id: "",
       date: "",
-      reviews:[],
+      reviews: [],
     },
   });
 
-  console.log('RECIPE', recipeState)
+  console.log("RECIPE", recipeState);
 
   useEffect(() => {
     getRecipeById(id)
@@ -90,7 +99,8 @@ export const RecipeCardDetail: React.FC = () => {
   const { title, sub_category }: { title: string; sub_category: string } =
     recipeState.recipe.recipe;
   const { mash_ph }: { mash_ph: number } = recipeState.recipe.recipe.parameters;
-  const { username, reviews }: { username: string, reviews: Review[] } = recipeState.recipe;
+  const { username, reviews }: { username: string; reviews: Review[] } =
+    recipeState.recipe;
 
   return (
     <>
@@ -133,10 +143,10 @@ export const RecipeCardDetail: React.FC = () => {
         <div className="my-16">
           <p className="font-semibold text-xl">Reviews</p>
           {username === userData.username ? null : (
-            <CommentForm recipe_id={id} setRecipeState={setRecipeState}/>
+            <CommentForm recipe_id={id} setRecipeState={setRecipeState} />
           )}
 
-          <CommentList reviews={reviews}  />
+          <CommentList reviews={reviews} />
         </div>
       </div>
     </>

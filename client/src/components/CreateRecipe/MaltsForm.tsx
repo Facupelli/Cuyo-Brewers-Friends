@@ -22,7 +22,7 @@ export const MaltsForm: React.FC<Props> = ({
   batch_size,
   setMcu,
 }) => {
-  const { control, register } = useFormContext();
+  const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: "ingredients.fermentables",
     control,

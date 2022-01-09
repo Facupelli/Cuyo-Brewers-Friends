@@ -18,7 +18,7 @@ export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
           </Link>
         </div>
         <div className="flex items-baseline gap-2">
-          <p className="text-brownLight text-sm ">{recipe.style.split(". ")[1]}</p>
+          <p className="text-brownLight text-sm ">{recipe.style.label}</p>
           <p className="text-gray-900">{recipe.sub_category}</p>
         </div>
       </div>
