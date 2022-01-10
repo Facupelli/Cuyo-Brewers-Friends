@@ -1,18 +1,18 @@
 # Cuyo-Brewers-Friends
 
-currently working on this project.
+I'am currently working on this project.
 
-Is a "social network" for home brewers in Argentina, where you can create and post recipes and rate them. Inspired by brewersfriend.com
+### Is a "social network" for home brewers in Argentina, where you can create and post recipes and rate them. Inspired by brewersfriend.com
 
-Im using mongoDb with mongoose
-Node.js, express
-React-redux with typescript
+Im using mongoDB with mongoose, Node.js and express for the backend.
+And React-redux with typescript for the frontend.
 
 The styles applied are just provisional.
 
-<img src="./images/home.png" alt="start_screen"/>
 
-So far, you con register and log in or log out.
+So far, you con register a user and log in or log out.
+
+<img src="./images/home.png" alt="start_screen"/>
 
 You can view the top rated recipes and the newest as well.
 
