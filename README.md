@@ -11,32 +11,36 @@ and React-redux with typescript for the frontend among others.
 
 <br></br>
 
-So far, you con register a user and log in or log out.
+So far, you can register with a user and log in or log out.
+You can view the top rated recipes and the newest as well.
 
 <img src="./images/home.png" alt="start_screen"/>
 
-You can view the top rated recipes and the newest as well.
+<br></br>
+You can search for a recipe by title, username or beer style.
 
 <img src="./images/search.png" alt="start_screen"/>
 <img src='./images/search2.png' alt="start_screen">
 
-You can search for a recipe by title, username or beer style.
+<br></br>
+You can create a recipe where the OG, FG, ABV and SRM are calculated automatically in real time.
 
 <img src="./images/add_recipe1.png" alt="start_screen"/>
 <img src="./images/add_recipe2.png" alt="start_screen"/>
 <img src='./images/add_recipe3.png' alt="start_screen">
 
-You can create a recipe where the OG, FG, ABV and SRM are calculated automatically in real time.
+<br></br>
+You can see all your recipes.
 
 <img src="./images/my_recipes.png" alt="start_screen"/>
 
-You can see all your recipes.
+<br></br>
+You can view the recipe detail, with all the parameters.
 
 <img src='./images/recipe_detail1.png' alt="recipe_detail" >
 <img src='./images/recipe_detail2.png' alt="recipe_detail" >
 
-You can view the recipe detail, with all the parameters.
+<br></br>
+You can rate it and post a comment.
 
 <img src='./images/recipe_detail3.png' alt="recipe_detail" >
-
-You can rate it and post a comment.
