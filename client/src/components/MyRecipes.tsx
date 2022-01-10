@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUserData } from "../redux/action-creators";
 import { RootState } from "../redux/reducers/RootReducer";
 import { NavBar } from "./NavBar";
 

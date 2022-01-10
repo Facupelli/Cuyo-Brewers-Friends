@@ -83,7 +83,7 @@ export const SearchRecipes: React.FC = () => {
           </form>
         </div>
 
-        <div className="col-span-8 px-4 bg-gray-100">
+        <div className="col-span-8 p-4 bg-gray-100">
           <SearchRecipesTable recipes={recipes} />
         </div>
 

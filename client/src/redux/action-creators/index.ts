@@ -34,6 +34,9 @@ export const getRecipes =
         if (filters.beer_title) {
           res = await axios.get<any>(`/recipe?title=${filters.beer_title}`);
         }
+        if (filters.sub_category) {
+          res = await axios.get<any>(`/recipe?sub_category=${filters.sub_category}`);
+        }
       }
       if (!filters) {
         res = await axios.get<any>("/recipe");

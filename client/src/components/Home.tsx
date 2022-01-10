@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/reducers/RootReducer";
 import { NavBar } from "./NavBar";
 import { RecipesCardList } from "./RecipesCardList";
-import { FaLongArrowAltUp, FaArrowUp } from "react-icons/fa";
+import { FaLongArrowAltUp } from "react-icons/fa";
 import { MdAutorenew } from "react-icons/md";
 
 export default function Home() {

@@ -183,8 +183,8 @@ const DeleteModal: React.FC<Props> = ({ setModal, id }) => {
 
   const userId = localStorage.getItem("userId");
 
-  const handleDelete = () => {
-    const deleteRecipe = axios.delete(`/recipe?id=${id}`);
+  const handleDelete = async() => {
+    await axios.delete(`/recipe?id=${id}`);
     setModal(false);
     dispatch(getUserData(userId));
     navigate("/myrecipes");
