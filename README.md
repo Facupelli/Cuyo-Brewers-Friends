@@ -9,6 +9,8 @@ and React-redux with typescript for the frontend among others.
 
 ### The styles applied are just provisional.
 
+<br></br>
+
 So far, you con register a user and log in or log out.
 
 <img src="./images/home.png" alt="start_screen"/>
@@ -16,11 +18,13 @@ So far, you con register a user and log in or log out.
 You can view the top rated recipes and the newest as well.
 
 <img src="./images/search.png" alt="start_screen"/>
+<img src='./images/search2.png' alt="start_screen">
 
-You can search for a recipe by title or user.
+You can search for a recipe by title, username or beer style.
 
 <img src="./images/add_recipe1.png" alt="start_screen"/>
 <img src="./images/add_recipe2.png" alt="start_screen"/>
+<img src='./images/add_recipe3.png' alt="start_screen">
 
 You can create a recipe where the OG, FG, ABV and SRM are calculated automatically in real time.
 

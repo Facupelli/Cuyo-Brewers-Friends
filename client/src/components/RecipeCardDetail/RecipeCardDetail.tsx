@@ -17,7 +17,7 @@ import { HopsDetail } from "./HopsDetail";
 import { WaterDetail } from "./WaterDetail";
 import { CommentForm } from "./CommentForm";
 import { UserData } from "./UserData";
-import { getUserData } from "../../redux/action-creators";
+import { getRecipes, getUserData } from "../../redux/action-creators";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -195,6 +195,7 @@ const DeleteModal: React.FC<Props> = ({ setModal, id }) => {
     await axios.delete(`/recipe?id=${id}`);
     setModal(false);
     dispatch(getUserData(userId));
+    dispatch(getRecipes());
     navigate("/myrecipes");
   };
 
