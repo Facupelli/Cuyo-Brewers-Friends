@@ -29,7 +29,7 @@ export const MyRecipes: React.FC = (z) => {
             Created
           </p>
         </div>
-        {ownRecipes &&
+        {ownRecipes.length > 0 ? (
           ownRecipes.map((el) => (
             <div
               key={el._id}
@@ -56,7 +56,15 @@ export const MyRecipes: React.FC = (z) => {
               <p className="col-span-1">{el.recipe.characteristics.srm}</p>
               <p className="col-span-1">{el.date}</p>
             </div>
-          ))}
+          ))
+        ) : (
+          <div className="py-8 m-8">
+            <p className=" text-xl font-semibold">
+              You have not created any recipe yet!
+            </p>
+            <p>Go to ADD RECIPE to create your first recipe.</p>
+          </div>
+        )}
       </div>
     </>
   );
