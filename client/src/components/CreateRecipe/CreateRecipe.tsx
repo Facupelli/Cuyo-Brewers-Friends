@@ -246,15 +246,15 @@ export const CreateRecipe: React.FC<{}> = () => {
 
           <div className="grid grid-cols-2">
             <div className="grid-cols-1">
-              <HopsForm />
-            </div>
-
-            <div className="grid-cols-1">
               <MaltsForm
                 setOgPoints={setOgPoints}
                 batch_size={batch_size}
                 setMcu={setMcu}
               />
+            </div>
+
+            <div className="grid-cols-1">
+              <HopsForm />
             </div>
 
             <div className="grid-cols-1">

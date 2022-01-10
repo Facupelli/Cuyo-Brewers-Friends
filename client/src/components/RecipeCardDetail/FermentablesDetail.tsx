@@ -31,7 +31,7 @@ export const FermentablesDetail: React.FC<Props> = ({ fermentables }) => {
         </div>
       ))}
 
-      <p className="font-semibold">{bill} kg</p>
+      <p className="font-semibold">{bill.toFixed(2)} kg</p>
     </div>
   );
 };
