@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,6 +7,10 @@ import { useDispatch } from "react-redux";
 import { setCookie } from "../redux/action-creators";
 import { useNavigate } from "react-router-dom";
 import { FaArrowCircleLeft } from "react-icons/fa";
+
+type serverError = {
+  error: string;
+};
 
 interface FormInputs {
   email: string;
@@ -20,8 +24,9 @@ const schema = yup.object().shape({
 
 export const Login: React.FC = () => {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+
+  const [serverResponse, setServerResponse] = useState<any>();
 
   const handleGoBack = () => {
     navigate(-1);
@@ -50,6 +55,7 @@ export const Login: React.FC = () => {
     } catch (e: unknown) {
       if (axios.isAxiosError(e)) {
         console.log("SERVER RESPONSE", e.response?.data);
+        setServerResponse(e.response?.data);
       }
     }
   };
@@ -91,6 +97,7 @@ export const Login: React.FC = () => {
             />
             <span className="text-red-500">
               {errors && errors.password?.message}
+              {serverResponse && serverResponse.error}
             </span>
           </div>
 
