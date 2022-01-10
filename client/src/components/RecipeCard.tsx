@@ -10,7 +10,7 @@ type Props = {
 export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
 
   return (
-    <div className="bg-gray-200  rounded m-2 p-6 ">
+    <div className="bg-gray-200  rounded m-2 p-3 md:p-6">
       <div>
         <div>
           <Link to={`/recipe/${id}`}>
@@ -23,7 +23,7 @@ export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
         </div>
       </div>
 
-      <div className="flex justify-start gap-6">
+      <div className="flex flex-wrap justify-start gap-6">
         <div className="flex items-center gap-2">
           <p className="text-brown1">OG:</p>
           <p>{recipe.characteristics.original_gravity}</p>

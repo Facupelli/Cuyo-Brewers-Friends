@@ -17,12 +17,12 @@ export default function Home() {
   );
 
   return (
-    <div >
+    <div className="">
       <div>
         <NavBar route="home" />
       </div>
-      <div className="grid grid-cols-2 mb-12 mt-6">
-        <div className="col-span-1 px-6">
+      <div className="grid grid-cols-2 md:mb-12 lg:mt-6">
+        <div className="col-span-2 md:col-span-1 px-6">
           <div className="flex items-center gap-2">
             <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
               New Recipes
@@ -33,7 +33,7 @@ export default function Home() {
           </div>
           <RecipesCardList recipesList={recipesList} />
         </div>
-        <div className="col-span-1 px-6">
+        <div className="col-span-2 lg:col-span-1 px-6">
           <div className="flex items-center gap-2">
             <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
               Top Recipes
