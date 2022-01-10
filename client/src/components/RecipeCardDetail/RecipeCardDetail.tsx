@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getRecipeById } from "../../utils/recipesUtils";
 import { RecipeList, Review } from "../../redux/reducers/types";
+import { MdDelete } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/reducers/RootReducer";
+import axios from "axios";
+//Components
+import { YeastDetail } from "./YeastDetail";
+import { CommentList } from "./CommentList";
 import { NavBar } from "../NavBar";
 import { CharacteristicsDetail } from "./CharacteristicsDetail";
 import { ParametersDetail } from "./ParametersDetail";
@@ -10,10 +17,7 @@ import { HopsDetail } from "./HopsDetail";
 import { WaterDetail } from "./WaterDetail";
 import { CommentForm } from "./CommentForm";
 import { UserData } from "./UserData";
-import { CommentList } from "./CommentList";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/RootReducer";
-import { YeastDetail } from "./YeastDetail";
+import { getUserData } from "../../redux/action-creators";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -102,13 +106,24 @@ export const RecipeCardDetail: React.FC = () => {
   const { username, reviews }: { username: string; reviews: Review[] } =
     recipeState.recipe;
 
+  const [modal, setModal] = useState(false);
+
+  const handleDeleteModal = () => {
+    setModal(true);
+  };
   return (
     <>
       <NavBar route="recipeDetail" />
 
       <div className="my-8 mx-24">
-        <div className="py-4">
+        <div className="flex items-center py-4">
           <p className="font-semibold text-4xl text-brown1">{title}</p>
+          <div
+            onClick={handleDeleteModal}
+            className="cursor-pointer ml-auto text-brown1 text-4xl"
+          >
+            <MdDelete />
+          </div>
         </div>
 
         <div className="grid grid-cols-5 gap-4 ">
@@ -149,6 +164,62 @@ export const RecipeCardDetail: React.FC = () => {
           <CommentList reviews={reviews} />
         </div>
       </div>
+
+      {modal && <DeleteModal setModal={setModal} id={id} />}
     </>
+  );
+};
+
+//------------------------------ DELETE MODAL ----------------------------------------------
+
+type Props = {
+  setModal: React.Dispatch<React.SetStateAction<any>>;
+  id: unknown;
+};
+
+const DeleteModal: React.FC<Props> = ({ setModal, id }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const userId = localStorage.getItem("userId");
+
+  const handleDelete = () => {
+    const deleteRecipe = axios.delete(`/recipe?id=${id}`);
+    setModal(false);
+    dispatch(getUserData(userId));
+    navigate("/myrecipes");
+  };
+
+  const handleCloseModal = () => {
+    setModal(false);
+  };
+  return (
+    <div className="overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 flex justify-center items-center md:inset-0 h-modal sm:h-full">
+      <div className="relative px-4 w-full max-w-lg h-full md:h-auto">
+        <div className="relative bg-white rounded-lg shadow-lg">
+          <div className="border rounded-lg p-6 space-y-6">
+            <div className="flex justify-center">
+              <p className="text-lg font-semibold">
+                Are you sure you want to delete this recipe?
+              </p>
+            </div>
+            <div className="flex justify-evenly">
+              <button
+                onClick={handleDelete}
+                className="bg-blue-200 rounded px-2 "
+              >
+                YES
+              </button>
+              <button
+                onClick={handleCloseModal}
+                className="bg-red-200 rounded px-2 "
+              >
+                NO
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };

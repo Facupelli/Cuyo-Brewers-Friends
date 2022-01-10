@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getUserData } from "../redux/action-creators";
 import { RootState } from "../redux/reducers/RootReducer";
 import { NavBar } from "./NavBar";
 
@@ -18,11 +19,15 @@ export const MyRecipes: React.FC = (z) => {
         <div className="grid grid-cols-9 m-4 px-4 ">
           <p className="col-span-2 font-semibold text-sm text-brown1">Recipe</p>
           <p className="col-span-2 font-semibold text-sm text-brown1">Style</p>
-          <p className="col-span-1 font-semibold text-sm text-brown1">Batch Size</p>
+          <p className="col-span-1 font-semibold text-sm text-brown1">
+            Batch Size
+          </p>
           <p className="col-span-1 font-semibold text-sm text-brown1">ABV</p>
           <p className="col-span-1 font-semibold text-sm text-brown1">IBU</p>
           <p className="col-span-1 font-semibold text-sm text-brown1">SRM</p>
-          <p className="col-span-1 font-semibold text-sm text-brown1">Created</p>
+          <p className="col-span-1 font-semibold text-sm text-brown1">
+            Created
+          </p>
         </div>
         {ownRecipes &&
           ownRecipes.map((el) => (
