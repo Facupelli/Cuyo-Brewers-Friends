@@ -2,13 +2,12 @@
 
 I'am currently working on this project.
 
-### Is a "social network" for home brewers in Argentina, where you can create and post recipes and rate them. Inspired by brewersfriend.com
+## Is a "social network" for home brewers in Argentina, where you can create and post recipes and rate them. Inspired by brewersfriend.com
 
-Im using mongoDB with mongoose, Node.js and express for the backend.
-And React-redux with typescript for the frontend.
+Im using mongoDB with mongoose, Node.js and express for the backend,
+and React-redux with typescript for the frontend among others.
 
-The styles applied are just provisional.
-
+### The styles applied are just provisional.
 
 So far, you con register a user and log in or log out.
 

@@ -32,6 +32,12 @@ export const RecipeCardDetail: React.FC = () => {
 
   const userData = useSelector((state: RootState) => state.storeUser.userData);
 
+  const isMyRecipe = () => {
+    const is = userData.ownRecipes.filter((el) => el._id === id);
+    if (is.length === 1) return true;
+    else return false;
+  };
+
   const [recipeState, setRecipeState] = useState<State>({
     recipe: {
       recipe: {
@@ -118,12 +124,14 @@ export const RecipeCardDetail: React.FC = () => {
       <div className="my-8 mx-24">
         <div className="flex items-center py-4">
           <p className="font-semibold text-4xl text-brown1">{title}</p>
-          <div
-            onClick={handleDeleteModal}
-            className="cursor-pointer ml-auto text-brown1 text-4xl"
-          >
-            <MdDelete />
-          </div>
+          {isMyRecipe() && (
+            <div
+              onClick={handleDeleteModal}
+              className="cursor-pointer ml-auto text-brown1 text-4xl"
+            >
+              <MdDelete />
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-5 gap-4 ">
@@ -183,7 +191,7 @@ const DeleteModal: React.FC<Props> = ({ setModal, id }) => {
 
   const userId = localStorage.getItem("userId");
 
-  const handleDelete = async() => {
+  const handleDelete = async () => {
     await axios.delete(`/recipe?id=${id}`);
     setModal(false);
     dispatch(getUserData(userId));
