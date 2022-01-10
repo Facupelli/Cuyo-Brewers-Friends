@@ -41,8 +41,6 @@ export const MaltsForm: React.FC<Props> = ({
     control,
   });
 
-  
-
   useEffect(() => {
     if (maltSelected) {
       setOgPoints(ogCalculator(maltSelected));
@@ -91,7 +89,9 @@ export const MaltsForm: React.FC<Props> = ({
                   label: "1. American Standard",
                 }}
                 render={({ field: { onChange, value, name, ref } }) => (
-                  <Select options={fermentableOptions} onChange={onChange} />
+                  <div className="col-span-2">
+                    <Select options={fermentableOptions} onChange={onChange} />
+                  </div>
                 )}
               />
 

@@ -177,11 +177,11 @@ export const CommentForm: React.FC<Props> = ({
                   transition
                   ease-in-out
                   m-0
-                  focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               />
               <button
                 type="submit"
-                className="my-4 bg-white border border-orange-200 text-gray-700 p-2  rounded leading-tight focus:outline-none focus:bg-white focus:border-orange-500 hover:bg-orange-500 hover:text-white"
+                className="my-4 bg-white border border-blue-500 text-gray-700 p-2  rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500 hover:bg-blue-500 hover:text-white"
               >
                 Share Comment
               </button>

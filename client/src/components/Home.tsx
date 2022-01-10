@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/reducers/RootReducer";
 import { NavBar } from "./NavBar";
 import { RecipesCardList } from "./RecipesCardList";
+import { FaLongArrowAltUp, FaArrowUp } from "react-icons/fa";
+import { MdAutorenew } from "react-icons/md";
 
 export default function Home() {
   // const recipes = useSelector<RootState, Recipe[]>((state) => state.recipes);
@@ -15,21 +17,31 @@ export default function Home() {
   );
 
   return (
-    <div>
+    <div >
       <div>
         <NavBar route="home" />
       </div>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 mb-12 mt-6">
         <div className="col-span-1 px-6">
-          <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
-            New Recipes
-          </p>
+          <div className="flex items-center gap-2">
+            <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
+              New Recipes
+            </p>
+            <div className="text-brown1 text-2xl">
+              <MdAutorenew />
+            </div>
+          </div>
           <RecipesCardList recipesList={recipesList} />
         </div>
         <div className="col-span-1 px-6">
-          <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
-            Top Recipes
-          </p>
+          <div className="flex items-center gap-2">
+            <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
+              Top Recipes
+            </p>
+            <div className="text-brown1 text-2xl">
+              <FaLongArrowAltUp />
+            </div>
+          </div>
           <RecipesCardList recipesList={topRecipesList} />
         </div>
       </div>

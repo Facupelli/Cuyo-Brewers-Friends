@@ -8,9 +8,6 @@ import { setCookie } from "../redux/action-creators";
 import { useNavigate } from "react-router-dom";
 import { FaArrowCircleLeft } from "react-icons/fa";
 
-type serverError = {
-  error: string;
-};
 
 interface FormInputs {
   email: string;
