@@ -33,10 +33,10 @@ export const NavBar: React.FC<Props> = ({ route }) => {
   return (
     <>
       <nav className="bg-blue1 p-6 shadow-md">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto md:px-4">
           <div className="flex justify-between items-center">
             <div className="flex space-x-7">
-              <div className="pr-8">
+              <div className="md:pr-8">
                 <p className="font-semibold text-white text-xl font-serif ">
                   CUYO BREWERS FRIENDS
                 </p>
@@ -160,18 +160,23 @@ export const NavBar: React.FC<Props> = ({ route }) => {
           </div>
         </div>
       </nav>
-      {mobileNavbar && <MobileNavBar />}
+      {mobileNavbar && <MobileNavBar cookie={cookie} logOut={logOut} />}
     </>
   );
 };
 
-const MobileNavBar: React.FC = () => {
+type MobileProps = {
+  cookie: string;
+  logOut: () => void;
+};
+
+const MobileNavBar: React.FC<MobileProps> = ({ cookie, logOut }) => {
   return (
-    <div className="overflow-y-auto overflow-x-hidden fixed bg-blue1">
-      <div className="">
+    <div className="bg-blue1 p-6 space-y-7 text-2xl">
+      <div className="space-y-2">
         <div>
           <Link to="/home">
-            <p className="font-semibold text-white">RECIPES</p>
+            <p className="font-semibold ">RECIPES</p>
           </Link>
         </div>
 
@@ -179,7 +184,7 @@ const MobileNavBar: React.FC = () => {
           <Link to="/searchrecipes">
             <div className="flex items-center gap-2">
               <p className="font-semibold ">SEARCH</p>
-              <div className="text-xs">
+              <div className="text-lg">
                 <FaSearch />
               </div>
             </div>
@@ -199,17 +204,27 @@ const MobileNavBar: React.FC = () => {
         </div>
       </div>
 
-      <div>
-        <div className="">
-          <Link to="/login">
-            <p className="cursor-pointer font-semibold">Log In</p>
-          </Link>
-        </div>
-        <div>
-          <Link to="/register">
-            <p className="cursor-pointer font-semibold">Register</p>
-          </Link>
-        </div>
+      <div className="space-y-1">
+        {cookie ? (
+          <div className="">
+            <p onClick={logOut} className=" cursor-pointer font-semibold ">
+              Log Out
+            </p>
+          </div>
+        ) : (
+          <>
+            <div className="">
+              <Link to="/login">
+                <p className="cursor-pointer font-semibold">Log In</p>
+              </Link>
+            </div>
+            <div>
+              <Link to="/register">
+                <p className="cursor-pointer font-semibold">Register</p>
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
