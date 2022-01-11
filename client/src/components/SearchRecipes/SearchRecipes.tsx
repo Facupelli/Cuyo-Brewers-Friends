@@ -45,49 +45,64 @@ export const SearchRecipes: React.FC = () => {
   return (
     <>
       <NavBar route="searchrecipes" />
-      <div className="grid grid-cols-11  p-4 m-8">
-        <div className="col-span-3 p-4 border-r border-blueDark bg-gray-200 rounded-l">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="grid grid-cols-3 items-center mb-4">
-              <label className="col-span-1 text-brown1">Style</label>
-              <select {...register("sub_category")} autoComplete="on" className="col-span-2 p-2 bg-white border border-blueLight text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-blueDark">
-                <option disabled>Style:</option>
-                {beerSubCategories.map(el => <option>{el}</option>)}
-              </select>
-            </div>
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-11  p-4 my-8">
+          <div className="col-span-3 p-4 border-r border-blueDark bg-gray-200 rounded-l">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="grid grid-cols-3 items-center mb-4">
+                <label className="col-span-1 text-brown1">Style</label>
+                <select
+                  {...register("sub_category")}
+                  autoComplete="on"
+                  className="col-span-2 p-2 bg-white border border-blueLight text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-blueDark"
+                >
+                  <option disabled>Style:</option>
+                  {beerSubCategories.map((el) => (
+                    <option>{el}</option>
+                  ))}
+                </select>
+              </div>
 
-            <div className="grid grid-cols-2 items-center mb-4">
-              <label className="col-span-1 text-brown1">Beer Title:</label>
-              <input
-                type="text"
-                {...register("beer_title")}
-                className="col-span-1 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
-            </div>
+              <div className="grid grid-cols-2 items-center mb-4">
+                <label className="col-span-1 text-brown1">Beer Title:</label>
+                <input
+                  type="text"
+                  {...register("beer_title")}
+                  className="col-span-1 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
 
-            <div className="grid grid-cols-2 items-center mb-4">
-              <label className="col-span-1 text-brown1">Username:</label>
-              <input
-                type="text"
-                {...register("username")}
-                className="col-span-1 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
-            </div>
+              <div className="grid grid-cols-2 items-center mb-4">
+                <label className="col-span-1 text-brown1">Username:</label>
+                <input
+                  type="text"
+                  {...register("username")}
+                  className="col-span-1 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
 
-            <div className="flex gap-4 mt-16 justify-center">
-              <button type="submit" className="cursor-pointer bg-transparent hover:bg-blueLight font-semibold hover:text-white px-2 border border-blueLight hover:border-transparent rounded">Search</button>
-              <p onClick={clean} className="cursor-pointer bg-transparent hover:bg-blueLight  font-semibold hover:text-white px-2 border border-blueLight hover:border-transparent rounded">
-                Clean
-              </p>
-            </div>
-          </form>
-        </div>
+              <div className="flex gap-4 mt-16 justify-center">
+                <button
+                  type="submit"
+                  className="cursor-pointer bg-transparent hover:bg-blueLight font-semibold hover:text-white px-2 border border-blueLight hover:border-transparent rounded"
+                >
+                  Search
+                </button>
+                <p
+                  onClick={clean}
+                  className="cursor-pointer bg-transparent hover:bg-blueLight  font-semibold hover:text-white px-2 border border-blueLight hover:border-transparent rounded"
+                >
+                  Clean
+                </p>
+              </div>
+            </form>
+          </div>
 
-        <div className="col-span-8 p-4 bg-gray-100 rounded-r">
-          <SearchRecipesTable recipes={recipes} />
-        </div>
+          <div className="col-span-8 p-4 bg-gray-100 rounded-r">
+            <SearchRecipesTable recipes={recipes} />
+          </div>
 
-        {/* <div className="col-span-8 bg-orange-200 ">
+          {/* <div className="col-span-8 bg-orange-200 ">
           <div className="grid grid-cols-12 mb-4">
             <p className="col-span-2 font-semibold">Title</p>
             <p className="col-span-3 font-semibold">Style</p>
@@ -122,6 +137,7 @@ export const SearchRecipes: React.FC = () => {
               </div>
             ))}
         </div> */}
+        </div>
       </div>
     </>
   );

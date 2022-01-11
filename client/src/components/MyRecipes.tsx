@@ -14,7 +14,7 @@ export const MyRecipes: React.FC = (z) => {
   return (
     <>
       <NavBar route="myrecipes" />
-      <div className="mt-16">
+      <div className="mt-16 max-w-7xl mx-auto">
         {ownRecipes.length > 0 ? (
           <>
             <div className="hidden md:grid grid-cols-10 m-4 px-4 ">

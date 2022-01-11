@@ -211,62 +211,66 @@ export const CreateRecipe: React.FC<{}> = () => {
   };
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 ">
       <NavBar route="createrecipe" />
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
-          {/* ------------    PART 1 ------------------------ */}
-          <div className="mx-8 mt-8 flex justify-between ">
-            <p className="text-2xl font-semibold text-brown1">Editing Recipe</p>
-            <button
-              type="submit"
-              className="bg-transparent hover:bg-brown1 text-gray-700 font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
-            >
-              SAVE
-            </button>
-          </div>
-
-          <TitleInfo />
-
-          {/* -------------------    PARAMETERS ------------------------ */}
-
-          <BatchParams setEff={setEff} setBatch_size={setBatch_size} />
-
-          {/* --------------------    CHARACTERISTICS ------------------------ */}
-
-          <Characteristics
-            eff={eff}
-            batch_size={batch_size}
-            ogPoints={ogPoints}
-            yeastAtt={yeastAtt}
-            mcu={mcu}
-          />
-
-          {/* ------------------------ INGREDIENTS ----------------------------- */}
-
-          <div className="grid grid-cols-2">
-            <div className="col-span-2 md:col-span-1">
-              <MaltsForm
-                setOgPoints={setOgPoints}
-                batch_size={batch_size}
-                setMcu={setMcu}
-              />
+      <div className="max-w-7xl mx-auto">
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
+            {/* ------------    PART 1 ------------------------ */}
+            <div className="mx-8 mt-8 flex justify-between ">
+              <p className="text-2xl font-semibold text-brown1">
+                Editing Recipe
+              </p>
+              <button
+                type="submit"
+                className="bg-transparent hover:bg-brown1 text-gray-700 font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
+              >
+                SAVE
+              </button>
             </div>
 
-            <div className="col-span-2 md:col-span-1">
-              <HopsForm />
-            </div>
+            <TitleInfo />
 
-            <div className="col-span-2 md:col-span-1">
-              <YeastForm setYeastAtt={setYeastAtt} />
-            </div>
+            {/* -------------------    PARAMETERS ------------------------ */}
 
-            <div className="col-span-2 md:col-span-1">
-              <WaterForm />
+            <BatchParams setEff={setEff} setBatch_size={setBatch_size} />
+
+            {/* --------------------    CHARACTERISTICS ------------------------ */}
+
+            <Characteristics
+              eff={eff}
+              batch_size={batch_size}
+              ogPoints={ogPoints}
+              yeastAtt={yeastAtt}
+              mcu={mcu}
+            />
+
+            {/* ------------------------ INGREDIENTS ----------------------------- */}
+
+            <div className="grid grid-cols-2">
+              <div className="col-span-2 md:col-span-1">
+                <MaltsForm
+                  setOgPoints={setOgPoints}
+                  batch_size={batch_size}
+                  setMcu={setMcu}
+                />
+              </div>
+
+              <div className="col-span-2 md:col-span-1">
+                <HopsForm />
+              </div>
+
+              <div className="col-span-2 md:col-span-1">
+                <YeastForm setYeastAtt={setYeastAtt} />
+              </div>
+
+              <div className="col-span-2 md:col-span-1">
+                <WaterForm />
+              </div>
             </div>
-          </div>
-        </form>
-      </FormProvider>
+          </form>
+        </FormProvider>
+      </div>
     </div>
   );
 };
