@@ -17,7 +17,7 @@ import { HopsDetail } from "./HopsDetail";
 import { WaterDetail } from "./WaterDetail";
 import { CommentForm } from "./CommentForm";
 import { UserData } from "./UserData";
-import { getRecipes, getUserData } from "../../redux/action-creators";
+import { getRecipes, getTopRecipes, getUserData } from "../../redux/action-creators";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -196,6 +196,7 @@ const DeleteModal: React.FC<Props> = ({ setModal, id }) => {
     setModal(false);
     dispatch(getUserData(userId));
     dispatch(getRecipes());
+    dispatch(getTopRecipes())
     navigate("/myrecipes");
   };
 
