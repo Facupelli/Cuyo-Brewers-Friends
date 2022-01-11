@@ -23,7 +23,7 @@ export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-start gap-6">
+      <div className="flex flex-wrap justify-start gap-x-6 md:gap-6">
         <div className="flex items-center gap-2">
           <p className="text-brown1">OG:</p>
           <p>{recipe.characteristics.original_gravity}</p>
