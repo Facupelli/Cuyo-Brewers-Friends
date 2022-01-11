@@ -245,7 +245,7 @@ export const CreateRecipe: React.FC<{}> = () => {
           {/* ------------------------ INGREDIENTS ----------------------------- */}
 
           <div className="grid grid-cols-2">
-            <div className="grid-cols-1">
+            <div className="col-span-2 md:col-span-1">
               <MaltsForm
                 setOgPoints={setOgPoints}
                 batch_size={batch_size}
@@ -253,15 +253,15 @@ export const CreateRecipe: React.FC<{}> = () => {
               />
             </div>
 
-            <div className="grid-cols-1">
+            <div className="col-span-2 md:col-span-1">
               <HopsForm />
             </div>
 
-            <div className="grid-cols-1">
+            <div className="col-span-2 md:col-span-1">
               <YeastForm setYeastAtt={setYeastAtt} />
             </div>
 
-            <div className="grid-cols-1">
+            <div className="col-span-2 md:col-span-1">
               <WaterForm />
             </div>
           </div>

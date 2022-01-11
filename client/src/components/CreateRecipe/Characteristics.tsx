@@ -69,7 +69,7 @@ export const Characteristics: React.FC<Props> = ({
 
   const [color, setColor] = useState<string>();
 
-  //---------------------------------------------------------------------------
+  //----------------------------  USE EFFECT  -----------------------------------------------
 
   useEffect(() => {
     if (Number(srm) > 30) {
@@ -95,14 +95,14 @@ export const Characteristics: React.FC<Props> = ({
 
   return (
     <>
-      <div className="mx-8 p-6 bg-gray-100">
+      <div className="mx-4 md:mx-8 p-3 md:p-6 bg-gray-100">
         <div
           onClick={handleQusetionClick}
           className="cursor-pointer text-gray-400 text-lg flex justify-end "
         >
           <FaQuestionCircle />
         </div>
-        <div className="grid-cols-2 flex gap-10 justify-center">
+        <div className="flex flex-wrap gap-10 justify-center">
           <div className="flex flex-col items-center gap-4">
             <label className="text-gray-700 text-md font-semibold ">
               Original Gravity

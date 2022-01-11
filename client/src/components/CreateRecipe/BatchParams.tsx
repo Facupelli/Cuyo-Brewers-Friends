@@ -59,10 +59,10 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
     .map((el) => el.subcategories);
 
   return (
-    <div className="grid grid-cols-2  m-4 p-4">
-      <div className="col-span-1 grid grid-cols-2 gap-4 p-4 bg-gray-100">
+    <div className="grid grid-cols-2  md:m-4 p-4">
+      <div className="col-span-2 md:col-span-1 grid grid-cols-2 gap-y-2 md:gap-4 p-4 bg-gray-100">
         <div className="col-span-1 items-center">
-          <label className="my-2 text-gray-700 text-md font-semibold">
+          <label className=" text-gray-700 text-md font-semibold">
             Batch Size (L.)
           </label>
         </div>
@@ -74,7 +74,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             render={({ field }) => (
               <input
                 placeholder="20"
-                className="p-2  shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="py-2 md:p-2  shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}
@@ -85,7 +85,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
         </div>
 
         <div className="col-span-1 items-center">
-          <label className="my-2 text-gray-700 text-md font-semibold">
+          <label className=" text-gray-700 text-md font-semibold">
             Pre Boil Gravity (L.)
           </label>
         </div>
@@ -97,7 +97,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             render={({ field }) => (
               <input
                 placeholder="30"
-                className=" p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="py-2 md:p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}
@@ -110,7 +110,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
         </div>
 
         <div className="col-span-1 items-center">
-          <label className="my-2 text-gray-700 text-md font-semibold">
+          <label className=" text-gray-700 text-md font-semibold">
             Boil Time (min.)
           </label>
         </div>
@@ -122,7 +122,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             render={({ field }) => (
               <input
                 placeholder="60"
-                className=" p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" py-2 md:p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}
@@ -135,9 +135,9 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
 
       {/* ---------------------- SEGUNDA COLUMNA --------------------------------- */}
 
-      <div className="col-span-1 grid grid-cols-2 gap-4 p-4 bg-gray-100">
+      <div className="col-span-2 md:col-span-1 grid grid-cols-2 gap-4 p-4 bg-gray-100">
         <div className="col-span-1 items-center ">
-          <label className="my-2 text-gray-700 text-md font-semibold">
+          <label className=" text-gray-700 text-md font-semibold">
             Style
           </label>
         </div>
@@ -168,7 +168,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
         {styleSelected && (
           <>
             <div className="col-span-1 items-center my-2">
-              <label className="my-2 text-gray-700 text-md font-semibold">
+              <label className=" text-gray-700 text-md font-semibold">
                 Sub Category
               </label>
             </div>
@@ -176,7 +176,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
               <select
                 {...register("sub_category")}
                 defaultValue="Select Category..."
-                className=" bg-white border border-gray-300 text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                className=" bg-white border border-gray-300 text-gray-700 py-2 md:p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
               >
                 <option disabled>Select Category...</option>
                 {beerSubCategories[0].map((el) => (
@@ -188,7 +188,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
         )}
 
         <div className="col-span-1 items-center gap-4 my-2">
-          <label className="my-2 text-gray-700 text-md font-semibold">
+          <label className=" text-gray-700 text-md font-semibold">
             Efficiency (%)
           </label>
         </div>
@@ -200,7 +200,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             render={({ field }) => (
               <input
                 placeholder="70"
-                className=" p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" py-2 md:p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}
@@ -211,7 +211,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
         </div>
 
         <div className="col-span-1 my-2">
-          <label className="my-2 text-gray-700 text-md font-semibold">
+          <label className=" text-gray-700 text-md font-semibold">
             Mash Ph
           </label>
         </div>
@@ -223,7 +223,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             render={({ field }) => (
               <input
                 placeholder="5.4"
-                className=" p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" py-2 md:p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}

@@ -9,8 +9,8 @@ export const TitleInfo: React.FC = () => {
 
   return (
     <div>
-      <div className="flex mx-8 mt-8 gap-8 bg-gray-50">
-        <div className="p-4">
+      <div className="flex flex-wrap mx-8 mt-8 md:gap-8 bg-gray-50">
+        <div className="md:p-4">
           <label className="my-2 text-gray-700 text-md font-semibold">
             Title
           </label>
@@ -31,7 +31,7 @@ export const TitleInfo: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-4">
+        <div className="md:p-4">
           <label className="my-2 text-gray-700 text-md font-semibold">
             Brewery
           </label>

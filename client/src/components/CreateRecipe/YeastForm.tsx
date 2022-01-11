@@ -40,7 +40,7 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
         <select
           {...register(`ingredients.yeast.name`)}
           defaultValue=""
-          className="bg-white border border-blue-200  text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+          className="bg-white border border-blue-200  text-gray-700 py-2 md:p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
         >
           <option value="" disabled>
             Select Yeast
@@ -52,7 +52,7 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
       </div>
 
       {attAcordToYeast && (
-        <div className="flex items-center my-4 gap-2">
+        <div className="flex flex-wrap items-center my-4 gap-2">
           <label className="text-gray-500 text-xs font-semibold ">
             Attenuation of yeast selected
           </label>
@@ -62,8 +62,8 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
         </div>
       )}
 
-      <div className="grid grid-cols-2">
-        <div className="cols-span1 flex items-center gap-4">
+      <div className="grid grid-cols-2 gap-y-4">
+        <div className="col-span-2 md:col-span-1 flex items-center gap-4">
           <label className="text-gray-700 text-md font-semibold ">
             Attenuation (%)
           </label>
@@ -81,7 +81,7 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
           />
         </div>
 
-        <div className="col-span-1 flex items-center gap-4">
+        <div className="col-span-2 md:col-span-1 flex items-center gap-4">
           <label className="text-gray-700 text-md font-semibold ">
             Quantity (g)
           </label>
