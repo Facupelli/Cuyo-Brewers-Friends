@@ -107,7 +107,7 @@ class Recipes {
 
   static async deleteRecipe(id){
     try{
-      const deleteOne = await recipeModel.deleteOne({id: id})
+      const deleteOne = await recipeModel.deleteOne({_id: id})
     }catch(e){
       console.error(`Unable to delete recipe: ${e}`);
       return { error: e };

@@ -84,6 +84,7 @@ class RecipesController {
     try {
 
       const {id} = req.query
+      console.log('ID DELETE', id)
       const deleteRecipe = await Recipes.deleteRecipe(id)
 
       res.json({status: "success"})
