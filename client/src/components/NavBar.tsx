@@ -160,7 +160,9 @@ export const NavBar: React.FC<Props> = ({ route }) => {
           </div>
         </div>
       </nav>
-      {mobileNavbar && <MobileNavBar cookie={cookie} logOut={logOut} />}
+      {mobileNavbar && (
+        <MobileNavBar cookie={cookie} logOut={logOut} route={route} />
+      )}
     </>
   );
 };
@@ -168,40 +170,82 @@ export const NavBar: React.FC<Props> = ({ route }) => {
 type MobileProps = {
   cookie: string;
   logOut: () => void;
+  route: string;
 };
 
-const MobileNavBar: React.FC<MobileProps> = ({ cookie, logOut }) => {
+const MobileNavBar: React.FC<MobileProps> = ({ route, cookie, logOut }) => {
   return (
-    <div className="bg-blue1 p-6 space-y-7 text-2xl">
-      <div className="space-y-2">
-        <div>
-          <Link to="/home">
-            <p className="font-semibold ">RECIPES</p>
-          </Link>
+    <div className="bg-blue1 pl-6 pb-6 space-y-7 text-2xl">
+      <div className="space-y-3">
+        <div className="">
+          {route === "home" ? (
+            <Link to="/home">
+              <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                RECIPES
+              </span>
+            </Link>
+          ) : (
+            <Link to="/home">
+              <p className="font-semibold">RECIPES</p>
+            </Link>
+          )}
         </div>
 
-        <div>
-          <Link to="/searchrecipes">
-            <div className="flex items-center gap-2">
-              <p className="font-semibold ">SEARCH</p>
-              <div className="text-lg">
-                <FaSearch />
+        <div className="">
+          {route === "searchrecipes" ? (
+            <Link to="/searchrecipes">
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                  SEARCH
+                </span>
+                <div className="text-white">
+                  <FaSearch />
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          ) : (
+            <Link to="/searchrecipes">
+              <div className="flex items-center gap-2">
+                <p className="font-semibold ">SEARCH</p>
+                <div className="text-xs">
+                  <FaSearch />
+                </div>
+              </div>
+            </Link>
+          )}
         </div>
 
-        <div>
-          <Link to="/myrecipes">
-            <p className="font-semibold">MY RECIPES</p>
-          </Link>
-        </div>
+        {cookie && (
+          <div className="">
+            {route === "myrecipes" ? (
+              <Link to="/myrecipes">
+                <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                  MY RECIPES
+                </span>
+              </Link>
+            ) : (
+              <Link to="/myrecipes">
+                <p className="font-semibold">MY RECIPES</p>
+              </Link>
+            )}
+          </div>
+        )}
 
-        <div>
-          <Link to="/createrecipe">
-            <p className="font-semibold">ADD RECIPE</p>
-          </Link>
-        </div>
+        {cookie && (
+          <div className="">
+            {route === "createrecipe" ? (
+              <Link to="/createrecipe">
+                <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                  ADD RECIPE
+                </span>
+              </Link>
+            ) : (
+              <Link to="/createrecipe">
+                <p className="font-semibold">ADD RECIPE</p>
+              </Link>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="space-y-1">
