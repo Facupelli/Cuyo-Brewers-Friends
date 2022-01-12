@@ -28,7 +28,7 @@ export const Blog: React.FC = () => {
                     <p>{el.blog_title}</p>
                   </Link>
                   <p className="text-gray-400">by</p>
-                  <Link to="">
+                  <Link to={`/userprofile/${el.blog_username}`}>
                     <p className="text-brown1">{el.blog_username}</p>
                   </Link>
                   <p className="text-gray-400 ml-auto">{el.date}</p>
