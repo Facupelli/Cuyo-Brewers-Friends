@@ -1,24 +1,25 @@
 const mongodb = require("mongodb");
 const { blogModel } = require("../models/blog");
-const {userModel} = require("../models/user")
+const { userModel } = require("../models/user");
 const ObjectId = mongodb.ObjectId;
 
 class Blog {
-
-  static async getBlogs(article_username, article_title){
-    try{
-
-      if(article_username){
-        return await blogModel.find({blog_username: {$regex: article_username}})
+  static async getBlogs(article_username, article_title) {
+    try {
+      if (article_username) {
+        return await blogModel.find({
+          blog_username: { $regex: article_username, $options: "i" },
+        });
       }
 
-      if(article_title){
-        return await blogModel.find({blog_title: {$regex: article_title}})
+      if (article_title) {
+        return await blogModel.find({
+          blog_title: { $regex: article_title, $options: "i" },
+        });
       }
-      
 
       return await blogModel.find();
-    }catch(e){
+    } catch (e) {
       console.error(`Unable to get blogs: ${e}`);
       return { error: e };
     }
