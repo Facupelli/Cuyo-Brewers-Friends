@@ -49,7 +49,7 @@ class ReviewsDAO {
     try {
       return await reviewModel.find({ recipe_id: recipe_id });
     } catch (e) {
-      console.error(`Unable to post review: ${e}`);
+      console.error(`Unable to get review: ${e}`);
       return { error: e };
     }
   }

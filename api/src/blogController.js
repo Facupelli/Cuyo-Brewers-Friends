@@ -6,6 +6,17 @@ dayjs.extend(customParseFormat)
 
 
 class BlogController {
+
+  static async getBlogs(req, res, next) {
+    try{
+      const blogs = await Blog.getBlogs();
+
+      res.json(blogs);
+    }catch(e){
+      res.status(500).json({ error: e.message });
+    }
+  }
+
   static async postBlog(req, res, next) {
     try {
       const blog = req.body.blog;

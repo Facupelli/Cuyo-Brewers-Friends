@@ -4,6 +4,16 @@ const {userModel} = require("../models/user")
 const ObjectId = mongodb.ObjectId;
 
 class Blog {
+
+  static async getBlogs(){
+    try{
+      return await blogModel.find();
+    }catch(e){
+      console.error(`Unable to get blogs: ${e}`);
+      return { error: e };
+    }
+  }
+
   static async postBlog(blog, user, date) {
     try {
       const blogDoc = {
