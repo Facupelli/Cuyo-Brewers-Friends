@@ -1,6 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import {
+  getBlogs,
+  getRecipes,
+  getTopRecipes,
+  getUserData,
+  setCookie,
+} from "./redux/action-creators";
+import { RootState } from "./redux/reducers/RootReducer";
+//Components
 import { Blog } from "./components/Blog/Blog";
 import { CreateRecipe } from "./components/CreateRecipe/CreateRecipe";
 import Home from "./components/Home";
@@ -9,13 +18,6 @@ import { MyRecipes } from "./components/MyRecipes";
 import { RecipeCardDetail } from "./components/RecipeCardDetail/RecipeCardDetail";
 import { Register } from "./components/Register";
 import { SearchRecipes } from "./components/SearchRecipes/SearchRecipes";
-import {
-  getRecipes,
-  getTopRecipes,
-  getUserData,
-  setCookie,
-} from "./redux/action-creators";
-import { RootState } from "./redux/reducers/RootReducer";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +28,7 @@ function App() {
   useEffect(() => {
     dispatch(getRecipes());
     dispatch(getTopRecipes());
+    dispatch(getBlogs());
   }, [dispatch]);
 
   // ------------------------GET USER IF TOKEN -------------------------------------

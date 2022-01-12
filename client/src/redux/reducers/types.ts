@@ -104,3 +104,14 @@ export interface UserData {
   ownRecipes: RecipeList[];
   ownReviews: string[];
 }
+
+// BLOG REDUCER --------------------
+
+interface Blog{
+  _id: string;
+  title: string;
+  body: string;
+}
+export interface BlogData {
+  blog: Blog;
+}

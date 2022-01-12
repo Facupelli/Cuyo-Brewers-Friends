@@ -1,8 +1,9 @@
 import { Dispatch } from "redux";
 import axios from "axios";
-import { RecipesActionType, UserActionType } from "../actions/ActionsTypes";
+import { RecipesActionType, UserActionType, BlogActionType } from "../actions/ActionsTypes";
 import { RecipeActions } from "../actions/RecipesActions";
 import { UserActions } from "../actions/UserActions";
+import { BlogActions } from "../actions/BlogActions";
 
 export const loadingTrue = () => {
   return (dispatch: Dispatch<RecipeActions>) => {
@@ -35,7 +36,9 @@ export const getRecipes =
           res = await axios.get<any>(`/recipe?title=${filters.beer_title}`);
         }
         if (filters.sub_category) {
-          res = await axios.get<any>(`/recipe?sub_category=${filters.sub_category}`);
+          res = await axios.get<any>(
+            `/recipe?sub_category=${filters.sub_category}`
+          );
         }
       }
       if (!filters) {
@@ -54,7 +57,8 @@ export const getRecipes =
     }
   };
 
-export const getTopRecipes = () => async (dispatch: Dispatch<RecipeActions>) => {
+export const getTopRecipes =
+  () => async (dispatch: Dispatch<RecipeActions>) => {
     try {
       let res: any;
 
@@ -89,3 +93,16 @@ export const getUserData =
       });
     } catch (e) {}
   };
+
+// ------------------------ BLOG ACTIONS
+
+export const getBlogs = () => async (dispatch: Dispatch<BlogActions>) => {
+  try {
+    const res = await axios.get<any>("/blog");
+
+    return dispatch({
+      type: BlogActionType.GET_BLOGS,
+      payload: res.data,
+    });
+  } catch (e) {}
+};
