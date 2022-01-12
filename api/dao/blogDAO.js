@@ -44,10 +44,10 @@ class Blog {
         date: date,
       };
       const response = await blogModel.create(blogDoc);
-      // const addAuthor = await userModel.findOneAndUpdate(
-      //   { _id: user._id },
-      //   { $push: { ownBlogs: response._id } }
-      // );
+      const addAuthor = await userModel.findOneAndUpdate(
+        { _id: blog.blog_author },
+        { $push: { ownBlogs: response._id } }
+      );
 
       console.log("MONGO CREATE", response);
 

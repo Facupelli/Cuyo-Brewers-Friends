@@ -14,7 +14,7 @@ class User {
 
   static async getUserByUsername(username){
     try{
-      return await userModel.findOne({username: username})
+      return await userModel.findOne({username: username}).populate('ownBlogs', "blog_title blog_body date").populate('ownRecipes', 'recipe date')
     }catch(e){
       console.error(`Something went wrong in getUserByUsernameDAO: ${e}`);
       throw e;

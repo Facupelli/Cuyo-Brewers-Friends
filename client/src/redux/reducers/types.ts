@@ -97,13 +97,18 @@ export interface RecipeList {
 }
 
 // USER REDUCER ----------------------
-
+interface OwnBLogs {
+  blog_title: string;
+  blog_body: string;
+  date: string;
+  _id: string;
+}
 export interface UserData {
   _id: string;
   username: string;
   ownRecipes: RecipeList[];
   ownReviews: string[];
-  ownBlogs: string[];
+  ownBlogs: OwnBLogs[];
 }
 
 // BLOG REDUCER --------------------
