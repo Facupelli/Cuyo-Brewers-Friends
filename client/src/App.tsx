@@ -10,7 +10,7 @@ import {
 } from "./redux/action-creators";
 import { RootState } from "./redux/reducers/RootReducer";
 //Components
-import { Blog } from "./components/Blog/Blog";
+import { Blog } from "./components/BrowseBlog/Blog";
 import { CreateRecipe } from "./components/CreateRecipe/CreateRecipe";
 import Home from "./components/Home";
 import { Login } from "./components/Login";
@@ -18,6 +18,7 @@ import { MyRecipes } from "./components/MyRecipes";
 import { RecipeCardDetail } from "./components/RecipeCardDetail/RecipeCardDetail";
 import { Register } from "./components/Register";
 import { SearchRecipes } from "./components/SearchRecipes/SearchRecipes";
+import { BlogDetail } from "./components/BlogDetail/BlogDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -58,6 +59,7 @@ function App() {
         <Route path="/recipe/:id" element={<RecipeCardDetail />} />
         <Route path="/myrecipes" element={<MyRecipes />} />
         <Route path="/searchrecipes" element={<SearchRecipes />} />
+        <Route path="/blogdetail/:id" element={<BlogDetail />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

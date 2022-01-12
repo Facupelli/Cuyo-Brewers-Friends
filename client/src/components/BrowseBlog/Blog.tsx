@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { RootState } from "../../redux/reducers/RootReducer";
 import { NavBar } from "../NavBar";
 import { SearchArticle } from "./SearchArticle";
@@ -20,7 +21,9 @@ export const Blog: React.FC = () => {
             {blogs &&
               blogs.map((el) => (
                 <div className="flex gap-x-3 bg-blue-50 rounded shadow hover:shadow-none p-4 my-3">
-                  <p>{el.blog_title}</p>
+                  <Link to={`/blogdetail/${el._id}`}>
+                    <p>{el.blog_title}</p>
+                  </Link>
                   <p className="text-gray-400">by</p>
                   <p className="text-brown1">{el.blog_username}</p>
                 </div>

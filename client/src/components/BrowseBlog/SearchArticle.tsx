@@ -62,6 +62,8 @@ export const SearchArticle: React.FC = () => {
               {errors && errors.username?.message}
             </span>
           </div>
+
+          <button type="submit" className="p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white">SEARCH</button>
         </div>
       </form>
     </div>

@@ -108,6 +108,7 @@ export interface UserData {
 // BLOG REDUCER --------------------
 
 export interface Blog{
+  _id: string;
   blog_author: string;
   blog_username: string;
   blog_title: string;
