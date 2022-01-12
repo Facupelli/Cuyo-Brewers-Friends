@@ -2,6 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch } from "react-redux";
+import { getBlogs } from "../../redux/action-creators";
 
 interface FormInputs {
   article_name: string;
@@ -9,8 +11,8 @@ interface FormInputs {
 }
 
 const schema = yup.object().shape({
-  article_name: yup.string().required().min(2).max(100),
-  username: yup.string().required().min(2).max(100),
+  article_name: yup.string(),
+  username: yup.string(),
 });
 
 export const SearchArticle: React.FC = () => {
@@ -23,9 +25,16 @@ export const SearchArticle: React.FC = () => {
 
   console.log("ERRORS:", errors);
 
+  const dispatch = useDispatch()
+
+  const handleClean = () => {
+    dispatch(getBlogs())
+  }
+
   const onSubmit = async (data: FormInputs) => {
     try {
       console.log(data);
+      dispatch(getBlogs(data.username, data.article_name))
       reset();
     } catch (e) {
       console.log({ onSubmitError: e });
@@ -34,7 +43,7 @@ export const SearchArticle: React.FC = () => {
 
   return (
     <div className="w-2/3">
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <p className="mb-4">Search article by</p>
         <div className="flex justify-between">
           <div>
@@ -64,6 +73,7 @@ export const SearchArticle: React.FC = () => {
           </div>
 
           <button type="submit" className="p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white">SEARCH</button>
+          <p onClick={handleClean} className="p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white">CLEAN</p>
         </div>
       </form>
     </div>

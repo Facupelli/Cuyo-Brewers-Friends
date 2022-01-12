@@ -1,6 +1,10 @@
 import { Dispatch } from "redux";
 import axios from "axios";
-import { RecipesActionType, UserActionType, BlogActionType } from "../actions/ActionsTypes";
+import {
+  RecipesActionType,
+  UserActionType,
+  BlogActionType,
+} from "../actions/ActionsTypes";
 import { RecipeActions } from "../actions/RecipesActions";
 import { UserActions } from "../actions/UserActions";
 import { BlogActions } from "../actions/BlogActions";
@@ -96,13 +100,31 @@ export const getUserData =
 
 // ------------------------ BLOG ACTIONS
 
-export const getBlogs = () => async (dispatch: Dispatch<BlogActions>) => {
-  try {
-    const res = await axios.get<any>("/blog");
+export const getBlogs =
+  (article_username?: string, article_title?: string) =>
+  async (dispatch: Dispatch<BlogActions>) => {
+    try {
+      if (article_username) {
+        const res = await axios.get<any>(`/blog?username=${article_username}`);
+        return dispatch({
+          type: BlogActionType.GET_BLOGS,
+          payload: res.data,
+        });
+      }
 
-    return dispatch({
-      type: BlogActionType.GET_BLOGS,
-      payload: res.data,
-    });
-  } catch (e) {}
-};
+      if (article_title) {
+        const res = await axios.get<any>(`/blog?title=${article_title}`);
+        return dispatch({
+          type: BlogActionType.GET_BLOGS,
+          payload: res.data,
+        });
+      }
+
+      const res = await axios.get<any>("/blog");
+
+      return dispatch({
+        type: BlogActionType.GET_BLOGS,
+        payload: res.data,
+      });
+    } catch (e) {}
+  };

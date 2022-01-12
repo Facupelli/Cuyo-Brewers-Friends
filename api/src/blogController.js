@@ -12,7 +12,6 @@ class BlogController {
       const article_username = req.query.username
       const article_title = req.query.title
 
-
       const blogs = await Blog.getBlogs(article_username, article_title);
 
       res.json(blogs);

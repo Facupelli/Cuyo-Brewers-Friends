@@ -20,7 +20,7 @@ export const Blog: React.FC = () => {
           <div className="md:w-1/2">
             {blogs &&
               blogs.map((el) => (
-                <div className="flex gap-x-3 bg-blue-50 rounded shadow hover:shadow-none p-4 my-3">
+                <div key={el._id} className="flex gap-x-3 bg-blue-50 rounded shadow hover:shadow-none p-4 my-3">
                   <Link to={`/blogdetail/${el._id}`}>
                     <p>{el.blog_title}</p>
                   </Link>
