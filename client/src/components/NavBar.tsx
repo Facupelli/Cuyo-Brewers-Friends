@@ -149,34 +149,55 @@ export const NavBar: React.FC<Props> = ({ route }) => {
               {userMenu && (
                 <div className="origin-top-right absolute right-0 w-48 p-2 mt-2 bg-white rounded shadow-md">
                   {cookie && (
-                    <div className={`${route === 'myrecipes' ? 'mb-2' : 'mb-0'}`}>
-                      {route === "myrecipes" ? (
-                        <Link to="/myrecipes">
-                          <span className="font-semibold py-1 border-b-2 border-blueLight">
-                            MY RECIPES
-                          </span>
-                        </Link>
-                      ) : (
-                        <Link to="/myrecipes">
-                          <p className="font-semibold">MY RECIPES</p>
-                        </Link>
-                      )}
-                    </div>
-                  )}
-                  {cookie && (
-                    <div className={`${route === 'addblog' ? 'my-2' : 'mb-0'}`}>
-                      {route === "addblog" ? (
-                        <Link to="/addblog">
-                          <span className="font-semibold  border-b-2 border-blueLight">
-                            ADD BLOG
-                          </span>
-                        </Link>
-                      ) : (
-                        <Link to="/addblog">
-                          <p className="font-semibold">ADD BLOG</p>
-                        </Link>
-                      )}
-                    </div>
+                    <>
+                      <div
+                        className={`${route === "myrecipes" ? "mb-2" : "mb-0"}`}
+                      >
+                        {route === "myrecipes" ? (
+                          <Link to="/myrecipes">
+                            <span className="font-semibold py-1 border-b-2 border-blueLight">
+                              MY RECIPES
+                            </span>
+                          </Link>
+                        ) : (
+                          <Link to="/myrecipes">
+                            <p className="font-semibold">MY RECIPES</p>
+                          </Link>
+                        )}
+                      </div>
+
+                      <div
+                        className={`${route === "addblog" ? "my-2" : "mb-0"}`}
+                      >
+                        {route === "addblog" ? (
+                          <Link to="/addblog">
+                            <span className="font-semibold  border-b-2 border-blueLight">
+                              ADD BLOG
+                            </span>
+                          </Link>
+                        ) : (
+                          <Link to="/addblog">
+                            <p className="font-semibold">ADD BLOG</p>
+                          </Link>
+                        )}
+                      </div>
+
+                      <div
+                        className={`${route === "myprofile" ? "my-2" : "mb-0"}`}
+                      >
+                        {route === "myprofile" ? (
+                          <Link to="/myprofile">
+                            <span className="font-semibold  border-b-2 border-blueLight">
+                              MY PROFILE
+                            </span>
+                          </Link>
+                        ) : (
+                          <Link to="/myprofile">
+                            <p className="font-semibold">MY PROFILE</p>
+                          </Link>
+                        )}
+                      </div>
+                    </>
                   )}
                   {cookie && (
                     <div className="mt-2 border-t border-blue-100">

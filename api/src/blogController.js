@@ -1,28 +1,38 @@
 const { ObjectId } = require("mongodb");
 const Blog = require("../dao/blogDAO");
-const dayjs =  require ('dayjs');
-var customParseFormat = require('dayjs/plugin/customParseFormat')
-dayjs.extend(customParseFormat)
-
+const dayjs = require("dayjs");
+var customParseFormat = require("dayjs/plugin/customParseFormat");
+dayjs.extend(customParseFormat);
 
 class BlogController {
-
   static async getBlogs(req, res, next) {
-    try{
-      const article_username = req.query.username
-      const article_title = req.query.title
+    try {
+      const article_username = req.query.username;
+      const article_title = req.query.title;
 
       const blogs = await Blog.getBlogs(article_username, article_title);
 
       res.json(blogs);
-    }catch(e){
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
+
+  static async getBlogById(req, res, next) {
+    try {
+      const {id} = req.params;
+
+      const blog = await Blog.getBlogById(id);
+
+      res.json(blog);
+    } catch (e) {
       res.status(500).json({ error: e.message });
     }
   }
 
   static async postBlog(req, res, next) {
     try {
-      const blog = req.body
+      const blog = req.body;
       const date = dayjs().format("DD/MM/YYYY");
 
       const blogResponse = await Blog.postBlog(blog, date);

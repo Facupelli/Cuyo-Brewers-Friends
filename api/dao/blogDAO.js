@@ -25,6 +25,15 @@ class Blog {
     }
   }
 
+  static async getBlogById(id) {
+    try {
+      return await blogModel.findById({_id: id});
+    } catch (e) {
+      console.error(`Unable to get blog: ${e}`);
+      return { error: e };
+    }
+  }
+
   static async postBlog(blog, date) {
     try {
       const blogDoc = {
