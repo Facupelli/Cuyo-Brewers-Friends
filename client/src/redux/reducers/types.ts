@@ -107,10 +107,12 @@ export interface UserData {
 
 // BLOG REDUCER --------------------
 
-interface Blog{
-  _id: string;
-  title: string;
-  body: string;
+export interface Blog{
+  blog_author: string;
+  blog_username: string;
+  blog_title: string;
+  blog_body: string;
+  date: string;
 }
 export interface BlogData {
   blog: Blog;

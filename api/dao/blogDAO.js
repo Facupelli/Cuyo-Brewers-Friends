@@ -14,19 +14,20 @@ class Blog {
     }
   }
 
-  static async postBlog(blog, user, date) {
+  static async postBlog(blog, date) {
     try {
       const blogDoc = {
-        blog_author: user._id,
-        blog_title: blog.title,
-        blog_body: blog.body,
+        blog_author: blog.blog_author,
+        blog_username: blog.blog_username,
+        blog_title: blog.blog_title,
+        blog_body: blog.blog_body,
         date: date,
       };
       const response = await blogModel.create(blogDoc);
-      const addAuthor = await userModel.findOneAndUpdate(
-        { _id: user._id },
-        { $push: { ownBlogs: response._id } }
-      );
+      // const addAuthor = await userModel.findOneAndUpdate(
+      //   { _id: user._id },
+      //   { $push: { ownBlogs: response._id } }
+      // );
 
       console.log("MONGO CREATE", response);
 

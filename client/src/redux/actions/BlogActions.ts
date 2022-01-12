@@ -1,10 +1,10 @@
-import { BlogData } from '../reducers/types';
+import { Blog } from '../reducers/types';
 import {BlogActionType} from './ActionsTypes'
 
 
 export interface GetBlogs {
   type: BlogActionType.GET_BLOGS;
-  payload: BlogData[]
+  payload: Blog[]
 }
 
 export type BlogActions = GetBlogs;

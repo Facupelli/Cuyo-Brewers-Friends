@@ -1,9 +1,9 @@
 import { BlogActionType } from "../actions/ActionsTypes";
 import { BlogActions } from "../actions/BlogActions";
-import { BlogData, UserData } from "./types";
+import { Blog } from "./types";
 
 export interface InitialBlogState {
-    blogs: BlogData[];
+    blogs: Blog[];
 }
 
 const initialUserState: InitialBlogState = {
