@@ -58,7 +58,7 @@ export const SearchRecipes: React.FC = () => {
                 >
                   <option disabled>Style:</option>
                   {beerSubCategories.map((el) => (
-                    <option>{el}</option>
+                    <option key={el}>{el}</option>
                   ))}
                 </select>
               </div>
