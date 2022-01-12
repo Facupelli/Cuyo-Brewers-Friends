@@ -9,7 +9,11 @@ class BlogController {
 
   static async getBlogs(req, res, next) {
     try{
-      const blogs = await Blog.getBlogs();
+      const article_username = req.query.username
+      const article_title = req.query.title
+
+
+      const blogs = await Blog.getBlogs(article_username, article_title);
 
       res.json(blogs);
     }catch(e){

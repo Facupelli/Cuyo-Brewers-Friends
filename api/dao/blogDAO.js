@@ -5,8 +5,18 @@ const ObjectId = mongodb.ObjectId;
 
 class Blog {
 
-  static async getBlogs(){
+  static async getBlogs(article_username, article_title){
     try{
+
+      if(article_username){
+        return await blogModel.find({blog_username: {$regex: article_username}})
+      }
+
+      if(article_title){
+        return await blogModel.find({blog_title: {$regex: article_title}})
+      }
+      
+
       return await blogModel.find();
     }catch(e){
       console.error(`Unable to get blogs: ${e}`);
