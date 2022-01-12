@@ -111,6 +111,22 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     )}
                   </div>
                 )}
+
+                {cookie && (
+                  <div className="">
+                    {route === "blog" ? (
+                      <Link to="/blog">
+                        <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                          BLOG
+                        </span>
+                      </Link>
+                    ) : (
+                      <Link to="/blog">
+                        <p className="font-semibold">BLOG</p>
+                      </Link>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -242,6 +258,22 @@ const MobileNavBar: React.FC<MobileProps> = ({ route, cookie, logOut }) => {
             ) : (
               <Link to="/createrecipe">
                 <p className="font-semibold">ADD RECIPE</p>
+              </Link>
+            )}
+          </div>
+        )}
+
+        {cookie && (
+          <div className="">
+            {route === "blog" ? (
+              <Link to="/blog">
+                <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                  BLOG
+                </span>
+              </Link>
+            ) : (
+              <Link to="/blog">
+                <p className="font-semibold">BLOG</p>
               </Link>
             )}
           </div>
