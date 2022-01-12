@@ -18,7 +18,7 @@ class Blog {
         });
       }
 
-      return await blogModel.find();
+      return await blogModel.find().sort({date: -1});
     } catch (e) {
       console.error(`Unable to get blogs: ${e}`);
       return { error: e };

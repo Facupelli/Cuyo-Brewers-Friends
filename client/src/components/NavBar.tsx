@@ -169,15 +169,15 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                       <div
                         className={`${route === "addblog" ? "my-2" : "mb-0"}`}
                       >
-                        {route === "addblog" ? (
-                          <Link to="/addblog">
+                        {route === "createblog" ? (
+                          <Link to="/createblog">
                             <span className="font-semibold  border-b-2 border-blueLight">
-                              ADD BLOG
+                              ADD ARTICLE
                             </span>
                           </Link>
                         ) : (
-                          <Link to="/addblog">
-                            <p className="font-semibold">ADD BLOG</p>
+                          <Link to="/createblog">
+                            <p className="font-semibold">ADD ARTICLE</p>
                           </Link>
                         )}
                       </div>

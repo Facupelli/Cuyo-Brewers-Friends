@@ -103,6 +103,7 @@ export interface UserData {
   username: string;
   ownRecipes: RecipeList[];
   ownReviews: string[];
+  ownBlogs: string[];
 }
 
 // BLOG REDUCER --------------------

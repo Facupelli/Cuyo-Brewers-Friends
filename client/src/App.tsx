@@ -19,6 +19,7 @@ import { RecipeCardDetail } from "./components/RecipeCardDetail/RecipeCardDetail
 import { Register } from "./components/Register";
 import { SearchRecipes } from "./components/SearchRecipes/SearchRecipes";
 import { BlogDetail } from "./components/BlogDetail/BlogDetail";
+import { CreateBlog } from "./components/CreateBlog/CreateBlog";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ function App() {
         <Route path="/searchrecipes" element={<SearchRecipes />} />
         <Route path="/blogdetail/:id" element={<BlogDetail />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/createblog" element={<CreateBlog />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
