@@ -5,4 +5,5 @@ const router=express.Router()
 
 router.get('/', UserController.getUserInfo)
 
+
 module.exports=router

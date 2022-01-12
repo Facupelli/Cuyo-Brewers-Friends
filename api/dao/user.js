@@ -11,6 +11,15 @@ class User {
       throw e;
     }
   }
+
+  static async getUserByUsername(username){
+    try{
+      return await userModel.findOne({username: username})
+    }catch(e){
+      console.error(`Something went wrong in getUserByUsernameDAO: ${e}`);
+      throw e;
+    }
+  }
 }
 
 module.exports = User;

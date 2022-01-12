@@ -73,7 +73,7 @@ export const SearchArticle: React.FC = () => {
           </div>
 
           <button type="submit" className="p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white">SEARCH</button>
-          <p onClick={handleClean} className="p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white">CLEAN</p>
+          <p onClick={handleClean} className="cursor-pointer p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white">CLEAN</p>
         </div>
       </form>
     </div>
