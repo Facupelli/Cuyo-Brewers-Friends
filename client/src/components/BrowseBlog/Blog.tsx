@@ -26,6 +26,7 @@ export const Blog: React.FC = () => {
                   </Link>
                   <p className="text-gray-400">by</p>
                   <p className="text-brown1">{el.blog_username}</p>
+                  <p className="text-gray-400 ml-auto">{el.date}</p>
                 </div>
               ))}
           </div>
