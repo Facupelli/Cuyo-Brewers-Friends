@@ -16,6 +16,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
   const navigate = useNavigate();
 
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
+  const username = useSelector((state:RootState) => state.storeUser.userData.username)
 
   const [mobileNavbar, setMobileNavbar] = useState(false);
 
@@ -167,7 +168,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                       </div>
 
                       <div
-                        className={`${route === "addblog" ? "my-2" : "mb-0"}`}
+                        className={`${route === "createblog" ? "my-1" : "my-0"}`}
                       >
                         {route === "createblog" ? (
                           <Link to="/createblog">
@@ -183,16 +184,16 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                       </div>
 
                       <div
-                        className={`${route === "myprofile" ? "my-2" : "mb-0"}`}
+                        className={`${route === `/userprofile/${username}` ? "my-2" : "mb-0"}`}
                       >
-                        {route === "myprofile" ? (
-                          <Link to="/myprofile">
+                        {route === `/userprofile/${username}` ? (
+                          <Link to={`/userprofile/${username}`}>
                             <span className="font-semibold  border-b-2 border-blueLight">
                               MY PROFILE
                             </span>
                           </Link>
                         ) : (
-                          <Link to="/myprofile">
+                          <Link to={`/userprofile/${username}`}>
                             <p className="font-semibold">MY PROFILE</p>
                           </Link>
                         )}
