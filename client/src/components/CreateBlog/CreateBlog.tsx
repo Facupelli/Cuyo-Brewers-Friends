@@ -55,7 +55,7 @@ export const CreateBlog: React.FC = () => {
   return (
     <div>
       <NavBar route="createblog" />
-      <div className="max-w-6xl mx-auto mt-8">
+      <div className="max-w-6xl mx-4 md:mx-auto mt-8">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex items-baseline mb-8">
             <label className="mr-4">Title:</label>

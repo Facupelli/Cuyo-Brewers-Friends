@@ -26,7 +26,7 @@ export const UserProfile: React.FC = () => {
   return (
     <div>
       <NavBar route="userprofile" />
-      <div className="max-w-7xl md:mx-auto ml-4 mt-8">
+      <div className="max-w-7xl md:mx-auto mx-4 mt-8">
         <div>
           <div className="flex gap-4 items-baseline">
             <span className="text-4xl pb-3 border-b-2 border-blueLight">
