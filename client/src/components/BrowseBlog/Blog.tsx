@@ -11,12 +11,12 @@ export const Blog: React.FC = () => {
   return (
     <div>
       <NavBar route="blog" />
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl md:mx-auto mx-4 ">
         <div className="mt-8">
           <SearchArticle />
         </div>
         <div className="mt-8">
-          <p className="text-2xl">Latest Articles</p>
+          <p className="text-2xl ">Latest Articles</p>
           <div className="md:w-1/2">
             {blogs &&
               blogs.map((el) => (

@@ -25,16 +25,16 @@ export const SearchArticle: React.FC = () => {
 
   console.log("ERRORS:", errors);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleClean = () => {
-    dispatch(getBlogs())
-  }
+    dispatch(getBlogs());
+  };
 
   const onSubmit = async (data: FormInputs) => {
     try {
       console.log(data);
-      dispatch(getBlogs(data.username, data.article_name))
+      dispatch(getBlogs(data.username, data.article_name));
       reset();
     } catch (e) {
       console.log({ onSubmitError: e });
@@ -45,11 +45,11 @@ export const SearchArticle: React.FC = () => {
     <div className="w-2/3">
       <form onSubmit={handleSubmit(onSubmit)}>
         <p className="mb-4">Search article by</p>
-        <div className="flex justify-between">
+        <div className="flex flex-wrap justify-between gap-y-4 mx-4 md:mx-0">
           <div>
-            <label className="text-lg">Article Name:</label>
+            <label className="text-lg ">Article Name:</label>
             <input
-              className="ml-4 p-2 appearance-none shadow shadow-blue-600  text-gray-700 border border-blue-50 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="p-2 appearance-none shadow shadow-blue-600  text-gray-700 border border-blue-50 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
               placeholder=""
               {...register("article_name")}
@@ -60,9 +60,9 @@ export const SearchArticle: React.FC = () => {
           </div>
 
           <div>
-            <label className="text-lg">Article Username:</label>
+            <label className="text-lg ">Article Username:</label>
             <input
-              className="ml-4 p-2 appearance-none shadow shadow-blue-600  text-gray-700 border border-blue-50 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className=" p-2 appearance-none shadow shadow-blue-600  text-gray-700 border border-blue-50 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
               placeholder=""
               {...register("username")}
@@ -72,8 +72,20 @@ export const SearchArticle: React.FC = () => {
             </span>
           </div>
 
-          <button type="submit" className="p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white">SEARCH</button>
-          <p onClick={handleClean} className="cursor-pointer p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white">CLEAN</p>
+          <div className="flex gap-x-3">
+            <button
+              type="submit"
+              className="p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white"
+            >
+              SEARCH
+            </button>
+            <p
+              onClick={handleClean}
+              className="cursor-pointer p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white"
+            >
+              CLEAN
+            </p>
+          </div>
         </div>
       </form>
     </div>
