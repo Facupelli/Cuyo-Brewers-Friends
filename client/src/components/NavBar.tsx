@@ -16,7 +16,9 @@ export const NavBar: React.FC<Props> = ({ route }) => {
   const navigate = useNavigate();
 
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
-  const username = useSelector((state:RootState) => state.storeUser.userData.username)
+  const username = useSelector(
+    (state: RootState) => state.storeUser.userData.username
+  );
 
   const [mobileNavbar, setMobileNavbar] = useState(false);
 
@@ -103,40 +105,40 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                 </div>
 
                 {cookie && (
-                  <div className="">
-                    {route === "createrecipe" ? (
-                      <Link to="/createrecipe">
-                        <p className="font-semibold text-white border-b-2 border-blueLight">
-                          ADD RECIPE
-                        </p>
-                      </Link>
-                    ) : (
-                      <Link to="/createrecipe">
-                        <p className="font-semibold">ADD RECIPE</p>
-                      </Link>
-                    )}
-                  </div>
-                )}
+                  <>
+                    <div className="">
+                      {route === "createrecipe" ? (
+                        <Link to="/createrecipe">
+                          <p className="font-semibold text-white border-b-2 border-blueLight">
+                            ADD RECIPE
+                          </p>
+                        </Link>
+                      ) : (
+                        <Link to="/createrecipe">
+                          <p className="font-semibold">ADD RECIPE</p>
+                        </Link>
+                      )}
+                    </div>
 
-                {cookie && (
-                  <div className="">
-                    {route === "blog" ? (
-                      <Link to="/blog">
-                        <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
-                          BLOG
-                        </span>
-                      </Link>
-                    ) : (
-                      <Link to="/blog">
-                        <p className="font-semibold">BLOG</p>
-                      </Link>
-                    )}
-                  </div>
+                    <div className="">
+                      {route === "blog" ? (
+                        <Link to="/blog">
+                          <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                            BLOG
+                          </span>
+                        </Link>
+                      ) : (
+                        <Link to="/blog">
+                          <p className="font-semibold">BLOG</p>
+                        </Link>
+                      )}
+                    </div>
+                  </>
                 )}
               </div>
             </div>
 
-            <div ref={container} className="relative ">
+            <div ref={container} className="hidden md:block relative ">
               <button
                 onClick={hanldeUserMenu}
                 className={`menu flex gap-2 items-center focus:outline-none focus:shadow-solid font-semibold ${
@@ -162,13 +164,17 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                           </Link>
                         ) : (
                           <Link to="/myrecipes">
-                            <p className="font-semibold hover:text-blueLight">MY RECIPES</p>
+                            <p className="font-semibold hover:text-blueLight">
+                              MY RECIPES
+                            </p>
                           </Link>
                         )}
                       </div>
 
                       <div
-                        className={`${route === "createblog" ? "my-1" : "my-0"}`}
+                        className={`${
+                          route === "createblog" ? "my-1" : "my-0"
+                        }`}
                       >
                         {route === "createblog" ? (
                           <Link to="/createblog">
@@ -178,13 +184,17 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                           </Link>
                         ) : (
                           <Link to="/createblog">
-                            <p className="font-semibold hover:text-blueLight">ADD ARTICLE</p>
+                            <p className="font-semibold hover:text-blueLight">
+                              ADD ARTICLE
+                            </p>
                           </Link>
                         )}
                       </div>
 
                       <div
-                        className={`${route === `/userprofile/${username}` ? "my-2" : "mb-0"}`}
+                        className={`${
+                          route === `/userprofile/${username}` ? "my-2" : "mb-0"
+                        }`}
                       >
                         {route === `/userprofile/${username}` ? (
                           <Link to={`/userprofile/${username}`}>
@@ -194,7 +204,9 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                           </Link>
                         ) : (
                           <Link to={`/userprofile/${username}`}>
-                            <p className="font-semibold hover:text-blueLight">MY PROFILE</p>
+                            <p className="font-semibold hover:text-blueLight">
+                              MY PROFILE
+                            </p>
                           </Link>
                         )}
                       </div>
@@ -249,7 +261,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
         </div>
       </nav>
       {mobileNavbar && (
-        <MobileNavBar cookie={cookie} logOut={logOut} route={route} />
+        <MobileNavBar cookie={cookie} logOut={logOut} route={route} username={username} />
       )}
     </>
   );
@@ -262,12 +274,13 @@ type MobileProps = {
   cookie: string;
   logOut: () => void;
   route: string;
+  username: string
 };
 
-const MobileNavBar: React.FC<MobileProps> = ({ route, cookie, logOut }) => {
+const MobileNavBar: React.FC<MobileProps> = ({ route, cookie, logOut, username }) => {
   return (
-    <div className="bg-blue1 pl-6 pb-6 space-y-7 text-2xl">
-      <div className="space-y-3">
+    <div className="bg-blue1 pl-6 pb-6 space-y-5 text-xl pt-4">
+      <div className="space-y-2">
         <div className="">
           {route === "home" ? (
             <Link to="/home">
@@ -308,22 +321,6 @@ const MobileNavBar: React.FC<MobileProps> = ({ route, cookie, logOut }) => {
 
         {cookie && (
           <div className="">
-            {route === "myrecipes" ? (
-              <Link to="/myrecipes">
-                <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
-                  MY RECIPES
-                </span>
-              </Link>
-            ) : (
-              <Link to="/myrecipes">
-                <p className="font-semibold">MY RECIPES</p>
-              </Link>
-            )}
-          </div>
-        )}
-
-        {cookie && (
-          <div className="">
             {route === "createrecipe" ? (
               <Link to="/createrecipe">
                 <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
@@ -339,20 +336,68 @@ const MobileNavBar: React.FC<MobileProps> = ({ route, cookie, logOut }) => {
         )}
 
         {cookie && (
-          <div className="">
-            {route === "blog" ? (
-              <Link to="/blog">
-                <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
-                  BLOG
-                </span>
-              </Link>
-            ) : (
-              <Link to="/blog">
-                <p className="font-semibold">BLOG</p>
-              </Link>
-            )}
-          </div>
+          <>
+            <div className="">
+              {route === "blog" ? (
+                <Link to="/blog">
+                  <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                    BLOG
+                  </span>
+                </Link>
+              ) : (
+                <Link to="/blog">
+                  <p className="font-semibold">BLOG</p>
+                </Link>
+              )}
+            </div>
+
+            <div className="">
+              {route === "myrecipes" ? (
+                <Link to="/myrecipes">
+                  <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                    MY RECIPES
+                  </span>
+                </Link>
+              ) : (
+                <Link to="/myrecipes">
+                  <p className="font-semibold">MY RECIPES</p>
+                </Link>
+              )}
+            </div>
+          </>
         )}
+
+        <div className={`${route === "createblog" ? "my-1" : "my-0"}`}>
+          {route === "createblog" ? (
+            <Link to="/createblog">
+              <span className="font-semibold  border-b-2 border-blueLight">
+                ADD ARTICLE
+              </span>
+            </Link>
+          ) : (
+            <Link to="/createblog">
+              <p className="font-semibold hover:text-blueLight">ADD ARTICLE</p>
+            </Link>
+          )}
+        </div>
+
+        <div
+          className={`${
+            route === `/userprofile/${username}` ? "my-2" : "mb-0"
+          }`}
+        >
+          {route === `/userprofile/${username}` ? (
+            <Link to={`/userprofile/${username}`}>
+              <span className="font-semibold  border-b-2 border-blueLight">
+                MY PROFILE
+              </span>
+            </Link>
+          ) : (
+            <Link to={`/userprofile/${username}`}>
+              <p className="font-semibold hover:text-blueLight">MY PROFILE</p>
+            </Link>
+          )}
+        </div>
       </div>
 
       <div className="space-y-1">
