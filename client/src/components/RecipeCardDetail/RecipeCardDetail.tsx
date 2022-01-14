@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getRecipeById } from "../../utils/recipesUtils";
 import { RecipeList, Review } from "../../redux/reducers/types";
 import { MdDelete } from "react-icons/md";
+import {FaHeart, FaRegHeart} from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import axios from "axios";
@@ -117,6 +118,11 @@ export const RecipeCardDetail: React.FC = () => {
   const handleDeleteModal = () => {
     setModal(true);
   };
+
+  const handleAddFav = () => {
+
+  };
+  
   return (
     <>
       <NavBar route="recipeDetail" />
@@ -130,6 +136,13 @@ export const RecipeCardDetail: React.FC = () => {
               className="cursor-pointer ml-auto text-brown1 text-4xl"
             >
               <MdDelete />
+            </div>
+          )}
+          {!isMyRecipe() && (
+            <div 
+            onClick={handleAddFav}
+            className="cursor-pointer ml-6 text-blueLight text-4xl">
+              <FaRegHeart />
             </div>
           )}
         </div>
