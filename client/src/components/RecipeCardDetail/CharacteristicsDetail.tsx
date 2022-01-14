@@ -22,7 +22,7 @@ export const CharacteristicsDetail: React.FC<Props> = ({characteristics, mash_ph
       } = characteristics;
 
   return (
-    <div className="flex justify-around gap-12 py-8">
+    <div className="flex flex-wrap justify-around gap-12 py-8">
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">Original Gravity:</p>
         <p className="text-2xl text-blueDark">{original_gravity}</p>

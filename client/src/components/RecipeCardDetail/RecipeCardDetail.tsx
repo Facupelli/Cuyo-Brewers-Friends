@@ -146,8 +146,8 @@ export const RecipeCardDetail: React.FC = () => {
     <>
       <NavBar route="recipeDetail" />
 
-      <div className="my-8 mx-24">
-        <div className="flex items-center py-4">
+      <div className="my-8 max-w-6xl mx-4 md:mx-auto">
+        <div className="flex  items-center py-4">
           <p className="font-semibold text-4xl text-brown1">{title}</p>
           {isMyRecipe() && (
             <div
@@ -172,11 +172,11 @@ export const RecipeCardDetail: React.FC = () => {
           )}
         </div>
 
-        <div className="grid grid-cols-5 gap-4 ">
-          <div className="col-span-1 border border-gray-800 rounded h-full ">
+        <div className="grid grid-cols-5 gap-4">
+          <div className="col-span-5 md:col-span-1 border border-gray-800 rounded h-full ">
             <UserData username={username} />
           </div>
-          <div className="col-span-4">
+          <div className="col-span-5 md:col-span-4">
             <ParametersDetail
               style={sub_category}
               parameters={recipeState.recipe.recipe.parameters}

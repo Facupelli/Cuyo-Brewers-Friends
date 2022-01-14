@@ -11,7 +11,7 @@ export const YeastDetail: React.FC<Props> = ({ yeast }) => {
       <div className="py-4 font-semibold text-2xl text-brown1">
         <p>Yeast</p>
       </div>
-      <div className="w-2/3">
+      <div className="md:w-2/3">
         <div className="grid grid-cols-3 pb-4 bg-blue-50">
           <p className="col-span-1">Name</p>
           <p className="col-span-1">Quantity (g)</p>
