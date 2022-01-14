@@ -105,9 +105,13 @@ class Recipes {
     }
   }
 
-  static async deleteRecipe(id){
+  static async deleteRecipe(id, user_id){
     try{
       const deleteOne = await recipeModel.deleteOne({_id: id})
+      const deleteUserRecipe = await userModel.findOneAndUpdate(
+        { _id: user_id },
+        { $pull: { ownRecipes: id } }
+      )
     }catch(e){
       console.error(`Unable to delete recipe: ${e}`);
       return { error: e };

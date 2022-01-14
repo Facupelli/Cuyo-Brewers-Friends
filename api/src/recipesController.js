@@ -84,8 +84,9 @@ class RecipesController {
     try {
 
       const {id} = req.query
+      const {user_id} = req.body
       console.log('ID DELETE', id)
-      const deleteRecipe = await Recipes.deleteRecipe(id)
+      const deleteRecipe = await Recipes.deleteRecipe(id, user_id)
 
       res.json({status: "success"})
     } catch (e) {

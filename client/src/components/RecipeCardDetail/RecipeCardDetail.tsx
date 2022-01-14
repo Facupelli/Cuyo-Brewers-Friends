@@ -46,12 +46,12 @@ export const RecipeCardDetail: React.FC = () => {
     if (filter.length > 0) return true;
   };
 
-  const handleAddFav = async() => {
+  const handleAddFav = async () => {
     await addFav(user_id, id);
     dispatch(getUserData(user_id));
   };
 
-  const handleDeleteFav = async() => {
+  const handleDeleteFav = async () => {
     await deleteFav(user_id, id);
     dispatch(getUserData(user_id));
   };
@@ -230,7 +230,7 @@ const DeleteModal: React.FC<Props> = ({ setModal, id }) => {
   const userId = localStorage.getItem("userId");
 
   const handleDelete = async () => {
-    await axios.delete(`/recipe?id=${id}`);
+    await axios.delete(`/recipe?id=${id}`, { data: { user_id: userId } });
     setModal(false);
     dispatch(getUserData(userId));
     dispatch(getRecipes());
