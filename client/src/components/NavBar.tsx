@@ -164,7 +164,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                           </Link>
                         ) : (
                           <Link to="/myrecipes">
-                            <p className="font-semibold hover:text-blueLight">
+                            <p className="transition ease-in-out duration-150 font-semibold hover:text-blueLight">
                               MY RECIPES
                             </p>
                           </Link>
@@ -184,7 +184,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                           </Link>
                         ) : (
                           <Link to="/createblog">
-                            <p className="font-semibold hover:text-blueLight">
+                            <p className="transition ease-in-out duration-150 font-semibold hover:text-blueLight">
                               ADD ARTICLE
                             </p>
                           </Link>
@@ -204,7 +204,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                           </Link>
                         ) : (
                           <Link to={`/userprofile/${username}`}>
-                            <p className="font-semibold hover:text-blueLight">
+                            <p className="transition ease-in-out duration-150 font-semibold hover:text-blueLight">
                               MY PROFILE
                             </p>
                           </Link>
@@ -216,7 +216,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     <div className="mt-2 border-t border-blue-100">
                       <p
                         onClick={logOut}
-                        className=" cursor-pointer font-semibold hover:text-blueLight"
+                        className="transition ease-in-out duration-150 cursor-pointer font-semibold hover:text-blueLight"
                       >
                         Log Out
                       </p>
@@ -228,7 +228,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                         <Link to="/login">
                           <p
                             onClick={logOut}
-                            className="cursor-pointer font-semibold hover:text-blueLight"
+                            className="transition ease-in-out duration-150 cursor-pointer font-semibold hover:text-blueLight"
                           >
                             Log In
                           </p>
@@ -236,7 +236,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                       </div>
                       <div>
                         <Link to="/register">
-                          <p className="cursor-pointer font-semibold hover:text-blueLight">
+                          <p className="transition ease-in-out duration-150 cursor-pointer font-semibold hover:text-blueLight">
                             Register
                           </p>
                         </Link>

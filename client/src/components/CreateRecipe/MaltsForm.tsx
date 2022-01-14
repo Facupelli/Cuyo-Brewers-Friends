@@ -64,23 +64,6 @@ export const MaltsForm: React.FC<Props> = ({
               <label className="col-span-1  text-gray-700 text-md font-semibold">
                 Malt:
               </label>
-              {/* <select
-                {...register(
-                  `ingredients.fermentables[${index}].name` as const
-                )}
-                className="col-span-2 bg-white border border-blue-200  text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-              >
-                <option disabled>Select Malt</option>
-                {fermentables.map((el) => (
-                  <option
-                    key={el.name}
-                    value={el.name + "-" + el.potential + "-" + el.color}
-                  >
-                    {el.name}
-                  </option>
-                ))}
-              </select> */}
-
               <Controller
                 control={control}
                 name={`ingredients.fermentables[${index}].name`}
@@ -115,7 +98,7 @@ export const MaltsForm: React.FC<Props> = ({
               <button
                 type="button"
                 onClick={() => remove(index)}
-                className="col-span-1 ml-auto p-2 bg-transparent hover:bg-blue-500 text-brown1 font-semibold hover:text-white  border border-brown1 hover:border-transparent rounded"
+                className="transition ease-in-out duration-150 col-span-1 ml-auto p-2 bg-transparent hover:bg-brown1 text-brown1 font-semibold hover:text-white  border border-brown1 hover:border-transparent rounded"
               >
                 <FaTrash />
               </button>
@@ -132,57 +115,10 @@ export const MaltsForm: React.FC<Props> = ({
             quantity: 0,
           })
         }
-        className="my-4 text-sm bg-transparent hover:bg-blue-500 text-brown1 font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded"
+        className="transition ease-in-out duration-150 my-4 text-sm bg-transparent hover:bg-blue-500 text-brown1 font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded"
       >
         ADD MALT +
       </button>
-
-      {/* {[...Array(count)].map((el, count) => (
-        <div key={count} className="p-4 mt-4 bg-blue-100">
-          <div>
-            <label className="my-2 mr-6 text-gray-700 text-md font-semibold">
-              Malt
-            </label>
-            <select
-              {...register(`ingredients.fermentables[${count}].name`)}
-              onChange={handleMaltsChange}
-              className="bg-white border border-blue-200  text-gray-700 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-            >
-              <option disabled>Select Malt</option>
-              {fermentables.map((el) => (
-                <option key={el.name} value={el.potential}>{el.name}</option>
-              ))}
-            </select>
-          </div> */}
-
-      {/* <div className="flex items-center">
-            <Controller
-              name={`ingredients.fermentables[${count}].name`}
-              defaultValue=""
-              control={control}
-              render={({ field }) => <input className="my-2 ml-4 p-2 shadow appearance-none rounded w-full  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Pale" {...field} />}
-            />
-          </div> */}
-
-      {/* <div className="flex items-center">
-            <label className="my-2 w-8 text-gray-700 text-md font-semibold">
-              Kg
-            </label>
-            <Controller
-              name={`ingredients.fermentables[${count}].quantity`}
-              defaultValue={0}
-              control={control}
-              render={({ field }) => (
-                <input
-                  className="my-2 ml-4 p-2 w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="0"
-                  {...field}
-                />
-              )}
-            />
-          </div>
-        </div>
-      ))} */}
     </div>
   );
 };

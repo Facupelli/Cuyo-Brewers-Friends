@@ -71,7 +71,7 @@ export const CreateBlog: React.FC = () => {
             </span>
             <button
               type="submit"
-              className=" border border-blue1 rounded p-2 mt-4 ml-auto hover:bg-blue1 hover:text-white"
+              className="transition ease-in-out duration-150 border border-blue1 rounded p-2 mt-4 ml-auto hover:bg-blue1 hover:text-white"
             >
               POST ARTICLE
             </button>

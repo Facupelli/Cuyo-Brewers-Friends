@@ -75,13 +75,13 @@ export const SearchArticle: React.FC = () => {
           <div className="flex gap-x-3">
             <button
               type="submit"
-              className="p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white"
+              className="transition ease-in-out duration-150 p-2 border shadow hover:shadow-none border-blueLight rounded hover:bg-blueLight hover:text-white"
             >
               SEARCH
             </button>
             <p
               onClick={handleClean}
-              className="cursor-pointer p-2 border shadow border-blueLight rounded hover:bg-blueLight hover:text-white"
+              className="transition ease-in-out duration-150 cursor-pointer p-2 border shadow hover:shadow-none border-blueLight rounded hover:bg-blueLight hover:text-white"
             >
               CLEAN
             </p>

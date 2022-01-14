@@ -50,7 +50,7 @@ export const UserProfile: React.FC = () => {
                   className="flex md:gap-x-3 bg-blue-50 rounded shadow hover:shadow-none p-4 my-3"
                 >
                   <Link to={`/blogdetail/${el._id}`}>
-                    <p>{el.blog_title}</p>
+                    <p className="transition ease-in-out duration-150 hover:text-brown1">{el.blog_title}</p>
                   </Link>
                   <p className="text-gray-400 ml-auto">{el.date}</p>
                 </div>

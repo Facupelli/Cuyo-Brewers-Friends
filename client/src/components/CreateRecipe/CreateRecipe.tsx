@@ -223,7 +223,7 @@ export const CreateRecipe: React.FC<{}> = () => {
               </p>
               <button
                 type="submit"
-                className="bg-transparent hover:bg-brown1 text-gray-700 font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
+                className="transition ease-in-out duration-150 bg-transparent hover:bg-brown1 text-gray-700 font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
               >
                 SAVE
               </button>

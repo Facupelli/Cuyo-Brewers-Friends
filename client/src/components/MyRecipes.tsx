@@ -48,7 +48,7 @@ export const MyRecipes: React.FC = (z) => {
               >
                 <div className="col-span-3 md:col-span-2">
                   <Link to={`/recipe/${el._id}`}>
-                    <p className="font-semibold">{el.recipe.title}</p>
+                    <p className="font-semibold transition ease-in-out duration-150 hover:text-brown1">{el.recipe.title}</p>
                   </Link>
                 </div>
                 <div className="col-span-7 md:col-span-3 flex gap-4">
