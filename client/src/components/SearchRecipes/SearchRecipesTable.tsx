@@ -69,7 +69,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
 
   return (
     <div>
-      <table {...getTableProps()} className="w-full">
+      <table {...getTableProps()} className="w-full ">
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>

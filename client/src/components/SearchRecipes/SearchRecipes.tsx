@@ -47,7 +47,7 @@ export const SearchRecipes: React.FC = () => {
       <NavBar route="searchrecipes" />
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-11  p-4 my-8">
-          <div className="col-span-3 p-4 border-r border-blueDark bg-gray-200 rounded-l">
+          <div className="col-span-11 md:col-span-3 p-4 border-r border-blueDark bg-gray-200 rounded-l mb-4">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-3 items-center mb-4">
                 <label className="col-span-1 text-brown1">Style</label>
@@ -81,7 +81,7 @@ export const SearchRecipes: React.FC = () => {
                 />
               </div>
 
-              <div className="flex gap-4 mt-16 justify-center">
+              <div className="flex gap-4 md:mt-16 justify-center">
                 <button
                   type="submit"
                   className="cursor-pointer bg-transparent hover:bg-blueLight font-semibold hover:text-white px-2 border border-blueLight hover:border-transparent rounded"
@@ -98,7 +98,7 @@ export const SearchRecipes: React.FC = () => {
             </form>
           </div>
 
-          <div className="col-span-8 p-4 bg-gray-100 rounded-r">
+          <div className="col-span-11 md:col-span-8 p-4 bg-gray-100 rounded-r">
             <SearchRecipesTable recipes={recipes} />
           </div>
 

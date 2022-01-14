@@ -30,7 +30,7 @@ class Recipes {
       const sortBy = top ? "-rating" : "-date";
 
       const addRating = await recipeModel.updateMany({}, [
-        { $set: { rating: {$avg: "$reviewsScores"} } },
+        { $set: { rating: { $avg: "$reviewsScores" } } },
       ]);
 
       allRecipes = await recipeModel
@@ -40,7 +40,6 @@ class Recipes {
         .populate("author", "_id name username")
         .populate("reviews", "_id score")
         .skip(recipesPerPage * page);
-
 
       // const reviews = allRecipes.forEach((el) => {
       //   const reviewsLength = el.reviews.length;
@@ -53,7 +52,6 @@ class Recipes {
       //       reviewsLength;
       //   }
       // });
-
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`);
       return { recipesList: [], totalNumRecipes: 0 };
@@ -106,16 +104,19 @@ class Recipes {
     }
   }
 
-  static async deleteRecipe(id, user_id){
-    try{
-      const deleteOne = await recipeModel.deleteOne({_id: id})
+  static async deleteRecipe(id, user_id) {
+    try {
+      const deleteOne = await recipeModel.deleteOne({ _id: id });
       const deleteUserRecipe = await userModel.findOneAndUpdate(
         { _id: user_id },
         { $pull: { ownRecipes: id } }
-      )
-      const deleteRecipeReviews = await reviewModel.deleteMany({recipe: id})
-      const deleteUserReviews = await userModel.updateMany({ownReviews: id}, { $pull: { ownReviews: id } })
-    }catch(e){
+      );
+      const deleteRecipeReviews = await reviewModel.deleteMany({ recipe: id });
+      const deleteUserReviews = await userModel.updateMany(
+        { ownReviews: id },
+        { $pull: { ownReviews: id } }
+      );
+    } catch (e) {
       console.error(`Unable to delete recipe: ${e}`);
       return { error: e };
     }
