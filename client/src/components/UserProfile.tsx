@@ -36,25 +36,36 @@ export const UserProfile: React.FC = () => {
           </div>
           <div className="grid grid-cols-2 gap-y-8 md:gap-x-8 mt-12">
             <div className="col-span-2 md:col-span-1">
-              <p className="font-semibold text-xl md:ml-2">RECIPES:</p>
+              <p className="font-semibold text-xl md:ml-2">MY RECIPES:</p>
               {userProfile &&
                 userProfile.userProfile.ownRecipes.map((recipe, i) => (
                   <RecipeCard key={i} recipe={recipe.recipe} id={recipe._id} />
                 ))}
             </div>
+
             <div className="col-span-2 md:col-span-1">
-              <p className="font-semibold text-xl">ARTICLES:</p>
+              <p className="font-semibold text-xl">MY ARTICLES:</p>
               {userProfile?.userProfile.ownBlogs.map((el, i) => (
                 <div
                   key={i}
                   className="flex md:gap-x-3 bg-blue-50 rounded shadow hover:shadow-none p-4 my-3"
                 >
                   <Link to={`/blogdetail/${el._id}`}>
-                    <p className="transition ease-in-out duration-150 hover:text-brown1">{el.blog_title}</p>
+                    <p className="transition ease-in-out duration-150 hover:text-brown1">
+                      {el.blog_title}
+                    </p>
                   </Link>
                   <p className="text-gray-400 ml-auto">{el.date}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="col-span-2 md:col-span-1">
+              <p className="font-semibold text-xl md:ml-2">MY FAVS:</p>
+              {userProfile &&
+                userProfile.userProfile.favs.map((recipe, i) => (
+                  <RecipeCard key={i} recipe={recipe.recipe} id={recipe._id} />
+                ))}
             </div>
           </div>
         </div>

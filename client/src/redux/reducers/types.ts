@@ -96,6 +96,12 @@ export interface RecipeList {
   reviews: Review[];
 }
 
+export interface RecipeFavs {
+  recipe: Recipe;
+  date: string;
+  _id: string;
+}
+
 // USER REDUCER ----------------------
 interface OwnBLogs {
   blog_title: string;
@@ -109,7 +115,7 @@ export interface UserData {
   ownRecipes: RecipeList[];
   ownReviews: string[];
   ownBlogs: OwnBLogs[];
-  favs: string[];
+  favs: RecipeFavs[];
 }
 
 // BLOG REDUCER --------------------

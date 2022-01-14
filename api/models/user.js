@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true, min: 8, max: 225 },
   email: { type: String, required: true, min: 6, max: 225 },
   date: { type: Date, default: Date.now },
-  favs: [{type: String}],
+  favs: [{ type: mongoose.Schema.Types.ObjectId, ref: "RecipeModel" }],
   ownRecipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "RecipeModel" }],
   ownReviews:[{type: mongoose.Schema.Types.ObjectId, ref: "ReviewModel" }],
   ownBlogs:[{type: mongoose.Schema.Types.ObjectId, ref: "BlogModel" }]

@@ -1,12 +1,15 @@
 const mongodb = require("mongodb");
 const { userModel } = require("../models/user");
+const ObjectId = mongodb.ObjectId;
+
 
 class Fav {
   static async addFav(user_id, recipe_id) {
     try {
       const user = await userModel.find({ _id: user_id });
 
-      const filter = user[0].favs.filter((el) => el === recipe_id);
+      const filter = user[0].favs.filter((el) => el.toString() === recipe_id);
+      console.log(filter)
 
       if (filter.length === 0) {
         const addFav = await userModel.findOneAndUpdate(
