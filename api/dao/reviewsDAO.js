@@ -16,9 +16,10 @@ class ReviewsDAO {
   //   }
   // }
 
-  static async addReview(userInfo, review, date, recipe_id) {
+  static async addReview(userInfo, review, date) {
     try {
       const reviewDoc = {
+        recipe: review.recipe_id,
         username: userInfo.username,
         author: userInfo.user_id,
         date: date,

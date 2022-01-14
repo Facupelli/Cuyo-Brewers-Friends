@@ -1,6 +1,7 @@
 const mongodb = require("mongodb");
 const { userModel } = require("../models/user");
 const { recipeModel } = require("../models/recipe");
+const { reviewModel } = require("../models/review");
 const ObjectId = mongodb.ObjectId;
 
 class Recipes {
@@ -112,6 +113,7 @@ class Recipes {
         { _id: user_id },
         { $pull: { ownRecipes: id } }
       )
+      const deleteRecipeReviews = await reviewModel.deleteMany({recipe: id})
     }catch(e){
       console.error(`Unable to delete recipe: ${e}`);
       return { error: e };
