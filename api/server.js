@@ -9,6 +9,7 @@ const reviewRoutes = require("./routes/reviewRoutes");
 const registerRoutes = require("./routes/registerRoutes");
 const loginRoutes = require("./routes/loginRoutes");
 const blogRoutes = require("./routes/blogRoutes");
+const favRoutes = require("./routes/favRoutes");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -22,6 +23,7 @@ app.use("/recipe", recipeRoutes);
 app.use("/user", userRoutes);
 app.use("/review", reviewRoutes);
 app.use("/blog", blogRoutes);
+app.use("/fav", favRoutes);
 app.use("/login", loginRoutes);
 app.use("/register", registerRoutes);
 
