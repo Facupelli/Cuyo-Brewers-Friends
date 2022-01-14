@@ -114,6 +114,7 @@ class Recipes {
         { $pull: { ownRecipes: id } }
       )
       const deleteRecipeReviews = await reviewModel.deleteMany({recipe: id})
+      const deleteUserReviews = await userModel.updateMany({ownReviews: id}, { $pull: { ownReviews: id } })
     }catch(e){
       console.error(`Unable to delete recipe: ${e}`);
       return { error: e };
