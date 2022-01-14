@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getRecipeById } from "../../utils/recipesUtils";
+import { addFav, deleteFav, getRecipeById } from "../../utils/recipesUtils";
 import { RecipeList, Review } from "../../redux/reducers/types";
 import { MdDelete } from "react-icons/md";
-import {FaHeart, FaRegHeart} from 'react-icons/fa'
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import axios from "axios";
@@ -18,7 +18,11 @@ import { HopsDetail } from "./HopsDetail";
 import { WaterDetail } from "./WaterDetail";
 import { CommentForm } from "./CommentForm";
 import { UserData } from "./UserData";
-import { getRecipes, getTopRecipes, getUserData } from "../../redux/action-creators";
+import {
+  getRecipes,
+  getTopRecipes,
+  getUserData,
+} from "../../redux/action-creators";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -31,7 +35,26 @@ export interface State {
 export const RecipeCardDetail: React.FC = () => {
   const { id } = useParams<RecipeCardDetailParams>();
 
+  const dispatch = useDispatch();
+
+  const user_id = useSelector((state: RootState) => state.storeUser.cookie);
   const userData = useSelector((state: RootState) => state.storeUser.userData);
+
+  const isRecipeFav = () => {
+    const filter = userData.favs.filter((el) => el === id);
+    if (filter.length === 0) return false;
+    if (filter.length > 0) return true;
+  };
+
+  const handleAddFav = async() => {
+    await addFav(user_id, id);
+    dispatch(getUserData(user_id));
+  };
+
+  const handleDeleteFav = async() => {
+    await deleteFav(user_id, id);
+    dispatch(getUserData(user_id));
+  };
 
   const isMyRecipe = () => {
     const is = userData.ownRecipes.filter((el) => el._id === id);
@@ -119,10 +142,6 @@ export const RecipeCardDetail: React.FC = () => {
     setModal(true);
   };
 
-  const handleAddFav = () => {
-
-  };
-  
   return (
     <>
       <NavBar route="recipeDetail" />
@@ -138,11 +157,17 @@ export const RecipeCardDetail: React.FC = () => {
               <MdDelete />
             </div>
           )}
-          {!isMyRecipe() && (
-            <div 
-            onClick={handleAddFav}
-            className="cursor-pointer ml-6 text-blueLight text-4xl">
-              <FaRegHeart />
+          {user_id && !isMyRecipe() && (
+            <div className="cursor-pointer ml-6 text-blueLight text-3xl">
+              {isRecipeFav() === false ? (
+                <div onClick={handleAddFav}>
+                  <FaRegHeart />
+                </div>
+              ) : (
+                <div onClick={handleDeleteFav}>
+                  <FaHeart />
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -209,7 +234,7 @@ const DeleteModal: React.FC<Props> = ({ setModal, id }) => {
     setModal(false);
     dispatch(getUserData(userId));
     dispatch(getRecipes());
-    dispatch(getTopRecipes())
+    dispatch(getTopRecipes());
     navigate("/myrecipes");
   };
 
