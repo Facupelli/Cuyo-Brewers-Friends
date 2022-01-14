@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { RootState } from "../redux/reducers/RootReducer";
 import { UserData } from "../redux/reducers/types";
 import { getUserByUsername } from "../utils/blogUtils";
 import { NavBar } from "./NavBar";
@@ -16,6 +18,12 @@ type UserProfileState = {
 export const UserProfile: React.FC = () => {
   const username = useParams<ParamsType>();
   const [userProfile, setUserProfile] = useState<UserProfileState>();
+  const logedUsername = useSelector((state: RootState) => state.storeUser.userData.username)
+
+  const isMyProfile = () => {
+    if (logedUsername === username.username) return true;
+    else return false;
+  };
 
   useEffect(() => {
     getUserByUsername(username.username)
@@ -60,13 +68,19 @@ export const UserProfile: React.FC = () => {
               ))}
             </div>
 
-            <div className="col-span-2 md:col-span-1">
-              <p className="font-semibold text-xl md:ml-2">MY FAVS:</p>
-              {userProfile &&
-                userProfile.userProfile.favs.map((recipe, i) => (
-                  <RecipeCard key={i} recipe={recipe.recipe} id={recipe._id} />
-                ))}
-            </div>
+            {isMyProfile() && (
+              <div className="col-span-2 md:col-span-1">
+                <p className="font-semibold text-xl md:ml-2">MY FAVS:</p>
+                {userProfile &&
+                  userProfile.userProfile.favs.map((recipe, i) => (
+                    <RecipeCard
+                      key={i}
+                      recipe={recipe.recipe}
+                      id={recipe._id}
+                    />
+                  ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
