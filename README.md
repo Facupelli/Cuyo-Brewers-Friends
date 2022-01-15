@@ -69,7 +69,7 @@ You can add a recipe to favs
 Theres is a blog section, where you can post an article
 
 <img src="./images/update1.0/blog1.png" alt="start_screen"/>
-<img src="./images/update1.0/blog2.png" alt="start_screen"/>
+<img src="./images/update1.0/addblog1.png" alt="start_screen"/>
 
 
 
