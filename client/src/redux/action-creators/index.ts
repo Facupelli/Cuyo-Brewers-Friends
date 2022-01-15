@@ -35,9 +35,17 @@ export const getRecipes =
       if (filters) {
         if (filters.username) {
           res = await axios.get<any>(`/recipe?username=${filters.username}`);
+          return dispatch({
+            type: RecipesActionType.RECIPES_GET,
+            payload: res.data.recipesList,
+          });
         }
         if (filters.beer_title) {
           res = await axios.get<any>(`/recipe?title=${filters.beer_title}`);
+          return dispatch({
+            type: RecipesActionType.RECIPES_GET,
+            payload: res.data.recipesList,
+          });
         }
         if (filters.sub_category) {
           res = await axios.get<any>(

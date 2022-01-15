@@ -53,7 +53,7 @@ export const SearchRecipes: React.FC = () => {
                 <label className="col-span-1 text-brown1">Style</label>
                 <select
                   {...register("sub_category")}
-                  autoComplete="on"
+                  defaultValue=""
                   className="col-span-2 p-2 bg-white border border-blueLight text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-blueDark"
                 >
                   <option disabled>Style:</option>
