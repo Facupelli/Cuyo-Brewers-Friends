@@ -3,7 +3,21 @@ const { blogModel } = require("../models/blog");
 const { userModel } = require("../models/user");
 const ObjectId = mongodb.ObjectId;
 
+let blog;
 class Blog {
+  static async injectDB(conn) {
+    if (blog) {
+      return;
+    }
+    try {
+      blog = await conn.db(process.env.CUYOBREWERS_NS).collection("blogs");
+    } catch (e) {
+      console.error(
+        `Unable to establish a collection handle in recipesDAO: ${e}`
+      );
+    }
+  }
+
   static async getBlogs(article_username, article_title) {
     try {
       if (article_username) {

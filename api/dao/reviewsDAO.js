@@ -4,17 +4,18 @@ const ObjectId = mongodb.ObjectId;
 const { reviewModel } = require("../models/review");
 const { userModel } = require("../models/user");
 
+let reviews;
 class ReviewsDAO {
-  // static async injectDB(conn) {
-  //   if (reviews) {
-  //     return;
-  //   }
-  //   try {
-  //     reviews = await conn.db(process.env.RESTREVIEWS_NS).collection("reviews");
-  //   } catch (e) {
-  //     console.error(`Unable to establish collection handles in userDAO: ${e}`);
-  //   }
-  // }
+  static async injectDB(conn) {
+    if (reviews) {
+      return;
+    }
+    try {
+      reviews = await conn.db(process.env.CUYOBREWERS_NS).collection("reviews");
+    } catch (e) {
+      console.error(`Unable to establish collection handles in userDAO: ${e}`);
+    }
+  }
 
   static async addReview(userInfo, review, date) {
     try {

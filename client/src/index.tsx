@@ -11,7 +11,7 @@ import ScrollToTop from "./components/ScrollToTp";
 
 dotenv.config();
 
-axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:27017/";
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001/";
 
 ReactDOM.render(
   <React.StrictMode>

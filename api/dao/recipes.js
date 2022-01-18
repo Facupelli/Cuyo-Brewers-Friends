@@ -4,7 +4,21 @@ const { recipeModel } = require("../models/recipe");
 const { reviewModel } = require("../models/review");
 const ObjectId = mongodb.ObjectId;
 
+let recipes;
 class Recipes {
+  static async injectDB(conn) {
+    if (recipes) {
+      return;
+    }
+    try {
+      recipes = await conn.db(process.env.CUYOBREWERS_NS).collection("recipes");
+    } catch (e) {
+      console.error(
+        `Unable to establish a collection handle in recipesDAO: ${e}`
+      );
+    }
+  }
+
   static async getRecipes({
     // we call this when we want a list of all recipes
     top,
