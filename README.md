@@ -1,6 +1,6 @@
 # Cuyo-Brewers-Friends
 
-I'am currently working on this project.
+I'am currently working on this project. to view the app deployed add /home at the end of the url
 
 ## Is a "social network" for home brewers in Argentina, where you can create and post recipes and rate them. Inspired by brewersfriend.com
 
