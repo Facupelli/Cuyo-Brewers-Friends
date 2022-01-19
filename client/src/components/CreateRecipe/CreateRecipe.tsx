@@ -16,6 +16,7 @@ import { HopsForm } from "./HopsForm";
 import { MaltsForm } from "./MaltsForm";
 import { WaterForm } from "./WaterForm";
 import { BatchParams } from "./BatchParams";
+import { Modal } from "../Modal";
 
 // const initialValues: Recipe = {
 //   _id: 0,
@@ -163,6 +164,8 @@ const schema = yup.object().shape({
 export const CreateRecipe: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
+  const [modal, setModal] = useState(false)
+
   const username = useSelector(
     (state: RootState) => state.storeUser.userData.username
   );
@@ -201,7 +204,7 @@ export const CreateRecipe: React.FC<{}> = () => {
         username,
         user_id,
       };
-      const response = await axios.post("/recipe", newRecipe);
+      const response = await axios.post("/recipe", newRecipe).then(res => setModal(true))
       console.log("RESPONSE:", response);
       dispatch(getRecipes());
       dispatch(getUserData(user_id));
@@ -211,6 +214,7 @@ export const CreateRecipe: React.FC<{}> = () => {
   };
 
   return (
+    <>
     <div className="bg-gray-50 ">
       <NavBar route="createrecipe" />
       <div className="max-w-7xl mx-auto">
@@ -272,5 +276,7 @@ export const CreateRecipe: React.FC<{}> = () => {
         </FormProvider>
       </div>
     </div>
+    {modal && <Modal setModal={setModal} message='Recipe created successfully' pathTo='/myrecipes' />}
+    </>
   );
 };
