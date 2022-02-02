@@ -48,7 +48,7 @@ export const Login: React.FC = () => {
 
       dispatch(setCookie(id));
       reset();
-      navigate("/home");
+      navigate("/");
     } catch (e: unknown) {
       if (axios.isAxiosError(e)) {
         console.log("SERVER RESPONSE", e.response?.data);

@@ -56,7 +56,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="" element={<Home />} />
         <Route path="/createrecipe" element={<CreateRecipe />} />
         <Route path="/recipe/:id" element={<RecipeCardDetail />} />
         <Route path="/myrecipes" element={<MyRecipes />} />

@@ -1,11 +1,11 @@
 # Cuyo-Brewers-Friends
 
-I'am currently working on this project. to view the app deployed add /home at the end of the url
+You can view the app deployed: cuyo-brewers-friends.vercel.app
 
-## Is a "social network" for home brewers in Argentina, where you can create and post recipes and rate them. Inspired by brewersfriend.com
+## Is a "social network" for home brewers in Argentina, where you can create, post recipes and rate them. Inspired by brewersfriend.com
 
-Im using mongoDB with mongoose, Node.js and express for the backend,
-and React-redux with typescript for the frontend among others.
+I using MongoDB with Mongoose, Node.js and express for the backend,
+and React-redux with Typescript for the frontend among others.
 
 ### The styles applied are just provisional.
 

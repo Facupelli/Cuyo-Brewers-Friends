@@ -11,6 +11,8 @@ const { loadRecipes } = require("./mock/recipes/index.js");
 const mongoose = require("mongoose");
 const { recipeModel, createIndexes } = require("./models/recipe.js");
 const { reviewModel } = require("./models/review");
+const { userModel } = require("./models/user");
+const { loadUsers } = require("./mock/users/users.js");
 
 dotenv.config();
 
@@ -76,6 +78,12 @@ mongoose
     // await blogDAO.injectDB(client);
     // await reviewsDAO.injectDB(client);
     // await userDAO.injectDB(client);
+
+    try {
+      // await loadUsers().then(() => console.log('users loaded'))
+    } catch (e) {
+      console.log(e);
+    }
     app.listen(port, () => {
       console.log(`listening on port ${port}`);
     });

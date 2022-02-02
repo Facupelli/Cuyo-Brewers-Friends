@@ -51,7 +51,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     dispatch(setCookie(""));
-    navigate("/home");
+    navigate("/");
   };
 
   return (
@@ -68,13 +68,13 @@ export const NavBar: React.FC<Props> = ({ route }) => {
               <div className="hidden md:flex items-center space-x-6">
                 <div className="">
                   {route === "home" ? (
-                    <Link to="/home">
+                    <Link to="/">
                       <p className="font-semibold text-white border-b-2 border-blueLight">
                         RECIPES
                       </p>
                     </Link>
                   ) : (
-                    <Link to="/home">
+                    <Link to="/">
                       <p className="font-semibold">RECIPES</p>
                     </Link>
                   )}
@@ -291,13 +291,13 @@ const MobileNavBar: React.FC<MobileProps> = ({
       <div className="space-y-2">
         <div className="">
           {route === "home" ? (
-            <Link to="/home">
+            <Link to="/">
               <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
                 RECIPES
               </span>
             </Link>
           ) : (
-            <Link to="/home">
+            <Link to="/">
               <p className="font-semibold">RECIPES</p>
             </Link>
           )}
