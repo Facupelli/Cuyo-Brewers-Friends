@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useTable } from "react-table";
+import { Cell, useTable } from "react-table";
 import { RecipeList } from "../../redux/reducers/types";
 
 interface Props {
@@ -56,6 +56,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
       {
         Header: "Rating",
         accessor: "rating",
+        Cell: ({ cell: { value } }: { cell: Cell }) => value.toFixed(1),
       },
     ],
     []

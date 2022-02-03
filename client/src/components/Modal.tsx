@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -9,7 +8,6 @@ type Props = {
 
 export const Modal: React.FC<Props> = ({ setModal, message, pathTo }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleClick = () => {
     navigate(`${pathTo}`);
