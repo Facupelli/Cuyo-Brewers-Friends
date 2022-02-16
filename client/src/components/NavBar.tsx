@@ -133,6 +133,20 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     </Link>
                   )}
                 </div>
+
+                <div className="">
+                  {route === "shop" ? (
+                    <Link to="/shop">
+                      <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                        SHOP
+                      </span>
+                    </Link>
+                  ) : (
+                    <Link to="/shop">
+                      <p className="font-semibold">SHOP</p>
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
 

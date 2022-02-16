@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const dashboardRoutes = require("./src/dashboard");
 const tokenValidation = require("./validation/tokenValidation");
+
+
 //ROUTES
 const recipeRoutes = require("./routes/recipeRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -10,6 +12,8 @@ const registerRoutes = require("./routes/registerRoutes");
 const loginRoutes = require("./routes/loginRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const favRoutes = require("./routes/favRoutes");
+const products = require("./routes/productsRoutes");
+
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -26,6 +30,7 @@ app.use("/blog", blogRoutes);
 app.use("/fav", favRoutes);
 app.use("/login", loginRoutes);
 app.use("/register", registerRoutes);
+app.use("/products", products);
 
 //route protected with token
 app.use("/dashboard", tokenValidation, dashboardRoutes);

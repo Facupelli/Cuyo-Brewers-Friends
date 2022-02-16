@@ -12,7 +12,8 @@ const UserSchema = new mongoose.Schema({
   favs: [{ type: mongoose.Schema.Types.ObjectId, ref: "RecipeModel" }],
   ownRecipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "RecipeModel" }],
   ownReviews:[{type: mongoose.Schema.Types.ObjectId, ref: "ReviewModel" }],
-  ownBlogs:[{type: mongoose.Schema.Types.ObjectId, ref: "BlogModel" }]
+  ownBlogs:[{type: mongoose.Schema.Types.ObjectId, ref: "BlogModel" }],
+  ownProducts:[{type: mongoose.Schema.Types.ObjectId, ref: "ProductModel" }],
 });
 
 const userModel = mongoose.model("UserModel", UserSchema);

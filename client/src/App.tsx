@@ -21,6 +21,7 @@ import { SearchRecipes } from "./components/SearchRecipes/SearchRecipes";
 import { BlogDetail } from "./components/BlogDetail/BlogDetail";
 import { CreateBlog } from "./components/CreateBlog/CreateBlog";
 import { UserProfile } from "./components/UserProfile";
+import { Shop } from "./components/Shop/Shop";
 
 function App() {
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/createblog" element={<CreateBlog />} />
         <Route path='/userprofile/:username' element={<UserProfile />} />
+        <Route path="/shop" element={<Shop />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

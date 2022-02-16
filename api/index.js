@@ -1,19 +1,17 @@
 const app = require("./server.js");
 const mongodb = require("mongodb");
 const dotenv = require("dotenv");
-const recipesDAO = require("./dao/recipes.js");
-const reviewsDAO = require("./dao/reviewsDAO.js");
-const favDAO = require("./dao/favDAO.js");
-const blogDAO = require("./dao/blogDAO.js");
-const userDAO = require("./dao/user.js");
+// const recipesDAO = require("./dao/recipes.js");
+// const reviewsDAO = require("./dao/reviewsDAO.js");
+// const favDAO = require("./dao/favDAO.js");
+// const blogDAO = require("./dao/blogDAO.js");
+// const userDAO = require("./dao/user.js");
 
-const { loadRecipes } = require("./mock/recipes/index.js");
+// const { loadRecipes } = require("./mock/recipes/index.js");
 const mongoose = require("mongoose");
-const { recipeModel, createIndexes } = require("./models/recipe.js");
-const { reviewModel } = require("./models/review");
-const { userModel } = require("./models/user");
-const { loadUsers } = require("./mock/users/users.js");
-
+// const { recipeModel, createIndexes } = require("./models/recipe.js");
+// const { reviewModel } = require("./models/review");
+// const { userModel } = require("./models/user");
 dotenv.config();
 
 //-------------------------- MONGO LOCAL DB --------------------------------------
@@ -80,7 +78,6 @@ mongoose
     // await userDAO.injectDB(client);
 
     try {
-      // await loadUsers().then(() => console.log('users loaded'))
     } catch (e) {
       console.log(e);
     }
