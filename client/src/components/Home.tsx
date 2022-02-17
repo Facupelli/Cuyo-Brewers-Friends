@@ -24,8 +24,8 @@ export default function Home() {
       <div className=" ">
         <div className=" max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:mb-12 lg:pt-6">
-            <div className="col-span-2 md:col-span-1 px-6">
-              <div className="flex items-center gap-2 text-second">
+            <div className="col-span-2 lg:col-span-1 px-6">
+              <div className="flex items-center gap-2 text-main">
                 <p className="my-4 ml-2 font-semibold  text-2xl">
                   New Recipes
                 </p>
@@ -36,7 +36,7 @@ export default function Home() {
               <RecipesCardList recipesList={recipesList} />
             </div>
             <div className="col-span-2 lg:col-span-1 px-6">
-              <div className="flex items-center gap-2 text-second">
+              <div className="flex items-center gap-2 text-main">
                 <p className="my-4 ml-2 font-semibold  text-2xl">
                   Top Recipes
                 </p>
