@@ -95,7 +95,7 @@ export const Characteristics: React.FC<Props> = ({
 
   return (
     <>
-      <div className="mx-4 md:mx-8 p-3 md:p-6 bg-gray-100">
+      <div className="mx-4 md:mx-8 p-3 md:p-6 bg-gray-100 shadow-form-shadow">
         <div
           onClick={handleQusetionClick}
           className="cursor-pointer text-gray-400 text-lg flex justify-end "
@@ -108,7 +108,7 @@ export const Characteristics: React.FC<Props> = ({
               Original Gravity
             </label>
             {originalGravity && (
-              <p className="text-blueLight font-semibold text-3xl">
+              <p className="text-mainC2 font-semibold text-3xl">
                 {originalGravity}
               </p>
             )}
@@ -119,7 +119,7 @@ export const Characteristics: React.FC<Props> = ({
               Final Gravity
             </label>
             {yeastAtt && finalGravity && (
-              <p className="text-blueLight font-semibold text-3xl">
+              <p className="text-mainC2 font-semibold text-3xl">
                 {finalGravity}
               </p>
             )}
@@ -130,7 +130,7 @@ export const Characteristics: React.FC<Props> = ({
               ABV %
             </label>
             {originalGravity && finalGravity && (
-              <p className="text-blueLight font-semibold text-3xl">{abv}</p>
+              <p className="text-mainC2 font-semibold text-3xl">{abv}</p>
             )}
           </div>
 
@@ -156,7 +156,7 @@ export const Characteristics: React.FC<Props> = ({
           <div className="flex flex-col items-center gap-4">
             <label className="text-gray-700 text-md font-semibold ">SRM</label>
             {srm && (
-              <p className="text-blueLight font-semibold text-3xl">{srm}</p>
+              <p className="text-mainC2 font-semibold text-3xl">{srm}</p>
             )}
           </div>
 

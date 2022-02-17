@@ -5,7 +5,28 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    boxShadow: {
+      "navbar-shadow":
+        "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;",
+      "menu-shadow":"rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+      "form-shadow": "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;",
+      "input": "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;",
+    },
+    animation: {
+      "spin-slow": "spin 2s ease-in-out infinite",
+      "bounce-slow": "bounce 2s ease-in-out infinite",
+    },
+    fontFamily: {
+      sans: ["Heebo", "sans-serif"],
+      serif: ["Frank\\ Ruhl\\ Libre", "serif"],
+      title: ["Oswald", "sans-serif"],
+    },
     colors: {
+      main:"#252422",
+      mainC: "#CCC5B9",
+      mainC2: "#F96900",
+      second: "#9B1D20",
+      bgMain: "#FFFCF2",
       transparent: "transparent",
       current: "currentColor",
       orange: colors.orange,
@@ -15,11 +36,11 @@ module.exports = {
       white: colors.white,
       gray: colors.gray,
       blue: colors.blue,
-      blue1: '#0F7BA6',
-      blueDark: '#0A5573',
-      blueLight: '#16B4F2',
-      brown1: '#592F00',
-      brownLight: '#A65E0F',
+      blue1: "#0F7BA6",
+      blueDark: "#0A5573",
+      blueLight: "#16B4F2",
+      brown1: "#592F00",
+      brownLight: "#A65E0F",
       1: "#ffe799",
       2: "#fed878",
       3: "#ffca5b",
@@ -50,14 +71,8 @@ module.exports = {
       28: "#631200",
       29: "#660d00",
       30: "#5e0c01",
-      black: '#000000'
+      black: "#000000",
     },
-  },
-  extend: {
-    fontFamily: {
-      sans:['Heebo', 'sans-serif'],
-      serif:['Frank Ruhl Libre', 'serif'],
-    }
   },
   variants: {
     extend: {},

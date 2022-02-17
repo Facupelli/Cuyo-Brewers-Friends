@@ -9,7 +9,7 @@ export const UserData: React.FC<Props> = ({ username }) => {
   return (
     <div className="py-4 border-b border-gray-700">
       <Link to={`/userprofile/${username}`}>
-        <p className="text-xl font-semibold text-blueDark text-center hover:text-blueLight">
+        <p className="text-xl font-semibold text-second text-center hover:text-mainC2">
           {username}
         </p>
       </Link>

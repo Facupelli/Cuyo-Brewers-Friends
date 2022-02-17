@@ -21,29 +21,31 @@ export default function Home() {
       <div>
         <NavBar route="home" />
       </div>
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:mb-12 lg:mt-6">
-          <div className="col-span-2 md:col-span-1 px-6">
-            <div className="flex items-center gap-2">
-              <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
-                New Recipes
-              </p>
-              <div className="text-brown1 text-2xl">
-                <MdAutorenew />
+      <div className=" ">
+        <div className=" max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:mb-12 lg:pt-6">
+            <div className="col-span-2 md:col-span-1 px-6">
+              <div className="flex items-center gap-2 text-second">
+                <p className="my-4 ml-2 font-semibold  text-2xl">
+                  New Recipes
+                </p>
+                <div className=" text-2xl">
+                  <MdAutorenew className="animate-spin-slow" />
+                </div>
               </div>
+              <RecipesCardList recipesList={recipesList} />
             </div>
-            <RecipesCardList recipesList={recipesList} />
-          </div>
-          <div className="col-span-2 lg:col-span-1 px-6">
-            <div className="flex items-center gap-2">
-              <p className="my-4 ml-2 font-semibold text-brown1 text-2xl">
-                Top Recipes
-              </p>
-              <div className="text-brown1 text-2xl">
-                <FaLongArrowAltUp />
+            <div className="col-span-2 lg:col-span-1 px-6">
+              <div className="flex items-center gap-2 text-second">
+                <p className="my-4 ml-2 font-semibold  text-2xl">
+                  Top Recipes
+                </p>
+                <div className=" text-2xl">
+                  <FaLongArrowAltUp className="animate-bounce-slow" />
+                </div>
               </div>
+              <RecipesCardList recipesList={topRecipesList} />
             </div>
-            <RecipesCardList recipesList={topRecipesList} />
           </div>
         </div>
       </div>

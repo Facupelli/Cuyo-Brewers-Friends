@@ -28,7 +28,7 @@ export const BlogDetail: React.FC = () => {
       <NavBar route="blogdetail" />
       <div className="max-w-6xl mx-auto">
         <div className="flex items-baseline gap-4 mt-8">
-          <span className="font-semibold text-3xl border-b-2 border-blueLight">{blog?.blog.blog_title}</span>
+          <span className="font-semibold text-3xl border-b-2 border-mainC2">{blog?.blog.blog_title}</span>
           <p>by</p>
           <p className="text-2xl text-gray-600">{blog?.blog.blog_username}</p>
         </div>

@@ -24,8 +24,8 @@ export const HopsForm: React.FC<{}> = () => {
   }));
 
   return (
-    <div className="m-8 p-4 bg-gray-100">
-      <div className="flex justify-center items-baseline gap-2 border-b-2 border-blueLight">
+    <div className="m-8 p-4 bg-gray-100 shadow-form-shadow">
+      <div className="flex justify-center items-baseline gap-2 border-b-2 border-mainC">
         <p className="font-semibold text-2xl pb-4">Hops</p>
         <div className="text-xl">
           <FaLeaf />
@@ -34,7 +34,7 @@ export const HopsForm: React.FC<{}> = () => {
 
       {fields.map((field, index) => (
         <div key={field.id}>
-          <section key={field.id} className="bg-blue-100">
+          <section key={field.id} className="bg-mainC">
             {/* --------------------- PRIMERA LINEA ---------------------------------------- */}
 
             <div className="grid grid-cols-4 items-center gap-4 p-4 mt-4  ">
@@ -85,7 +85,7 @@ export const HopsForm: React.FC<{}> = () => {
               <button
                 type="button"
                 onClick={() => remove(index)}
-                className="transition ease-in-out duration-150 col-span-1 ml-auto p-2 bg-transparent hover:bg-brown1 text-brown1 font-semibold hover:text-white  border border-brown1 hover:border-transparent rounded"
+                className="transition ease-in-out duration-150 col-span-1 ml-auto p-2 bg-transparent hover:bg-main text-main font-semibold hover:text-white  border border-main hover:border-transparent rounded"
               >
                 <FaTrash />
               </button>
@@ -159,7 +159,7 @@ export const HopsForm: React.FC<{}> = () => {
             quantity: 0,
           })
         }
-        className="transition ease-in-out duration-150 my-4 text-sm bg-transparent hover:bg-blue-500 text-brown1 font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded"
+        className="transition ease-in-out duration-150 my-4 text-sm bg-transparent hover:bg-mainC2 text-main font-semibold hover:text-white p-2 border border-mainC2 hover:border-transparent rounded"
       >
         ADD HOP +
       </button>

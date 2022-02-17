@@ -49,17 +49,17 @@ export const MaltsForm: React.FC<Props> = ({
   }, [maltSelected, setOgPoints, setMcu, batch_size]);
 
   return (
-    <div className="m-8 p-4 bg-gray-100">
-      <div className="flex justify-center items-baseline gap-2 border-b-2 border-blueLight">
+    <div className="m-8 p-4 bg-gray-100 shadow-form-shadow">
+      <div className="flex justify-center items-baseline gap-2 border-b-2 border-mainC">
         <p className="font-semibold text-2xl pb-4">Fermentables</p>
         <div className="text-2xl">
           <GiWheat />
         </div>
       </div>
-
+ 
       {fields.map((field, index) => (
         <div key={field.id}>
-          <section key={field.id} className="bg-blue-100">
+          <section key={field.id} className="bg-mainC">
             <div className="grid grid-cols-3 items-center gap-4 p-4 mt-4 ">
               <label className="col-span-1  text-gray-700 text-md font-semibold">
                 Malt:
@@ -98,7 +98,7 @@ export const MaltsForm: React.FC<Props> = ({
               <button
                 type="button"
                 onClick={() => remove(index)}
-                className="transition ease-in-out duration-150 col-span-1 ml-auto p-2 bg-transparent hover:bg-brown1 text-brown1 font-semibold hover:text-white  border border-brown1 hover:border-transparent rounded"
+                className="transition ease-in-out duration-150 col-span-1 ml-auto p-2 bg-transparent hover:bg-main text-main font-semibold hover:text-white  border border-main hover:border-transparent rounded"
               >
                 <FaTrash />
               </button>
@@ -115,7 +115,7 @@ export const MaltsForm: React.FC<Props> = ({
             quantity: 0,
           })
         }
-        className="transition ease-in-out duration-150 my-4 text-sm bg-transparent hover:bg-blue-500 text-brown1 font-semibold hover:text-white p-2 border border-blueLight hover:border-transparent rounded"
+        className="transition ease-in-out duration-150 my-4 text-sm bg-transparent hover:bg-mainC2 text-main font-semibold hover:text-white p-2 border border-mainC2 hover:border-transparent rounded"
       >
         ADD MALT +
       </button>

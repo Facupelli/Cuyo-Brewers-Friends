@@ -6,14 +6,14 @@ export const WaterForm: React.FC<{}> = () => {
   const { control } = useFormContext();
 
   return (
-    <div className="m-8 p-4 bg-gray-100">
-      <div className="flex justify-center items-baseline gap-2 border-b-2 border-blueLight">
+    <div className="m-8 p-4 bg-gray-100 shadow-form-shadow">
+      <div className="flex justify-center items-baseline gap-2 border-b-2 border-mainC">
         <p className=" font-semibold text-2xl pb-4">Water Chemistry</p>
         <div className="text-2xl">
           <BiWater />
         </div>
       </div>
-      <div className="flex flex-wrap gap-6 mt-4 p-6 justify-around bg-blue-100">
+      <div className="flex flex-wrap gap-6 mt-4 p-6 justify-around bg-mainC">
         <div className="flex flex-col items-center gap-4">
           <label className="text-gray-700 text-md font-semibold ">Ca+2</label>
           <Controller

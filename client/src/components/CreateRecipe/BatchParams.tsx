@@ -60,7 +60,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
 
   return (
     <div className="grid grid-cols-2  md:m-4 p-4">
-      <div className="col-span-2 md:col-span-1 grid grid-cols-2 gap-y-2 md:gap-4 p-4 bg-gray-100">
+      <div className="col-span-2 md:col-span-1 grid grid-cols-2 gap-y-2 md:gap-4 p-4 bg-gray-100 shadow-form-shadow">
         <div className="col-span-1 items-center">
           <label className=" text-gray-700 text-md font-semibold">
             Batch Size (L.)
@@ -74,7 +74,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             render={({ field }) => (
               <input
                 placeholder="20"
-                className="py-2 md:p-2  shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="py-2 md:p-2  shadow-input-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
                 {...field}
               />
             )}
@@ -97,7 +97,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             render={({ field }) => (
               <input
                 placeholder="30"
-                className="py-2 md:p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="py-2 md:p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
                 {...field}
               />
             )}
@@ -122,7 +122,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             render={({ field }) => (
               <input
                 placeholder="60"
-                className=" py-2 md:p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" py-2 md:p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
                 {...field}
               />
             )}
@@ -200,7 +200,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             render={({ field }) => (
               <input
                 placeholder="70"
-                className=" py-2 md:p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" py-2 md:p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
                 {...field}
               />
             )}
@@ -223,7 +223,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             render={({ field }) => (
               <input
                 placeholder="5.4"
-                className=" py-2 md:p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className=" py-2 md:p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
                 {...field}
               />
             )}

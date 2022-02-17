@@ -56,12 +56,12 @@ export const NavBar: React.FC<Props> = ({ route }) => {
 
   return (
     <>
-      <nav className="bg-blue1 p-6 shadow-md">
+      <nav className="bg-main p-6 shadow-navbar-shadow">
         <div className="max-w-6xl mx-auto md:px-4">
           <div className="flex justify-between items-center">
             <div className="flex space-x-7">
               <div className="md:pr-8">
-                <p className="font-semibold text-white text-xl font-serif ">
+                <p className="font-semibold text-white text-2xl font-title ">
                   CUYO BREWERS FRIENDS
                 </p>
               </div>
@@ -69,13 +69,13 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                 <div className="">
                   {route === "home" ? (
                     <Link to="/">
-                      <p className="font-semibold text-white border-b-2 border-blueLight">
+                      <p className="font-semibold text-mainC2 border-b-2 border-mainC2">
                         RECIPES
                       </p>
                     </Link>
                   ) : (
                     <Link to="/">
-                      <p className="font-semibold">RECIPES</p>
+                      <p className="font-semibold text-mainC">RECIPES</p>
                     </Link>
                   )}
                 </div>
@@ -84,18 +84,18 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                   {route === "searchrecipes" ? (
                     <Link to="/searchrecipes">
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-white border-b-2 border-blueLight">
+                        <p className="font-semibold text-mainC2 border-b-2 border-mainC2">
                           SEARCH
                         </p>
-                        <div className="text-white">
+                        <div className="text-mainC2">
                           <FaSearch />
                         </div>
                       </div>
                     </Link>
                   ) : (
                     <Link to="/searchrecipes">
-                      <div className="flex items-center gap-2">
-                        <p className="font-semibold ">SEARCH</p>
+                      <div className="flex items-center gap-2 text-mainC">
+                        <p className="font-semibold  ">SEARCH</p>
                         <div className="text-xs">
                           <FaSearch />
                         </div>
@@ -108,13 +108,13 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                   <div className="">
                     {route === "createrecipe" ? (
                       <Link to="/createrecipe">
-                        <p className="font-semibold text-white border-b-2 border-blueLight">
+                        <p className="font-semibold text-mainC2 border-b-2 border-mainC2">
                           ADD RECIPE
                         </p>
                       </Link>
                     ) : (
                       <Link to="/createrecipe">
-                        <p className="font-semibold">ADD RECIPE</p>
+                        <p className="font-semibold text-mainC">ADD RECIPE</p>
                       </Link>
                     )}
                   </div>
@@ -123,13 +123,13 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                 <div className="">
                   {route === "blog" ? (
                     <Link to="/blog">
-                      <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                      <span className="font-semibold text-mainC2 border-b-2 py-1 border-mainC2">
                         BLOG
                       </span>
                     </Link>
                   ) : (
                     <Link to="/blog">
-                      <p className="font-semibold">BLOG</p>
+                      <p className="font-semibold text-mainC">BLOG</p>
                     </Link>
                   )}
                 </div>
@@ -137,13 +137,13 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                 <div className="">
                   {route === "shop" ? (
                     <Link to="/shop">
-                      <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                      <span className="font-semibold text-mainC2 border-b-2 py-1 border-mainC2">
                         SHOP
                       </span>
                     </Link>
                   ) : (
                     <Link to="/shop">
-                      <p className="font-semibold">SHOP</p>
+                      <p className="font-semibold text-mainC">SHOP</p>
                     </Link>
                   )}
                 </div>
@@ -154,7 +154,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
               <button
                 onClick={hanldeUserMenu}
                 className={`menu flex gap-2 items-center focus:outline-none focus:shadow-solid font-semibold ${
-                  userMenu ? "text-white" : "text-base"
+                  userMenu ? "text-mainC2" : "text-mainC"
                 }`}
               >
                 MENU
@@ -162,7 +162,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
               </button>
 
               {userMenu && (
-                <div className="origin-top-right absolute right-0 w-48 p-2 mt-2 bg-white rounded shadow-md">
+                <div className="origin-top-right absolute right-0 w-48 p-2 mt-2 bg-white rounded shadow-menu-shadow">
                   {cookie && (
                     <>
                       <div
@@ -170,13 +170,13 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                       >
                         {route === "myrecipes" ? (
                           <Link to="/myrecipes">
-                            <span className="font-semibold py-1 border-b-2 border-blueLight ">
+                            <span className="font-semibold  border-b-2 border-mainC2 ">
                               MY RECIPES
                             </span>
                           </Link>
                         ) : (
                           <Link to="/myrecipes">
-                            <p className="transition ease-in-out duration-150 font-semibold hover:text-blueLight">
+                            <p className="transition ease-in-out duration-150 font-semibold hover:text-mainC">
                               MY RECIPES
                             </p>
                           </Link>
@@ -190,13 +190,13 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                       >
                         {route === "createblog" ? (
                           <Link to="/createblog">
-                            <span className="font-semibold  border-b-2 border-blueLight">
+                            <span className="font-semibold  border-b-2 border-mainC2">
                               ADD ARTICLE
                             </span>
                           </Link>
                         ) : (
                           <Link to="/createblog">
-                            <p className="transition ease-in-out duration-150 font-semibold hover:text-blueLight">
+                            <p className="transition ease-in-out duration-150 font-semibold hover:text-mainC">
                               ADD ARTICLE
                             </p>
                           </Link>
@@ -210,13 +210,13 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                       >
                         {route === `/userprofile/${username}` ? (
                           <Link to={`/userprofile/${username}`}>
-                            <span className="font-semibold  border-b-2 border-blueLight">
+                            <span className="font-semibold  border-b-2 border-mainC2">
                               MY PROFILE
                             </span>
                           </Link>
                         ) : (
                           <Link to={`/userprofile/${username}`}>
-                            <p className="transition ease-in-out duration-150 font-semibold hover:text-blueLight">
+                            <p className="transition ease-in-out duration-150 font-semibold hover:text-mainC">
                               MY PROFILE
                             </p>
                           </Link>
@@ -228,7 +228,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     <div className="mt-2 border-t border-blue-100">
                       <p
                         onClick={logOut}
-                        className="transition ease-in-out duration-150 cursor-pointer font-semibold hover:text-blueLight"
+                        className="transition ease-in-out duration-150 cursor-pointer font-semibold hover:text-mainC"
                       >
                         Log Out
                       </p>
@@ -240,7 +240,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                         <Link to="/login">
                           <p
                             onClick={logOut}
-                            className="transition ease-in-out duration-150 cursor-pointer font-semibold hover:text-blueLight"
+                            className="transition ease-in-out duration-150 cursor-pointer font-semibold hover:text-mainC"
                           >
                             Log In
                           </p>
@@ -248,7 +248,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                       </div>
                       <div>
                         <Link to="/register">
-                          <p className="transition ease-in-out duration-150 cursor-pointer font-semibold hover:text-blueLight">
+                          <p className="transition ease-in-out duration-150 cursor-pointer font-semibold hover:text-mainC">
                             Register
                           </p>
                         </Link>

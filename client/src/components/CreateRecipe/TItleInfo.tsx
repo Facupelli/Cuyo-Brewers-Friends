@@ -21,7 +21,7 @@ export const TitleInfo: React.FC = () => {
             render={({ field }) => (
               <input
                 placeholder="Hop Odisey"
-                className="ml-4 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="ml-4 p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}
@@ -42,7 +42,7 @@ export const TitleInfo: React.FC = () => {
             render={({ field }) => (
               <input
                 placeholder="--"
-                className="ml-4 p-2 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="ml-4 p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />
             )}

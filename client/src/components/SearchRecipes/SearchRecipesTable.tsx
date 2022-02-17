@@ -76,7 +76,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th
-                  className="pb-4 text-left text-brown1"
+                  className="pb-4 text-left text-second"
                   {...column.getHeaderProps()}
                 >
                   {column.render("Header")}
@@ -93,7 +93,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
                 {row.cells.map((cell) => {
                   return (
                     <td
-                      className="pb-4 pt-2 border-t border-blueLight"
+                      className="pb-4 pt-2 border-t border-second"
                       {...cell.getCellProps()}
                     >
                       {cell.render("Cell")}

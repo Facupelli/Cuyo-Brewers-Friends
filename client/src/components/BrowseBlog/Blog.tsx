@@ -22,16 +22,16 @@ export const Blog: React.FC = () => {
               blogs.map((el) => (
                 <div
                   key={el._id}
-                  className="flex gap-x-3 bg-blue-50 rounded shadow hover:shadow-none p-4 my-3"
+                  className="flex gap-x-3 bg-mainC rounded shadow hover:shadow-none p-4 my-3"
                 >
                   <Link to={`/blogdetail/${el._id}`}>
                     <p>{el.blog_title}</p>
                   </Link>
-                  <p className="text-gray-400">by</p>
+                  <p className="text-gray-100">by</p>
                   <Link to={`/userprofile/${el.blog_username}`}>
-                    <p className="text-brown1">{el.blog_username}</p>
+                    <p className="text-mainC2">{el.blog_username}</p>
                   </Link>
-                  <p className="text-gray-400 ml-auto">{el.date}</p>
+                  <p className="text-gray-50 ml-auto">{el.date}</p>
                 </div>
               ))}
           </div>

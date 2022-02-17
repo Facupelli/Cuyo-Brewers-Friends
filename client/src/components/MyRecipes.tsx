@@ -17,26 +17,26 @@ export const MyRecipes: React.FC = (z) => {
       <div className="mt-16 max-w-7xl mx-auto">
         {ownRecipes.length > 0 ? (
           <>
-            <div className="hidden md:grid grid-cols-10 m-4 px-4 ">
-              <p className="col-span-2 font-semibold text-sm text-brown1">
+            <div className="hidden md:grid grid-cols-10 m-4 px-4 text-main">
+              <p className="col-span-2 font-semibold text-sm ">
                 Recipe
               </p>
-              <p className="col-span-3 font-semibold text-sm text-brown1">
+              <p className="col-span-3 font-semibold text-sm ">
                 Style
               </p>
-              <p className="col-span-1 font-semibold text-sm text-brown1">
+              <p className="col-span-1 font-semibold text-sm ">
                 Batch Size
               </p>
-              <p className="col-span-1 font-semibold text-sm text-brown1">
+              <p className="col-span-1 font-semibold text-sm ">
                 ABV
               </p>
-              <p className="col-span-1 font-semibold text-sm text-brown1">
+              <p className="col-span-1 font-semibold text-sm ">
                 IBU
               </p>
-              <p className="col-span-1 font-semibold text-sm text-brown1">
+              <p className="col-span-1 font-semibold text-sm ">
                 SRM
               </p>
-              <p className="col-span-1 font-semibold text-sm text-brown1">
+              <p className="col-span-1 font-semibold text-sm ">
                 Created
               </p>
             </div>
@@ -44,7 +44,7 @@ export const MyRecipes: React.FC = (z) => {
             {ownRecipes.map((el) => (
               <div
                 key={el._id}
-                className="grid grid-cols-10 gap-y-3 mx-4 py-6 px-4 bg-gray-100 mb-2 border-b border-blueLight"
+                className="grid grid-cols-10 gap-y-3 mx-4 py-6 px-4 bg-gray-100 mb-2 border-b border-mainC2"
               >
                 <div className="col-span-3 md:col-span-2">
                   <Link to={`/recipe/${el._id}`}>
@@ -53,7 +53,7 @@ export const MyRecipes: React.FC = (z) => {
                 </div>
                 <div className="col-span-7 md:col-span-3 flex gap-4">
                   <p>{el.recipe.style.label}</p>
-                  <p className="font-semibold text-blueDark">
+                  <p className="font-semibold text-second">
                     {el.recipe.sub_category}
                   </p>
                 </div>

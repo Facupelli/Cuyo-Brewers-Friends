@@ -37,7 +37,7 @@ export const UserProfile: React.FC = () => {
       <div className="max-w-7xl md:mx-auto mx-4 mt-8">
         <div>
           <div className="flex gap-4 items-baseline">
-            <span className="text-4xl pb-3 border-b-2 border-blueLight">
+            <span className="text-4xl pb-3 border-b-2 border-mainC2">
               {userProfile?.userProfile.username}
             </span>
             <p className="text-gray-500 text-lg">homebrewer</p>
@@ -56,7 +56,7 @@ export const UserProfile: React.FC = () => {
               {userProfile?.userProfile.ownBlogs.map((el, i) => (
                 <div
                   key={i}
-                  className="flex md:gap-x-3 bg-blue-50 rounded shadow hover:shadow-none p-4 my-3"
+                  className="flex md:gap-x-3 bg-bgMain rounded shadow hover:shadow-none p-4 my-3"
                 >
                   <Link to={`/blogdetail/${el._id}`}>
                     <p className="transition ease-in-out duration-150 hover:text-brown1">

@@ -68,7 +68,7 @@ export const Login: React.FC = () => {
       <div className="fixed w-full flex items-center justify-center ">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="transition ease-in-out duration-150 w-full max-w-md bg-white border border-blueLight hover:border-brown1 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          className="transition ease-in-out duration-150 w-full max-w-md bg-white border border-main hover:border-mainC2 shadow-md rounded px-8 pt-6 pb-8 mb-4"
         >
           <div className="mb-4 text-center">
             <p className="text-3xl text-brown1 font-semibold ">Login</p>
@@ -101,7 +101,7 @@ export const Login: React.FC = () => {
           <div>
             <button
               type="submit"
-              className="transition ease-in-out duration-150 p-2 mt-4 w-full text-white font-semibold  rounded bg-blue1 hover:bg-brown1"
+              className="transition ease-in-out duration-150 p-2 mt-4 w-full text-white font-semibold  rounded bg-orange-400 hover:bg-mainC2 hover:text-white"
             >
               LOGIN
             </button>

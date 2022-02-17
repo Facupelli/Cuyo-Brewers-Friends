@@ -60,7 +60,7 @@ export const CreateBlog: React.FC = () => {
           <div className="flex items-baseline mb-8">
             <label className="mr-4">Title:</label>
             <input
-              className="appearance-none p-3 text-gray-700 border border-gray-500 rounded leading-tight focus:outline-none focus:bg-white focus:border-blueLight"
+              className="appearance-none p-3 text-gray-700 border border-gray-500 rounded leading-tight focus:outline-none focus:bg-white focus:border-mainC2"
               type="text"
               placeholder="Title..."
               {...register("blog_title")}
@@ -71,7 +71,7 @@ export const CreateBlog: React.FC = () => {
             </span>
             <button
               type="submit"
-              className="transition ease-in-out duration-150 border border-blue1 rounded p-2 mt-4 ml-auto hover:bg-blue1 hover:text-white"
+              className="transition ease-in-out duration-150 border border-mainC rounded p-2 mt-4 ml-auto hover:bg-mainC hover:text-main"
             >
               POST ARTICLE
             </button>
@@ -79,7 +79,7 @@ export const CreateBlog: React.FC = () => {
           <div>
             <label className="block mb-2">Article:</label>
             <textarea
-              className="appearance-none  w-full text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blueLight"
+              className="appearance-none  w-full text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-mainC2"
               placeholder="article description..."
               {...register("blog_body")}
               required

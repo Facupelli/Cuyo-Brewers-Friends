@@ -148,17 +148,17 @@ export const RecipeCardDetail: React.FC = () => {
 
       <div className="my-8 max-w-6xl mx-4 md:mx-auto">
         <div className="flex  items-center py-4">
-          <p className="font-semibold text-4xl text-brown1">{title}</p>
+          <p className="font-semibold text-4xl text-main">{title}</p>
           {isMyRecipe() && (
             <div
               onClick={handleDeleteModal}
-              className="cursor-pointer ml-auto text-brown1 text-4xl"
+              className="cursor-pointer ml-auto text-main text-4xl"
             >
               <MdDelete />
             </div>
           )}
           {user_id && !isMyRecipe() && (
-            <div className="cursor-pointer ml-6 text-blueLight text-3xl">
+            <div className="cursor-pointer ml-6 text-mainC2 text-3xl">
               {isRecipeFav() === false ? (
                 <div onClick={handleAddFav}>
                   <FaRegHeart />

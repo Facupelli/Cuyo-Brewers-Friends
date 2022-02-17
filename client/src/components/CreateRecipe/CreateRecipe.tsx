@@ -222,12 +222,12 @@ export const CreateRecipe: React.FC<{}> = () => {
           <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
             {/* ------------    PART 1 ------------------------ */}
             <div className="mx-8 mt-8 flex justify-between ">
-              <p className="text-2xl font-semibold text-brown1">
+              <p className="text-2xl font-semibold text-main">
                 Editing Recipe
               </p>
               <button
                 type="submit"
-                className="transition ease-in-out duration-150 bg-transparent hover:bg-brown1 text-gray-700 font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
+                className="transition ease-in-out duration-150 bg-transparent hover:bg-main text-main font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
               >
                 SAVE
               </button>

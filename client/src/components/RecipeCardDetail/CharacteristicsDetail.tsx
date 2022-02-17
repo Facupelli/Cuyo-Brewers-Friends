@@ -25,32 +25,32 @@ export const CharacteristicsDetail: React.FC<Props> = ({characteristics, mash_ph
     <div className="flex flex-wrap justify-around gap-12 py-8">
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">Original Gravity:</p>
-        <p className="text-2xl text-blueDark">{original_gravity}</p>
+        <p className="text-2xl text-second">{original_gravity}</p>
       </div>
 
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">Final Gravity:</p>
-        <p className="text-2xl text-blueDark">{final_gravity}</p>
+        <p className="text-2xl text-second">{final_gravity}</p>
       </div>
 
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">ABV:</p>
-        <p className="text-2xl text-blueDark">{alcohol_by_volume}</p>
+        <p className="text-2xl text-second">{alcohol_by_volume}</p>
       </div>
 
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">IBU:</p>
-        <p className="text-2xl text-blueDark">{ibu}</p>
+        <p className="text-2xl text-second">{ibu}</p>
       </div>
 
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">SRM:</p>
-        <p className="text-2xl text-blueDark">{srm}</p>
+        <p className="text-2xl text-second">{srm}</p>
       </div>
 
       <div className="flex flex-col items-center gap-2">
         <p className="font-semibold ">Mash Ph:</p>
-        <p className="text-2xl text-blueDark">{mash_ph}</p>
+        <p className="text-2xl text-second">{mash_ph}</p>
       </div>
     </div>
   );

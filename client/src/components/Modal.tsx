@@ -25,7 +25,7 @@ export const Modal: React.FC<Props> = ({ setModal, message, pathTo }) => {
             </div>
             <div className="flex justify-evenly">
               <button
-                className="transition ease-in-out duration-150 bg-blue-200 rounded p-2 px-4 hover:bg-blue-600 hover:text-white"
+                className="transition ease-in-out duration-150 bg-mainC rounded p-2 px-4 hover:bg-bgMain hover:text-mainC"
                 onClick={handleClick}
               >
                 OK
