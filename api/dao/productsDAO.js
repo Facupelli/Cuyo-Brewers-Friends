@@ -1,5 +1,7 @@
 const mongodb = require("mongodb");
 const { productModel } = require("../models/product");
+const { userModel } = require("../models/user");
+
 const ObjectId = mongodb.ObjectId;
 
 class Products {
@@ -29,6 +31,33 @@ class Products {
             `Unable to convert cursor to array or problem counting documents, ${e}`
           );
           return { productsList: [], totalNumProducts: 0 };
+        }
+      }
+
+      static async addProduct(product, user, date) {
+        try {
+          const reviewDoc = {
+            images: product.images,
+            title: product.title,
+            description: product.description,
+            price: product.price,
+            available: product.available,
+            username: user.username,
+            owner: user._id,
+            date: date,
+          };
+          const response = await productModel.create(reviewDoc);
+          const addOwner = await userModel.findOneAndUpdate(
+            { _id: user._id },
+            { $push: { ownProducts: response._id } }
+          );
+    
+          console.log("MONGO CREATE", response);
+    
+          // return await recipes.insertOne(reviewDoc);
+        } catch (e) {
+          console.error(`Unable to post recipe: ${e}`);
+          return { error: e };
         }
       }
 }

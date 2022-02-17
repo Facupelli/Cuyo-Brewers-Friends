@@ -27,6 +27,22 @@ class ProductsController {
       res.status(500).json({ error: e.message });
     }
   }
+
+  static async postProduct(req, res, next) {
+    try {
+      const product = req.body.product;
+      const userInfo = {
+        username: req.body.username,
+        _id: req.body.user_id,
+      };
+      const date = dayjs().format("DD/MM/YYYY");
+
+      const ReviewResponse = await Products.addRecipe(product, userInfo, date);
+      res.json({ status: "success" });
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
 }
 
 module.exports = ProductsController;

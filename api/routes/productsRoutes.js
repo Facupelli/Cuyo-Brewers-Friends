@@ -6,7 +6,7 @@ const router=express.Router()
 router.get('/', ProductsController.getProducts)
 // router.get('/:id', RecipesController.getRecipeById)
 
-// router.post('/', RecipesController.postRecipe)
+router.post('/', ProductsController.postProduct)
 
 // router.delete('/', RecipesController.deleteRecipe)
 

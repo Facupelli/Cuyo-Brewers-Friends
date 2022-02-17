@@ -8,6 +8,7 @@ const ProductSchema = new mongoose.Schema({
   price: {type: Number, require: true},
   available: {type: Boolean, require: true},
   owner:[{type: mongoose.Schema.Types.ObjectId, ref: "UserModel" }],
+  date: { type: String, default: Date.now },
 });
 
 const productModel = mongoose.model("ProductModel", ProductSchema);
