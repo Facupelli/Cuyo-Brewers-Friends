@@ -13,7 +13,7 @@ export const WaterForm: React.FC<{}> = () => {
           <BiWater />
         </div>
       </div>
-      <div className="flex flex-wrap gap-6 mt-4 p-6 justify-around bg-mainC">
+      <div className="flex flex-wrap gap-6 mt-4 p-6 justify-around bg-gray-200">
         <div className="flex flex-col items-center gap-4">
           <label className="text-gray-700 text-md font-semibold ">Ca+2</label>
           <Controller

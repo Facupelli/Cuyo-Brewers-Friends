@@ -25,7 +25,7 @@ export const HopsForm: React.FC<{}> = () => {
 
   return (
     <div className="m-8 p-4 bg-gray-100 shadow-form-shadow">
-      <div className="flex justify-center items-baseline gap-2 border-b-2 border-mainC">
+      <div className="flex justify-center items-baseline gap-2 border-b-2 border-gray-mainC">
         <p className="font-semibold text-2xl pb-4">Hops</p>
         <div className="text-xl">
           <FaLeaf />
@@ -34,7 +34,7 @@ export const HopsForm: React.FC<{}> = () => {
 
       {fields.map((field, index) => (
         <div key={field.id}>
-          <section key={field.id} className="bg-mainC">
+          <section key={field.id} className="bg-gray-200">
             {/* --------------------- PRIMERA LINEA ---------------------------------------- */}
 
             <div className="grid grid-cols-4 items-center gap-4 p-4 mt-4  ">
@@ -159,7 +159,7 @@ export const HopsForm: React.FC<{}> = () => {
             quantity: 0,
           })
         }
-        className="transition ease-in-out duration-150 my-4 text-sm bg-transparent hover:bg-mainC2 text-main font-semibold hover:text-white p-2 border border-mainC2 hover:border-transparent rounded"
+        className="transition ease-in-out duration-150 my-4 text-sm bg-transparent hover:bg-main text-main font-semibold hover:text-white p-2 border border-main hover:border-transparent rounded"
       >
         ADD HOP +
       </button>

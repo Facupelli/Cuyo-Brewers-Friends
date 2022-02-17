@@ -59,7 +59,7 @@ export const MaltsForm: React.FC<Props> = ({
  
       {fields.map((field, index) => (
         <div key={field.id}>
-          <section key={field.id} className="bg-mainC">
+          <section key={field.id} className="bg-gray-200">
             <div className="grid grid-cols-3 items-center gap-4 p-4 mt-4 ">
               <label className="col-span-1  text-gray-700 text-md font-semibold">
                 Malt:
@@ -115,7 +115,7 @@ export const MaltsForm: React.FC<Props> = ({
             quantity: 0,
           })
         }
-        className="transition ease-in-out duration-150 my-4 text-sm bg-transparent hover:bg-mainC2 text-main font-semibold hover:text-white p-2 border border-mainC2 hover:border-transparent rounded"
+        className="transition ease-in-out duration-150 my-4 text-sm bg-transparent hover:bg-main text-main font-semibold hover:text-white p-2 border border-main hover:border-transparent rounded"
       >
         ADD MALT +
       </button>
