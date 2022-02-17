@@ -7,7 +7,7 @@ export const Shop: React.FC = () => {
       <div>
         <NavBar route="shop" />
       </div>
-      SHOP
+      <p className="flex justify-center mt-24 font-bold text-2xl">SHOP COMING SOON...</p>
     </div>
   );
 };
