@@ -120,7 +120,7 @@ export interface UserData {
 
 // BLOG REDUCER --------------------
 
-export interface Blog{
+export interface Blog {
   _id: string;
   blog_author: string;
   blog_username: string;
@@ -130,4 +130,20 @@ export interface Blog{
 }
 export interface BlogData {
   blog: Blog;
+}
+
+// SHOP REDUCER ---------------------
+
+export interface Product {
+  images: string[];
+  title: string;
+  description: string;
+  price: string;
+  available: boolean;
+}
+
+export interface ProductList {
+  product: Product[];
+  username: string;
+  user_id: string;
 }
