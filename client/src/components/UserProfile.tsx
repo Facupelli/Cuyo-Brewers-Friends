@@ -7,6 +7,7 @@ import { getUserByUsername } from "../utils/blogUtils";
 import { NavBar } from "./NavBar";
 import { RecipeCard } from "./RecipeCard";
 import { BecomeSellerModal } from "./Shop/BecomeSellerModal";
+import axios from "axios";
 
 type ParamsType = {
   username: string;
@@ -26,6 +27,15 @@ export const UserProfile: React.FC = () => {
   const isMyProfile = () => {
     if (logedUsername === username.username) return true;
     else return false;
+  };
+
+  const handleSeller = async () => {
+    const userId = userProfile?.userProfile._id;
+    await axios.post(`/user`, { id: userId });
+    getUserByUsername(username.username)
+      .then((data) => setUserProfile({ userProfile: data }))
+      .catch((e) => console.log(e));
+    setModal(false);
   };
 
   useEffect(() => {
@@ -49,6 +59,7 @@ export const UserProfile: React.FC = () => {
           message={"You want to offer beer products?"}
           setModal={setModal}
           pathTo=""
+          handleSeller={handleSeller}
         />
       )}
 
@@ -65,12 +76,20 @@ export const UserProfile: React.FC = () => {
               </div>
               <div className="ml-auto">
                 {userProfile?.userProfile.seller ? (
-                  <button
-                    onClick={handleViewProducts}
-                    className="transition ease-in-out delay-50 font-semibold border border-mainC2 text-main p-2 text-sm rounded hover:bg-mainC2 hover:text-white"
-                  >
-                    VIEW PRODUCTS
-                  </button>
+                  <div>
+                    <button
+                      onClick={handleViewProducts}
+                      className="mr-2 transition ease-in-out delay-50 font-semibold border border-mainC2 text-main p-2 text-sm rounded hover:bg-mainC2 hover:text-white"
+                    >
+                      POST PRODUCT
+                    </button>
+                    <button
+                      onClick={handleViewProducts}
+                      className="transition ease-in-out delay-50 font-semibold border border-mainC2 text-main p-2 text-sm rounded hover:bg-mainC2 hover:text-white"
+                    >
+                      VIEW PRODUCTS
+                    </button>
+                  </div>
                 ) : (
                   <button
                     onClick={handleBecomeSeller}

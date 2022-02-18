@@ -22,9 +22,10 @@ class User {
       return await userModel
         .findById(
           ObjectId(id),
-          "_id username favs ownReviews ownRecipes ownBlogs"
+          "_id username favs seller ownProducts ownReviews ownRecipes ownBlogs"
         )
         .populate("ownRecipes")
+        .populate("ownProducts")
         .exec();
     } catch (e) {
       console.error(`Something went wrong in getUserInfo: ${e}`);
@@ -39,6 +40,15 @@ class User {
         .populate("ownBlogs", "blog_title blog_body date")
         .populate("ownRecipes", "recipe date")
         .populate("favs", "recipe date");
+    } catch (e) {
+      console.error(`Something went wrong in getUserByUsernameDAO: ${e}`);
+      throw e;
+    }
+  }
+
+  static async becomeSeller(id) {
+    try {
+      const userupdate = await userModel.updateOne({ _id: id }, { $set: { seller: true } });
     } catch (e) {
       console.error(`Something went wrong in getUserByUsernameDAO: ${e}`);
       throw e;

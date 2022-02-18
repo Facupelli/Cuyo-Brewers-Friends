@@ -3,19 +3,19 @@ import { useNavigate } from "react-router-dom";
 type Props = {
   setModal: React.Dispatch<React.SetStateAction<any>>;
   message: string;
-  pathTo: string
+  pathTo: string;
+  handleSeller: () => void
 };
 
-export const BecomeSellerModal: React.FC<Props> = ({ setModal, message, pathTo }) => {
+export const BecomeSellerModal: React.FC<Props> = ({ setModal, message, pathTo, handleSeller }) => {
   const navigate = useNavigate();
+
 
   const handleClick = () => {
     setModal(false);
   };
 
-  const handleSeller = async() => {
-
-  }
+ 
 
   return (
     <div className="overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 flex justify-center items-center md:inset-0 h-modal sm:h-full">
@@ -47,3 +47,4 @@ export const BecomeSellerModal: React.FC<Props> = ({ setModal, message, pathTo }
     </div>
   );
 };
+
