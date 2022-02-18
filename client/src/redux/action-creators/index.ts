@@ -2,12 +2,14 @@ import { Dispatch } from "redux";
 import axios from "axios";
 import {
   RecipesActionType,
+  ProductsActionType,
   UserActionType,
   BlogActionType,
 } from "../actions/ActionsTypes";
 import { RecipeActions } from "../actions/RecipesActions";
 import { UserActions } from "../actions/UserActions";
 import { BlogActions } from "../actions/BlogActions";
+import { ProductsActions } from "../actions/ProductsActions";
 
 export const loadingTrue = () => {
   return (dispatch: Dispatch<RecipeActions>) => {
@@ -79,6 +81,51 @@ export const getTopRecipes =
       return dispatch({
         type: RecipesActionType.RECIPES_GET_TOP,
         payload: res.data.recipesList,
+      });
+    } catch (e) {}
+  };
+
+// --------------------------- PRODUCTS ACTIONS
+
+export const productsLoadingTrue = () => {
+  return (dispatch: Dispatch<ProductsActions>) => {
+    dispatch({
+      type: ProductsActionType.PRODUCTS_LOADING,
+    });
+  };
+};
+
+export const getProducts =
+  () => async (dispatch: Dispatch<ProductsActions>) => {
+    try {
+      dispatch({
+        type: ProductsActionType.PRODUCTS_LOADING,
+      });
+
+      const res: any = await axios.get<any>("/products");
+
+      return dispatch({
+        type: ProductsActionType.PRODUCTS_GET,
+        payload: res.data.productsList,
+      });
+    } catch (e) {
+      console.log(e);
+      dispatch({
+        type: ProductsActionType.PRODUCTS_FAIL,
+      });
+    }
+  };
+
+export const getTopProducts =
+  () => async (dispatch: Dispatch<ProductsActions>) => {
+    try {
+      let res: any;
+
+      res = await axios.get<any>("/products?top=true");
+
+      return dispatch({
+        type: ProductsActionType.PRODUCTS_GET_TOP,
+        payload: res.data.productsList,
       });
     } catch (e) {}
   };
