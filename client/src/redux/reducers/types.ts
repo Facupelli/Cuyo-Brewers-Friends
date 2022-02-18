@@ -140,10 +140,13 @@ export interface Product {
   description: string;
   price: string;
   available: boolean;
+  date: string;
+  owner: string[];
+  _id: string;  
 }
 
 export interface ProductList {
-  product: Product[];
+  product: Product;
   username: string;
   user_id: string;
 }

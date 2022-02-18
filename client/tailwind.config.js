@@ -13,6 +13,7 @@ module.exports = {
       "form-shadow": "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;",
       input:
         "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;",
+      "card-shadow": "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;"
     },
     animation: {
       "spin-slow": "spin 2s ease-in-out infinite",

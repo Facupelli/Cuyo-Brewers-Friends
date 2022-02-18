@@ -1,10 +1,10 @@
 import { ProductsActions } from "../actions/ProductsActions";
 import { ProductsActionType } from "../actions/ActionsTypes";
-import { ProductList } from "./types";
+import { Product, ProductList } from "./types";
 
 export interface InitialState {
   loading: boolean;
-  productsList: ProductList[];
+  productsList: Product[];
   topProductList: ProductList[];
 }
 

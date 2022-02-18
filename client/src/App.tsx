@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import {
   getBlogs,
+  getProducts,
   getRecipes,
+  getTopProducts,
   getTopRecipes,
   getUserData,
   setCookie,
@@ -27,6 +29,12 @@ function App() {
   const dispatch = useDispatch();
 
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
+
+   // ------------------------GET PRODUCTS -------------------------------------
+   useEffect(() => {
+    dispatch(getProducts());
+    dispatch(getTopProducts());
+  }, [dispatch]);
 
   // ------------------------GET RECIPES -------------------------------------
   useEffect(() => {

@@ -13,7 +13,7 @@ export interface ProductsFailAction {
 
 export interface ProductsGetAction {
   type: ProductsActionType.PRODUCTS_GET;
-  payload: ProductList[];
+  payload: Product[];
 }
 
 export interface ProductsGetTopAction {
