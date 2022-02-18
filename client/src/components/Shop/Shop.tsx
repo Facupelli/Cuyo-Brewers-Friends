@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import { NavBar } from "../NavBar";
-import { ProductCardList } from "./ProductCardList";
 
 export const Shop: React.FC = () => {
   const productList = useSelector(

@@ -24,6 +24,7 @@ import { BlogDetail } from "./components/BlogDetail/BlogDetail";
 import { CreateBlog } from "./components/CreateBlog/CreateBlog";
 import { UserProfile } from "./components/UserProfile";
 import { Shop } from "./components/Shop/Shop";
+import { PostProduct } from "./components/Shop/PostProduct";
 
 function App() {
   const dispatch = useDispatch();
@@ -75,6 +76,7 @@ function App() {
         <Route path="/createblog" element={<CreateBlog />} />
         <Route path='/userprofile/:username' element={<UserProfile />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/postproduct" element={<PostProduct />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

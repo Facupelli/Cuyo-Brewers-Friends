@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../redux/reducers/RootReducer";
 import { UserData } from "../redux/reducers/types";
 import { getUserByUsername } from "../utils/blogUtils";
@@ -18,6 +18,8 @@ type UserProfileState = {
 };
 
 export const UserProfile: React.FC = () => {
+  const navigate = useNavigate()
+
   const username = useParams<ParamsType>();
   const [userProfile, setUserProfile] = useState<UserProfileState>();
   const logedUsername = useSelector(
@@ -47,6 +49,10 @@ export const UserProfile: React.FC = () => {
   const [modal, setModal] = useState<Boolean>(false);
 
   const handleViewProducts = () => {};
+
+  const handlePostProducts = () => {
+    navigate('/postproduct')
+  }
 
   const handleBecomeSeller = () => {
     setModal(true);
@@ -78,7 +84,7 @@ export const UserProfile: React.FC = () => {
                 {userProfile?.userProfile.seller ? (
                   <div>
                     <button
-                      onClick={handleViewProducts}
+                      onClick={handlePostProducts}
                       className="mr-2 transition ease-in-out delay-50 font-semibold border border-mainC2 text-main p-2 text-sm rounded hover:bg-mainC2 hover:text-white"
                     >
                       POST PRODUCT
