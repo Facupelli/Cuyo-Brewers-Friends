@@ -14,6 +14,7 @@ const UserSchema = new mongoose.Schema({
   ownReviews:[{type: mongoose.Schema.Types.ObjectId, ref: "ReviewModel" }],
   ownBlogs:[{type: mongoose.Schema.Types.ObjectId, ref: "BlogModel" }],
   ownProducts:[{type: mongoose.Schema.Types.ObjectId, ref: "ProductModel" }],
+  seller: {type: Boolean, required: true},
 });
 
 const userModel = mongoose.model("UserModel", UserSchema);

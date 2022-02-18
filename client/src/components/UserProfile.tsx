@@ -6,6 +6,7 @@ import { UserData } from "../redux/reducers/types";
 import { getUserByUsername } from "../utils/blogUtils";
 import { NavBar } from "./NavBar";
 import { RecipeCard } from "./RecipeCard";
+import { BecomeSellerModal } from "./Shop/BecomeSellerModal";
 
 type ParamsType = {
   username: string;
@@ -18,7 +19,9 @@ type UserProfileState = {
 export const UserProfile: React.FC = () => {
   const username = useParams<ParamsType>();
   const [userProfile, setUserProfile] = useState<UserProfileState>();
-  const logedUsername = useSelector((state: RootState) => state.storeUser.userData.username)
+  const logedUsername = useSelector(
+    (state: RootState) => state.storeUser.userData.username
+  );
 
   const isMyProfile = () => {
     if (logedUsername === username.username) return true;
@@ -31,48 +34,58 @@ export const UserProfile: React.FC = () => {
       .catch((e) => console.log(e));
   }, [username]);
 
+  const [modal, setModal] = useState<Boolean>(false);
+
+  const handleViewProducts = () => {};
+
+  const handleBecomeSeller = () => {
+    setModal(true);
+  };
+
   return (
-    <div>
-      <NavBar route="userprofile" />
-      <div className="max-w-7xl md:mx-auto mx-4 mt-8">
-        <div>
-          <div className="flex gap-4 items-baseline">
-            <span className="text-4xl pb-3 border-b-2 border-mainC2">
-              {userProfile?.userProfile.username}
-            </span>
-            <p className="text-gray-500 text-lg">homebrewer</p>
-          </div>
-          <div className="grid grid-cols-2 gap-y-8 md:gap-x-8 mt-12">
-            <div className="col-span-2 md:col-span-1">
-              <p className="font-semibold text-xl md:ml-2">MY RECIPES:</p>
-              {userProfile &&
-                userProfile.userProfile.ownRecipes.map((recipe, i) => (
-                  <RecipeCard key={i} recipe={recipe.recipe} id={recipe._id} />
-                ))}
-            </div>
+    <>
+      {modal && (
+        <BecomeSellerModal
+          message={"You want to offer beer products?"}
+          setModal={setModal}
+          pathTo=""
+        />
+      )}
 
-            <div className="col-span-2 md:col-span-1">
-              <p className="font-semibold text-xl">MY ARTICLES:</p>
-              {userProfile?.userProfile.ownBlogs.map((el, i) => (
-                <div
-                  key={i}
-                  className="flex md:gap-x-3 bg-bgMain rounded shadow hover:shadow-none p-4 my-3"
-                >
-                  <Link to={`/blogdetail/${el._id}`}>
-                    <p className="transition ease-in-out duration-150 hover:text-brown1">
-                      {el.blog_title}
-                    </p>
-                  </Link>
-                  <p className="text-gray-400 ml-auto">{el.date}</p>
-                </div>
-              ))}
+      <div>
+        <NavBar route="userprofile" />
+        <div className="max-w-7xl md:mx-auto mx-4 mt-8">
+          <div>
+            <div className="flex">
+              <div className="flex gap-4 items-baseline">
+                <span className="text-4xl pb-3 border-b-2 border-mainC2">
+                  {userProfile?.userProfile.username}
+                </span>
+                <p className="text-gray-500 text-lg">homebrewer</p>
+              </div>
+              <div className="ml-auto">
+                {userProfile?.userProfile.seller ? (
+                  <button
+                    onClick={handleViewProducts}
+                    className="transition ease-in-out delay-50 font-semibold border border-mainC2 text-main p-2 text-sm rounded hover:bg-mainC2 hover:text-white"
+                  >
+                    VIEW PRODUCTS
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleBecomeSeller}
+                    className="transition ease-in-out delay-50 font-semibold border border-mainC2 text-main p-2 text-sm rounded hover:bg-mainC2 hover:text-white"
+                  >
+                    BECOME A SELLER
+                  </button>
+                )}
+              </div>
             </div>
-
-            {isMyProfile() && (
+            <div className="grid grid-cols-2 gap-y-8 md:gap-x-8 mt-12">
               <div className="col-span-2 md:col-span-1">
-                <p className="font-semibold text-xl md:ml-2">MY FAVS:</p>
+                <p className="font-semibold text-xl md:ml-2">MY RECIPES:</p>
                 {userProfile &&
-                  userProfile.userProfile.favs.map((recipe, i) => (
+                  userProfile.userProfile.ownRecipes.map((recipe, i) => (
                     <RecipeCard
                       key={i}
                       recipe={recipe.recipe}
@@ -80,10 +93,41 @@ export const UserProfile: React.FC = () => {
                     />
                   ))}
               </div>
-            )}
+
+              <div className="col-span-2 md:col-span-1">
+                <p className="font-semibold text-xl">MY ARTICLES:</p>
+                {userProfile?.userProfile.ownBlogs.map((el, i) => (
+                  <div
+                    key={i}
+                    className="flex md:gap-x-3 bg-bgMain rounded shadow hover:shadow-none p-4 my-3"
+                  >
+                    <Link to={`/blogdetail/${el._id}`}>
+                      <p className="transition ease-in-out duration-150 hover:text-brown1">
+                        {el.blog_title}
+                      </p>
+                    </Link>
+                    <p className="text-gray-400 ml-auto">{el.date}</p>
+                  </div>
+                ))}
+              </div>
+
+              {isMyProfile() && (
+                <div className="col-span-2 md:col-span-1">
+                  <p className="font-semibold text-xl md:ml-2">MY FAVS:</p>
+                  {userProfile &&
+                    userProfile.userProfile.favs.map((recipe, i) => (
+                      <RecipeCard
+                        key={i}
+                        recipe={recipe.recipe}
+                        id={recipe._id}
+                      />
+                    ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

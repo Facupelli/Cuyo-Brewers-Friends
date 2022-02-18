@@ -27,6 +27,7 @@ class RegisterController {
         lastname: req.body.lastname,
         username: req.body.username,
         email: req.body.email,
+        seller: false,
         password,
       };
 
