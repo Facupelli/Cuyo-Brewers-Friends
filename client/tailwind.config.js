@@ -8,9 +8,11 @@ module.exports = {
     boxShadow: {
       "navbar-shadow":
         "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;",
-      "menu-shadow":"rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+      "menu-shadow":
+        "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
       "form-shadow": "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;",
-      "input": "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;",
+      input:
+        "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;",
     },
     animation: {
       "spin-slow": "spin 2s ease-in-out infinite",
@@ -22,7 +24,7 @@ module.exports = {
       title: ["Oswald", "sans-serif"],
     },
     colors: {
-      main:"#252422",
+      main: "#252422",
       mainC: "#CCC5B9",
       mainC2: "#F96900",
       second: "#9B1D20",

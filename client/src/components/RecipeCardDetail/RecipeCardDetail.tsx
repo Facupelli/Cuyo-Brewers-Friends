@@ -244,7 +244,7 @@ const DeleteModal: React.FC<Props> = ({ setModal, id }) => {
   return (
     <div className="overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 flex justify-center items-center md:inset-0 h-modal sm:h-full">
       <div className="relative px-4 w-full max-w-lg h-full md:h-auto">
-        <div className="relative bg-white rounded-lg shadow-lg">
+        <div className="relative bg-white rounded-lg shadow-menu-shadow">
           <div className="border rounded-lg p-6 space-y-6">
             <div className="flex justify-center">
               <p className="text-lg font-semibold">

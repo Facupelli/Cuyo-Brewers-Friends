@@ -5,7 +5,7 @@ const { userModel } = require("../models/user");
 const ObjectId = mongodb.ObjectId;
 
 class Products {
-    static async getRecipes({
+    static async getProducts({
         page = 0,
         productsPerPage = 15, // options created, when call the method we can put filters, pages and perpage
       } = {}) {
@@ -25,7 +25,7 @@ class Products {
         try {
           const totalNumProducts = await productModel.countDocuments();
     
-          return { allRecipes, totalNumRecipes }; //return the array
+          return { allProducts, totalNumProducts }; //return the array
         } catch (e) {
           console.error(
             `Unable to convert cursor to array or problem counting documents, ${e}`
@@ -56,7 +56,7 @@ class Products {
     
           // return await recipes.insertOne(reviewDoc);
         } catch (e) {
-          console.error(`Unable to post recipe: ${e}`);
+          console.error(`Unable to post product: ${e}`);
           return { error: e };
         }
       }

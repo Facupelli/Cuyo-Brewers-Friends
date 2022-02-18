@@ -17,7 +17,7 @@ class ProductsController {
       });
 
       let response = {
-        productsList: allRecipes,
+        productsList: allProducts,
         page: page,
         entries_per_page: productsPerPage,
         total_results: totalNumProducts,
@@ -37,7 +37,7 @@ class ProductsController {
       };
       const date = dayjs().format("DD/MM/YYYY");
 
-      const ReviewResponse = await Products.addRecipe(product, userInfo, date);
+      const ReviewResponse = await Products.addProduct(product, userInfo, date);
       res.json({ status: "success" });
     } catch (e) {
       res.status(500).json({ error: e.message });
