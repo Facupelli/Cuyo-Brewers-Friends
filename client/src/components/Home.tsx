@@ -5,7 +5,7 @@ import { NavBar } from "./NavBar";
 import { RecipesCardList } from "./RecipesCardList";
 import { FaLongArrowAltUp } from "react-icons/fa";
 import { MdAutorenew } from "react-icons/md";
-import { loadMoreRecipes } from "../redux/action-creators";
+import { loadMoreRecipes, loadMoreTopRecipes } from "../redux/action-creators";
 import { VscLoading } from "react-icons/vsc";
 
 export default function Home() {
@@ -28,11 +28,12 @@ export default function Home() {
     (state: RootState) => state.storeRecipes.topRecipesList
   );
 
-  const totalPages = Math.ceil(totalRecipes / 5) - 1;
+  const totalPages = Math.ceil(totalRecipes / 10) - 1;
 
   const handleLoadMore = async (page: number) => {
     if (page <= totalPages) {
       dispatch(loadMoreRecipes(page));
+      dispatch(loadMoreTopRecipes(page));
       setPage(page + 1);
     }
   };

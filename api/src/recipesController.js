@@ -10,7 +10,7 @@ class RecipesController {
     try {
       const recipesPerPage = req.query.recipesPerPage
         ? parseInt(req.query.recipesPerPage, 10)
-        : 15;
+        : 10;
       const page = req.query.page ? parseInt(req.query.page, 10) : 0;
 
       let filters = {}; //filters start as an empty object

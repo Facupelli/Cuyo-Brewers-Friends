@@ -43,17 +43,24 @@ export const recipesReducer = (
         recipesList: action.payload,
       };
     case RecipesActionType.LOAD_MORE_RECIPES:
-      const newState = [...state.recipesList, action.payload].flat();
+      const newRecipeState = [...state.recipesList, action.payload].flat();
       return {
         ...state,
         loading: false,
-        recipesList: newState,
+        recipesList: newRecipeState,
       };
     case RecipesActionType.RECIPES_GET_TOP:
       return {
         ...state,
         loading: false,
         topRecipesList: action.payload,
+      };
+    case RecipesActionType.LOAD_MORE_TOP_RECIPES:
+      const newTopRecipeState = [...state.topRecipesList, action.payload].flat();
+      return {
+        ...state,
+        loading: false,
+        topRecipesList: newTopRecipeState,
       };
     default:
       return state;

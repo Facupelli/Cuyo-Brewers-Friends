@@ -29,6 +29,10 @@ export interface LoadMoreRecipesAction {
   payload: RecipeList[];
 }
 
+export interface LoadMoreTopRecipesAction {
+  type: RecipesActionType.LOAD_MORE_TOP_RECIPES;
+  payload: RecipeList[];
+}
 export interface RecipesGetTopAction {
   type: RecipesActionType.RECIPES_GET_TOP;
   payload: RecipeList[];
@@ -40,4 +44,5 @@ export type RecipeActions =
   | RecipesGetAction
   | RecipesGetTopAction
   | LoadMoreRecipesAction
-  | TotalNumRecipes;
+  | TotalNumRecipes
+  | LoadMoreTopRecipesAction;

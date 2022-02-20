@@ -120,6 +120,23 @@ export const getTopRecipes =
     } catch (e) {}
   };
 
+  export const loadMoreTopRecipes =
+  (page: number) => async (dispatch: Dispatch<RecipeActions>) => {
+    try {
+      const res = await axios.get<any>(`/recipe?top=true&page=${page}`);
+
+      return dispatch({
+        type: RecipesActionType.LOAD_MORE_TOP_RECIPES,
+        payload: res.data.recipesList,
+      });
+    } catch (e) {
+      console.log(e);
+      dispatch({
+        type: RecipesActionType.RECIPES_FAIL,
+      });
+    }
+  };
+
 // --------------------------- PRODUCTS ACTIONS
 
 export const productsLoadingTrue = () => {
