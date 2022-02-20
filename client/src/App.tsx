@@ -9,6 +9,7 @@ import {
   getTopRecipes,
   getUserData,
   setCookie,
+  totalNumRecipes,
 } from "./redux/action-creators";
 import { RootState } from "./redux/reducers/RootReducer";
 //Components
@@ -40,6 +41,7 @@ function App() {
   // ------------------------GET RECIPES -------------------------------------
   useEffect(() => {
     dispatch(getRecipes());
+    dispatch(totalNumRecipes());
     dispatch(getTopRecipes());
     dispatch(getBlogs());
   }, [dispatch]);

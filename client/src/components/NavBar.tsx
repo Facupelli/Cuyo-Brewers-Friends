@@ -75,7 +75,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     </Link>
                   ) : (
                     <Link to="/">
-                      <p className="font-semibold text-mainC">RECIPES</p>
+                      <p className="font-semibold text-mainC hover:text-bgMain">RECIPES</p>
                     </Link>
                   )}
                 </div>
@@ -94,7 +94,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     </Link>
                   ) : (
                     <Link to="/searchrecipes">
-                      <div className="flex items-center gap-2 text-mainC">
+                      <div className="flex items-center gap-2 text-mainC hover:text-bgMain">
                         <p className="font-semibold  ">SEARCH</p>
                         <div className="text-xs">
                           <FaSearch />
@@ -114,7 +114,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                       </Link>
                     ) : (
                       <Link to="/createrecipe">
-                        <p className="font-semibold text-mainC">ADD RECIPE</p>
+                        <p className="font-semibold text-mainC hover:text-bgMain">ADD RECIPE</p>
                       </Link>
                     )}
                   </div>
@@ -129,7 +129,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     </Link>
                   ) : (
                     <Link to="/blog">
-                      <p className="font-semibold text-mainC">BLOG</p>
+                      <p className="font-semibold text-mainC hover:text-bgMain">BLOG</p>
                     </Link>
                   )}
                 </div>
@@ -143,7 +143,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     </Link>
                   ) : (
                     <Link to="/shop">
-                      <p className="font-semibold text-mainC">SHOP</p>
+                      <p className="font-semibold text-mainC hover:text-bgMain">SHOP</p>
                     </Link>
                   )}
                 </div>
@@ -154,7 +154,7 @@ export const NavBar: React.FC<Props> = ({ route }) => {
               <button
                 onClick={hanldeUserMenu}
                 className={`menu flex gap-2 items-center focus:outline-none focus:shadow-solid font-semibold ${
-                  userMenu ? "text-mainC2" : "text-mainC"
+                  userMenu ? "text-mainC2" : "text-mainC hover:text-bgMain"
                 }`}
               >
                 MENU

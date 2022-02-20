@@ -24,7 +24,7 @@ class Recipes {
     top,
     filters = null,
     page = 0,
-    recipesPerPage = 30, // options created, when call the method we can put filters, pages and perpage
+    recipesPerPage = 15, // options created, when call the method we can put filters, pages and perpage
   } = {}) {
     let query; // first the query is empty and remain empty unless someone pass a filter
     if (filters) {

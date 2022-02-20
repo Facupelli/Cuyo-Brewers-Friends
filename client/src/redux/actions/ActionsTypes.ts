@@ -3,6 +3,8 @@ export enum RecipesActionType {
   RECIPES_FAIL = "RECIPES_FAIL",
   RECIPES_GET = "RECIPES_GET",
   RECIPES_GET_TOP = "RECIPES_GET_TOP",
+  LOAD_MORE_RECIPES = 'LOAD_MORE_RECIPES',
+  TOTAL_NUM_RECIPES = 'TOTAL_NUM_RECIPES',
 }
 
 export enum ProductsActionType {

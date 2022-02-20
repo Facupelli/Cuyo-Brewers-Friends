@@ -19,6 +19,21 @@ export const loadingTrue = () => {
   };
 };
 
+export const totalNumRecipes =
+  () => async (dispatch: Dispatch<RecipeActions>) => {
+    try {
+
+      const res = await axios.get<any>("/recipe");
+
+      dispatch({
+        type: RecipesActionType.TOTAL_NUM_RECIPES,
+        payload: res.data.total_results,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
 type Filters = {
   style: string;
   sub_category: string;
@@ -61,6 +76,26 @@ export const getRecipes =
 
       return dispatch({
         type: RecipesActionType.RECIPES_GET,
+        payload: res.data.recipesList,
+      });
+    } catch (e) {
+      console.log(e);
+      dispatch({
+        type: RecipesActionType.RECIPES_FAIL,
+      });
+    }
+  };
+
+export const loadMoreRecipes =
+  (page: number) => async (dispatch: Dispatch<RecipeActions>) => {
+    try {
+      dispatch({
+        type: RecipesActionType.RECIPES_LOADING,
+      });
+      const res = await axios.get<any>(`/recipe?page=${page}`);
+
+      return dispatch({
+        type: RecipesActionType.LOAD_MORE_RECIPES,
         payload: res.data.recipesList,
       });
     } catch (e) {

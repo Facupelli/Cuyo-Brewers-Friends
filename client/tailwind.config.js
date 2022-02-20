@@ -21,6 +21,7 @@ module.exports = {
         "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;",
     },
     animation: {
+      "spin-load":"spin 0.8s ease-out infinite",
       "spin-slow": "spin 2s ease-in-out infinite",
       "bounce-slow": "bounce 2s ease-in-out infinite",
     },
