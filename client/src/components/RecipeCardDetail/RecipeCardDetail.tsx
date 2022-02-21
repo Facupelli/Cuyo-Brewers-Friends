@@ -152,7 +152,7 @@ export const RecipeCardDetail: React.FC = () => {
           {isMyRecipe() && (
             <div
               onClick={handleDeleteModal}
-              className="cursor-pointer ml-auto text-main text-4xl"
+              className="cursor-pointer ml-auto text-main text-4xl transition ease-in-out delay-50 hover:text-red-500"
             >
               <MdDelete />
             </div>

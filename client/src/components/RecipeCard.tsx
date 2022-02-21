@@ -14,7 +14,7 @@ export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
       <div>
         <div>
           <Link to={`/recipe/${id}`}>
-            <p className="text-main font-semibold">{recipe.title}</p>
+            <p className="text-main font-semibold hover:text-mainC2 hover:font-bold transition ease-in-out delay-50">{recipe.title}</p>
           </Link>
         </div>
         <div className="flex items-baseline gap-2">

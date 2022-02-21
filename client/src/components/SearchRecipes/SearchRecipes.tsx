@@ -50,7 +50,7 @@ export const SearchRecipes: React.FC = () => {
           <div className="col-span-11 md:col-span-3 p-4 border-r border-main bg-mainC rounded-l mb-4">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-3 items-center mb-4">
-                <label className="col-span-1 text-brown1">Style</label>
+                <label className="col-span-1 text-main font-semibold">Style</label>
                 <select
                   {...register("sub_category")}
                   defaultValue=""
@@ -64,7 +64,7 @@ export const SearchRecipes: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-2 items-center mb-4">
-                <label className="col-span-1 text-brown1">Beer Title:</label>
+                <label className="col-span-1 text-main font-semibold">Beer Title:</label>
                 <input
                   type="text"
                   {...register("beer_title")}
@@ -73,7 +73,7 @@ export const SearchRecipes: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-2 items-center mb-4">
-                <label className="col-span-1 text-brown1">Username:</label>
+                <label className="col-span-1 text-main font-semibold">Username:</label>
                 <input
                   type="text"
                   {...register("username")}
