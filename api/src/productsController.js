@@ -43,6 +43,21 @@ class ProductsController {
       res.status(500).json({ error: e.message });
     }
   }
+
+  static async editProduct(req, res, next) {
+    try {
+      const productInfo = req.body.productInfo;
+      const userInfo = {
+        username: req.body.username,
+        _id: req.body._id,
+      };
+
+      const ReviewResponse = await Products.editProduct(productInfo, userInfo);
+      res.json({ status: "Successfully edited" });
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
 }
 
 module.exports = ProductsController;

@@ -7,6 +7,8 @@ router.get('/', ProductsController.getProducts)
 // router.get('/:id', RecipesController.getRecipeById)
 
 router.post('/', ProductsController.postProduct)
+router.put('/', ProductsController.editProduct)
+
 
 // router.delete('/', RecipesController.deleteRecipe)
 
