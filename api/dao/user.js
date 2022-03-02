@@ -38,6 +38,7 @@ class User {
       return await userModel
         .findOne({ username: username })
         .populate("ownBlogs", "blog_title blog_body date")
+        .populate("ownProducts", "images title description price date available")
         .populate("ownRecipes", "recipe date")
         .populate("favs", "recipe date");
     } catch (e) {

@@ -8,6 +8,7 @@ import { NavBar } from "./NavBar";
 import { RecipeCard } from "./RecipeCard";
 import { BecomeSellerModal } from "./Shop/BecomeSellerModal";
 import axios from "axios";
+import { ProductCard } from "./Shop/ProductCard";
 
 type ParamsType = {
   username: string;
@@ -18,10 +19,15 @@ type UserProfileState = {
 };
 
 export const UserProfile: React.FC = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const username = useParams<ParamsType>();
+
   const [userProfile, setUserProfile] = useState<UserProfileState>();
+  const [showProducts, setShowProducts] = useState<Boolean>(false);
+
+  console.log(userProfile);
+
   const logedUsername = useSelector(
     (state: RootState) => state.storeUser.userData.username
   );
@@ -48,11 +54,13 @@ export const UserProfile: React.FC = () => {
 
   const [modal, setModal] = useState<Boolean>(false);
 
-  const handleViewProducts = () => {};
+  const handleViewProducts = () => {
+    setShowProducts(!showProducts);
+  };
 
   const handlePostProducts = () => {
-    navigate('/postproduct')
-  }
+    navigate("/postproduct");
+  };
 
   const handleBecomeSeller = () => {
     setModal(true);
@@ -93,7 +101,7 @@ export const UserProfile: React.FC = () => {
                       onClick={handleViewProducts}
                       className="transition ease-in-out delay-50 font-semibold border border-mainC2 text-main p-2 text-sm rounded hover:bg-mainC2 hover:text-white"
                     >
-                      VIEW PRODUCTS
+                      {showProducts ? "<-" : "VIEW PRODUCTS"}
                     </button>
                   </div>
                 ) : (
@@ -106,41 +114,12 @@ export const UserProfile: React.FC = () => {
                 )}
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-y-8 md:gap-x-8 mt-12">
-              <div className="col-span-2 md:col-span-1">
-                <p className="font-semibold text-xl md:ml-2">MY RECIPES:</p>
-                {userProfile &&
-                  userProfile.userProfile.ownRecipes.map((recipe, i) => (
-                    <RecipeCard
-                      key={i}
-                      recipe={recipe.recipe}
-                      id={recipe._id}
-                    />
-                  ))}
-              </div>
-
-              <div className="col-span-2 md:col-span-1">
-                <p className="font-semibold text-xl">MY ARTICLES:</p>
-                {userProfile?.userProfile.ownBlogs.map((el, i) => (
-                  <div
-                    key={i}
-                    className="flex md:gap-x-3 bg-bgMain rounded shadow hover:shadow-none p-4 my-3"
-                  >
-                    <Link to={`/blogdetail/${el._id}`}>
-                      <p className="transition ease-in-out duration-150 hover:text-brown1">
-                        {el.blog_title}
-                      </p>
-                    </Link>
-                    <p className="text-gray-400 ml-auto">{el.date}</p>
-                  </div>
-                ))}
-              </div>
-
-              {isMyProfile() && (
+            {!showProducts ? (
+              <div className="grid grid-cols-2 gap-y-8 md:gap-x-8 mt-12">
                 <div className="col-span-2 md:col-span-1">
-                  <p className="font-semibold text-xl md:ml-2">MY FAVS:</p>
+                  <p className="font-semibold text-xl md:ml-2">MY RECIPES:</p>
                   {userProfile &&
-                    userProfile.userProfile.favs.map((recipe, i) => (
+                    userProfile.userProfile.ownRecipes.map((recipe, i) => (
                       <RecipeCard
                         key={i}
                         recipe={recipe.recipe}
@@ -148,8 +127,47 @@ export const UserProfile: React.FC = () => {
                       />
                     ))}
                 </div>
-              )}
-            </div>
+
+                <div className="col-span-2 md:col-span-1">
+                  <p className="font-semibold text-xl">MY ARTICLES:</p>
+                  {userProfile?.userProfile.ownBlogs.map((el, i) => (
+                    <div
+                      key={i}
+                      className="flex md:gap-x-3 bg-bgMain rounded shadow hover:shadow-none p-4 my-3"
+                    >
+                      <Link to={`/blogdetail/${el._id}`}>
+                        <p className="transition ease-in-out duration-150 hover:text-brown1">
+                          {el.blog_title}
+                        </p>
+                      </Link>
+                      <p className="text-gray-400 ml-auto">{el.date}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {isMyProfile() && (
+                  <div className="col-span-2 md:col-span-1">
+                    <p className="font-semibold text-xl md:ml-2">MY FAVS:</p>
+                    {userProfile &&
+                      userProfile.userProfile.favs.map((recipe, i) => (
+                        <RecipeCard
+                          key={i}
+                          recipe={recipe.recipe}
+                          id={recipe._id}
+                        />
+                      ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="mx-10 mt-16 grid grid-cols-4 gap-y-12 mb-10">
+                {userProfile?.userProfile.ownProducts.map((el) => (
+                  <div className="col-span-1" key={el._id}>
+                    <ProductCard own={true} product={el} id={el._id} />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
