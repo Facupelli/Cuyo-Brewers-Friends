@@ -64,15 +64,13 @@ class Products {
       const { _id, title, price, description, available, images } = productInfo;
 
       const product = await productModel.findById(_id);
-      console.log('PRODUCT', product)
-      console.log(product.owner[0].toString(), userInfo._id)
 
       if (product && product.owner[0].toString() === userInfo._id) {
         if (productInfo) {
           product.title = title ? title : product.title;
           product.price = price ? price : product.price;
           product.description = description ? description : product.description;
-          product.available = available ? available : product.available;
+          product.available = available === true ? true : false;
           product.images = images ? images : product.images;
           await product.save();
           console.log(product)

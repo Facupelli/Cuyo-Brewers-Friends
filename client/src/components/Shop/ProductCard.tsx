@@ -55,7 +55,7 @@ export const ProductCard: React.FC<Props> = ({
         title: data.title,
         description: data.description,
         price: data.price,
-        available: true,
+        available: Boolean(data.available),
         _id: id,
       };
 
@@ -90,7 +90,7 @@ export const ProductCard: React.FC<Props> = ({
             <input
               {...methods.register("title")}
               defaultValue={product.title}
-              className="rounded bg-edit text-gray-600 focus:outline-none active:font-semibold"
+              className="rounded bg-edit text-gray-600 focus:outline-none active:font-semibold px-2"
             />
           )}
         </div>
@@ -101,7 +101,7 @@ export const ProductCard: React.FC<Props> = ({
             <textarea
               {...methods.register("description")}
               defaultValue={product.description}
-              className="rounded bg-edit text-gray-600 w-full focus:outline-none active:font-semibold"
+              className="rounded bg-edit text-gray-600 w-full focus:outline-none active:font-semibold px-2"
             />
           )}
         </div>
@@ -119,7 +119,7 @@ export const ProductCard: React.FC<Props> = ({
             <input
               {...methods.register("price")}
               defaultValue={product.price}
-              className="rounded bg-edit text-gray-600 focus:outline-none active:font-semibold"
+              className="rounded bg-edit text-gray-600 focus:outline-none active:font-semibold px-2"
             />
           )}
 
@@ -151,13 +151,22 @@ export const ProductCard: React.FC<Props> = ({
         {own ? (
           <div className="font-semibold p-2 flex ">
             <p>{product.date}</p>
-            <p
+            {edit && (
+              <select {...methods.register('available')} className="ml-auto focus:outline-none bg-edit">
+                <option value={1}>Available</option>
+                <option value={0}>No Stock</option>
+              </select>
+            )}
+            {!edit && (
+              <p
               className={`ml-auto ${
                 product.available ? "text-mainC2" : "text-red-500"
               }`}
             >
               {product.available ? "Avialable" : "No Stock"}
             </p>
+            )}
+            
           </div>
         ) : null}
       </form>
