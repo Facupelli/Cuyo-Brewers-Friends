@@ -64,7 +64,7 @@ export const ProductCard: React.FC<Props> = ({
         username,
         _id: user_id,
       };
-      const response = await axios.put("/products", newProduct);
+      await axios.put("/products", newProduct);
       setEdit(false);
       if (setUserProfile) {
         getUserByUsername(username)

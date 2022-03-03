@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 
 type Props = {
   setModal: React.Dispatch<React.SetStateAction<any>>;
@@ -8,14 +7,10 @@ type Props = {
 };
 
 export const BecomeSellerModal: React.FC<Props> = ({ setModal, message, pathTo, handleSeller }) => {
-  const navigate = useNavigate();
-
 
   const handleClick = () => {
     setModal(false);
   };
-
- 
 
   return (
     <div className="overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 flex justify-center items-center md:inset-0 h-modal sm:h-full">

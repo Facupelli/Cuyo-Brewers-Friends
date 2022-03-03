@@ -42,7 +42,7 @@ export const PostProduct: React.FC = () => {
         username,
         user_id,
       };
-      const response = await axios.post("/products", newProduct);
+      await axios.post("/products", newProduct);
     } catch (e) {
       console.log({ onSubmitError: e });
     }

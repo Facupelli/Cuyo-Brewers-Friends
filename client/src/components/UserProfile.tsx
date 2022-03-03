@@ -44,12 +44,6 @@ export const UserProfile: React.FC = () => {
     setModal(false);
   };
 
-  const getUserData = () => {
-    getUserByUsername(username.username)
-      .then((data) => setUserProfile({ userProfile: data }))
-      .catch((e) => console.log(e));
-  };
-
   useEffect(() => {
     getUserByUsername(username.username)
       .then((data) => setUserProfile({ userProfile: data }))
