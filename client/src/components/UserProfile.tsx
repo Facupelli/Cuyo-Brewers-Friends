@@ -26,8 +26,6 @@ export const UserProfile: React.FC = () => {
   const [userProfile, setUserProfile] = useState<UserProfileState>();
   const [showProducts, setShowProducts] = useState<Boolean>(false);
 
-  console.log(userProfile);
-
   const logedUsername = useSelector(
     (state: RootState) => state.storeUser.userData.username
   );
@@ -44,6 +42,12 @@ export const UserProfile: React.FC = () => {
       .then((data) => setUserProfile({ userProfile: data }))
       .catch((e) => console.log(e));
     setModal(false);
+  };
+
+  const getUserData = () => {
+    getUserByUsername(username.username)
+      .then((data) => setUserProfile({ userProfile: data }))
+      .catch((e) => console.log(e));
   };
 
   useEffect(() => {
@@ -101,7 +105,7 @@ export const UserProfile: React.FC = () => {
                       onClick={handleViewProducts}
                       className="transition ease-in-out delay-50 font-semibold border border-mainC2 text-main p-2 text-sm rounded hover:bg-mainC2 hover:text-white"
                     >
-                      {showProducts ? "<-" : "VIEW PRODUCTS"}
+                      {showProducts ? "<-" : "VIEW MY PRODUCTS"}
                     </button>
                   </div>
                 ) : (
@@ -160,10 +164,10 @@ export const UserProfile: React.FC = () => {
                 )}
               </div>
             ) : (
-              <div className="mx-10 mt-16 grid grid-cols-4 gap-y-12 mb-10">
+              <div className="mx-10 mt-16 grid md:grid-cols-3 lg:grid-cols-4 gap-y-12 mb-10">
                 {userProfile?.userProfile.ownProducts.map((el) => (
-                  <div className="col-span-1" key={el._id}>
-                    <ProductCard own={true} product={el} id={el._id} />
+                  <div className="col-span-2 md:col-span-1" key={el._id}>
+                    <ProductCard own={true} product={el} id={el._id} setUserProfile={setUserProfile}/>
                   </div>
                 ))}
               </div>

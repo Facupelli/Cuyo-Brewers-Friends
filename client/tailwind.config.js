@@ -34,6 +34,7 @@ module.exports = {
       main: "#252422",
       mainC: "#CCC5B9",
       mainC2: "#F96900",
+      edit: "#e8dfcf",
       second: "#9B1D20",
       bgMain: "#FFFCF2",
       transparent: "transparent",

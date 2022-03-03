@@ -64,6 +64,8 @@ class Products {
       const { _id, title, price, description, available, images } = productInfo;
 
       const product = await productModel.findById(_id);
+      console.log('PRODUCT', product)
+      console.log(product.owner[0].toString(), userInfo._id)
 
       if (product && product.owner[0].toString() === userInfo._id) {
         if (productInfo) {
