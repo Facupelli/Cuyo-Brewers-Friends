@@ -16,11 +16,11 @@ export const Shop: React.FC = () => {
       <div>
         <NavBar route="shop" />
       </div>
-      {/* <p className="flex justify-center mt-24 font-bold text-2xl">
+      <p className="flex justify-center mt-24 font-bold text-2xl">
         SHOP COMING SOON...
-      </p> */}
+      </p>
 
-      <ProductCardList productList={productList} />
+      {/* <ProductCardList productList={productList} /> */}
     </div>
   );
 };

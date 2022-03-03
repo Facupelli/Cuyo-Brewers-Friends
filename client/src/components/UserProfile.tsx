@@ -9,6 +9,7 @@ import { RecipeCard } from "./RecipeCard";
 import { BecomeSellerModal } from "./Shop/BecomeSellerModal";
 import axios from "axios";
 import { ProductCard } from "./Shop/ProductCard";
+import { TiArrowLeftThick } from "react-icons/ti";
 
 type ParamsType = {
   username: string;
@@ -99,7 +100,13 @@ export const UserProfile: React.FC = () => {
                       onClick={handleViewProducts}
                       className="transition ease-in-out delay-50 font-semibold border border-mainC2 text-main p-2 text-sm rounded hover:bg-mainC2 hover:text-white"
                     >
-                      {showProducts ? "<-" : "VIEW MY PRODUCTS"}
+                      {showProducts ? (
+                        <div className="flex items-center">
+                          <TiArrowLeftThick />
+                        </div>
+                      ) : (
+                        "VIEW MY PRODUCTS"
+                      )}
                     </button>
                   </div>
                 ) : (
@@ -161,7 +168,12 @@ export const UserProfile: React.FC = () => {
               <div className="mx-10 mt-16 grid md:grid-cols-3 lg:grid-cols-4 gap-y-12 mb-10">
                 {userProfile?.userProfile.ownProducts.map((el) => (
                   <div className="col-span-2 md:col-span-1" key={el._id}>
-                    <ProductCard own={true} product={el} id={el._id} setUserProfile={setUserProfile}/>
+                    <ProductCard
+                      own={true}
+                      product={el}
+                      id={el._id}
+                      setUserProfile={setUserProfile}
+                    />
                   </div>
                 ))}
               </div>
