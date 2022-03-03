@@ -12,7 +12,7 @@ export const Shop: React.FC = () => {
   // console.log('PRODUCTLIST', productList)
 
   return (
-    <div>
+    <div className="mb-12">
       <div>
         <NavBar route="shop" />
       </div>

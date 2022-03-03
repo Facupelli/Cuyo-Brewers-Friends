@@ -40,6 +40,7 @@ export const ProductCard: React.FC<Props> = ({
   };
 
   const methods = useForm<Product>({ resolver: yupResolver(schema) });
+  const errors = methods.formState.errors;
 
   const username = useSelector(
     (state: RootState) => state.storeUser.userData.username
@@ -51,6 +52,7 @@ export const ProductCard: React.FC<Props> = ({
   const formSubmitHandler: SubmitHandler<Product> = async (data: Product) => {
     try {
       console.log("FORM DATA IS", data);
+
       const info = {
         title: data.title,
         description: data.description,
@@ -87,22 +89,32 @@ export const ProductCard: React.FC<Props> = ({
           {!edit ? (
             <p>{product.title}</p>
           ) : (
-            <input
-              {...methods.register("title")}
-              defaultValue={product.title}
-              className="rounded bg-edit text-gray-600 focus:outline-none active:font-semibold px-2"
-            />
+            <>
+              <input
+                {...methods.register("title")}
+                defaultValue={product.title}
+                className="rounded bg-edit text-gray-600 focus:outline-none active:font-semibold px-2"
+              />
+              <span className="text-red-400">
+                {errors && errors.title?.message}
+              </span>
+            </>
           )}
         </div>
         <div className="mx-2 py-2 border-b border-bgMain">
           {!edit ? (
             <p>{product.description}</p>
           ) : (
-            <textarea
-              {...methods.register("description")}
-              defaultValue={product.description}
-              className="rounded bg-edit text-gray-600 w-full focus:outline-none active:font-semibold px-2"
-            />
+            <>
+              <textarea
+                {...methods.register("description")}
+                defaultValue={product.description}
+                className="rounded bg-edit text-gray-600 w-full focus:outline-none active:font-semibold px-2"
+              />
+              <span className="text-red-400">
+                {errors && errors.description?.message}
+              </span>
+            </>
           )}
         </div>
         <div
@@ -116,11 +128,16 @@ export const ProductCard: React.FC<Props> = ({
               }).format(Number(product.price))}
             </p>
           ) : (
-            <input
-              {...methods.register("price")}
-              defaultValue={product.price}
-              className="rounded bg-edit text-gray-600 focus:outline-none active:font-semibold px-2"
-            />
+            <div className="flex flex-col">
+              <input
+                {...methods.register("price")}
+                defaultValue={product.price}
+                className="rounded  bg-edit text-gray-600 focus:outline-none active:font-semibold px-2"
+              />
+              <span className=" text-red-400">
+                {errors && errors.price?.message}
+              </span>
+            </div>
           )}
 
           {!own ? (
@@ -152,21 +169,23 @@ export const ProductCard: React.FC<Props> = ({
           <div className="font-semibold p-2 flex ">
             <p>{product.date}</p>
             {edit && (
-              <select {...methods.register('available')} className="ml-auto focus:outline-none bg-edit">
+              <select
+                {...methods.register("available")}
+                className="ml-auto focus:outline-none bg-edit"
+              >
                 <option value={1}>Available</option>
                 <option value={0}>No Stock</option>
               </select>
             )}
             {!edit && (
               <p
-              className={`ml-auto ${
-                product.available ? "text-mainC2" : "text-red-500"
-              }`}
-            >
-              {product.available ? "Avialable" : "No Stock"}
-            </p>
+                className={`ml-auto ${
+                  product.available ? "text-mainC2" : "text-red-500"
+                }`}
+              >
+                {product.available ? "Avialable" : "No Stock"}
+              </p>
             )}
-            
           </div>
         ) : null}
       </form>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Product, ProductList } from "../../redux/reducers/types";
+import { Product } from "../../redux/reducers/types";
 import { ProductCard } from "./ProductCard";
 
 type Props = {
