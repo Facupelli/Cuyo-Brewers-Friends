@@ -164,7 +164,8 @@ const schema = yup.object().shape({
 export const CreateRecipe: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
-  const [modal, setModal] = useState(false)
+  const [ibuModal, setIbuModal] = useState<Boolean>(true);
+  const [modal, setModal] = useState<Boolean>(false);
 
   const username = useSelector(
     (state: RootState) => state.storeUser.userData.username
@@ -204,7 +205,9 @@ export const CreateRecipe: React.FC<{}> = () => {
         username,
         user_id,
       };
-      const response = await axios.post("/recipe", newRecipe).then(res => setModal(true))
+      const response = await axios
+        .post("/recipe", newRecipe)
+        .then((res) => setModal(true));
       console.log("RESPONSE:", response);
       dispatch(getRecipes());
       dispatch(getUserData(user_id));
@@ -213,70 +216,81 @@ export const CreateRecipe: React.FC<{}> = () => {
     }
   };
 
+  const message = `El OG, FG, SRM y ABV son calculados automaticamente segun los ingredientes 
+  seleccionados. El unico parametro que tendra que colocar ya que no es calculado por la app 
+  es el IBU. Hemos decidido dejar a eleccion de cada cervecero como calcular dicho valor.`;
+
   return (
     <>
-    <div className="bg-gray-50 ">
-      <NavBar route="createrecipe" />
-      <div className="max-w-7xl mx-auto">
-        <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
-            {/* ------------    PART 1 ------------------------ */}
-            <div className="mx-8 mt-8 flex justify-between ">
-              <p className="text-2xl font-semibold text-main">
-                Editing Recipe
-              </p>
-              <button
-                type="submit"
-                className="transition ease-in-out duration-150 bg-transparent hover:bg-main text-main font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
-              >
-                SAVE
-              </button>
-            </div>
-
-            <TitleInfo />
-
-            {/* -------------------    PARAMETERS ------------------------ */}
-
-            <BatchParams setEff={setEff} setBatch_size={setBatch_size} />
-
-            {/* --------------------    CHARACTERISTICS ------------------------ */}
-
-            <Characteristics
-              eff={eff}
-              batch_size={batch_size}
-              ogPoints={ogPoints}
-              yeastAtt={yeastAtt}
-              mcu={mcu}
-            />
-
-            {/* ------------------------ INGREDIENTS ----------------------------- */}
-
-            <div className="grid grid-cols-2">
-              <div className="col-span-2 md:col-span-1">
-                <MaltsForm
-                  setOgPoints={setOgPoints}
-                  batch_size={batch_size}
-                  setMcu={setMcu}
-                />
+      {modal && (
+        <Modal
+          setModal={setModal}
+          message="Recipe created successfully"
+          pathTo="/myrecipes"
+        />
+      )}
+      {ibuModal && <Modal setModal={setIbuModal} message={message} size='lg'/>}
+      <div className="bg-gray-50 ">
+        <NavBar route="createrecipe" />
+        <div className="max-w-7xl mx-auto">
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
+              {/* ------------    PART 1 ------------------------ */}
+              <div className="mx-8 mt-8 flex justify-between ">
+                <p className="text-2xl font-semibold text-main">
+                  Editing Recipe
+                </p>
+                <button
+                  type="submit"
+                  className="transition ease-in-out duration-150 bg-transparent hover:bg-main text-main font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
+                >
+                  SAVE
+                </button>
               </div>
 
-              <div className="col-span-2 md:col-span-1">
-                <HopsForm />
-              </div>
+              <TitleInfo />
 
-              <div className="col-span-2 md:col-span-1">
-                <YeastForm setYeastAtt={setYeastAtt} />
-              </div>
+              {/* -------------------    PARAMETERS ------------------------ */}
 
-              <div className="col-span-2 md:col-span-1">
-                <WaterForm />
+              <BatchParams setEff={setEff} setBatch_size={setBatch_size} />
+
+              {/* --------------------    CHARACTERISTICS ------------------------ */}
+
+              <Characteristics
+                eff={eff}
+                batch_size={batch_size}
+                ogPoints={ogPoints}
+                yeastAtt={yeastAtt}
+                mcu={mcu}
+              />
+
+              {/* ------------------------ INGREDIENTS ----------------------------- */}
+
+              <div className="grid grid-cols-2">
+                <div className="col-span-2 md:col-span-1">
+                  <MaltsForm
+                    setOgPoints={setOgPoints}
+                    batch_size={batch_size}
+                    setMcu={setMcu}
+                  />
+                </div>
+
+                <div className="col-span-2 md:col-span-1">
+                  <HopsForm />
+                </div>
+
+                <div className="col-span-2 md:col-span-1">
+                  <YeastForm setYeastAtt={setYeastAtt} />
+                </div>
+
+                <div className="col-span-2 md:col-span-1">
+                  <WaterForm />
+                </div>
               </div>
-            </div>
-          </form>
-        </FormProvider>
+            </form>
+          </FormProvider>
+        </div>
       </div>
-    </div>
-    {modal && <Modal setModal={setModal} message='Recipe created successfully' pathTo='/myrecipes' />}
     </>
   );
 };

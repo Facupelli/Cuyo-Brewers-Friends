@@ -93,8 +93,14 @@ export const Characteristics: React.FC<Props> = ({
     setModal(true);
   };
 
+  const message = `Los resultados (OG, FG, ABV, SRM) son solamente aproximaciones.
+  Los verdaderos resultados dependeran de la cualidades del equipo y
+  las variables que puedan o no ser controladas asi como tambien de
+  la calidad de los ingredientes utilizados`;
+
   return (
     <>
+      {modal && <ModalCharacteristics setModal={setModal} message={message} />}
       <div className="mx-4 md:mx-8 p-3 md:p-6 bg-gray-100 shadow-form-shadow">
         <div
           onClick={handleQusetionClick}
@@ -155,9 +161,7 @@ export const Characteristics: React.FC<Props> = ({
 
           <div className="flex flex-col items-center gap-4">
             <label className="text-gray-700 text-md font-semibold ">SRM</label>
-            {srm && (
-              <p className="text-mainC2 font-semibold text-3xl">{srm}</p>
-            )}
+            {srm && <p className="text-mainC2 font-semibold text-3xl">{srm}</p>}
           </div>
 
           <div className="flex flex-col items-center gap-4">
@@ -172,7 +176,6 @@ export const Characteristics: React.FC<Props> = ({
           </div>
         </div>
       </div>
-      {modal && <ModalCharacteristics setModal={setModal} />}
     </>
   );
 };
