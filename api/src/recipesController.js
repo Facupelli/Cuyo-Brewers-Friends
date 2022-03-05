@@ -49,15 +49,18 @@ class RecipesController {
   static async getRecipeById(req, res, next) {
     try {
       const { id } = req.params;
+      if (id) {
+        const recipe = await Recipes.getRecipeById(id);
 
-      const recipe = await Recipes.getRecipeById(id);
+        if (!recipe) {
+          res.status(404).json({ error: "Not found !recipe" });
+          return;
+        }
 
-      if (!recipe) {
-        res.status(404).json({ error: "Not found !recipe" });
-        return;
+        res.json(recipe);
+      } else {
+        res.status(400).json({ error: "Missing ID" });
       }
-
-      res.json(recipe);
     } catch (e) {
       console.log(`api, ${e}`);
       res.status(500).json({ error: e.message });
@@ -73,8 +76,12 @@ class RecipesController {
       };
       const date = dayjs().format("DD/MM/YYYY");
 
-      const ReviewResponse = await Recipes.addRecipe(recipe, userInfo, date);
-      res.json({ status: "success" });
+      if (recipe && userInfo) {
+        await Recipes.addRecipe(recipe, userInfo, date);
+        res.json({ status: "success" });
+      } else {
+        res.status(400).json({ error: "Missing data" });
+      }
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
@@ -82,13 +89,15 @@ class RecipesController {
 
   static async deleteRecipe(req, res, next) {
     try {
+      const { id } = req.query;
+      const { user_id } = req.body;
 
-      const {id} = req.query
-      const {user_id} = req.body
-      console.log('ID DELETE', id)
-      const deleteRecipe = await Recipes.deleteRecipe(id, user_id)
-
-      res.json({status: "success"})
+      if (id && user_id) {
+        await Recipes.deleteRecipe(id, user_id);
+        res.json({ status: "success" });
+      } else {
+        res.status(400).json({ error: "Missing data" });
+      }
     } catch (e) {
       res.status(500).json({ error: e.message });
     }

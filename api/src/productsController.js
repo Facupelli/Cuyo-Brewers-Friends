@@ -37,8 +37,16 @@ class ProductsController {
       };
       const date = dayjs().format("DD/MM/YYYY");
 
-      const ReviewResponse = await Products.addProduct(product, userInfo, date);
-      res.json({ status: "success" });
+      if (product && userInfo) {
+        const ReviewResponse = await Products.addProduct(
+          product,
+          userInfo,
+          date
+        );
+        res.json({ status: "success" });
+      } else {
+        res.status(400).json({ error: "Missing data" });
+      }
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
@@ -51,9 +59,15 @@ class ProductsController {
         username: req.body.username,
         _id: req.body._id,
       };
-
-      const ReviewResponse = await Products.editProduct(productInfo, userInfo);
-      res.json({ status: "Successfully edited" });
+      if (product && userInfo) {
+        const ReviewResponse = await Products.editProduct(
+          productInfo,
+          userInfo
+        );
+        res.json({ status: "Successfully edited" });
+      } else {
+        res.status(400).json({ error: "Missing data" });
+      }
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
