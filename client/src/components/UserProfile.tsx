@@ -80,14 +80,14 @@ export const UserProfile: React.FC = () => {
         <NavBar route="userprofile" />
         <div className="max-w-7xl md:mx-auto mx-4 mt-8">
           <div>
-            <div className="flex">
+            <div className="md:flex">
               <div className="flex gap-4 items-baseline">
                 <span className="text-4xl pb-3 border-b-2 border-mainC2">
                   {userProfile?.userProfile.username}
                 </span>
                 <p className="text-gray-500 text-lg">homebrewer</p>
               </div>
-              <div className="ml-auto">
+              <div className="md:ml-auto mt-4 md:mt-0">
                 {userProfile?.userProfile.seller ? (
                   <div>
                     <button

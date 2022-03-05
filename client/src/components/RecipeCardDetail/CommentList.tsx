@@ -12,7 +12,7 @@ export const CommentList: React.FC<Props> = ({ reviews }) => {
       {reviews &&
         reviews.map((el) => (
           <div key={el._id} className="grid grid-cols-5 my-6">
-            <div className="col-span-1 ">
+            <div className="col-span-2 md:col-span-1 ">
               <p className="text-mainC2 font-semibold text-xl mb-2">
                 {el.username}
               </p>
@@ -26,7 +26,7 @@ export const CommentList: React.FC<Props> = ({ reviews }) => {
               ) : null}
             </div>
 
-            <div className="col-span-4 ">
+            <div className="col-span-3 md:col-span-4 ">
               <p className="text-xs text-gray-500 mb-2">{el.date}</p>
               <p>{el.comment}</p>
             </div>

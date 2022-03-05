@@ -301,18 +301,18 @@ const MobileNavBar: React.FC<MobileProps> = ({
   username,
 }) => {
   return (
-    <div className="bg-blue1 pl-6 pb-6 space-y-5 text-xl pt-4">
+    <div className="bg-main text-mainC  pl-6 pb-6 space-y-5 text-xl pt-4">
       <div className="space-y-2">
         <div className="">
           {route === "home" ? (
             <Link to="/">
-              <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+              <span className="font-semibold text-white border-b-2 py-1 border-mainC2">
                 RECIPES
               </span>
             </Link>
           ) : (
             <Link to="/">
-              <p className="font-semibold">RECIPES</p>
+              <p className="font-semibold hover:text-white">RECIPES</p>
             </Link>
           )}
         </div>
@@ -321,7 +321,7 @@ const MobileNavBar: React.FC<MobileProps> = ({
           {route === "searchrecipes" ? (
             <Link to="/searchrecipes">
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                <span className="font-semibold text-white border-b-2 py-1 border-mainC2">
                   SEARCH
                 </span>
                 <div className="text-white">
@@ -331,7 +331,7 @@ const MobileNavBar: React.FC<MobileProps> = ({
             </Link>
           ) : (
             <Link to="/searchrecipes">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 hover:text-white">
                 <p className="font-semibold ">SEARCH</p>
                 <div className="text-xs">
                   <FaSearch />
@@ -345,13 +345,13 @@ const MobileNavBar: React.FC<MobileProps> = ({
           <div className="">
             {route === "createrecipe" ? (
               <Link to="/createrecipe">
-                <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                <span className="font-semibold text-white border-b-2 py-1 border-mainC2">
                   ADD RECIPE
                 </span>
               </Link>
             ) : (
               <Link to="/createrecipe">
-                <p className="font-semibold">ADD RECIPE</p>
+                <p className="font-semibold hover:text-white">ADD RECIPE</p>
               </Link>
             )}
           </div>
@@ -362,13 +362,13 @@ const MobileNavBar: React.FC<MobileProps> = ({
             <div className="">
               {route === "blog" ? (
                 <Link to="/blog">
-                  <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                  <span className="font-semibold text-white border-b-2 py-1 border-mainC2">
                     BLOG
                   </span>
                 </Link>
               ) : (
                 <Link to="/blog">
-                  <p className="font-semibold">BLOG</p>
+                  <p className="font-semibold hover:text-white">BLOG</p>
                 </Link>
               )}
             </div>
@@ -376,13 +376,13 @@ const MobileNavBar: React.FC<MobileProps> = ({
             <div className="">
               {route === "myrecipes" ? (
                 <Link to="/myrecipes">
-                  <span className="font-semibold text-white border-b-2 py-1 border-blueLight">
+                  <span className="font-semibold text-white border-b-2 py-1 border-mainC2">
                     MY RECIPES
                   </span>
                 </Link>
               ) : (
                 <Link to="/myrecipes">
-                  <p className="font-semibold">MY RECIPES</p>
+                  <p className="font-semibold hover:text-white">MY RECIPES</p>
                 </Link>
               )}
             </div>
@@ -392,13 +392,13 @@ const MobileNavBar: React.FC<MobileProps> = ({
         <div className={`${route === "createblog" ? "my-1" : "my-0"}`}>
           {route === "createblog" ? (
             <Link to="/createblog">
-              <span className="font-semibold  border-b-2 border-blueLight">
+              <span className="font-semibold  border-b-2 border-mainC2">
                 ADD ARTICLE
               </span>
             </Link>
           ) : (
             <Link to="/createblog">
-              <p className="font-semibold hover:text-blueLight">ADD ARTICLE</p>
+              <p className="font-semibold hover:text-white">ADD ARTICLE</p>
             </Link>
           )}
         </div>
@@ -410,13 +410,13 @@ const MobileNavBar: React.FC<MobileProps> = ({
         >
           {route === `/userprofile/${username}` ? (
             <Link to={`/userprofile/${username}`}>
-              <span className="font-semibold  border-b-2 border-blueLight">
+              <span className="font-semibold  border-b-2 border-mainC2">
                 MY PROFILE
               </span>
             </Link>
           ) : (
             <Link to={`/userprofile/${username}`}>
-              <p className="font-semibold hover:text-blueLight">MY PROFILE</p>
+              <p className="font-semibold hover:text-white">MY PROFILE</p>
             </Link>
           )}
         </div>
@@ -425,7 +425,7 @@ const MobileNavBar: React.FC<MobileProps> = ({
       <div className="space-y-1">
         {cookie ? (
           <div className="">
-            <p onClick={logOut} className=" cursor-pointer font-semibold ">
+            <p onClick={logOut} className=" cursor-pointer font-semibold hover:text-white">
               Log Out
             </p>
           </div>
@@ -433,12 +433,12 @@ const MobileNavBar: React.FC<MobileProps> = ({
           <>
             <div className="">
               <Link to="/login">
-                <p className="cursor-pointer font-semibold">Log In</p>
+                <p className="cursor-pointer font-semibold hover:text-white">Log In</p>
               </Link>
             </div>
             <div>
               <Link to="/register">
-                <p className="cursor-pointer font-semibold">Register</p>
+                <p className="cursor-pointer font-semibold hover:text-white">Register</p>
               </Link>
             </div>
           </>

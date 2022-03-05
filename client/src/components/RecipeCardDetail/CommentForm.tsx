@@ -73,7 +73,7 @@ export const CommentForm: React.FC<Props> = ({
     <form onSubmit={handleSubmit(onSubmit)} className="mt-16">
       <p className="text-2xl font-semibold pb-8"> Recipe discussion</p>
       <div className="grid grid-cols-5 gap-4">
-        <div className="col-span-1 justify-center mb-auto flex gap-2 ">
+        <div className="col-span-5 md:col-span-1 justify-start md:justify-center mb-auto flex gap-2 ">
           <label className="flex flex-col-reverse items-center ">
             <input type="radio" value="1" {...register("score")} name="score" />
             {scoreSelected && scoreSelected !== undefined ? (
@@ -150,7 +150,7 @@ export const CommentForm: React.FC<Props> = ({
           )}
 
           {cookie && isRecipeRated.length > 0 ? (
-            <div className="">
+            <div className="col-span-5 pt-4 md:pt-0">
               <p className="text-gray-600 text-xl font-semibold">
                 You already post a comment on this recipe!
               </p>

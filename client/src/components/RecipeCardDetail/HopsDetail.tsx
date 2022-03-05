@@ -18,18 +18,18 @@ export const HopsDetail: React.FC<Props> = ({ hops }) => {
         <p>Hops</p>
       </div>
 
-      <div className="grid grid-cols-7 p-2 pb-4 bg-mainC">
+      <div className="grid grid-cols-6 md:grid-cols-7 p-2 pb-4 bg-mainC ">
         <p className="col-span-1 font-semibold">Quantity g</p>
         <p className="col-span-1 font-semibold">Variety</p>
         <p className="hidden md:block md:col-span-1 font-semibold">AA</p>
         <p className="col-span-1 font-semibold">Use</p>
         <p className="col-span-1 font-semibold">Time</p>
-        <p className="col-span-1 font-semibold">T° °C</p>
-        <p className="col-span-1 font-semibold">Bill</p>
+        <p className="col-span-1 font-semibold">T° <span className="text-sm text-gray-600">°C</span></p>
+        <p className="col-span-1 font-semibold ">Bill</p>
       </div>
 
       {hops.map((el, i) => (
-        <div key={i} className="grid grid-cols-7 p-2 bg-bgMain">
+        <div key={i} className="grid grid-cols-6 md:grid-cols-7 p-2 bg-bgMain text-ellipsis">
           <p className="col-span-1">{el.quantity}</p>
           <p className="col-span-1">{el.name.name}</p>
           <p className="hidden md:block md:col-span-1">-</p>

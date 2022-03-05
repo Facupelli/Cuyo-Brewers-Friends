@@ -51,7 +51,7 @@ export const PostProduct: React.FC = () => {
   return (
     <div>
       <NavBar route="postproduct" />
-      <div className="max-w-2xl mx-auto mt-24">
+      <div className="max-w-2xl md:mx-auto mx-4 mt-24">
         <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
           <div className="grid grid-cols-3 gap-y-4 items-center">
             <label className="col-span-1 font-semibold">Title:</label>
