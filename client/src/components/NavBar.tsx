@@ -75,7 +75,9 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     </Link>
                   ) : (
                     <Link to="/">
-                      <p className="font-semibold text-mainC hover:text-bgMain">RECIPES</p>
+                      <p className="font-semibold text-mainC hover:text-bgMain">
+                        RECIPES
+                      </p>
                     </Link>
                   )}
                 </div>
@@ -114,7 +116,9 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                       </Link>
                     ) : (
                       <Link to="/createrecipe">
-                        <p className="font-semibold text-mainC hover:text-bgMain">ADD RECIPE</p>
+                        <p className="font-semibold text-mainC hover:text-bgMain">
+                          ADD RECIPE
+                        </p>
                       </Link>
                     )}
                   </div>
@@ -129,7 +133,9 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     </Link>
                   ) : (
                     <Link to="/blog">
-                      <p className="font-semibold text-mainC hover:text-bgMain">BLOG</p>
+                      <p className="font-semibold text-mainC hover:text-bgMain">
+                        BLOG
+                      </p>
                     </Link>
                   )}
                 </div>
@@ -143,7 +149,9 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                     </Link>
                   ) : (
                     <Link to="/shop">
-                      <p className="font-semibold text-mainC hover:text-bgMain">SHOP</p>
+                      <p className="font-semibold text-mainC hover:text-bgMain">
+                        SHOP
+                      </p>
                     </Link>
                   )}
                 </div>
@@ -165,6 +173,25 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                 <div className="origin-top-right absolute right-0 w-48 p-2 mt-2 bg-white rounded shadow-menu-shadow">
                   {cookie && (
                     <>
+                      <div
+                        className={`${
+                          route === `/userprofile/${username}` ? "my-2" : "mb-0"
+                        }`}
+                      >
+                        {route === `/userprofile/${username}` ? (
+                          <Link to={`/userprofile/${username}`}>
+                            <span className="font-semibold  border-b-2 border-mainC2">
+                              MY PROFILE
+                            </span>
+                          </Link>
+                        ) : (
+                          <Link to={`/userprofile/${username}`}>
+                            <p className="transition ease-in-out duration-150 font-semibold hover:text-mainC">
+                              MY PROFILE
+                            </p>
+                          </Link>
+                        )}
+                      </div>
                       <div
                         className={`${route === "myrecipes" ? "mb-2" : "mb-0"}`}
                       >
@@ -198,26 +225,6 @@ export const NavBar: React.FC<Props> = ({ route }) => {
                           <Link to="/createblog">
                             <p className="transition ease-in-out duration-150 font-semibold hover:text-mainC">
                               ADD ARTICLE
-                            </p>
-                          </Link>
-                        )}
-                      </div>
-
-                      <div
-                        className={`${
-                          route === `/userprofile/${username}` ? "my-2" : "mb-0"
-                        }`}
-                      >
-                        {route === `/userprofile/${username}` ? (
-                          <Link to={`/userprofile/${username}`}>
-                            <span className="font-semibold  border-b-2 border-mainC2">
-                              MY PROFILE
-                            </span>
-                          </Link>
-                        ) : (
-                          <Link to={`/userprofile/${username}`}>
-                            <p className="transition ease-in-out duration-150 font-semibold hover:text-mainC">
-                              MY PROFILE
                             </p>
                           </Link>
                         )}
@@ -425,7 +432,10 @@ const MobileNavBar: React.FC<MobileProps> = ({
       <div className="space-y-1">
         {cookie ? (
           <div className="">
-            <p onClick={logOut} className=" cursor-pointer font-semibold hover:text-white">
+            <p
+              onClick={logOut}
+              className=" cursor-pointer font-semibold hover:text-white"
+            >
               Log Out
             </p>
           </div>
@@ -433,12 +443,16 @@ const MobileNavBar: React.FC<MobileProps> = ({
           <>
             <div className="">
               <Link to="/login">
-                <p className="cursor-pointer font-semibold hover:text-white">Log In</p>
+                <p className="cursor-pointer font-semibold hover:text-white">
+                  Log In
+                </p>
               </Link>
             </div>
             <div>
               <Link to="/register">
-                <p className="cursor-pointer font-semibold hover:text-white">Register</p>
+                <p className="cursor-pointer font-semibold hover:text-white">
+                  Register
+                </p>
               </Link>
             </div>
           </>
