@@ -8,7 +8,7 @@ import {
 import { fermentables } from "../../media/beer_ingredients/fermentables";
 import { FaTrash } from "react-icons/fa";
 import { ogCalculator, srmCalculator } from "../../utils/OGCalculator";
-import { GiWheat } from "react-icons/gi";
+import { GiGrain } from "react-icons/gi";
 import Select from "react-select";
 
 type Props = {
@@ -53,7 +53,7 @@ export const MaltsForm: React.FC<Props> = ({
       <div className="flex justify-center items-baseline gap-2 border-b-2 border-mainC">
         <p className="font-semibold text-2xl pb-4">Fermentables</p>
         <div className="text-2xl">
-          <GiWheat />
+          <GiGrain />
         </div>
       </div>
  

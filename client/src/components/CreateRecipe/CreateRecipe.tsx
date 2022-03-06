@@ -17,6 +17,7 @@ import { MaltsForm } from "./MaltsForm";
 import { WaterForm } from "./WaterForm";
 import { BatchParams } from "./BatchParams";
 import { Modal } from "../Modal";
+import { Mash } from "./Mash";
 
 // const initialValues: Recipe = {
 //   _id: 0,
@@ -159,6 +160,18 @@ const schema = yup.object().shape({
       bicarbonate: yup.number().typeError("Must be a number"),
     }),
   }),
+  mash: yup.object().shape({
+    thickness: yup.number(),
+    grain_temperature: yup.number(),
+    guide: yup.array().of(
+      yup.object().shape({
+        amount: yup.number().typeError("Must be a number"),
+        start_temp: yup.number().typeError("Must be a number"),
+        target_temp: yup.number().typeError("Must be a number"),
+        time: yup.number().typeError("Must be a number"),
+      })
+    ),
+  }),
 });
 
 export const CreateRecipe: React.FC<{}> = () => {
@@ -166,7 +179,6 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   const [ibuModal, setIbuModal] = useState<Boolean>(true);
   const [modal, setModal] = useState<Boolean>(false);
-  
 
   const showIntroModal = useSelector(
     (state: RootState) => state.storeUser.showModal
@@ -194,7 +206,6 @@ export const CreateRecipe: React.FC<{}> = () => {
   // ----------------- SRM --------------------------
   const [mcu, setMcu] = useState<number>(0);
 
-
   const formSubmitHandler: SubmitHandler<RecipeList> = async (
     data: RecipeList
   ) => {
@@ -217,10 +228,10 @@ export const CreateRecipe: React.FC<{}> = () => {
   };
 
   useEffect(() => {
-    if(!showIntroModal){
-      document.body.style.overflow = 'unset'
+    if (!showIntroModal) {
+      document.body.style.overflow = "unset";
     }
-  }, [showIntroModal])
+  }, [showIntroModal]);
 
   const message = `El OG, FG, SRM y ABV son calculados automaticamente segun los ingredientes 
   seleccionados. El unico parametro que tendra que colocar ya que no es calculado por la app 
@@ -285,6 +296,10 @@ export const CreateRecipe: React.FC<{}> = () => {
 
                 <div className="col-span-2 md:col-span-1">
                   <HopsForm />
+                </div>
+
+                <div className="cols-span-2 md:col-span-1">
+                  <Mash />
                 </div>
 
                 <div className="col-span-2 md:col-span-1">

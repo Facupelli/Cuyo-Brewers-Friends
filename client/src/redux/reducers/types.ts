@@ -50,6 +50,18 @@ export interface Fermentables {
   quantity: number;
 }
 
+export interface MashGuide {
+  amount: number;
+  start_temp: number;
+  target_temp: number;
+  time: number;
+}
+export interface Mash {
+  thickness: number;
+  grain_temperature: number;
+  guide: MashGuide[];
+}
+
 export interface Yeast {
   name: string;
   attenuation: number;
@@ -84,6 +96,7 @@ export interface Recipe {
   parameters: Parameters;
   characteristics: Characteristics;
   ingredients: Ingredients;
+  mash: Mash;
   photos: string[];
 }
 
@@ -144,7 +157,7 @@ export interface Product {
   available: boolean;
   date: string;
   owner: string[];
-  _id: string;  
+  _id: string;
 }
 
 export interface ProductList {

@@ -112,6 +112,11 @@ export const RecipeCardDetail: React.FC = () => {
             bicarbonate: 0,
           },
         },
+        mash: {
+          thickness: 0,
+          grain_temperature: 0,
+          guide: [],
+        },
         photos: [],
       },
       username: "",

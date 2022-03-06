@@ -46,6 +46,7 @@ const RecipeSchema = new mongoose.Schema({
       },
       photos: { type: Array, default: [] },
     },
+    mash:{type: Array, default: []}
   },
 });
 
