@@ -19,8 +19,8 @@ export const Mash: React.FC<{}> = () => {
         </div>
       </div>
 
-      <div className="mt-4 grid grid-cols-2 items-center">
-        <div className="col-span-1 flex items-center gap-4">
+      <div className="mt-4 grid grid-cols-2 gap-y-4 items-center">
+        <div className="col-span-2 md:col-span-1 flex items-center gap-4">
           <label className="text-gray-700 text-md font-semibold ">
             Mash Thickness:
           </label>
@@ -39,7 +39,7 @@ export const Mash: React.FC<{}> = () => {
           <p className="text-sm">L/Kg</p>
         </div>
 
-        <div className="col-span-1 flex items-center gap-4">
+        <div className="col-span-2 md:col-span-1 flex items-center gap-4">
           <label className="text-gray-700 text-md font-semibold ">
             Grain T°:
           </label>
@@ -63,7 +63,7 @@ export const Mash: React.FC<{}> = () => {
         <div key={field.id}>
           <section
             key={field.id}
-            className="flex justify-between bg-gray-200 p-2 mt-4"
+            className="flex justify-between flex-wrap gap-y-4 bg-gray-200 p-2 mt-4"
           >
             <div className="flex flex-col ">
               <label className="font-semibold text-sm">Amount:</label>
@@ -141,7 +141,7 @@ export const Mash: React.FC<{}> = () => {
               </div>
             </div>
 
-            <div>
+            <div className="ml-auto">
               <button
                 type="button"
                 onClick={() => remove(index)}

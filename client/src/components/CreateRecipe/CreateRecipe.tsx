@@ -298,7 +298,7 @@ export const CreateRecipe: React.FC<{}> = () => {
                   <HopsForm />
                 </div>
 
-                <div className="cols-span-2 md:col-span-1">
+                <div className="col-span-2 md:col-span-1">
                   <Mash />
                 </div>
 
