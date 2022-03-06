@@ -23,7 +23,7 @@ export const HopsForm: React.FC<{}> = () => {
   }));
 
   return (
-    <div className="m-8 p-4 bg-gray-100 shadow-form-shadow">
+    <div className="mx-4 mt-8 md:m-8 p-4 bg-gray-100 shadow-form-shadow">
       <div className="flex justify-center items-baseline gap-2 border-b-2 border-gray-mainC">
         <p className="font-semibold text-2xl pb-4">Hops</p>
         <div className="text-xl">

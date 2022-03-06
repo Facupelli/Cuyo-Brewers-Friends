@@ -101,7 +101,7 @@ export const Characteristics: React.FC<Props> = ({
   return (
     <>
       {modal && <ModalCharacteristics setModal={setModal} message={message} />}
-      <div className="mx-4 md:mx-8 p-3 md:p-6 bg-gray-100 shadow-form-shadow">
+      <div className="mx-4 mt-8 md:mx-8 p-3 md:p-6 bg-gray-100 shadow-form-shadow">
         <div
           onClick={handleQusetionClick}
           className="cursor-pointer text-gray-400 text-lg flex justify-end "

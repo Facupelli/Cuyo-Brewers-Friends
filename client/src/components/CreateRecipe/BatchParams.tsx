@@ -73,7 +73,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
           render={({ field }) => (
             <input
               placeholder="20"
-              className="col-span-1 py-2 pl-2 md:p-2  shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
+              className="col-span-1 py-2 p-2  shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
               {...field}
             />
           )}
@@ -87,24 +87,20 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             Pre Boil Gravity (L.)
           </label>
         </div>
-        <div className="col-span-1">
-          <Controller
-            name="parameters.pre_boil_gravity"
-            control={control}
-            defaultValue={30}
-            render={({ field }) => (
-              <input
-                placeholder="30"
-                className="py-2 md:p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
-                {...field}
-              />
-            )}
-          />
-          <div className="pt-4 text-orange-600 text-sm">
-            <span>
-              {errors && errors.parameters?.pre_boil_gravity?.message}
-            </span>
-          </div>
+        <Controller
+          name="parameters.pre_boil_gravity"
+          control={control}
+          defaultValue={30}
+          render={({ field }) => (
+            <input
+              placeholder="30"
+              className="col-span-1 py-2 p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
+              {...field}
+            />
+          )}
+        />
+        <div className="col-span-2 pt-4 text-orange-600 text-sm">
+          <span>{errors && errors.parameters?.pre_boil_gravity?.message}</span>
         </div>
 
         <div className="col-span-1 items-center">
@@ -112,22 +108,20 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             Boil Time (min.)
           </label>
         </div>
-        <div className="col-span-1">
-          <Controller
-            name="parameters.boil_time"
-            control={control}
-            defaultValue={60}
-            render={({ field }) => (
-              <input
-                placeholder="60"
-                className=" py-2 md:p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
-                {...field}
-              />
-            )}
-          />
-          <div className="pt-4 text-orange-600 text-sm">
-            <span>{errors && errors.parameters?.boil_time?.message}</span>
-          </div>
+        <Controller
+          name="parameters.boil_time"
+          control={control}
+          defaultValue={60}
+          render={({ field }) => (
+            <input
+              placeholder="60"
+              className="col-span-1 py-2 p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
+              {...field}
+            />
+          )}
+        />
+        <div className="col-span-2 pt-4 text-orange-600 text-sm">
+          <span>{errors && errors.parameters?.boil_time?.message}</span>
         </div>
       </div>
 
@@ -185,50 +179,48 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
           </>
         )}
 
-        <div className="col-span-1 items-center gap-4 my-2">
+        <div className="col-span-1 items-center my-2 ">
           <label className=" text-gray-700 text-md font-semibold">
             Efficiency (%)
           </label>
         </div>
-        <div className="col-span-1">
-          <Controller
-            name="parameters.efficiency"
-            control={control}
-            defaultValue={70}
-            render={({ field }) => (
-              <input
-                placeholder="70"
-                className=" py-2 md:p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
-                {...field}
-              />
-            )}
-          />
-          <div className="pt-4 text-orange-600 text-sm">
-            <span>{errors && errors.parameters?.efficiency?.message}</span>
+        <Controller
+          name="parameters.efficiency"
+          control={control}
+          defaultValue={70}
+          render={({ field }) => (
+            <input
+              placeholder="70"
+              className="col-span-1 py-2 p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
+              {...field}
+            />
+          )}
+        />
+        {errors.parameters?.efficiency && (
+          <div className="col-span-2 pt-4 text-orange-600 text-sm">
+            <span>{errors.parameters?.efficiency?.message}</span>
           </div>
-        </div>
+        )}
 
-        <div className="col-span-1 my-2">
+        <div className="col-span-1 my-2 ">
           <label className=" text-gray-700 text-md font-semibold">
             Mash Ph
           </label>
         </div>
-        <div className="col-span-1">
-          <Controller
-            name="parameters.mash_ph"
-            control={control}
-            defaultValue={5.4}
-            render={({ field }) => (
-              <input
-                placeholder="5.4"
-                className=" py-2 md:p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
-                {...field}
-              />
-            )}
-          />
-          <div className="pt-4 text-orange-600 text-sm">
-            <span>{errors && errors.parameters?.mash_ph?.message}</span>
-          </div>
+        <Controller
+          name="parameters.mash_ph"
+          control={control}
+          defaultValue={5.4}
+          render={({ field }) => (
+            <input
+              placeholder="5.4"
+              className="col-span-1 py-2 p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
+              {...field}
+            />
+          )}
+        />
+        <div className="col-span-2 pt-4 text-orange-600 text-sm">
+          <span>{errors && errors.parameters?.mash_ph?.message}</span>
         </div>
       </div>
     </div>
