@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { RecipeList } from "../../redux/reducers/types";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
@@ -166,6 +166,11 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   const [ibuModal, setIbuModal] = useState<Boolean>(true);
   const [modal, setModal] = useState<Boolean>(false);
+  
+
+  const showIntroModal = useSelector(
+    (state: RootState) => state.storeUser.showModal
+  );
 
   const username = useSelector(
     (state: RootState) => state.storeUser.userData.username
@@ -180,9 +185,7 @@ export const CreateRecipe: React.FC<{}> = () => {
 
   // ------------------- OG STATE----------------------------
   const [ogPoints, setOgPoints] = useState<number>(0);
-
   const [eff, setEff] = useState<number>(70);
-
   const [batch_size, setBatch_size] = useState<number>(20);
 
   //------------------ FG STATE ------------------------------
@@ -191,9 +194,6 @@ export const CreateRecipe: React.FC<{}> = () => {
   // ----------------- SRM --------------------------
   const [mcu, setMcu] = useState<number>(0);
 
-  //----------------------------------------------
-
-  // console.log('WATCH', methods.watch())
 
   const formSubmitHandler: SubmitHandler<RecipeList> = async (
     data: RecipeList
@@ -216,6 +216,12 @@ export const CreateRecipe: React.FC<{}> = () => {
     }
   };
 
+  useEffect(() => {
+    if(!showIntroModal){
+      document.body.style.overflow = 'unset'
+    }
+  }, [showIntroModal])
+
   const message = `El OG, FG, SRM y ABV son calculados automaticamente segun los ingredientes 
   seleccionados. El unico parametro que tendra que colocar ya que no es calculado por la app 
   es el IBU. Hemos decidido dejar a eleccion de cada cervecero como calcular dicho valor.`;
@@ -229,7 +235,9 @@ export const CreateRecipe: React.FC<{}> = () => {
           pathTo="/myrecipes"
         />
       )}
-      {ibuModal && <Modal setModal={setIbuModal} message={message} size='lg'/>}
+      {ibuModal && showIntroModal && (
+        <Modal setModal={setIbuModal} message={message} size="lg" />
+      )}
       <div className="bg-gray-50 ">
         <NavBar route="createrecipe" />
         <div className="max-w-7xl mx-auto">

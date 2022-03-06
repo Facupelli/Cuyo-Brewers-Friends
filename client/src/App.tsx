@@ -9,6 +9,7 @@ import {
   getTopRecipes,
   getUserData,
   setCookie,
+  setShowModal,
   totalNumRecipes,
 } from "./redux/action-creators";
 import { RootState } from "./redux/reducers/RootReducer";
@@ -32,8 +33,8 @@ function App() {
 
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
 
-   // ------------------------GET PRODUCTS -------------------------------------
-   useEffect(() => {
+  // ------------------------GET PRODUCTS -------------------------------------
+  useEffect(() => {
     dispatch(getProducts());
     dispatch(getTopProducts());
   }, [dispatch]);
@@ -62,6 +63,11 @@ function App() {
     const userId = localStorage.getItem("userId");
     if (cookie) {
       dispatch(getUserData(userId));
+
+      const showModal = localStorage.getItem("showModal");
+      if (showModal) {
+        dispatch(setShowModal(false));
+      }
     }
   }, [dispatch, cookie]);
 
@@ -76,7 +82,7 @@ function App() {
         <Route path="/blogdetail/:id" element={<BlogDetail />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/createblog" element={<CreateBlog />} />
-        <Route path='/userprofile/:username' element={<UserProfile />} />
+        <Route path="/userprofile/:username" element={<UserProfile />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/postproduct" element={<PostProduct />} />
         <Route path="/login" element={<Login />} />

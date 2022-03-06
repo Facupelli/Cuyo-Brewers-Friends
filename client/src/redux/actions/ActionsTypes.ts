@@ -16,6 +16,7 @@ export enum ProductsActionType {
 }
 
 export enum UserActionType {
+  SET_SHOW_MODAL ="SET_SHOW_MODAL", 
   SET_COOKIE = "SET_COOKIE",
   GET_USER_DATA = "GET_USER_DATA",
 }

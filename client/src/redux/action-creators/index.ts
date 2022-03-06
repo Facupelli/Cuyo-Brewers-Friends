@@ -22,7 +22,6 @@ export const loadingTrue = () => {
 export const totalNumRecipes =
   () => async (dispatch: Dispatch<RecipeActions>) => {
     try {
-
       const res = await axios.get<any>("/recipe");
 
       dispatch({
@@ -120,7 +119,7 @@ export const getTopRecipes =
     } catch (e) {}
   };
 
-  export const loadMoreTopRecipes =
+export const loadMoreTopRecipes =
   (page: number) => async (dispatch: Dispatch<RecipeActions>) => {
     try {
       const res = await axios.get<any>(`/recipe?top=true&page=${page}`);
@@ -189,6 +188,15 @@ export const setCookie = (cookie: string) => {
     dispatch({
       type: UserActionType.SET_COOKIE,
       payload: cookie,
+    });
+  };
+};
+
+export const setShowModal = (value: boolean) => {
+  return (dispatch: Dispatch<UserActions>) => {
+    dispatch({
+      type: UserActionType.SET_SHOW_MODAL,
+      payload: value,
     });
   };
 };

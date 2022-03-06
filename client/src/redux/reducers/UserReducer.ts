@@ -3,11 +3,13 @@ import { UserActions } from "../actions/UserActions";
 import { UserData } from "./types";
 
 export interface InitialUserState {
+  showModal: boolean;
   cookie: string;
   userData: UserData;
 }
 
 const initialUserState: InitialUserState = {
+  showModal: true,
   cookie: "",
   userData: {
     _id: "",
@@ -35,6 +37,11 @@ export const userReducer = (
       return {
         ...state,
         userData: action.payload,
+      };
+    case UserActionType.SET_SHOW_MODAL:
+      return {
+        ...state,
+        showModal: action.payload,
       };
     default:
       return state;
