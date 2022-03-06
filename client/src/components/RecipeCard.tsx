@@ -9,6 +9,7 @@ type Props = {
 
 export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
 
+
   return (
     <div className="bg-mainC  rounded m-2 p-3 md:p-6">
       <div>

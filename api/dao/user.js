@@ -26,6 +26,8 @@ class User {
         )
         .populate("ownRecipes")
         .populate("ownProducts")
+        .populate("ownBlogs")
+        .populate('favs')
         .exec();
     } catch (e) {
       console.error(`Something went wrong in getUserInfo: ${e}`);
