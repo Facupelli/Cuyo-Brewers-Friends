@@ -35,12 +35,12 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
         </div>
       </div>
 
-      <div className="flex items-center my-4 gap-4">
-        <label className="text-gray-700 text-md font-semibold ">Yeast</label>
+      <div className="grid grid-cols-3 my-4 gap-4 ">
+        <label className="col-span-1 text-gray-700 text-md font-semibold ">Yeast</label>
         <select
           {...register(`ingredients.yeast.name`)}
           defaultValue=""
-          className="bg-white border border-blue-200  text-gray-700 py-2 md:p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+          className="col-span-2 bg-white border border-blue-200  text-gray-700 py-2 md:p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-mainC2"
         >
           <option value="" disabled>
             Select Yeast
@@ -62,9 +62,9 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
         </div>
       )}
 
-      <div className="grid grid-cols-2 gap-y-4">
-        <div className="col-span-2 md:col-span-1 flex items-center gap-4">
-          <label className="text-gray-700 text-md font-semibold ">
+      <div className="grid grid-cols-2 gap-4">
+        <div className="col-span-2 md:col-span-1 grid grid-cols-3 items-center gap-4">
+          <label className="col-span-2 text-gray-700  font-semibold ">
             Attenuation (%)
           </label>
           <Controller
@@ -75,14 +75,14 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
               <input
                 placeholder="0"
                 {...field}
-                className="p-2 text-center w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="p-2 col-span-1 text-center  shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             )}
           />
         </div>
 
-        <div className="col-span-2 md:col-span-1 flex items-center gap-4">
-          <label className="text-gray-700 text-md font-semibold ">
+        <div className="col-span-2 md:col-span-1 grid grid-cols-3 items-center gap-4">
+          <label className="col-span-2 text-gray-700 text-md font-semibold ">
             Quantity (g)
           </label>
           <Controller
@@ -93,7 +93,7 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
               <input
                 placeholder="0"
                 {...field}
-                className="p-2 text-center w-14 shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="p-2 col-span-1 text-center shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             )}
           />
