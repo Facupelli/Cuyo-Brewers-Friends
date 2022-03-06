@@ -150,7 +150,7 @@ export const Characteristics: React.FC<Props> = ({
                 <input
                   placeholder="0"
                   {...field}
-                  className="p-2 w-14 text-center shadow appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="p-2 w-14 text-center border  shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               )}
             />

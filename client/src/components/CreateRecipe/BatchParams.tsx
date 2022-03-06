@@ -66,22 +66,20 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             Batch Size (L.)
           </label>
         </div>
-        <div className="col-span-1">
-          <Controller
-            name="parameters.batch_size"
-            control={control}
-            defaultValue={20}
-            render={({ field }) => (
-              <input
-                placeholder="20"
-                className="py-2 md:p-2  shadow-input-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
-                {...field}
-              />
-            )}
-          />
-          <div className="pt-4 text-orange-600 text-sm">
-            <span>{errors && errors.parameters?.batch_size?.message}</span>
-          </div>
+        <Controller
+          name="parameters.batch_size"
+          control={control}
+          defaultValue={20}
+          render={({ field }) => (
+            <input
+              placeholder="20"
+              className="col-span-1 py-2 pl-2 md:p-2  shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
+              {...field}
+            />
+          )}
+        />
+        <div className="col-span-2 pt-4 text-orange-600 text-sm">
+          <span>{errors && errors.parameters?.batch_size?.message}</span>
         </div>
 
         <div className="col-span-1 items-center">
@@ -158,7 +156,11 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
               label: "1. American Standard",
             }}
             render={({ field: { onChange, value, name, ref } }) => (
-              <Select options={beerStyles} onChange={onChange} />
+              <Select
+                options={beerStyles}
+                onChange={onChange}
+                className="shadow-input"
+              />
             )}
           />
         </div>
@@ -173,7 +175,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             <select
               {...register("sub_category")}
               defaultValue="Select Category..."
-              className="col-span-1 bg-white border border-gray-300 text-gray-700 py-2 md:p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-mainC2"
+              className="col-span-1 border-none shadow-input  bg-white border border-gray-300 text-gray-700 py-2 md:p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-mainC2"
             >
               <option disabled>Select Category...</option>
               {beerSubCategories[0].map((el) => (
