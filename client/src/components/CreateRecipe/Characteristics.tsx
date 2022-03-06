@@ -109,38 +109,35 @@ export const Characteristics: React.FC<Props> = ({
           <FaQuestionCircle />
         </div>
         <div className="flex flex-wrap gap-10 justify-center">
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-y-2">
             <label className="text-gray-700 text-md font-semibold ">
               Original Gravity
             </label>
-            {originalGravity && (
-              <p className="text-mainC2 font-semibold text-3xl">
-                {originalGravity}
-              </p>
-            )}
+
+            <p className="p-2 text-mainC2 font-semibold text-3xl">
+              {originalGravity && originalGravity}
+            </p>
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-y-2">
             <label className="text-gray-700 text-md font-semibold ">
               Final Gravity
             </label>
-            {yeastAtt && finalGravity && (
-              <p className="text-mainC2 font-semibold text-3xl">
-                {finalGravity}
-              </p>
-            )}
+            <p className="p-2 text-mainC2 font-semibold text-3xl">
+              {yeastAtt && finalGravity && finalGravity}
+            </p>
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-y-2">
             <label className="text-gray-700 text-md font-semibold ">
               ABV %
             </label>
-            {originalGravity && finalGravity && (
-              <p className="text-mainC2 font-semibold text-3xl">{abv}</p>
-            )}
+            <p className="text-mainC2 p-2 font-semibold text-3xl">
+              {originalGravity && finalGravity && abv}
+            </p>
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-y-2">
             <label className="text-gray-700 text-md font-semibold ">IBU</label>
             <Controller
               name={`characteristics.ibu`}
@@ -150,7 +147,7 @@ export const Characteristics: React.FC<Props> = ({
                 <input
                   placeholder="0"
                   {...field}
-                  className="p-2 w-14 text-center border  shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="p-2 w-14 text-2xl text-center border font-semibold text-mainC2 shadow-input appearance-none rounded  leading-tight focus:outline-none focus:shadow-outline"
                 />
               )}
             />
@@ -159,17 +156,17 @@ export const Characteristics: React.FC<Props> = ({
             </span>
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-y-2">
             <label className="text-gray-700 text-md font-semibold ">SRM</label>
-            {srm && <p className="text-mainC2 font-semibold text-3xl">{srm}</p>}
+            {srm && <p className="p-2 text-mainC2 font-semibold text-3xl">{srm}</p>}
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-y-2">
             <label className="text-gray-700 text-md font-semibold ">
               Color
             </label>
             {srm && (
-              <div className={` text-4xl text-${color}`}>
+              <div className={`p-2 text-4xl text-${color}`}>
                 <IoBeer />
               </div>
             )}
