@@ -47,23 +47,23 @@ export const Characteristics: React.FC<Props> = ({
     }
   };
 
-  const originalGravity: number = Number(getOg());
+  const originalGravity: string = String(getOg());
 
   const getFg = () => {
     let finalG: number = Number(
-      (originalGravity - (originalGravity - 1) * (yeastAtt / 100)).toFixed(3)
+      (Number(originalGravity) - (Number(originalGravity) - 1) * (yeastAtt / 100)).toFixed(3)
     );
 
-    if (originalGravity === 0) {
+    if (Number(originalGravity) === 0) {
       finalG = 0;
-      return finalG;
+      return String(finalG);
     }
-    return finalG;
+    return String(finalG);
   };
 
   const finalGravity = getFg();
 
-  const abv = ((originalGravity - finalGravity) * 131.25).toFixed(2);
+  const abv = ((Number(originalGravity) - Number(finalGravity)) * 131.25).toFixed(2);
 
   const srm: string = (1.4922 * (mcu * 0.6859)).toFixed(1);
 
