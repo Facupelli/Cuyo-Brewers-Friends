@@ -141,7 +141,7 @@ export const Mash: React.FC<{}> = () => {
               </div>
             </div>
 
-            <div className="ml-auto">
+            <div className="ml-auto md:ml-0">
               <button
                 type="button"
                 onClick={() => remove(index)}
