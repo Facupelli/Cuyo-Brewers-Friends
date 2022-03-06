@@ -12,7 +12,7 @@ export const HopsDetail: React.FC<Props> = ({ hops }) => {
 
   return (
     <div className="mb-6">
-      <div className="py-4 font-semibold text-2xl text-brown1">
+      <div className="py-4 font-semibold text-2xl text-main">
         <p>Hops</p>
       </div>
 

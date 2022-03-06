@@ -23,6 +23,7 @@ import {
   getTopRecipes,
   getUserData,
 } from "../../redux/action-creators";
+import { MashDetail } from "./MashDetail";
 
 type RecipeCardDetailParams = {
   id: string;
@@ -203,6 +204,8 @@ export const RecipeCardDetail: React.FC = () => {
         />
 
         <HopsDetail hops={recipeState.recipe.recipe.ingredients.hops} />
+
+        <MashDetail mash={recipeState.recipe.recipe.mash}/>
 
         <YeastDetail yeast={recipeState.recipe.recipe.ingredients.yeast} />
 
