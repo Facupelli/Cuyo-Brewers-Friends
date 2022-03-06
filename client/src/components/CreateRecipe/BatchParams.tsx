@@ -137,9 +137,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
 
       <div className="col-span-2 md:col-span-1 grid grid-cols-2 gap-4 p-4 bg-gray-100">
         <div className="col-span-1 items-center ">
-          <label className=" text-gray-700 text-md font-semibold">
-            Style
-          </label>
+          <label className=" text-gray-700 text-md font-semibold">Style</label>
         </div>
         <div className="col-span-1">
           {/* <select
@@ -172,18 +170,16 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
                 Sub Category
               </label>
             </div>
-            <div className="col-span-1">
-              <select
-                {...register("sub_category")}
-                defaultValue="Select Category..."
-                className=" bg-white border border-gray-300 text-gray-700 py-2 md:p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-              >
-                <option disabled>Select Category...</option>
-                {beerSubCategories[0].map((el) => (
-                  <option key={el.name}>{el.name}</option>
-                ))}
-              </select>
-            </div>
+            <select
+              {...register("sub_category")}
+              defaultValue="Select Category..."
+              className="col-span-1 bg-white border border-gray-300 text-gray-700 py-2 md:p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-mainC2"
+            >
+              <option disabled>Select Category...</option>
+              {beerSubCategories[0].map((el) => (
+                <option key={el.name}>{el.name}</option>
+              ))}
+            </select>
           </>
         )}
 

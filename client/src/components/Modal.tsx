@@ -20,6 +20,13 @@ export const Modal: React.FC<Props> = ({ setModal, message, pathTo, size }) => {
     document.body.style.overflow = "unset";
   };
 
+  const handleShowAgainClick = () => {
+    
+
+    setModal(false);
+    document.body.style.overflow = "unset";
+  }
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
   }, []);
@@ -42,6 +49,9 @@ export const Modal: React.FC<Props> = ({ setModal, message, pathTo, size }) => {
                 onClick={handleClick}
               >
                 OK
+              </button>
+              <button onClick={handleShowAgainClick} className="transition ease-in-out duration-150 bg-mainC text-xs font-bold rounded  px-4 hover:bg-mainC2 hover:text-white">
+                DON'T SHOW THIS AGAIN
               </button>
             </div>
           </div>
