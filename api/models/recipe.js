@@ -7,7 +7,7 @@ const RecipeSchema = new mongoose.Schema({
   // user_id: String,
   author: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel" },
   reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "ReviewModel" }],
-  reviewsScores: [{ type: Number }],
+  // reviewsScores: [{ type: Number }],
   recipe: {
     title: { type: String, index: true },
     style: { value: String, label: String },

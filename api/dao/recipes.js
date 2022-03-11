@@ -43,29 +43,30 @@ class Recipes {
     try {
       const sortBy = top ? "-rating" : "-date";
 
-      const addRating = await recipeModel.updateMany({}, [
-        { $set: { rating: { $avg: "$reviewsScores" } } },
-      ]);
-
       allRecipes = await recipeModel
-        .find(query)
+        // .find(query)
+        // .populate("author", "_id name username")
+        // .populate("reviews", "_id score")
+        .aggregate([
+          {
+            $lookup: {
+              from: "reviewmodels",
+              localField: "reviews",
+              foreignField: "_id",
+              as: "puntaje",
+            },
+          },
+          {
+            $addFields: {
+              rating: { $avg: "$puntaje.score" },
+            },
+          },
+        ])
         .sort(sortBy)
         .limit(recipesPerPage)
-        .populate("author", "_id name username")
-        .populate("reviews", "_id score")
         .skip(recipesPerPage * page);
 
-      // const reviews = allRecipes.forEach((el) => {
-      //   const reviewsLength = el.reviews.length;
-      //   if (reviewsLength === 0) {
-      //     el.rating = 0;
-      //   }
-      //   if (reviewsLength > 0) {
-      //     el.rating =
-      //       el.reviews.map((el) => el.score).reduce((a, b) => a + b) /
-      //       reviewsLength;
-      //   }
-      // });
+
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`);
       return { recipesList: [], totalNumRecipes: 0 };
