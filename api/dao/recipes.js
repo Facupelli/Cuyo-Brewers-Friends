@@ -43,30 +43,34 @@ class Recipes {
     try {
       const sortBy = top ? "-rating" : "-date";
 
+      let pipeline = [
+        {
+          $lookup: {
+            from: "reviewmodels",
+            localField: "reviews",
+            foreignField: "_id",
+            as: "puntaje",
+          },
+        },
+        {
+          $addFields: {
+            rating: { $avg: "$puntaje.score" },
+          },
+        },
+      ];
+
+      if (query) {
+        pipeline.push({ $match: query });
+      }
+
       allRecipes = await recipeModel
         // .find(query)
         // .populate("author", "_id name username")
         // .populate("reviews", "_id score")
-        .aggregate([
-          {
-            $lookup: {
-              from: "reviewmodels",
-              localField: "reviews",
-              foreignField: "_id",
-              as: "puntaje",
-            },
-          },
-          {
-            $addFields: {
-              rating: { $avg: "$puntaje.score" },
-            },
-          },
-        ])
+        .aggregate(pipeline)
         .sort(sortBy)
         .limit(recipesPerPage)
         .skip(recipesPerPage * page);
-
-
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`);
       return { recipesList: [], totalNumRecipes: 0 };
