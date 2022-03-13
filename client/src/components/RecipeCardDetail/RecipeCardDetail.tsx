@@ -42,7 +42,7 @@ export const RecipeCardDetail: React.FC = () => {
   const userData = useSelector((state: RootState) => state.storeUser.userData);
 
   const isRecipeFav = () => {
-    const filter = userData.favs.filter((el) => el.toString() === id);
+    const filter = userData.favs.filter((el) => el._id.toString() === id);
     if (filter.length === 0) return false;
     if (filter.length > 0) return true;
   };

@@ -20,13 +20,12 @@ class Recipes {
   }
 
   static async getRecipes({
-    // we call this when we want a list of all recipes
     top,
     filters = null,
     page = 0,
-    recipesPerPage = 10, // options created, when call the method we can put filters, pages and perpage
+    recipesPerPage = 10, 
   } = {}) {
-    let query; // first the query is empty and remain empty unless someone pass a filter
+    let query; 
     if (filters) {
       if ("title" in filters) {
         query = { "recipe.title": { $regex: filters["title"], $options: "i" } };
@@ -59,9 +58,7 @@ class Recipes {
         },
       ];
 
-      if (query) {
-        pipeline.push({ $match: query });
-      }
+      if (query) pipeline.push({ $match: query });
 
       allRecipes = await recipeModel
         // .find(query)
@@ -77,7 +74,6 @@ class Recipes {
     }
 
     try {
-      // const recipesList = await allRecipes.toArray();
       const totalNumRecipes = await recipeModel.countDocuments(query);
 
       return { allRecipes, totalNumRecipes }; //return the array
