@@ -9,13 +9,6 @@ class Follow {
       const followingUser = await userModel.findById(ObjectId(followingId));
 
       if (followerUser && followingUser) {
-        // await userModel.findOneAndUpdate(
-        //   { _id: userId },
-        //   { $push: { following: recipe_id } }
-        // );
-        // await userModel.findOneAndUpdate(
-        //     {_id: }
-        // )
         const alreadyFollowed = followerUser.following.filter(id => id.toString() === followingId)
         if(alreadyFollowed.length > 0){
             throw new Error("User already followed");
@@ -34,17 +27,21 @@ class Follow {
     }
   }
 
-  //   static async deleteFav(user_id, recipe_id) {
-  //     try {
-  //       await userModel.findOneAndUpdate(
-  //         { _id: user_id },
-  //         { $pull: { favs: recipe_id } }
-  //       );
-  //     } catch (e) {
-  //       console.error(`Unable to delete fav: ${e}`);
-  //       return { error: e };
-  //     }
-  //   }
+    static async deleteFollow(userId, followedId) {
+      try {
+        await userModel.findOneAndUpdate(
+          { _id: userId },
+          { $pull: { following: followedId } }
+        );
+        await userModel.findOneAndUpdate(
+            { _id: followedId },
+            { $pull: { followers: userId } }
+          );
+      } catch (e) {
+        console.error(`Unable to delete fav: ${e}`);
+        return { error: e };
+      }
+    }
 }
 
 module.exports = Follow;

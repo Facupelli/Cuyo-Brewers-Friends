@@ -4,7 +4,6 @@ const FollowController = require("../src/followController")
 const router=express.Router()
 
 router.post('/', FollowController.postFollow)
-// router.delete('/', FavController.deleteFav)
-
+router.delete('/', FollowController.deleteFollow)
 
 module.exports=router
