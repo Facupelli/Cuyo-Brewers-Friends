@@ -130,6 +130,7 @@ export interface UserData {
   ownBlogs: OwnBLogs[];
   ownProducts: Product[];
   favs: RecipeFavs[];
+  following: string[];
   seller: boolean;
 }
 

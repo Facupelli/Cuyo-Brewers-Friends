@@ -19,6 +19,7 @@ const initialUserState: InitialUserState = {
     ownBlogs: [],
     ownProducts: [],
     seller: false,
+    following: [],
     favs: [],
   },
 };

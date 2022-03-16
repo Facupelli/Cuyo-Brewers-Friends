@@ -22,12 +22,12 @@ class User {
       return await userModel
         .findById(
           ObjectId(id),
-          "_id username favs seller ownProducts ownReviews ownRecipes ownBlogs followers following"
+          "_id username favs seller ownProducts ownReviews ownRecipes ownBlogs following"
         )
         .populate("ownRecipes")
         .populate("ownProducts")
         .populate("ownBlogs")
-        .populate("following", "_id username")
+        // .populate("following", "_id username")
         .exec();
     } catch (e) {
       console.error(`Something went wrong in getUserInfo: ${e}`);
