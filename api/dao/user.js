@@ -27,7 +27,11 @@ class User {
         .populate("ownRecipes")
         .populate("ownProducts")
         .populate("ownBlogs")
-        // .populate("following", "_id username")
+        .populate({
+          path: "following",
+          select: 'username ownRecipes',
+          populate: { path: "ownRecipes", perDocumentLimit: 2 },
+        })
         .exec();
     } catch (e) {
       console.error(`Something went wrong in getUserInfo: ${e}`);
@@ -40,7 +44,10 @@ class User {
       return await userModel
         .findOne({ username: username })
         .populate("ownBlogs", "blog_title blog_body date")
-        .populate("ownProducts", "images title description price date available")
+        .populate(
+          "ownProducts",
+          "images title description price date available"
+        )
         .populate("ownRecipes", "recipe date")
         .populate("favs", "recipe date");
     } catch (e) {
@@ -51,7 +58,10 @@ class User {
 
   static async becomeSeller(id) {
     try {
-      const userupdate = await userModel.updateOne({ _id: id }, { $set: { seller: true } });
+      const userupdate = await userModel.updateOne(
+        { _id: id },
+        { $set: { seller: true } }
+      );
     } catch (e) {
       console.error(`Something went wrong in getUserByUsernameDAO: ${e}`);
       throw e;

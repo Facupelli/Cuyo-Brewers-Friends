@@ -122,6 +122,12 @@ interface OwnBLogs {
   date: string;
   _id: string;
 }
+
+interface Following{
+  _id: string;
+  username: string;
+  ownRecipes: RecipeList[]
+}
 export interface UserData {
   _id: string;
   username: string;
@@ -130,7 +136,7 @@ export interface UserData {
   ownBlogs: OwnBLogs[];
   ownProducts: Product[];
   favs: RecipeFavs[];
-  following: string[];
+  following: Following[];
   seller: boolean;
 }
 
