@@ -14,6 +14,8 @@ const UserSchema = new mongoose.Schema({
   ownReviews:[{type: mongoose.Schema.Types.ObjectId, ref: "ReviewModel" }],
   ownBlogs:[{type: mongoose.Schema.Types.ObjectId, ref: "BlogModel" }],
   ownProducts:[{type: mongoose.Schema.Types.ObjectId, ref: "ProductModel" }],
+  following:[{type: mongoose.Schema.Types.ObjectId, ref: "UserModel" }],
+  followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "UserModel" }],
   seller: {type: Boolean, required: true},
 });
 

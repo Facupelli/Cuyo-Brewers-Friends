@@ -13,6 +13,8 @@ const loginRoutes = require("./routes/loginRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const favRoutes = require("./routes/favRoutes");
 const products = require("./routes/productsRoutes");
+const follow = require("./routes/followRoutes");
+
 
 
 const dotenv = require("dotenv");
@@ -31,6 +33,8 @@ app.use("/fav", favRoutes);
 app.use("/login", loginRoutes);
 app.use("/register", registerRoutes);
 app.use("/products", products);
+app.use("/follow", follow);
+
 
 //route protected with token
 app.use("/dashboard", tokenValidation, dashboardRoutes);
