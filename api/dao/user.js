@@ -27,6 +27,7 @@ class User {
         .populate("ownRecipes")
         .populate("ownProducts")
         .populate("ownBlogs")
+        .populate("favs")
         .populate({
           path: "following",
           select: 'username ownRecipes',
@@ -42,7 +43,7 @@ class User {
   static async getUserByUsername(username) {
     try {
       return await userModel
-        .findOne({ username: username })
+        .findOne({ username: username }, "_id username favs seller ownProducts ownReviews ownRecipes ownBlogs following")
         .populate("ownBlogs", "blog_title blog_body date")
         .populate(
           "ownProducts",

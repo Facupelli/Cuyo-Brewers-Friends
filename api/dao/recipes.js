@@ -23,9 +23,9 @@ class Recipes {
     top,
     filters = null,
     page = 0,
-    recipesPerPage = 10, 
+    recipesPerPage = 10,
   } = {}) {
-    let query; 
+    let query;
     if (filters) {
       if ("title" in filters) {
         query = { "recipe.title": { $regex: filters["title"], $options: "i" } };
@@ -48,12 +48,22 @@ class Recipes {
             from: "reviewmodels",
             localField: "reviews",
             foreignField: "_id",
-            as: "puntaje",
+            as: "reviews_scores",
           },
         },
         {
           $addFields: {
-            rating: { $avg: "$puntaje.score" },
+            rating: { $avg: "$reviews_scores.score" },
+          },
+        },
+        {
+          $project: {
+            username: 1,
+            date: 1,
+            author: 1,
+            reviews: 1,
+            recipe: 1,
+            rating: { $ifNull: ["$rating", 0] },
           },
         },
       ];

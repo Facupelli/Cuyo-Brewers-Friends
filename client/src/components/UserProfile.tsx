@@ -39,15 +39,10 @@ export const UserProfile: React.FC = () => {
   }, [userData, username]);
 
   useEffect(() => {
-    if (isMyProfile()) {
-      setUserProfile(userData);
-    } else {
-      getUserByUsername(username.username)
-        .then((data) => setUserProfile(data))
-        .catch((err) => console.log(err));
-    }
-  }, [userData, username, isMyProfile]);
-
+    getUserByUsername(username.username)
+      .then((data) => setUserProfile(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   //SHOP --------
   const handleSeller = async () => {
@@ -70,7 +65,6 @@ export const UserProfile: React.FC = () => {
   const handleBecomeSeller = () => {
     setSellerModal(true);
   };
-
 
   // FOLLOW ----------------------
 
