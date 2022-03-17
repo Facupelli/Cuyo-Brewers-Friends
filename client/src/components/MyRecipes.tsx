@@ -14,7 +14,7 @@ export const MyRecipes: React.FC = (z) => {
   return (
     <>
       <NavBar route="myrecipes" />
-      <div className="mt-16 max-w-7xl mx-auto">
+      <div className="mt-10 mb-6 md:mt-16 max-w-7xl mx-auto">
         {ownRecipes.length > 0 ? (
           <>
             <div className="hidden md:grid grid-cols-10 m-4 px-4 text-main">
@@ -66,7 +66,7 @@ export const MyRecipes: React.FC = (z) => {
                 <p className="col-span-1 md:hidden text-brownLight">IBU:</p>
                 <p className="col-span-2 md:col-span-1">{el.recipe.characteristics.ibu}</p>
                 <p className="hidden md:block md:col-span-1">{el.recipe.characteristics.srm}</p>
-                <p className="col-span-2 md:col-span-1">{el.date}</p>
+                <p className="col-span-2 md:col-span-1 overflow-scroll md:overflow-auto">{el.date}</p>
               </div>
             ))}
           </>

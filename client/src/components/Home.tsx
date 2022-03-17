@@ -73,7 +73,7 @@ export default function Home() {
 
           {/* LOAD MORE BUTTON ---------------------------------- */}
           {!loading && (
-            <div className="flex justify-center mb-10">
+            <div className="flex justify-center mt-10 md:mt-0 mb-10">
               <button
                 onClick={() => handleLoadMore(page)}
                 className={`px-2 border rounded-sm ${
