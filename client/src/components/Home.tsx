@@ -108,7 +108,7 @@ export default function Home() {
                     <span className="font-semibold mx-2 text-lg text-main bg-mainC">
                       You are not following any homebrewer.
                     </span>
-                    <p className="font-semibold mx-2 text-main ">
+                    <p className="mx-2 text-main ">
                       Start following homebrewers you like to see their latest
                       recipes!
                     </p>

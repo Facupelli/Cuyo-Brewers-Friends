@@ -1,17 +1,19 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../redux/reducers/RootReducer";
 import { UserData } from "../redux/reducers/types";
 import { getUserByUsername } from "../utils/blogUtils";
-import { NavBar } from "./NavBar";
-import { RecipeCard } from "./RecipeCard";
-import { BecomeSellerModal } from "./Shop/BecomeSellerModal";
 import axios from "axios";
-import { ProductCard } from "./Shop/ProductCard";
 import { TiArrowLeftThick } from "react-icons/ti";
 import { getUserData } from "../redux/action-creators";
 import { VscLoading } from "react-icons/vsc";
+
+//Components
+import { NavBar } from "./NavBar";
+import { RecipeCard } from "./RecipeCard";
+import { ProductCard } from "./Shop/ProductCard";
+import { BecomeSellerModal } from "./Shop/BecomeSellerModal";
 
 type ParamsType = {
   username: string;
@@ -19,6 +21,7 @@ type ParamsType = {
 
 export const UserProfile: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const username = useParams<ParamsType>();
 
@@ -63,6 +66,32 @@ export const UserProfile: React.FC = () => {
     setModal(true);
   };
 
+  const isUserFollowed = () => {
+    const userFollowed = userData.following.find(
+      (user) => user._id === userProfile?._id
+    );
+    if (userFollowed) return true;
+    return false;
+  };
+
+  const handleFollow = async () => {
+    await axios.post(`/follow`, {
+      userId: userData._id,
+      followingId: userProfile?._id,
+    });
+    dispatch(getUserData(userData._id));
+  };
+
+  const handleDeleteFollow = async () => {
+    await axios.delete(`/follow`, {
+      data: {
+        userId: userData._id,
+        followedId: userProfile?._id,
+      },
+    });
+    dispatch(getUserData(userData._id));
+  };
+
   return (
     <>
       {modal && (
@@ -79,13 +108,36 @@ export const UserProfile: React.FC = () => {
         {userProfile ? (
           <div className="max-w-7xl md:mx-auto mx-4 mt-8">
             <div>
-              <div className="md:flex">
+              <div className="md:flex items-baseline">
                 <div className="flex gap-4 items-baseline">
                   <span className="text-4xl pb-3 border-b-2 border-mainC2">
                     {userProfile?.username}
                   </span>
                   <p className="text-gray-500 text-lg">homebrewer</p>
                 </div>
+
+                {!isMyProfile() && !isUserFollowed() && (
+                  <div>
+                    <button
+                      onClick={handleFollow}
+                      className="transition ease-in-out delay-50 ml-12 font-semibold text-main border px-4 py-2 border-mainC2 hover:bg-mainC2 hover:text-white rounded "
+                    >
+                      follow
+                    </button>
+                  </div>
+                )}
+
+                {!isMyProfile() && isUserFollowed() && (
+                  <div>
+                    <button
+                      onClick={handleDeleteFollow}
+                      className="transition ease-in-out delay-50 ml-12 font-semibold text-main border px-4 py-2 border-mainC2 hover:bg-mainC2 hover:text-white rounded "
+                    >
+                      unfollow
+                    </button>
+                  </div>
+                )}
+
                 {isMyProfile() && (
                   <div className="md:ml-auto mt-4 md:mt-0">
                     {userProfile?.seller ? (
