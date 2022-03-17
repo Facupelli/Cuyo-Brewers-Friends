@@ -24,7 +24,7 @@ class User {
           ObjectId(id),
           "_id username favs seller ownProducts ownReviews ownRecipes ownBlogs following"
         )
-        .populate("ownRecipes")
+        .populate({path: "ownRecipes", options:{sort:{'date': -1}}})
         .populate("ownProducts")
         .populate("ownBlogs")
         .populate("favs")
@@ -49,7 +49,7 @@ class User {
           "ownProducts",
           "images title description price date available"
         )
-        .populate("ownRecipes", "recipe date")
+        .populate({path: "ownRecipes", options:{sort:{'date': -1}}})
         .populate("favs", "recipe date");
     } catch (e) {
       console.error(`Something went wrong in getUserByUsernameDAO: ${e}`);
