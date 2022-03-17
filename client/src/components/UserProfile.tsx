@@ -14,6 +14,7 @@ import { NavBar } from "./NavBar";
 import { RecipeCard } from "./RecipeCard";
 import { ProductCard } from "./Shop/ProductCard";
 import { BecomeSellerModal } from "./Shop/BecomeSellerModal";
+import { addFollow, deleteFollow } from "../utils/userProfileUtils";
 
 type ParamsType = {
   username: string;
@@ -25,9 +26,11 @@ export const UserProfile: React.FC = () => {
 
   const username = useParams<ParamsType>();
 
+  //PAGE USER
   const [userProfile, setUserProfile] = useState<UserData>();
   const [showProducts, setShowProducts] = useState<Boolean>(false);
 
+  //LOGED USER INFO
   const userData = useSelector((state: RootState) => state.storeUser.userData);
 
   const isMyProfile = useCallback(() => {
@@ -45,14 +48,16 @@ export const UserProfile: React.FC = () => {
     }
   }, [userData, username, isMyProfile]);
 
+
+  //SHOP --------
   const handleSeller = async () => {
     const userId = userProfile?._id;
     await axios.post(`/user`, { id: userId });
     getUserData(userData._id);
-    setModal(false);
+    setSellerModal(false);
   };
 
-  const [modal, setModal] = useState<Boolean>(false);
+  const [sellerModal, setSellerModal] = useState<Boolean>(false);
 
   const handleViewProducts = () => {
     setShowProducts(!showProducts);
@@ -63,8 +68,11 @@ export const UserProfile: React.FC = () => {
   };
 
   const handleBecomeSeller = () => {
-    setModal(true);
+    setSellerModal(true);
   };
+
+
+  // FOLLOW ----------------------
 
   const isUserFollowed = () => {
     const userFollowed = userData.following.find(
@@ -75,29 +83,25 @@ export const UserProfile: React.FC = () => {
   };
 
   const handleFollow = async () => {
-    await axios.post(`/follow`, {
-      userId: userData._id,
-      followingId: userProfile?._id,
-    });
-    dispatch(getUserData(userData._id));
+    if (userProfile) {
+      await addFollow(userData._id, userProfile._id);
+      dispatch(getUserData(userData._id));
+    }
   };
 
   const handleDeleteFollow = async () => {
-    await axios.delete(`/follow`, {
-      data: {
-        userId: userData._id,
-        followedId: userProfile?._id,
-      },
-    });
-    dispatch(getUserData(userData._id));
+    if (userProfile) {
+      await deleteFollow(userData._id, userProfile._id);
+      dispatch(getUserData(userData._id));
+    }
   };
 
   return (
     <>
-      {modal && (
+      {sellerModal && (
         <BecomeSellerModal
           message={"You want to offer beer products?"}
-          setModal={setModal}
+          setModal={setSellerModal}
           pathTo=""
           handleSeller={handleSeller}
         />
