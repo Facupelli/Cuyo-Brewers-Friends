@@ -30,6 +30,7 @@ export const UserProfile: React.FC = () => {
   const [userProfile, setUserProfile] = useState<UserData>();
   const [showProducts, setShowProducts] = useState<Boolean>(false);
 
+  console.log('USERPROFILE', userProfile)
   //LOGED USER INFO
   const userData = useSelector((state: RootState) => state.storeUser.userData);
 
@@ -42,7 +43,7 @@ export const UserProfile: React.FC = () => {
     getUserByUsername(username.username)
       .then((data) => setUserProfile(data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [username]);
 
   //SHOP --------
   const handleSeller = async () => {
