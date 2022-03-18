@@ -51,7 +51,10 @@ export const Characteristics: React.FC<Props> = ({
 
   const getFg = () => {
     let finalG: number = Number(
-      (Number(originalGravity) - (Number(originalGravity) - 1) * (yeastAtt / 100)).toFixed(3)
+      (
+        Number(originalGravity) -
+        (Number(originalGravity) - 1) * (yeastAtt / 100)
+      ).toFixed(3)
     );
 
     if (Number(originalGravity) === 0) {
@@ -63,7 +66,10 @@ export const Characteristics: React.FC<Props> = ({
 
   const finalGravity = getFg();
 
-  const abv = ((Number(originalGravity) - Number(finalGravity)) * 131.25).toFixed(2);
+  const abv = (
+    (Number(originalGravity) - Number(finalGravity)) *
+    131.25
+  ).toFixed(2);
 
   const srm: string = (1.4922 * (mcu * 0.6859)).toFixed(1);
 
@@ -81,10 +87,19 @@ export const Characteristics: React.FC<Props> = ({
 
   useEffect(() => {
     setValue("characteristics.original_gravity", originalGravity);
-    setValue("characteristics.final_gravity", finalGravity);
-    setValue("characteristics.alcohol_by_volume", abv);
-    setValue("characteristics.srm", srm);
   }, [setValue, originalGravity, finalGravity, abv, srm]);
+
+  useEffect(() => {
+    setValue("characteristics.final_gravity", finalGravity);
+  }, [setValue, finalGravity]);
+
+  useEffect(() => {
+    setValue("characteristics.srm", srm);
+  }, [setValue, srm]);
+
+  useEffect(() => {
+    setValue("characteristics.alcohol_by_volume", abv);
+  }, [setValue, abv]);
 
   // ---------------------------------------------------------------------
   const [modal, setModal] = useState(false);
@@ -158,7 +173,9 @@ export const Characteristics: React.FC<Props> = ({
 
           <div className="flex flex-col items-center gap-y-2">
             <label className="text-gray-700 text-md font-semibold ">SRM</label>
-            {srm && <p className="p-2 text-mainC2 font-semibold text-3xl">{srm}</p>}
+            {srm && (
+              <p className="p-2 text-mainC2 font-semibold text-3xl">{srm}</p>
+            )}
           </div>
 
           <div className="flex flex-col items-center gap-y-2">

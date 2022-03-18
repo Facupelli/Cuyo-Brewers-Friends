@@ -35,33 +35,10 @@ export interface State {
 
 export const RecipeCardDetail: React.FC = () => {
   const { id } = useParams<RecipeCardDetailParams>();
-
   const dispatch = useDispatch();
 
   const user_id = useSelector((state: RootState) => state.storeUser.cookie);
   const userData = useSelector((state: RootState) => state.storeUser.userData);
-
-  const isRecipeFav = () => {
-    const filter = userData.favs.filter((el) => el._id.toString() === id);
-    if (filter.length === 0) return false;
-    if (filter.length > 0) return true;
-  };
-
-  const handleAddFav = async () => {
-    await addFav(user_id, id);
-    dispatch(getUserData(user_id));
-  };
-
-  const handleDeleteFav = async () => {
-    await deleteFav(user_id, id);
-    dispatch(getUserData(user_id));
-  };
-
-  const isMyRecipe = () => {
-    const is = userData.ownRecipes.filter((el) => el._id === id);
-    if (is.length === 1) return true;
-    else return false;
-  };
 
   const [recipeState, setRecipeState] = useState<State>({
     recipe: {
@@ -128,13 +105,33 @@ export const RecipeCardDetail: React.FC = () => {
     },
   });
 
-  console.log("RECIPE", recipeState);
-
   useEffect(() => {
     getRecipeById(id)
       .then((data) => setRecipeState({ recipe: data }))
       .catch((e) => console.log(e));
   }, [id]);
+
+  const isRecipeFav = () => {
+    const filter = userData.favs.filter((el) => el._id.toString() === id);
+    if (filter.length === 0) return false;
+    if (filter.length > 0) return true;
+  };
+
+  const handleAddFav = async () => {
+    await addFav(user_id, id);
+    dispatch(getUserData(user_id));
+  };
+
+  const handleDeleteFav = async () => {
+    await deleteFav(user_id, id);
+    dispatch(getUserData(user_id));
+  };
+
+  const isMyRecipe = () => {
+    const recipe = userData.ownRecipes.filter((el) => el._id === id);
+    if (recipe.length === 1) return true;
+    else return false;
+  };
 
   const { title, sub_category }: { title: string; sub_category: string } =
     recipeState.recipe.recipe;
@@ -205,7 +202,7 @@ export const RecipeCardDetail: React.FC = () => {
 
         <HopsDetail hops={recipeState.recipe.recipe.ingredients.hops} />
 
-        <MashDetail mash={recipeState.recipe.recipe.mash}/>
+        <MashDetail mash={recipeState.recipe.recipe.mash} />
 
         <YeastDetail yeast={recipeState.recipe.recipe.ingredients.yeast} />
 

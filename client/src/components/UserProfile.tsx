@@ -23,14 +23,12 @@ type ParamsType = {
 export const UserProfile: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const username = useParams<ParamsType>();
 
   //PAGE USER
   const [userProfile, setUserProfile] = useState<UserData>();
   const [showProducts, setShowProducts] = useState<Boolean>(false);
 
-  console.log('USERPROFILE', userProfile)
   //LOGED USER INFO
   const userData = useSelector((state: RootState) => state.storeUser.userData);
 

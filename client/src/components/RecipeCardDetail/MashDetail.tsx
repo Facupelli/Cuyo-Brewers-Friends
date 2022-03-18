@@ -1,5 +1,5 @@
 import React from "react";
-import { Hops, Mash } from "../../redux/reducers/types";
+import { Mash } from "../../redux/reducers/types";
 
 type Props = {
   mash: Mash;

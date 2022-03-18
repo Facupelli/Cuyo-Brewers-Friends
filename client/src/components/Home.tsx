@@ -15,25 +15,12 @@ export default function Home() {
 
   const [page, setPage] = useState<number>(1);
 
-  const loading = useSelector((state: RootState) => state.storeRecipes.loading);
-
-  const totalRecipes = useSelector(
-    (state: RootState) => state.storeRecipes.totalNumRecipes
-  );
-
-  const recipesList = useSelector(
-    (state: RootState) => state.storeRecipes.recipesList
-  );
-
-  const topRecipesList = useSelector(
-    (state: RootState) => state.storeRecipes.topRecipesList
-  );
-
+  const storeRecipes = useSelector((state:RootState) => state.storeRecipes)
   const followingRecipesList = useSelector(
     (state: RootState) => state.storeUser.userData.following
   );
 
-  const totalPages = Math.ceil(totalRecipes / 10) - 1;
+  const totalPages = Math.ceil(storeRecipes.totalNumRecipes / 10) - 1;
 
   const handleLoadMore = async (page: number) => {
     if (page <= totalPages) {
@@ -58,7 +45,7 @@ export default function Home() {
                   <MdAutorenew className="animate-spin-slow" />
                 </div>
               </div>
-              <RecipesCardList recipesList={recipesList} />
+              <RecipesCardList recipesList={storeRecipes.recipesList} />
             </div>
             <div className="col-span-2 lg:col-span-1 px-6">
               <div className="flex items-center gap-2 text-main">
@@ -67,12 +54,12 @@ export default function Home() {
                   <FaLongArrowAltUp className="animate-bounce-slow" />
                 </div>
               </div>
-              <RecipesCardList recipesList={topRecipesList} />
+              <RecipesCardList recipesList={storeRecipes.topRecipesList} />
             </div>
           </div>
 
           {/* LOAD MORE BUTTON ---------------------------------- */}
-          {!loading && (
+          {!storeRecipes.loading && (
             <div className="flex justify-center mt-10 md:mt-0 mb-10">
               <button
                 onClick={() => handleLoadMore(page)}
@@ -90,7 +77,7 @@ export default function Home() {
 
           {/* FOLLOWED --------------------------------------------- */}
           {cookie && (
-            <div className="grid grid-cols-2 md:mb-12 lg:pt-6">
+            <div className="grid grid-cols-2 md:mb-12">
               <div className="col-span-2 lg:col-span-1 px-6">
                 <div className="flex items-center gap-2 text-main">
                   <p className="my-4 ml-2 font-semibold  text-2xl">
@@ -121,7 +108,7 @@ export default function Home() {
       </div>
 
       {/* LOADING ----------------------------- */}
-      {loading && (
+      {storeRecipes.loading && (
         <div className="flex justify-center items-center mb-10">
           <div className="font-bold text-4xl text-mainC2">
             <span>

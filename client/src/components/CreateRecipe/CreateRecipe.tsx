@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import { getRecipes, getUserData } from "../../redux/action-creators";
+
 //Components
 import { YeastForm } from "./YeastForm";
 import { TitleInfo } from "./TItleInfo";
@@ -18,43 +19,6 @@ import { WaterForm } from "./WaterForm";
 import { BatchParams } from "./BatchParams";
 import { Modal } from "../Modal";
 import { Mash } from "./Mash";
-
-// const initialValues: Recipe = {
-//   _id: 0,
-//   title: "",
-//   style: "",
-//   sub_category: "",
-//   brewery: "",
-//   parameters: {
-//     boil_time: 0,
-//     batch_size: 0,
-//     pre_boil_size: 0,
-//     pre_boil_gravity: 0,
-//     mash_ph: 0,
-//     efficiency: 0,
-//   },
-//   characteristics: {
-//     original_gravity: 0,
-//     final_gravity: 0,
-//     alcohol_by_volume: 0,
-//     ibu: 0,
-//     srm: 0,
-//   },
-//   ingredients: {
-//     fermentables: [],
-//     hops: [{ name: "", quantity: 0, boil_time: 0 }],
-//     yeast: {name: '', attenuation: 75, quantity: 0},
-//     water_profile: {
-//       calcium: 0,
-//       magnesium: 0,
-//       sodium: 0,
-//       chlorine: 0,
-//       sulfate: 0,
-//       bicarbonate: 0,
-//     },
-//   },
-//   photos: [],
-// };
 
 const schema = yup.object().shape({
   title: yup.string().required().min(2),
@@ -184,6 +148,12 @@ export const CreateRecipe: React.FC<{}> = () => {
     (state: RootState) => state.storeUser.showModal
   );
 
+  useEffect(() => {
+    if (!showIntroModal) {
+      document.body.style.overflow = "unset";
+    }
+  }, [showIntroModal]);
+
   const username = useSelector(
     (state: RootState) => state.storeUser.userData.username
   );
@@ -191,20 +161,21 @@ export const CreateRecipe: React.FC<{}> = () => {
     (state: RootState) => state.storeUser.userData._id
   );
 
-  const methods = useForm<RecipeList>({ resolver: yupResolver(schema) });
-  const errors = methods.formState.errors;
-  console.log("ERRORS", errors);
-
-  // ------------------- OG STATE----------------------------
+  //OG STATE----------------------------
   const [ogPoints, setOgPoints] = useState<number>(0);
   const [eff, setEff] = useState<number>(70);
   const [batch_size, setBatch_size] = useState<number>(20);
 
-  //------------------ FG STATE ------------------------------
+  // FG STATE ------------------------------
   const [yeastAtt, setYeastAtt] = useState<number>(75);
 
-  // ----------------- SRM --------------------------
+  //  SRM --------------------------
   const [mcu, setMcu] = useState<number>(0);
+
+  //FORM ---------
+  const methods = useForm<RecipeList>({ resolver: yupResolver(schema) });
+  const errors = methods.formState.errors;
+  console.log("ERRORS", errors);
 
   const formSubmitHandler: SubmitHandler<RecipeList> = async (
     data: RecipeList
@@ -226,12 +197,6 @@ export const CreateRecipe: React.FC<{}> = () => {
       console.log({ onSubmitError: e });
     }
   };
-
-  useEffect(() => {
-    if (!showIntroModal) {
-      document.body.style.overflow = "unset";
-    }
-  }, [showIntroModal]);
 
   const message = `El OG, FG, SRM y ABV son calculados automaticamente segun los ingredientes 
   seleccionados. El unico parametro que tendra que colocar ya que no es calculado por la app 

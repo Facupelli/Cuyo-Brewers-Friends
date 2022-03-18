@@ -8,6 +8,11 @@ type Props = {
   setBatch_size: React.Dispatch<React.SetStateAction<any>>;
 };
 
+type Options = {
+  value: string;
+  label: string;
+};
+
 export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
   const {
     control,
@@ -16,32 +21,15 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
     formState: { errors },
   } = useFormContext();
 
-  type Options = {
-    value: string;
-    label: string;
-  };
-
-  // const getBeerStyles = () => {
-  //   const beerStyles = bjcp.beers.map((el) => ({
-  //     value: `${el.number}. ${el.name}`,
-  //     label: `${el.number}. ${el.name}`,
-  //   }));
-  //   return beerStyles;
-  // };
-
   const beerStyles: Options[] = bjcp.beers.map((el) => ({
     value: `${el.number}. ${el.name}`,
     label: `${el.number}. ${el.name}`,
   }));
 
-  // const styleSelected = watch("style", "any").split(". ")[1];
-
   let styleSelected = watch("style", {
     value: "1. American Standard",
     label: "1. American Standard",
   });
-
-  // const styleSelectedAfter = styleSelected.label.split(". ")[1];
 
   const efficiency = watch("parameters.efficiency");
   const batch_size = watch("parameters.batch_size");
