@@ -3,7 +3,9 @@ import { useFormContext, Controller } from "react-hook-form";
 import { srmToHex } from "../../utils/OGCalculator";
 import { IoBeer } from "react-icons/io5";
 import { FaQuestionCircle } from "react-icons/fa";
+
 import { ModalCharacteristics } from "./ModalCharacteristics";
+import { getAbv, getFg, getOg } from "../../utils/OGCalculator";
 
 type Props = {
   eff: number;
@@ -26,51 +28,12 @@ export const Characteristics: React.FC<Props> = ({
     formState: { errors },
   } = useFormContext();
 
+
   //----------------- CHARACTERISTICS VALUES ---------------------------------
 
-  const getOg = () => {
-    const originalGravity: number = Number(
-      ((ogPoints * eff) / 100 / (batch_size * 0.2641722)).toFixed(0)
-    );
-
-    if (originalGravity <= 0) {
-      return "0";
-    }
-    if (originalGravity >= 100) {
-      return "1." + originalGravity;
-    }
-    if (originalGravity >= 10) {
-      return "1.0" + originalGravity;
-    }
-    if (originalGravity < 10) {
-      return "1.00" + originalGravity;
-    }
-  };
-
-  const originalGravity: string = String(getOg());
-
-  const getFg = () => {
-    let finalG: number = Number(
-      (
-        Number(originalGravity) -
-        (Number(originalGravity) - 1) * (yeastAtt / 100)
-      ).toFixed(3)
-    );
-
-    if (Number(originalGravity) === 0) {
-      finalG = 0;
-      return String(finalG);
-    }
-    return String(finalG);
-  };
-
-  const finalGravity = getFg();
-
-  const abv = (
-    (Number(originalGravity) - Number(finalGravity)) *
-    131.25
-  ).toFixed(2);
-
+  const originalGravity: string = String(getOg(ogPoints, eff, batch_size));
+  const finalGravity = getFg(originalGravity, yeastAtt);
+  const abv = getAbv(originalGravity, finalGravity);
   const srm: string = (1.4922 * (mcu * 0.6859)).toFixed(1);
 
   const [color, setColor] = useState<string>();
@@ -87,11 +50,8 @@ export const Characteristics: React.FC<Props> = ({
 
   useEffect(() => {
     setValue("characteristics.original_gravity", originalGravity);
-  }, [setValue, originalGravity, finalGravity, abv, srm]);
-
-  useEffect(() => {
     setValue("characteristics.final_gravity", finalGravity);
-  }, [setValue, finalGravity]);
+  }, [setValue, originalGravity, finalGravity]);
 
   useEffect(() => {
     setValue("characteristics.srm", srm);
