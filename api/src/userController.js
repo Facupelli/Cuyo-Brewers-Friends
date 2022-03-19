@@ -1,5 +1,5 @@
 const { ObjectId } = require("mongodb");
-const User = require("../dao/user");
+const User = require("../dao/userDAO");
 
 class UserController {
   static async getUserInfo(req, res, next) {

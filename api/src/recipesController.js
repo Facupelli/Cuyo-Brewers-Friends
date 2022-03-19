@@ -1,5 +1,5 @@
 const { ObjectId } = require("mongodb");
-const Recipes = require("../dao/recipes.js");
+const Recipes = require("../dao/recipesDAO.js");
 const { recipeModel } = require("../models/recipe");
 const dayjs = require("dayjs");
 var customParseFormat = require("dayjs/plugin/customParseFormat");
