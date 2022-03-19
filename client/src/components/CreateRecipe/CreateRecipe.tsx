@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import * as yup from "yup";
 import { RecipeList } from "../../redux/reducers/types";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import { getRecipes, getUserData } from "../../redux/action-creators";
+import { FaQuestionCircle } from "react-icons/fa";
 
 //Components
 import { YeastForm } from "./YeastForm";
@@ -141,18 +142,9 @@ const schema = yup.object().shape({
 export const CreateRecipe: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
-  const [ibuModal, setIbuModal] = useState<Boolean>(true);
-  const [modal, setModal] = useState<Boolean>(false);
-
-  const showIntroModal = useSelector(
-    (state: RootState) => state.storeUser.showModal
-  );
-
-  useEffect(() => {
-    if (!showIntroModal) {
-      document.body.style.overflow = "unset";
-    }
-  }, [showIntroModal]);
+  const [successModal, setSuccessModal] = useState<Boolean>(false);
+  const [questionModal, setQuestionModal] = useState<Boolean>(false);
+  
 
   const username = useSelector(
     (state: RootState) => state.storeUser.userData.username
@@ -189,7 +181,7 @@ export const CreateRecipe: React.FC<{}> = () => {
       };
       const response = await axios
         .post("/recipe", newRecipe)
-        .then((res) => setModal(true));
+        .then((res) => setSuccessModal(true));
       console.log("RESPONSE:", response);
       dispatch(getRecipes());
       dispatch(getUserData(user_id));
@@ -198,21 +190,25 @@ export const CreateRecipe: React.FC<{}> = () => {
     }
   };
 
-  const message = `El OG, FG, SRM y ABV son calculados automaticamente segun los ingredientes 
-  seleccionados. El unico parametro que tendra que colocar ya que no es calculado por la app 
-  es el IBU. Hemos decidido dejar a eleccion de cada cervecero como calcular dicho valor.`;
+  const handleQuestionClick = () => {
+    setQuestionModal(true)
+  }
+
+  const message = `El OG, FG, SRM y ABV son calculados automáticamente según los ingredientes 
+  seleccionados. El unico parámetro que tendrá que colocar ya que no es calculado por la app 
+  es el IBU. Hemos decidido dejar a elección de cada cervecero como calcular dicho valor.`;
 
   return (
     <>
-      {modal && (
+      {successModal && (
         <Modal
-          setModal={setModal}
+          setModal={setSuccessModal}
           message="Recipe created successfully"
           pathTo="/myrecipes"
         />
       )}
-      {ibuModal && showIntroModal && (
-        <Modal setModal={setIbuModal} message={message} size="lg" />
+      {questionModal && (
+        <Modal setModal={setQuestionModal} message={message} size="lg" />
       )}
       <div className="bg-gray-50 ">
         <NavBar route="createrecipe" />
@@ -220,13 +216,16 @@ export const CreateRecipe: React.FC<{}> = () => {
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
               {/* ------------    PART 1 ------------------------ */}
-              <div className="mx-8 mt-8 flex justify-between ">
+              <div className="mx-8 mt-8 flex justify-start items-baseline gap-x-4">
                 <p className="text-2xl font-semibold text-main">
                   Editing Recipe
                 </p>
+                <button type="button" onClick={handleQuestionClick} className="text-mainC hover:text-mainC2 text-xl">
+                  <FaQuestionCircle />
+                </button>
                 <button
                   type="submit"
-                  className="transition ease-in-out duration-150 bg-transparent hover:bg-main text-main font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
+                  className="transition ease-in-out duration-150 bg-transparent ml-auto hover:bg-main text-main font-semibold hover:text-white p-2 border border-gray-500 hover:border-transparent rounded"
                 >
                   SAVE
                 </button>

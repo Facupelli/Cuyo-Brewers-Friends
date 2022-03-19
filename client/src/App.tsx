@@ -9,7 +9,6 @@ import {
   getTopRecipes,
   getUserData,
   setCookie,
-  setShowModal,
   totalNumRecipes,
 } from "./redux/action-creators";
 import { RootState } from "./redux/reducers/RootReducer";
@@ -63,11 +62,6 @@ function App() {
     const userId = localStorage.getItem("userId");
     if (cookie) {
       dispatch(getUserData(userId));
-
-      const showModal = localStorage.getItem("showModal");
-      if (showModal) {
-        dispatch(setShowModal(false));
-      }
     }
   }, [dispatch, cookie]);
 

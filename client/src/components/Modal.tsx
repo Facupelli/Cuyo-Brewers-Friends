@@ -1,7 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setShowModal } from "../redux/action-creators";
 
 type Props = {
   setModal: React.Dispatch<React.SetStateAction<any>>;
@@ -12,7 +10,6 @@ type Props = {
 
 export const Modal: React.FC<Props> = ({ setModal, message, pathTo, size }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleClick = () => {
     if (pathTo) {
@@ -20,14 +17,6 @@ export const Modal: React.FC<Props> = ({ setModal, message, pathTo, size }) => {
     } else {
       setModal(false);
     }
-    document.body.style.overflow = "unset";
-  };
-
-  const handleShowAgainClick = () => {
-    localStorage.setItem("showModal", "false");
-    dispatch(setShowModal(false));
-
-    setModal(false);
     document.body.style.overflow = "unset";
   };
 
@@ -54,14 +43,6 @@ export const Modal: React.FC<Props> = ({ setModal, message, pathTo, size }) => {
               >
                 OK
               </button>
-              {size && (
-                <button
-                  onClick={handleShowAgainClick}
-                  className="transition ease-in-out duration-150 bg-mainC text-xs font-bold rounded  px-4 hover:bg-mainC2 hover:text-white"
-                >
-                  DON'T SHOW THIS AGAIN
-                </button>
-              )}
             </div>
           </div>
         </div>
