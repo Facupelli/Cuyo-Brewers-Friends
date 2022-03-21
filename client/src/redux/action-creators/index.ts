@@ -10,6 +10,7 @@ import { RecipeActions } from "../actions/RecipesActions";
 import { UserActions } from "../actions/UserActions";
 import { BlogActions } from "../actions/BlogActions";
 import { ProductsActions } from "../actions/ProductsActions";
+import { Blog, ProductsResponse, ProductsTopResponse, RecipeResponse, UserData } from "../reducers/types";
 
 export const loadingTrue = () => {
   return (dispatch: Dispatch<RecipeActions>) => {
@@ -22,7 +23,7 @@ export const loadingTrue = () => {
 export const totalNumRecipes =
   () => async (dispatch: Dispatch<RecipeActions>) => {
     try {
-      const res = await axios.get<any>("/recipe");
+      const res = await axios.get<RecipeResponse>("/recipe");
 
       dispatch({
         type: RecipesActionType.TOTAL_NUM_RECIPES,
@@ -91,7 +92,7 @@ export const loadMoreRecipes =
       dispatch({
         type: RecipesActionType.RECIPES_LOADING,
       });
-      const res = await axios.get<any>(`/recipe?page=${page}`);
+      const res = await axios.get<RecipeResponse>(`/recipe?page=${page}`);
 
       return dispatch({
         type: RecipesActionType.LOAD_MORE_RECIPES,
@@ -108,9 +109,9 @@ export const loadMoreRecipes =
 export const getTopRecipes =
   () => async (dispatch: Dispatch<RecipeActions>) => {
     try {
-      let res: any;
+      let res;
 
-      res = await axios.get<any>("/recipe?top=true");
+      res = await axios.get<RecipeResponse>("/recipe?top=true");
 
       return dispatch({
         type: RecipesActionType.RECIPES_GET_TOP,
@@ -122,7 +123,7 @@ export const getTopRecipes =
 export const loadMoreTopRecipes =
   (page: number) => async (dispatch: Dispatch<RecipeActions>) => {
     try {
-      const res = await axios.get<any>(`/recipe?top=true&page=${page}`);
+      const res = await axios.get<RecipeResponse>(`/recipe?top=true&page=${page}`);
 
       return dispatch({
         type: RecipesActionType.LOAD_MORE_TOP_RECIPES,
@@ -153,7 +154,7 @@ export const getProducts =
         type: ProductsActionType.PRODUCTS_LOADING,
       });
 
-      const res: any = await axios.get<any>("/products");
+      const res = await axios.get<ProductsResponse>("/products");
 
       return dispatch({
         type: ProductsActionType.PRODUCTS_GET,
@@ -170,9 +171,9 @@ export const getProducts =
 export const getTopProducts =
   () => async (dispatch: Dispatch<ProductsActions>) => {
     try {
-      let res: any;
+      let res;
 
-      res = await axios.get<any>("/products?top=true");
+      res = await axios.get<ProductsTopResponse>("/products?top=true");
 
       return dispatch({
         type: ProductsActionType.PRODUCTS_GET_TOP,
@@ -202,9 +203,9 @@ export const setShowModal = (value: boolean) => {
 };
 
 export const getUserData =
-  (id: any) => async (dispatch: Dispatch<UserActions>) => {
+  (id: unknown) => async (dispatch: Dispatch<UserActions>) => {
     try {
-      const res = await axios.get<any>(`/user?id=${id}`);
+      const res = await axios.get<UserData>(`/user?id=${id}`);
 
       return dispatch({
         type: UserActionType.GET_USER_DATA,
@@ -220,7 +221,7 @@ export const getBlogs =
   async (dispatch: Dispatch<BlogActions>) => {
     try {
       if (article_username) {
-        const res = await axios.get<any>(`/blog?username=${article_username}`);
+        const res = await axios.get<Blog[]>(`/blog?username=${article_username}`);
         return dispatch({
           type: BlogActionType.GET_BLOGS,
           payload: res.data,
@@ -228,14 +229,14 @@ export const getBlogs =
       }
 
       if (article_title) {
-        const res = await axios.get<any>(`/blog?title=${article_title}`);
+        const res = await axios.get<Blog[]>(`/blog?title=${article_title}`);
         return dispatch({
           type: BlogActionType.GET_BLOGS,
           payload: res.data,
         });
       }
 
-      const res = await axios.get<any>("/blog");
+      const res = await axios.get<Blog[]>("/blog");
 
       return dispatch({
         type: BlogActionType.GET_BLOGS,

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { GrClose } from "react-icons/gr";
 
 type Props = {
-  setModal: React.Dispatch<React.SetStateAction<any>>;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
   message: string;
 };
 

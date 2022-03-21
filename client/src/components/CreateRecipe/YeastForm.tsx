@@ -4,7 +4,7 @@ import { FaMicroscope } from "react-icons/fa";
 import { fermentis } from "../../media/beer_ingredients/yeast/fermentis";
 
 type Props = {
-  setYeastAtt: React.Dispatch<React.SetStateAction<any>>;
+  setYeastAtt: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {

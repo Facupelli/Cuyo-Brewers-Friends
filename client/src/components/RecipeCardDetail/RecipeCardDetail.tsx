@@ -224,7 +224,7 @@ export const RecipeCardDetail: React.FC = () => {
 //------------------------------ DELETE MODAL ----------------------------------------------
 
 type Props = {
-  setModal: React.Dispatch<React.SetStateAction<any>>;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
   id: unknown;
 };
 

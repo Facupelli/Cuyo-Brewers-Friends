@@ -38,11 +38,15 @@ export const Login: React.FC = () => {
 
   console.log("ERRORS:", errors);
 
-  const onSubmit = async (data: FormInputs) => {
+  const onSubmit = async (datas: FormInputs) => {
     try {
-      const response: any = await axios.post("/login", data);
-      console.log(response.data);
-      const { token, id } = response.data;
+      interface LoginRes {
+        token: string,
+        id: string,
+      }
+
+      const {data} = await axios.post<LoginRes>("/login", datas);
+      const { token, id } = data;
       localStorage.setItem("token", token);
       localStorage.setItem("userId", id);
 

@@ -1,6 +1,6 @@
 
 type Props = {
-  setModal: React.Dispatch<React.SetStateAction<any>>;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
   message: string;
   pathTo: string;
   handleSeller: () => void

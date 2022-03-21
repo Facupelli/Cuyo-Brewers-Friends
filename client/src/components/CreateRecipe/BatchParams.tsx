@@ -4,8 +4,8 @@ import { useFormContext, Controller } from "react-hook-form";
 import Select from "react-select";
 
 type Props = {
-  setEff: React.Dispatch<React.SetStateAction<any>>;
-  setBatch_size: React.Dispatch<React.SetStateAction<any>>;
+  setEff: React.Dispatch<React.SetStateAction<number>>;
+  setBatch_size: React.Dispatch<React.SetStateAction<number>>;
 };
 
 type Options = {

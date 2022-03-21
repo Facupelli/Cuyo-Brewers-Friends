@@ -1,11 +1,13 @@
 import axios from 'axios'
+import { Blog, UserData } from '../redux/reducers/types'
 
-export const getBlogById = async(id: any) => {
-    const response = await axios.get<any>(`/blog/${id}`)
+export const getBlogById = async(id: unknown) => {
+    const response = await axios.get<Blog>(`/blog/${id}`)
     return response.data
 }
 
-export const getUserByUsername = async(username: any) => {
-    const response = await axios.get<any>(`/user?username=${username}`)
+export const getUserByUsername = async(username: unknown) => {
+    const response = await axios.get<UserData>(`/user?username=${username}`)
+    console.log(response.data)
     return response.data
 }

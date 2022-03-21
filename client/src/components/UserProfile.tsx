@@ -27,7 +27,7 @@ export const UserProfile: React.FC = () => {
 
   //PAGE USER
   const [userProfile, setUserProfile] = useState<UserData>();
-  const [showProducts, setShowProducts] = useState<Boolean>(false);
+  const [showProducts, setShowProducts] = useState<boolean>(false);
 
   //LOGED USER INFO
   const userData = useSelector((state: RootState) => state.storeUser.userData);
@@ -51,7 +51,7 @@ export const UserProfile: React.FC = () => {
     setSellerModal(false);
   };
 
-  const [sellerModal, setSellerModal] = useState<Boolean>(false);
+  const [sellerModal, setSellerModal] = useState<boolean>(false);
 
   const handleViewProducts = () => {
     setShowProducts(!showProducts);

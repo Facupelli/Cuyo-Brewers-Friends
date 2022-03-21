@@ -109,6 +109,14 @@ export interface RecipeList {
   reviews: Review[];
 }
 
+export interface RecipeResponse {
+  recipesList: RecipeList[];
+  page: number;
+  filters: {};
+  entries_per_page: number;
+  total_results: number;
+}
+
 export interface RecipeFavs {
   recipe: Recipe;
   date: string;
@@ -123,10 +131,10 @@ interface OwnBLogs {
   _id: string;
 }
 
-interface Following{
+interface Following {
   _id: string;
   username: string;
-  ownRecipes: RecipeList[]
+  ownRecipes: RecipeList[];
 }
 export interface UserData {
   _id: string;
@@ -171,4 +179,18 @@ export interface ProductList {
   product: Product;
   username: string;
   user_id: string;
+}
+
+export interface ProductsResponse{
+  productsList: Product[];
+  page: number;
+  entries_per_page: number;
+  total_results: number,
+}
+
+export interface ProductsTopResponse{
+  productsList: ProductList[];
+  page: number;
+  entries_per_page: number;
+  total_results: number,
 }

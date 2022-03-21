@@ -142,8 +142,8 @@ const schema = yup.object().shape({
 export const CreateRecipe: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
-  const [successModal, setSuccessModal] = useState<Boolean>(false);
-  const [questionModal, setQuestionModal] = useState<Boolean>(false);
+  const [successModal, setSuccessModal] = useState<boolean>(false);
+  const [questionModal, setQuestionModal] = useState<boolean>(false);
   
 
   const username = useSelector(

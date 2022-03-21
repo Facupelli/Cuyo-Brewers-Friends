@@ -12,9 +12,9 @@ import { GiGrain } from "react-icons/gi";
 import Select from "react-select";
 
 type Props = {
-  setOgPoints: React.Dispatch<React.SetStateAction<any>>;
+  setOgPoints: React.Dispatch<React.SetStateAction<number>>;
   batch_size: number;
-  setMcu: React.Dispatch<React.SetStateAction<any>>;
+  setMcu: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const MaltsForm: React.FC<Props> = ({
