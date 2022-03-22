@@ -173,8 +173,8 @@ export const UserProfile: React.FC = () => {
               {!showProducts ? (
                 <div className="grid grid-cols-2 gap-y-8 md:gap-x-8 mt-12">
                   <div className="col-span-2 md:col-span-1">
-                    <p className="font-semibold text-xl md:ml-2">MY RECIPES:</p>
-                    {userProfile &&
+                    <p className="font-semibold text-xl md:ml-2">RECIPES:</p>
+                    {userProfile.ownRecipes.length > 0 &&
                       userProfile.ownRecipes.map((recipe, i) => (
                         <RecipeCard
                           key={i}
@@ -182,29 +182,60 @@ export const UserProfile: React.FC = () => {
                           id={recipe._id}
                         />
                       ))}
+
+                    {userProfile.ownRecipes.length <= 0 &&
+                      (isMyProfile() ? (
+                        <p className="mx-2 mt-2">
+                          <span className="font-semibold">You</span> have no
+                          recipes.
+                        </p>
+                      ) : (
+                        <p className="mx-2 mt-2">
+                          <span className="font-semibold">
+                            {username.username}
+                          </span>{" "}
+                          has no recipes.
+                        </p>
+                      ))}
                   </div>
 
                   <div className="col-span-2 md:col-span-1">
-                    <p className="font-semibold text-xl">MY ARTICLES:</p>
-                    {userProfile?.ownBlogs.map((el, i) => (
-                      <div
-                        key={i}
-                        className="flex md:gap-x-3 bg-bgMain rounded shadow hover:shadow-none p-4 my-3"
-                      >
-                        <Link to={`/blogdetail/${el._id}`}>
-                          <p className="transition ease-in-out duration-150 hover:text-brown1">
-                            {el.blog_title}
-                          </p>
-                        </Link>
-                        <p className="text-gray-400 ml-auto">{el.date}</p>
-                      </div>
-                    ))}
+                    <p className="font-semibold text-xl">ARTICLES:</p>
+                    {userProfile.ownBlogs.length > 0 &&
+                      userProfile?.ownBlogs.map((el, i) => (
+                        <div
+                          key={i}
+                          className="flex md:gap-x-3 bg-bgMain rounded shadow hover:shadow-none p-4 my-3"
+                        >
+                          <Link to={`/blogdetail/${el._id}`}>
+                            <p className="transition ease-in-out duration-150 hover:text-brown1">
+                              {el.blog_title}
+                            </p>
+                          </Link>
+                          <p className="text-gray-400 ml-auto">{el.date}</p>
+                        </div>
+                      ))}
+
+                    {userProfile.ownBlogs.length <= 0 &&
+                      (isMyProfile() ? (
+                        <p className="mt-2">
+                          <span className="font-semibold">You</span> have no
+                          articles.
+                        </p>
+                      ) : (
+                        <p className="mt-2">
+                          <span className="font-semibold">
+                            {username.username}
+                          </span>{" "}
+                          has no articles.
+                        </p>
+                      ))}
                   </div>
 
-                  {isMyProfile() && (
+                  {
                     <div className="col-span-2 md:col-span-1">
-                      <p className="font-semibold text-xl md:ml-2">MY FAVS:</p>
-                      {userProfile &&
+                      <p className="font-semibold text-xl md:ml-2">FAVS:</p>
+                      {userProfile.favs.length > 0 &&
                         userProfile.favs.map((recipe, i) => (
                           <RecipeCard
                             key={i}
@@ -212,8 +243,23 @@ export const UserProfile: React.FC = () => {
                             id={recipe._id}
                           />
                         ))}
+
+                      {userProfile.favs.length <= 0 &&
+                        (isMyProfile() ? (
+                          <p className="mx-2 mt-2">
+                            <span className="font-semibold">You</span> have no
+                            favourite recipes.
+                          </p>
+                        ) : (
+                          <p className="mx-2 mt-2">
+                            <span className="font-semibold">
+                              {username.username}
+                            </span>{" "}
+                            has no favourite recipes.
+                          </p>
+                        ))}
                     </div>
-                  )}
+                  }
                 </div>
               ) : (
                 <div className="mx-10 mt-16 grid md:grid-cols-3 lg:grid-cols-4 gap-y-12 mb-10">
