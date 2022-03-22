@@ -113,7 +113,7 @@ export const UserProfile: React.FC = () => {
                   <p className="text-gray-500 text-lg">homebrewer</p>
                 </div>
 
-                {!isMyProfile() && !isUserFollowed() && (
+                {userData._id && !isMyProfile() && !isUserFollowed() && (
                   <div>
                     <button
                       onClick={handleFollow}

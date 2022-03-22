@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import {
@@ -12,10 +12,11 @@ import {
   totalNumRecipes,
 } from "./redux/action-creators";
 import { RootState } from "./redux/reducers/RootReducer";
+
 //Components
 import { Blog } from "./components/BrowseBlog/Blog";
 import { CreateRecipe } from "./components/CreateRecipe/CreateRecipe";
-import Home from "./components/Home";
+import Home from "./components/Home/Home";
 import { Login } from "./components/Login";
 import { MyRecipes } from "./components/MyRecipes";
 import { RecipeCardDetail } from "./components/RecipeCardDetail/RecipeCardDetail";
@@ -26,6 +27,14 @@ import { CreateBlog } from "./components/CreateBlog/CreateBlog";
 import { UserProfile } from "./components/UserProfile";
 import { Shop } from "./components/Shop/Shop";
 import { PostProduct } from "./components/Shop/PostProduct";
+import { WithLoading } from "./components/HOC/WithLoading";
+import { HomeWithLoading } from "./components/Home/HomeWithLoading";
+
+// const CreateRecipe = React.lazy(() =>
+//   import("./components/CreateRecipe/CreateRecipe").then((module) => ({
+//     default: module.CreateRecipe,
+//   }))
+// );
 
 function App() {
   const dispatch = useDispatch();
@@ -68,8 +77,16 @@ function App() {
   return (
     <div>
       <Routes>
+        {/* <Route path="" element={<HomeWithLoading />} /> */}
         <Route path="" element={<Home />} />
-        <Route path="/createrecipe" element={<CreateRecipe />} />
+        <Route
+          path="/createrecipe"
+          element={
+            // <Suspense fallback={<div>Loading... </div>}>
+            <CreateRecipe />
+            // </Suspense>
+          }
+        />
         <Route path="/recipe/:id" element={<RecipeCardDetail />} />
         <Route path="/myrecipes" element={<MyRecipes />} />
         <Route path="/searchrecipes" element={<SearchRecipes />} />
