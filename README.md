@@ -9,6 +9,8 @@ and React-redux with Typescript for the frontend among others.
 
 ### The styles applied are just provisional.
 
+![cuyo brewers gif](https://user-images.githubusercontent.com/86330512/159782555-04184759-ee6e-4b1b-8fc5-44bf9ef06620.gif)
+
 <br></br>
 
 🟠 So far, you can register with a user and log in or log out. </br>
