@@ -34,7 +34,7 @@ export const srmCalculator = (malts: Argument[], batch_size: number) => {
   return sumMcu;
 };
 
-export const srmToHex = (srm: string) => {
+export const srmToHex = (srm: number) => {
   const color: string = Math.round(Number(srm)).toString();
   return color;
 };
@@ -43,19 +43,9 @@ export const getOg = (ogPoints: number, eff: number, batch_size: number) => {
   const originalGravity: number = Number(
     ((ogPoints * eff) / 100 / (batch_size * 0.2641722)).toFixed(0)
   );
-
-  if (originalGravity <= 0) {
-    return "0";
-  }
-  if (originalGravity >= 100) {
-    return "1." + originalGravity;
-  }
-  if (originalGravity >= 10) {
-    return "1.0" + originalGravity;
-  }
-  if (originalGravity < 10) {
-    return "1.00" + originalGravity;
-  }
+  
+  if(originalGravity === 0) return String(originalGravity)
+  return (originalGravity / 1000 + 1).toFixed(3);
 };
 
 export const getFg = (oG: string, yeastAtt: number) => {
@@ -67,7 +57,7 @@ export const getFg = (oG: string, yeastAtt: number) => {
     finalG = 0;
     return String(finalG);
   }
-  return String(finalG);
+  return String(finalG.toFixed(3));
 };
 
 export const getAbv = (oG: string, Fg: string) => {

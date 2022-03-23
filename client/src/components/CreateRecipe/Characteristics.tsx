@@ -31,10 +31,10 @@ export const Characteristics: React.FC<Props> = ({
 
   //----------------- CHARACTERISTICS VALUES ---------------------------------
 
-  const originalGravity: string = String(getOg(ogPoints, eff, batch_size));
-  const finalGravity = getFg(originalGravity, yeastAtt);
+  const originalGravity:string = getOg(ogPoints, eff, batch_size);
+  const finalGravity: string = getFg(originalGravity, yeastAtt);
   const abv = getAbv(originalGravity, finalGravity);
-  const srm: string = (1.4922 * (mcu * 0.6859)).toFixed(1);
+  const srm = Number((1.4922 * (mcu * 0.6859)).toFixed(1));
 
   const [color, setColor] = useState<string>();
 
