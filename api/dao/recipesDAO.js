@@ -32,7 +32,7 @@ class Recipes {
         query = { "recipe.title": { $regex: filters["title"], $options: "i" } };
       } else if (filters.username) {
         query = { username: { $regex: filters["username"], $options: "i" } };
-      } else if (filters.sub_category) {
+      } else if (filters.sub_category && filters.sub_category !== "undefined") {
         query = { "recipe.sub_category": filters["sub_category"] };
       } else if (filters.style) {
         query = { "recipe.style": filters["style"] };
@@ -67,7 +67,15 @@ class Recipes {
       ];
 
       if (query) {
-        pipeline.push({ $match: query});
+        pipeline.push({ $match: query });
+
+        if (filters.orderBy !== "undefined") {
+          let sort = filters.orderBy.split(" ");
+          let order = sort.includes("asc") ? 1 : -1;
+          let sortObj = {};
+          sortObj[`recipe.characteristics.${sort[0]}`] = order;
+          pipeline.push({ $sort: sortObj });
+        }
         allRecipes = await recipeModel.aggregate(pipeline);
         const totalNumRecipes = await recipeModel.countDocuments(query);
         return { allRecipes, totalNumRecipes };
@@ -85,6 +93,14 @@ class Recipes {
           $limit: recipesPerPage,
         }
       );
+
+      if (filters.orderBy && filters.orderBy !== "undefined") {
+        let sort = filters.orderBy.split(" ");
+        let order = sort.includes("asc") ? 1 : -1;
+        let sortObj = {};
+        sortObj[`recipe.characteristics.${sort[0]}`] = order;
+        pipeline.push({ $sort: sortObj });
+      }
 
       allRecipes = await recipeModel
         // .find(query)

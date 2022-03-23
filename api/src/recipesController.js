@@ -18,6 +18,7 @@ class RecipesController {
         // style : req.query.style,
         title: req.query.title,
         username: req.query.username,
+        orderBy: req.query.orderBy
       }; 
 
       // if (req.query.sub_category) {
