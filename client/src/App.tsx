@@ -45,7 +45,8 @@ function App() {
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getTopProducts());
-  }, [dispatch]);
+    // eslint-disable-next-line
+  }, []);
 
   // ------------------------GET RECIPES -------------------------------------
   useEffect(() => {
@@ -53,7 +54,8 @@ function App() {
     dispatch(totalNumRecipes());
     dispatch(getTopRecipes());
     dispatch(getBlogs());
-  }, [dispatch]);
+    // eslint-disable-next-line
+  }, []);
 
   // ------------------------GET USER IF TOKEN -------------------------------------
   useEffect(() => {
@@ -72,7 +74,8 @@ function App() {
     if (cookie) {
       dispatch(getUserData(userId));
     }
-  }, [dispatch, cookie]);
+    // eslint-disable-next-line
+  }, [cookie]);
 
   return (
     <div>

@@ -80,7 +80,7 @@ export default function Home() {
               <div className="col-span-2 lg:col-span-1 px-6">
                 <div className="flex items-center gap-2 text-main">
                   <p className="my-4 ml-2 font-semibold  text-2xl">
-                    Hombrewers Followed:
+                    Hombrewers Followed
                   </p>
                 </div>
                 {followingRecipesList.length > 0 ? (
