@@ -107,7 +107,7 @@ export const SearchRecipes: React.FC = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-3 items-center mb-4">
+              <div className="grid grid-cols-3 items-center mb-4 border-t border-main pt-4">
                 <label className="col-span-1 text-main font-semibold">
                   Order by:
                 </label>
