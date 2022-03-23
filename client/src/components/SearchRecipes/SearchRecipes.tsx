@@ -18,7 +18,7 @@ interface Form {
 export const SearchRecipes: React.FC = () => {
   const [searchRecipes, setSearchRecipes] = useState<RecipeList[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const { register, handleSubmit } = useForm<Form>();
+  const { register, handleSubmit, reset } = useForm<Form>();
 
   useEffect(() => {
     axios
@@ -40,6 +40,7 @@ export const SearchRecipes: React.FC = () => {
       .then((res) => setSearchRecipes(res.data.recipesList))
       .then(() => setIsLoading(false))
       .catch((e) => console.log(e));
+    reset()
   };
 
   const onSubmit = async (data: Form) => {
@@ -122,6 +123,8 @@ export const SearchRecipes: React.FC = () => {
                   <option value='ibu+desc'>IBU -</option>
                   <option value='original_gravity+asc'>OG +</option>
                   <option value='original_gravity+desc'>OG -</option>
+                  <option value='rating+asc'>Rating +</option>
+                  <option value='rating+desc'>Rating -</option>
                 </select>
               </div>
 

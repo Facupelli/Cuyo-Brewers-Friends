@@ -73,7 +73,11 @@ class Recipes {
           let sort = filters.orderBy.split(" ");
           let order = sort.includes("asc") ? 1 : -1;
           let sortObj = {};
-          sortObj[`recipe.characteristics.${sort[0]}`] = order;
+          if (sort[0] === "rating") {
+            sortObj["rating"] = order;
+          } else {
+            sortObj[`recipe.characteristics.${sort[0]}`] = order;
+          }
           pipeline.push({ $sort: sortObj });
         }
         allRecipes = await recipeModel.aggregate(pipeline);
@@ -98,7 +102,11 @@ class Recipes {
         let sort = filters.orderBy.split(" ");
         let order = sort.includes("asc") ? 1 : -1;
         let sortObj = {};
-        sortObj[`recipe.characteristics.${sort[0]}`] = order;
+        if (sort[0] === "rating") {
+          sortObj["rating"] = order;
+        } else {
+          sortObj[`recipe.characteristics.${sort[0]}`] = order;
+        }
         pipeline.push({ $sort: sortObj });
       }
 
