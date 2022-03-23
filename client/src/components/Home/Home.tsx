@@ -19,7 +19,7 @@ export default function Home() {
     (state: RootState) => state.storeUser.userData.following
   );
 
-  const totalPages = Math.ceil(storeRecipes.totalNumRecipes / 10) - 1;
+  const totalPages = Math.ceil(storeRecipes.totalNumRecipes / 5) - 1;
 
   const handleLoadMore = async (page: number) => {
     if (page <= totalPages) {

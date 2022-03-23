@@ -23,25 +23,25 @@ class Recipes {
     top,
     filters = null,
     page = 0,
-    recipesPerPage = 10,
+    recipesPerPage = 5,
   } = {}) {
     let query;
+
     if (filters) {
-      if ("title" in filters) {
+      if (filters.title) {
         query = { "recipe.title": { $regex: filters["title"], $options: "i" } };
-      } else if ("username" in filters) {
+      } else if (filters.username) {
         query = { username: { $regex: filters["username"], $options: "i" } };
-      } else if ("sub_category" in filters) {
+      } else if (filters.sub_category) {
         query = { "recipe.sub_category": filters["sub_category"] };
-      } else if ("style" in filters) {
+      } else if (filters.style) {
         query = { "recipe.style": filters["style"] };
       }
     }
 
     let allRecipes;
-    try {
-      const sortBy = top ? "-rating" : "-date";
 
+    try {
       let pipeline = [
         {
           $lookup: {
@@ -60,24 +60,40 @@ class Recipes {
           $project: {
             username: 1,
             date: 1,
-            author: 1,
-            reviews: 1,
             recipe: 1,
             rating: { $ifNull: ["$rating", 0] },
           },
         },
       ];
 
-      if (query) pipeline.push({ $match: query });
+      if (query) {
+        pipeline.push({ $match: query});
+        allRecipes = await recipeModel.aggregate(pipeline);
+        const totalNumRecipes = await recipeModel.countDocuments(query);
+        return { allRecipes, totalNumRecipes };
+      }
+
+      top
+        ? pipeline.push({ $sort: { rating: -1 } })
+        : pipeline.push({ $sort: { date: -1 } });
+
+      pipeline.push(
+        {
+          $skip: recipesPerPage * page,
+        },
+        {
+          $limit: recipesPerPage,
+        }
+      );
 
       allRecipes = await recipeModel
         // .find(query)
         // .populate("author", "_id name username")
         // .populate("reviews", "_id score")
-        .aggregate(pipeline)
-        .sort(sortBy)
-        .limit(recipesPerPage)
-        .skip(recipesPerPage * page);
+        .aggregate(pipeline);
+      // .sort(sortBy)
+      // .limit(recipesPerPage);
+      // .skip(recipesPerPage * page);
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`);
       return { recipesList: [], totalNumRecipes: 0 };

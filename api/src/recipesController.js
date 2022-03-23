@@ -10,19 +10,25 @@ class RecipesController {
     try {
       const recipesPerPage = req.query.recipesPerPage
         ? parseInt(req.query.recipesPerPage, 10)
-        : 10;
+        : 5;
       const page = req.query.page ? parseInt(req.query.page, 10) : 0;
 
-      let filters = {}; //filters start as an empty object
-      if (req.query.sub_category) {
-        filters.sub_category = req.query.sub_category;
-      } else if (req.query.style) {
-        filters.style = req.query.style;
-      } else if (req.query.title) {
-        filters.title = req.query.title;
-      } else if (req.query.username) {
-        filters.username = req.query.username;
-      }
+      let filters = {
+        sub_category : req.query.sub_category,
+        // style : req.query.style,
+        title: req.query.title,
+        username: req.query.username,
+      }; 
+
+      // if (req.query.sub_category) {
+      //   filters.sub_category = req.query.sub_category;
+      // } else if (req.query.style) {
+      //   filters.style = req.query.style;
+      // } else if (req.query.title) {
+      //   filters.title = req.query.title;
+      // } else if (req.query.username) {
+      //   filters.username = req.query.username;
+      // }
 
       const top = req.query.top ? true : false;
 
