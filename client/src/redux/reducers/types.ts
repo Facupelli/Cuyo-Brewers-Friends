@@ -120,6 +120,7 @@ export interface RecipeResponse {
 export interface RecipeFavs {
   recipe: Recipe;
   date: string;
+  username: string;
   _id: string;
 }
 

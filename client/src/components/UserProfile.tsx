@@ -180,6 +180,8 @@ export const UserProfile: React.FC = () => {
                           key={i}
                           recipe={recipe.recipe}
                           id={recipe._id}
+                          username={recipe.username}
+                          date={recipe.date}
                         />
                       ))}
 
@@ -241,6 +243,8 @@ export const UserProfile: React.FC = () => {
                             key={i}
                             recipe={recipe.recipe}
                             id={recipe._id}
+                            username={recipe.username}
+                            date={recipe.date}
                           />
                         ))}
 

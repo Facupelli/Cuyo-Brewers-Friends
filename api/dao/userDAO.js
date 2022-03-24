@@ -50,7 +50,7 @@ class User {
           "images title description price date available"
         )
         .populate({path: "ownRecipes", options:{sort:{'date': -1}}})
-        .populate("favs", "recipe date");
+        .populate("favs", "recipe date username");
     } catch (e) {
       console.error(`Something went wrong in getUserByUsernameDAO: ${e}`);
       throw e;

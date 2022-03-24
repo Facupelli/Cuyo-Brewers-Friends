@@ -5,17 +5,24 @@ import { Link } from "react-router-dom";
 type Props = {
   recipe: Recipe;
   id: string;
+  username: string;
+  date: string;
 };
 
-export const RecipeCard: React.FC<Props> = ({ recipe, id }) => {
-
+export const RecipeCard: React.FC<Props> = ({ recipe, id, username, date }) => {
   return (
     <div className="bg-mainC  rounded m-2 p-3 md:p-6">
       <div>
-        <div>
+        <div className="flex justify-between">
           <Link to={`/recipe/${id}`}>
-            <p className="text-main font-semibold hover:text-mainC2 hover:font-bold transition ease-in-out delay-50">{recipe.title}</p>
+            <p className="text-main font-semibold hover:text-mainC2 hover:font-bold transition ease-in-out delay-50">
+              {recipe.title}
+            </p>
           </Link>
+          <div className="flex gap-x-2">
+            <p className="text-xs text-main">{username}</p>
+            <p className="text-xs text-gray-600">{date}</p>
+          </div>
         </div>
         <div className="flex items-baseline gap-2">
           <p className="text-main text-sm ">{recipe.style.label}</p>
