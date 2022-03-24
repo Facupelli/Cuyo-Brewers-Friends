@@ -28,10 +28,9 @@ export const Characteristics: React.FC<Props> = ({
     formState: { errors },
   } = useFormContext();
 
-
   //----------------- CHARACTERISTICS VALUES ---------------------------------
 
-  const originalGravity:string = getOg(ogPoints, eff, batch_size);
+  const originalGravity: string = getOg(ogPoints, eff, batch_size);
   const finalGravity: string = getFg(originalGravity, yeastAtt);
   const abv = getAbv(originalGravity, finalGravity);
   const srm = Number((1.4922 * (mcu * 0.6859)).toFixed(1));
@@ -133,20 +132,18 @@ export const Characteristics: React.FC<Props> = ({
 
           <div className="flex flex-col items-center gap-y-2">
             <label className="text-gray-700 text-md font-semibold ">SRM</label>
-            {srm && (
-              <p className="p-2 text-mainC2 font-semibold text-3xl">{srm}</p>
-            )}
+            <p className="p-2 text-mainC2 font-semibold text-3xl">
+              {srm ? srm : 0}
+            </p>
           </div>
 
           <div className="flex flex-col items-center gap-y-2">
             <label className="text-gray-700 text-md font-semibold ">
               Color
             </label>
-            {srm && (
-              <div className={`p-2 text-4xl text-${color}`}>
-                <IoBeer />
-              </div>
-            )}
+            <div className={`p-2 text-4xl ${srm ? `text-${color}` : "text-gray-300"}`}>
+              <IoBeer />
+            </div>
           </div>
         </div>
       </div>
