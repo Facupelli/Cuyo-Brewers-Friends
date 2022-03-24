@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import { NavBar } from "../NavBar";
 import { RecipesCardList } from "../RecipesCardList";
 import { FaLongArrowAltUp } from "react-icons/fa";
 import { MdAutorenew } from "react-icons/md";
-import { loadMoreRecipes, loadMoreTopRecipes } from "../../redux/action-creators";
+import {
+  loadMoreRecipes,
+  loadMoreTopRecipes,
+  newPage,
+} from "../../redux/action-creators";
 import { VscLoading } from "react-icons/vsc";
 
 export default function Home() {
   const dispatch = useDispatch();
+
   const cookie = localStorage.getItem("userId");
+  const page = useSelector((state: RootState) => state.storeRecipes.page);
+  const storeRecipes = useSelector((state: RootState) => state.storeRecipes);
 
-  const [page, setPage] = useState<number>(1);
-
-  const storeRecipes = useSelector((state:RootState) => state.storeRecipes)
   const followingRecipesList = useSelector(
     (state: RootState) => state.storeUser.userData.following
   );
@@ -25,7 +29,7 @@ export default function Home() {
     if (page <= totalPages) {
       dispatch(loadMoreRecipes(page));
       dispatch(loadMoreTopRecipes(page));
-      setPage(page + 1);
+      dispatch(newPage());
     }
   };
 
@@ -56,6 +60,17 @@ export default function Home() {
               <RecipesCardList recipesList={storeRecipes.topRecipesList} />
             </div>
           </div>
+
+          {/* LOADING ----------------------------- */}
+          {storeRecipes.loading && (
+            <div className="flex justify-center items-center mb-10">
+              <div className="font-bold text-4xl text-mainC2">
+                <span>
+                  <VscLoading className="animate-spin-load" />
+                </span>
+              </div>
+            </div>
+          )}
 
           {/* LOAD MORE BUTTON ---------------------------------- */}
           {!storeRecipes.loading && (
@@ -105,17 +120,6 @@ export default function Home() {
           )}
         </div>
       </div>
-
-      {/* LOADING ----------------------------- */}
-      {storeRecipes.loading && (
-        <div className="flex justify-center items-center mb-10">
-          <div className="font-bold text-4xl text-mainC2">
-            <span>
-              <VscLoading className="animate-spin-load" />
-            </span>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -49,9 +49,9 @@ export const MyRecipes: React.FC = () => {
                     <p className="font-semibold transition ease-in-out duration-150 hover:text-mainC2">{el.recipe.title}</p>
                   </Link>
                 </div>
-                <div className="col-span-7 md:col-span-3 flex gap-4">
+                <div className="col-span-7 md:col-span-3 flex gap-2">
                   <p>{el.recipe.style.label}</p>
-                  <p className="font-semibold text-orange-700">
+                  <p className="font-semibold text-mainC2">
                     {el.recipe.sub_category}
                   </p>
                 </div>

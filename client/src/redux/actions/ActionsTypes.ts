@@ -6,6 +6,7 @@ export enum RecipesActionType {
   LOAD_MORE_RECIPES = 'LOAD_MORE_RECIPES',
   LOAD_MORE_TOP_RECIPES = 'LOAD_MORE_TOP_RECIPES',
   TOTAL_NUM_RECIPES = 'TOTAL_NUM_RECIPES',
+  NEW_PAGE = 'NEW_PAGE'
 }
 
 export enum ProductsActionType {

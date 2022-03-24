@@ -20,6 +20,14 @@ export const loadingTrue = () => {
   };
 };
 
+export const newPage = () => {
+  return(dispatch: Dispatch<RecipeActions>) => {
+    dispatch({
+      type: RecipesActionType.NEW_PAGE
+    })
+  }
+}
+
 export const totalNumRecipes =
   () => async (dispatch: Dispatch<RecipeActions>) => {
     try {

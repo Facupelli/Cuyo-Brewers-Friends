@@ -38,6 +38,10 @@ export interface RecipesGetTopAction {
   payload: RecipeList[];
 }
 
+export interface RecipesPageAction {
+  type: RecipesActionType.NEW_PAGE;
+}
+
 export type RecipeActions =
   | RecipesFailAction
   | RecipesLoadingAction
@@ -45,4 +49,5 @@ export type RecipeActions =
   | RecipesGetTopAction
   | LoadMoreRecipesAction
   | TotalNumRecipes
-  | LoadMoreTopRecipesAction;
+  | LoadMoreTopRecipesAction
+  | RecipesPageAction;

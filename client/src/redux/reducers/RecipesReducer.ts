@@ -7,6 +7,7 @@ export interface InitialState {
   recipesList: RecipeList[];
   topRecipesList: RecipeList[];
   totalNumRecipes: number;
+  page: number;
 }
 
 const initialState: InitialState = {
@@ -14,6 +15,7 @@ const initialState: InitialState = {
   recipesList: [],
   topRecipesList: [],
   totalNumRecipes: 0,
+  page:1,
 };
 
 export const recipesReducer = (
@@ -62,6 +64,11 @@ export const recipesReducer = (
         loading: false,
         topRecipesList: newTopRecipeState,
       };
+    case RecipesActionType.NEW_PAGE:
+      return{
+        ...state,
+        page: state.page + 1,
+      }
     default:
       return state;
   }
