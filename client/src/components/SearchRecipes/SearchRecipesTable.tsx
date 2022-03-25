@@ -69,14 +69,14 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
     });
 
   return (
-    <div className="hidden md:block">
+    <div className="overflow-x-scroll">
       <table {...getTableProps()} className="w-full ">
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th
-                  className="pb-4 text-left text-mainC2"
+                  className="pb-4 text-left text-mainC2 pr-6"
                   {...column.getHeaderProps()}
                 >
                   {column.render("Header")}
@@ -93,92 +93,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
                 {row.cells.map((cell) => {
                   return (
                     <td
-                      className="pb-4 pt-2 border-t border-mainC"
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
-export const SearchRecipesTableResponsive: React.FC<Props> = ({ recipes }) => {
-  const data = React.useMemo(() => recipes, [recipes]);
-
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Style",
-        accessor: "recipe.sub_category",
-        Cell: ({ cell }: { cell: any }) => (
-          <Link
-            to={`/recipe/${cell.row.original._id}`}
-            className="font-semibold hover:text-gray-600"
-          >
-            {cell.row.original.recipe.sub_category}
-          </Link>
-        ),
-      },
-      {
-        Header: "OG",
-        accessor: "recipe.characteristics.original_gravity",
-      },
-      {
-        Header: "ABV",
-        accessor: "recipe.characteristics.alcohol_by_volume",
-      },
-      {
-        Header: "IBU",
-        accessor: "recipe.characteristics.ibu",
-      },
-      {
-        Header: "Rating",
-        accessor: "rating",
-        Cell: ({ cell: { value } }: { cell: Cell }) => value.toFixed(1),
-      },
-    ],
-    []
-  );
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable<any>({
-      columns,
-      data,
-    });
-
-  return (
-    <div className=" md:hidden">
-      <table {...getTableProps()} className="w-full ">
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th
-                  className="pb-4 text-left text-mainC2 text-sm"
-                  {...column.getHeaderProps()}
-                >
-                  {column.render("Header")}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td
-                      className="pb-4 pt-2 border-t border-mainC text-ellipsis text-sm"
+                      className="pb-4 pt-2 border-t border-mainC  pr-6"
                       {...cell.getCellProps()}
                     >
                       {cell.render("Cell")}
