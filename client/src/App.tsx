@@ -12,6 +12,7 @@ import {
   totalNumRecipes,
 } from "./redux/action-creators";
 import { RootState } from "./redux/reducers/RootReducer";
+import { VscLoading } from "react-icons/vsc";
 
 //Components
 import { Blog } from "./components/BrowseBlog/Blog";
@@ -29,12 +30,13 @@ import { Shop } from "./components/Shop/Shop";
 import { PostProduct } from "./components/Shop/PostProduct";
 import { WithLoading } from "./components/HOC/WithLoading";
 import { HomeWithLoading } from "./components/Home/HomeWithLoading";
+import { NavBar } from "./components/NavBar";
 
-// const CreateRecipe = React.lazy(() =>
-//   import("./components/CreateRecipe/CreateRecipe").then((module) => ({
-//     default: module.CreateRecipe,
-//   }))
-// );
+const LazyCreateRecipe = React.lazy(() =>
+  import("./components/CreateRecipe/CreateRecipe").then((module) => ({
+    default: module.CreateRecipe,
+  }))
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -85,9 +87,23 @@ function App() {
         <Route
           path="/createrecipe"
           element={
-            // <Suspense fallback={<div>Loading... </div>}>
-            <CreateRecipe />
-            // </Suspense>
+            <Suspense
+              fallback={
+                <>
+                  <NavBar route="createrecipe" />
+                  <div className="flex justify-center items-center mt-24">
+                    <div className="font-bold text-4xl text-mainC2">
+                      <span>
+                        <VscLoading className="animate-spin-load" />
+                      </span>
+                    </div>
+                  </div>
+                </>
+              }
+            >
+              {/* <CreateRecipe />  */}
+              <LazyCreateRecipe />
+            </Suspense>
           }
         />
         <Route path="/recipe/:id" element={<RecipeCardDetail />} />
