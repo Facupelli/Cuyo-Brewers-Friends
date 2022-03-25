@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { NavBar } from "../NavBar";
-import { SearchRecipesTable } from "./SearchRecipesTable";
+import { SearchRecipesTable, SearchRecipesTableResponsive } from "./SearchRecipesTable";
 import bjcp from "bjcp";
 import axios from "axios";
 import { RecipeList } from "../../redux/reducers/types";
@@ -157,6 +157,9 @@ export const SearchRecipes: React.FC = () => {
             )}
             {searchRecipes && searchRecipes.length > 0 && !isLoading && (
               <SearchRecipesTable recipes={searchRecipes} />
+            )}
+            {searchRecipes && searchRecipes.length > 0 && !isLoading && (
+              <SearchRecipesTableResponsive recipes={searchRecipes} />
             )}
             {searchRecipes && searchRecipes.length <= 0 && !isLoading && (
               <p className="flex justify-center font-semibold">

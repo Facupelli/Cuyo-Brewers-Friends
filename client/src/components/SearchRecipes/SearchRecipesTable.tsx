@@ -69,7 +69,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
     });
 
   return (
-    <div>
+    <div className="hidden md:block">
       <table {...getTableProps()} className="w-full ">
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -94,6 +94,84 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
                   return (
                     <td
                       className="pb-4 pt-2 border-t border-mainC"
+                      {...cell.getCellProps()}
+                    >
+                      {cell.render("Cell")}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export const SearchRecipesTableResponsive: React.FC<Props> = ({ recipes }) => {
+  const data = React.useMemo(() => recipes, [recipes]);
+
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Style",
+        accessor: "recipe.sub_category",
+        // Cell: ({ cell: { value } }: { cell: Cell }) => value.split(". ")[1],
+      },
+      {
+        Header: "OG",
+        accessor: "recipe.characteristics.original_gravity",
+      },
+      {
+        Header: "ABV",
+        accessor: "recipe.characteristics.alcohol_by_volume",
+      },
+      {
+        Header: "IBU",
+        accessor: "recipe.characteristics.ibu",
+      },
+      {
+        Header: "Rating",
+        accessor: "rating",
+        Cell: ({ cell: { value } }: { cell: Cell }) => value.toFixed(1),
+      },
+    ],
+    []
+  );
+
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable<any>({
+      columns,
+      data,
+    });
+
+  return (
+    <div className=" md:hidden">
+      <table {...getTableProps()} className="w-full ">
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th
+                  className="pb-4 text-left text-mainC2 text-sm"
+                  {...column.getHeaderProps()}
+                >
+                  {column.render("Header")}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td
+                      className="pb-4 pt-2 border-t border-mainC text-ellipsis text-sm"
                       {...cell.getCellProps()}
                     >
                       {cell.render("Cell")}
