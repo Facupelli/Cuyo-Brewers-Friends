@@ -18,7 +18,7 @@ export const SearchRecipesTable: React.FC<Props> = ({ recipes }) => {
         Cell: ({ cell }: { cell: any }) => (
           <Link
             to={`/recipe/${cell.row.original._id}`}
-            className="font-semibold"
+            className="font-semibold hover:text-gray-600"
           >
             {cell.row.original.recipe.title}
           </Link>
@@ -117,7 +117,14 @@ export const SearchRecipesTableResponsive: React.FC<Props> = ({ recipes }) => {
       {
         Header: "Style",
         accessor: "recipe.sub_category",
-        // Cell: ({ cell: { value } }: { cell: Cell }) => value.split(". ")[1],
+        Cell: ({ cell }: { cell: any }) => (
+          <Link
+            to={`/recipe/${cell.row.original._id}`}
+            className="font-semibold hover:text-gray-600"
+          >
+            {cell.row.original.recipe.sub_category}
+          </Link>
+        ),
       },
       {
         Header: "OG",
