@@ -41,7 +41,9 @@ const LazyCreateRecipe = React.lazy(() =>
 function App() {
   const dispatch = useDispatch();
 
+  const userId = localStorage.getItem("userId");
   const cookie = useSelector((state: RootState) => state.storeUser.cookie);
+  const username = useSelector((state: RootState) => state.storeUser.userData.username);
 
   // ------------------------GET PRODUCTS -------------------------------------
   useEffect(() => {
@@ -62,7 +64,6 @@ function App() {
   // ------------------------GET USER IF TOKEN -------------------------------------
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const userId = localStorage.getItem("userId");
 
     if (token && userId) {
       dispatch(setCookie(userId));
@@ -72,7 +73,6 @@ function App() {
 
   // -------------------- IF COOKIE --------------------------------
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
     if (cookie) {
       dispatch(getUserData(userId));
     }
@@ -102,7 +102,7 @@ function App() {
               }
             >
               {/* <CreateRecipe />  */}
-              <LazyCreateRecipe />
+              <LazyCreateRecipe userId={cookie} username={username} />
             </Suspense>
           }
         />

@@ -3,17 +3,20 @@ import bjcp from "bjcp";
 import { useFormContext, Controller } from "react-hook-form";
 import Select from "react-select";
 
-type Props = {
-  setEff: React.Dispatch<React.SetStateAction<number>>;
-  setBatch_size: React.Dispatch<React.SetStateAction<number>>;
-};
-
 type Options = {
   value: string;
   label: string;
 };
 
-export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
+type Props = {
+  setEff: React.Dispatch<React.SetStateAction<number>>;
+  setBatch_size: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export const BatchParams: React.FC<Props> = ({
+  setEff,
+  setBatch_size,
+}) => {
   const {
     control,
     watch,
@@ -26,20 +29,24 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
     label: `${el.number}. ${el.name}`,
   }));
 
-  let styleSelected = watch("style", {
-    value: "1. American Standard",
-    label: "1. American Standard",
-  });
+  const getStyleSelected = () => {
+    return watch("style", {
+      value: "1. American Standard",
+      label: "1. American Standard",
+    });
+  };
+
+  let styleSelected = getStyleSelected();
 
   const efficiency = watch("parameters.efficiency");
   const batch_size = watch("parameters.batch_size");
 
   useEffect(() => {
-    setEff(efficiency);
+    if (efficiency && efficiency !== 70) setEff(efficiency);
   }, [efficiency, setEff]);
 
   useEffect(() => {
-    setBatch_size(batch_size);
+    if (batch_size && batch_size !== 20) setBatch_size(batch_size);
   }, [batch_size, setBatch_size]);
 
   const beerSubCategories = bjcp.beers
@@ -57,10 +64,9 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
         <Controller
           name="parameters.batch_size"
           control={control}
-          defaultValue={20}
+          defaultValue="20"
           render={({ field }) => (
             <input
-              placeholder="20"
               className="col-span-1 py-2 p-2  shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
               {...field}
             />
@@ -78,10 +84,9 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
         <Controller
           name="parameters.pre_boil_gravity"
           control={control}
-          defaultValue={30}
+          defaultValue="30"
           render={({ field }) => (
             <input
-              placeholder="30"
               className="col-span-1 py-2 p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-input-outline"
               {...field}
             />
@@ -99,7 +104,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
         <Controller
           name="parameters.boil_time"
           control={control}
-          defaultValue={60}
+          defaultValue="60"
           render={({ field }) => (
             <input
               placeholder="60"
@@ -133,10 +138,6 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
           <Controller
             control={control}
             name="style"
-            defaultValue={{
-              name: "1. American Standard",
-              label: "1. American Standard",
-            }}
             render={({ field: { onChange, value, name, ref } }) => (
               <Select
                 options={beerStyles}
@@ -156,10 +157,10 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
             </div>
             <select
               {...register("sub_category")}
-              defaultValue="Select Category..."
+              defaultValue=""
               className="col-span-1 border-none shadow-input  bg-white border border-gray-300 text-gray-700 py-2 md:p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-mainC2"
             >
-              <option disabled>Select Category...</option>
+              <option value="" disabled>Select Category...</option>
               {beerSubCategories[0].map((el) => (
                 <option key={el.name}>{el.name}</option>
               ))}
@@ -175,7 +176,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
         <Controller
           name="parameters.efficiency"
           control={control}
-          defaultValue={70}
+          defaultValue="70"
           render={({ field }) => (
             <input
               placeholder="70"
@@ -198,7 +199,7 @@ export const BatchParams: React.FC<Props> = ({ setEff, setBatch_size }) => {
         <Controller
           name="parameters.mash_ph"
           control={control}
-          defaultValue={5.4}
+          defaultValue="5.4"
           render={({ field }) => (
             <input
               placeholder="5.4"

@@ -83,7 +83,7 @@ class RecipesController {
       };
       const date = dayjs().format("DD/MM/YYYY");
 
-      if (recipe && userInfo) {
+      if (recipe && userInfo.username && userInfo._id) {
         await Recipes.addRecipe(recipe, userInfo, date);
         res.json({ status: "success" });
       } else {

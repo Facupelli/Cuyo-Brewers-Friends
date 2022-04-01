@@ -1,13 +1,13 @@
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as yup from "yup";
-import { RecipeList } from "../../redux/reducers/types";
+import { Recipe } from "../../redux/reducers/types";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import axios from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers/RootReducer";
+import { useDispatch } from "react-redux";
 import { getRecipes, getUserData } from "../../redux/action-creators";
 import { FaQuestionCircle } from "react-icons/fa";
+import { VscLoading } from "react-icons/vsc";
 
 //Components
 import { YeastForm } from "./YeastForm";
@@ -20,6 +20,8 @@ import { WaterForm } from "./WaterForm";
 import { BatchParams } from "./BatchParams";
 import { Modal } from "../Modal";
 import { Mash } from "./Mash";
+import { getRecipeById } from "../../utils/recipesUtils";
+import { useLocation } from "react-router-dom";
 
 const schema = yup.object().shape({
   title: yup.string().required().min(2),
@@ -139,19 +141,60 @@ const schema = yup.object().shape({
   }),
 });
 
-export const CreateRecipe: React.FC<{}> = () => {
+// const selectUsername = createSelector(
+//   (state: RootState) => state.storeUser,
+//   (storeUser) => storeUser.userData.username
+// );
+// const selectUser_id = createSelector(
+//   (state: RootState) => state.storeUser,
+//   (storeUser) => storeUser.userData._id
+// );
+
+type Props = {
+  userId: string;
+  username: string;
+};
+
+export const CreateRecipe: React.FC<Props> = ({ username, userId }) => {
   const dispatch = useDispatch();
+
+  console.log(userId);
+
+  // const username = useSelector(
+  //   (state: RootState) => state.storeUser.userData.username
+  // );
+  // const user_id = useSelector((state: RootState) => state.storeUser.userData._id);
+
+  // const username = useSelector(selectUsername);
+  // const user_id = useSelector(selectUser_id);
 
   const [successModal, setSuccessModal] = useState<boolean>(false);
   const [questionModal, setQuestionModal] = useState<boolean>(false);
-  
 
-  const username = useSelector(
-    (state: RootState) => state.storeUser.userData.username
-  );
-  const user_id = useSelector(
-    (state: RootState) => state.storeUser.userData._id
-  );
+  // EDIT RECIPE
+  const [loading, setLoading] = useState<boolean>(false);
+  const { state } = useLocation();
+
+  const methods = useForm<Recipe>({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      title: "",
+    },
+  });
+  const errors = methods.formState.errors;
+  console.log("ERRORS", errors);
+
+  useEffect(() => {
+    if (state) {
+      setLoading(true);
+      getRecipeById(state.id)
+        .then((data) => methods.reset(data.recipe))
+        .then(() => setLoading(false))
+        .catch((e) => console.log(e));
+    }
+  }, [state, methods]);
+
+  // ------------
 
   //OG STATE----------------------------
   const [ogPoints, setOgPoints] = useState<number>(0);
@@ -164,35 +207,32 @@ export const CreateRecipe: React.FC<{}> = () => {
   //  SRM --------------------------
   const [mcu, setMcu] = useState<number>(0);
 
-  //FORM ---------
-  const methods = useForm<RecipeList>({ resolver: yupResolver(schema) });
-  const errors = methods.formState.errors;
-  console.log("ERRORS", errors);
-
-  const formSubmitHandler: SubmitHandler<RecipeList> = async (
-    data: RecipeList
-  ) => {
+  const formSubmitHandler: SubmitHandler<Recipe> = async (data: Recipe) => {
     try {
-      console.log("FORM DATA IS", data);
-      const newRecipe = {
-        recipe: data,
-        username,
-        user_id,
-      };
-      const response = await axios
-        .post("/recipe", newRecipe)
-        .then((res) => setSuccessModal(true));
-      console.log("RESPONSE:", response);
+      if (state.id) {
+        console.log(data);
+      } else {
+        console.log("FORM DATA IS", data);
+        const newRecipe = {
+          recipe: data,
+          username,
+          user_id: userId,
+        };
+        const response = await axios
+          .post("/recipe", newRecipe)
+          .then((res) => setSuccessModal(true));
+        console.log("RESPONSE:", response);
+      }
       dispatch(getRecipes());
-      dispatch(getUserData(user_id));
+      dispatch(getUserData(userId));
     } catch (e) {
       console.log({ onSubmitError: e });
     }
   };
 
   const handleQuestionClick = () => {
-    setQuestionModal(true)
-  }
+    setQuestionModal(true);
+  };
 
   const message = `El OG, FG, SRM y ABV son calculados automáticamente según los ingredientes 
   seleccionados. El unico parámetro que tendrá que colocar ya que no es calculado por la app 
@@ -210,73 +250,161 @@ export const CreateRecipe: React.FC<{}> = () => {
       {questionModal && (
         <Modal setModal={setQuestionModal} message={message} size="lg" />
       )}
+
       <div className="bg-gray-50 ">
         <NavBar route="createrecipe" />
-        <div className="max-w-7xl mx-auto">
-          <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
-              {/* ------------    PART 1 ------------------------ */}
-              <div className="mx-8 mt-8 flex justify-start items-baseline gap-x-4">
-                <p className="text-2xl font-semibold text-main">
-                  Editing Recipe
-                </p>
-                <button type="button" onClick={handleQuestionClick} className="text-mainC hover:text-mainC2 text-xl">
-                  <FaQuestionCircle />
-                </button>
-                <button
-                  type="submit"
-                  className="transition ease-in-out duration-150 bg-transparent ml-auto hover:bg-mainC2 text-main font-semibold hover:text-white p-2 border border-mainC2 hover:border-transparent rounded"
-                >
-                  SAVE
-                </button>
-              </div>
 
-              <TitleInfo />
+        {state &&
+          (loading ? (
+            <div className="flex flex-col justify-center items-center gap-2 mt-24">
+              <p className="text-lg">Getting Recipe!</p>
+              <span className="text-4xl font-bold text-mainC2">
+                <VscLoading className="animate-spin-load" />
+              </span>
+            </div>
+          ) : (
+            <div className="max-w-7xl mx-auto">
+              <FormProvider {...methods}>
+                <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
+                  {/* ------------    PART 1 ------------------------ */}
+                  <div className="mx-8 mt-8 flex justify-start items-baseline gap-x-4">
+                    <p className="text-2xl font-semibold text-main">
+                      Editing Recipe
+                    </p>
+                    <button
+                      type="button"
+                      onClick={handleQuestionClick}
+                      className="text-mainC hover:text-mainC2 text-xl"
+                    >
+                      <FaQuestionCircle />
+                    </button>
+                    <button
+                      type="submit"
+                      className="transition ease-in-out duration-150 bg-transparent ml-auto hover:bg-mainC2 text-main font-semibold hover:text-white p-2 border border-mainC2 hover:border-transparent rounded"
+                    >
+                      SAVE
+                    </button>
+                  </div>
 
-              {/* -------------------    PARAMETERS ------------------------ */}
+                  <TitleInfo />
 
-              <BatchParams setEff={setEff} setBatch_size={setBatch_size} />
+                  {/* -------------------    PARAMETERS ------------------------ */}
 
-              {/* --------------------    CHARACTERISTICS ------------------------ */}
+                  <BatchParams setEff={setEff} setBatch_size={setBatch_size} />
 
-              <Characteristics
-                eff={eff}
-                batch_size={batch_size}
-                ogPoints={ogPoints}
-                yeastAtt={yeastAtt}
-                mcu={mcu}
-              />
+                  {/* --------------------    CHARACTERISTICS ------------------------ */}
 
-              {/* ------------------------ INGREDIENTS ----------------------------- */}
-
-              <div className="grid grid-cols-2">
-                <div className="col-span-2 md:col-span-1">
-                  <MaltsForm
-                    setOgPoints={setOgPoints}
+                  <Characteristics
+                    eff={eff}
                     batch_size={batch_size}
-                    setMcu={setMcu}
+                    ogPoints={ogPoints}
+                    yeastAtt={yeastAtt}
+                    mcu={mcu}
                   />
+
+                  {/* ------------------------ INGREDIENTS ----------------------------- */}
+
+                  <div className="grid grid-cols-2">
+                    <div className="col-span-2 md:col-span-1">
+                      <MaltsForm
+                        setOgPoints={setOgPoints}
+                        batch_size={batch_size}
+                        setMcu={setMcu}
+                      />
+                    </div>
+
+                    <div className="col-span-2 md:col-span-1">
+                      <HopsForm />
+                    </div>
+
+                    <div className="col-span-2 md:col-span-1">
+                      <Mash />
+                    </div>
+
+                    <div className="col-span-2 md:col-span-1">
+                      <YeastForm setYeastAtt={setYeastAtt} />
+                    </div>
+
+                    <div className="col-span-2 md:col-span-1">
+                      <WaterForm />
+                    </div>
+                  </div>
+                </form>
+              </FormProvider>
+            </div>
+          ))}
+
+        {!state && (
+          <div className="max-w-7xl mx-auto">
+            <FormProvider {...methods}>
+              <form onSubmit={methods.handleSubmit(formSubmitHandler)}>
+                {/* ------------    PART 1 ------------------------ */}
+                <div className="mx-8 mt-8 flex justify-start items-baseline gap-x-4">
+                  <p className="text-2xl font-semibold text-main">
+                    Editing Recipe
+                  </p>
+                  <button
+                    type="button"
+                    onClick={handleQuestionClick}
+                    className="text-mainC hover:text-mainC2 text-xl"
+                  >
+                    <FaQuestionCircle />
+                  </button>
+                  <button
+                    type="submit"
+                    className="transition ease-in-out duration-150 bg-transparent ml-auto hover:bg-mainC2 text-main font-semibold hover:text-white p-2 border border-mainC2 hover:border-transparent rounded"
+                  >
+                    SAVE
+                  </button>
                 </div>
 
-                <div className="col-span-2 md:col-span-1">
-                  <HopsForm />
-                </div>
+                <TitleInfo />
 
-                <div className="col-span-2 md:col-span-1">
-                  <Mash />
-                </div>
+                {/* -------------------    PARAMETERS ------------------------ */}
 
-                <div className="col-span-2 md:col-span-1">
-                  <YeastForm setYeastAtt={setYeastAtt} />
-                </div>
+                <BatchParams setEff={setEff} setBatch_size={setBatch_size} />
 
-                <div className="col-span-2 md:col-span-1">
-                  <WaterForm />
+                {/* --------------------    CHARACTERISTICS ------------------------ */}
+
+                <Characteristics
+                  eff={eff}
+                  batch_size={batch_size}
+                  ogPoints={ogPoints}
+                  yeastAtt={yeastAtt}
+                  mcu={mcu}
+                />
+
+                {/* ------------------------ INGREDIENTS ----------------------------- */}
+
+                <div className="grid grid-cols-2">
+                  <div className="col-span-2 md:col-span-1">
+                    <MaltsForm
+                      setOgPoints={setOgPoints}
+                      batch_size={batch_size}
+                      setMcu={setMcu}
+                    />
+                  </div>
+
+                  <div className="col-span-2 md:col-span-1">
+                    <HopsForm />
+                  </div>
+
+                  <div className="col-span-2 md:col-span-1">
+                    <Mash />
+                  </div>
+
+                  <div className="col-span-2 md:col-span-1">
+                    <YeastForm setYeastAtt={setYeastAtt} />
+                  </div>
+
+                  <div className="col-span-2 md:col-span-1">
+                    <WaterForm />
+                  </div>
                 </div>
-              </div>
-            </form>
-          </FormProvider>
-        </div>
+              </form>
+            </FormProvider>
+          </div>
+        )}
       </div>
     </>
   );

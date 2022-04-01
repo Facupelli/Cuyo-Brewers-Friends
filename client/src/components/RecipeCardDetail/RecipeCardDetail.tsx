@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { addFav, deleteFav, getRecipeById } from "../../utils/recipesUtils";
 import { RecipeList, Review } from "../../redux/reducers/types";
 import { MdDelete } from "react-icons/md";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaEdit } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/RootReducer";
 import axios from "axios";
@@ -36,6 +36,7 @@ export interface State {
 export const RecipeCardDetail: React.FC = () => {
   const { id } = useParams<RecipeCardDetailParams>();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const user_id = useSelector((state: RootState) => state.storeUser.cookie);
   const userData = useSelector((state: RootState) => state.storeUser.userData);
@@ -145,20 +146,32 @@ export const RecipeCardDetail: React.FC = () => {
     setModal(true);
   };
 
+  const handleEditRecipe = () => {
+    navigate("/createrecipe", { state: {id: id } });
+  };
+
   return (
     <>
       <NavBar route="recipeDetail" />
 
       <div className="my-8 max-w-6xl mx-4 md:mx-auto">
-        <div className="flex  items-center py-4">
+        <div className="flex  items-center gap-4 py-4">
           <p className="font-semibold text-4xl text-main">{title}</p>
           {isMyRecipe() && (
-            <div
-              onClick={handleDeleteModal}
-              className="cursor-pointer ml-auto text-main text-4xl transition ease-in-out delay-50 hover:text-red-500"
-            >
-              <MdDelete />
-            </div>
+            <>
+              {/* <div
+                onClick={handleEditRecipe}
+                className="cursor-pointer ml-auto text-main text-2xl transition ease-in-out delay-50 hover:text-mainC2"
+              >
+                <FaEdit />
+              </div> */}
+              <div
+                onClick={handleDeleteModal}
+                className="cursor-pointer ml-auto text-main text-4xl transition ease-in-out delay-50 hover:text-red-500"
+              >
+                <MdDelete />
+              </div>
+            </>
           )}
           {user_id && !isMyRecipe() && (
             <div className="cursor-pointer ml-6 text-mainC2 text-3xl">

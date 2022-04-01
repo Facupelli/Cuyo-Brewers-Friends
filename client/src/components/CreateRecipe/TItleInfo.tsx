@@ -7,6 +7,8 @@ export const TitleInfo: React.FC = () => {
     formState: { errors },
   } = useFormContext();
 
+  // console.log(title);\
+
   return (
     <div>
       <div className="flex flex-wrap mx-8 mt-8 md:gap-8 bg-gray-50">
@@ -16,11 +18,10 @@ export const TitleInfo: React.FC = () => {
           </label>
           <Controller
             name="title"
-            defaultValue=""
             control={control}
+            defaultValue=""
             render={({ field }) => (
               <input
-                placeholder="Hop Odisey"
                 className="ml-4 p-2 shadow-input appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 {...field}
               />

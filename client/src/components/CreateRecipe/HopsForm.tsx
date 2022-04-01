@@ -70,12 +70,9 @@ export const HopsForm: React.FC<{}> = () => {
                   <Controller
                     control={control}
                     name={`ingredients.hops[${index}].name`}
-                    defaultValue={{
-                      name: "1. American Standard",
-                      label: "1. American Standard",
-                    }}
+                    defaultValue={hopNames[0]}
                     render={({ field: { onChange, value, name, ref } }) => (
-                      <Select options={hopNames} onChange={onChange} />
+                      <Select options={hopNames} onChange={onChange} defaultValue={hopNames[0]}/>
                     )}
                   />
                 )}

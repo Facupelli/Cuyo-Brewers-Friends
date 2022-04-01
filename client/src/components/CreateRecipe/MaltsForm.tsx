@@ -24,8 +24,8 @@ export const MaltsForm: React.FC<Props> = ({
 }) => {
   const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
-    name: "ingredients.fermentables",
     control,
+    name: "ingredients.fermentables",
   });
 
   const fermentableOptions = fermentables.map((el) => ({
@@ -56,7 +56,7 @@ export const MaltsForm: React.FC<Props> = ({
           <GiGrain />
         </div>
       </div>
- 
+
       {fields.map((field, index) => (
         <div key={field.id}>
           <section key={field.id} className="bg-gray-200">
@@ -67,13 +67,14 @@ export const MaltsForm: React.FC<Props> = ({
               <Controller
                 control={control}
                 name={`ingredients.fermentables[${index}].name`}
-                defaultValue={{
-                  name: "1. American Standard",
-                  label: "1. American Standard",
-                }}
+                defaultValue={fermentableOptions[0]}
                 render={({ field: { onChange, value, name, ref } }) => (
                   <div className="col-span-2">
-                    <Select options={fermentableOptions} onChange={onChange} />
+                    <Select
+                      options={fermentableOptions}
+                      onChange={onChange}
+                      defaultValue={fermentableOptions[0]}
+                    />
                   </div>
                 )}
               />

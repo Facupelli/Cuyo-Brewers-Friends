@@ -23,7 +23,7 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
   const attAcordToYeast = getYeastAtt();
 
   useEffect(() => {
-    setYeastAtt(att);
+    if (att && att !== 75) setYeastAtt(att);
   }, [att, setYeastAtt]);
 
   return (
@@ -36,10 +36,12 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
       </div>
 
       <div className="grid grid-cols-3 my-4 gap-4 ">
-        <label className="col-span-1 text-gray-700 text-md font-semibold ">Yeast</label>
+        <label className="col-span-1 text-gray-700 text-md font-semibold ">
+          Yeast
+        </label>
         <select
           {...register(`ingredients.yeast.name`)}
-          defaultValue=""
+          defaultValue={""}
           className="col-span-2 bg-white border border-blue-200  text-gray-700 py-2 md:p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-mainC2"
         >
           <option value="" disabled>
@@ -69,7 +71,7 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
           </label>
           <Controller
             name={`ingredients.yeast.attenuation`}
-            defaultValue={75}
+            defaultValue="75"
             control={control}
             render={({ field }) => (
               <input
@@ -87,7 +89,7 @@ export const YeastForm: React.FC<Props> = ({ setYeastAtt }) => {
           </label>
           <Controller
             name={`ingredients.yeast.quantity`}
-            defaultValue={0}
+            defaultValue="0"
             control={control}
             render={({ field }) => (
               <input

@@ -2,7 +2,7 @@ import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { BiWater } from "react-icons/bi";
 
-export const WaterForm: React.FC<{}> = () => {
+export const WaterForm: React.FC = () => {
   const { control } = useFormContext();
 
   return (
@@ -18,7 +18,7 @@ export const WaterForm: React.FC<{}> = () => {
           <label className="text-gray-700 text-md font-semibold ">Ca+2</label>
           <Controller
             name={`ingredients.water_profile.calcium`}
-            defaultValue={0}
+            defaultValue="0"
             control={control}
             render={({ field }) => (
               <input
@@ -33,8 +33,8 @@ export const WaterForm: React.FC<{}> = () => {
           <label className="text-gray-700 text-md font-semibold">Mg+2</label>
           <Controller
             name={`ingredients.water_profile.magnesium`}
-            defaultValue={0}
             control={control}
+            defaultValue="0"
             render={({ field }) => (
               <input
                 placeholder="0"
@@ -48,8 +48,8 @@ export const WaterForm: React.FC<{}> = () => {
           <label className="text-gray-700 text-md font-semibold">Na+</label>
           <Controller
             name={`ingredients.water_profile.sodium`}
-            defaultValue={0}
             control={control}
+            defaultValue="0"
             render={({ field }) => (
               <input
                 placeholder="0"
@@ -63,8 +63,8 @@ export const WaterForm: React.FC<{}> = () => {
           <label className="text-gray-700 text-md font-semibold">Cl-</label>
           <Controller
             name={`ingredients.water_profile.chlorine`}
-            defaultValue={0}
             control={control}
+            defaultValue="0"
             render={({ field }) => (
               <input
                 placeholder="0"
@@ -78,8 +78,8 @@ export const WaterForm: React.FC<{}> = () => {
           <label className="text-gray-700 text-md font-semibold">SO4-2</label>
           <Controller
             name={`ingredients.water_profile.sulfate`}
-            defaultValue={0}
             control={control}
+            defaultValue="0"
             render={({ field }) => (
               <input
                 placeholder="0"
@@ -93,8 +93,8 @@ export const WaterForm: React.FC<{}> = () => {
           <label className="text-gray-700 text-md font-semibold">HCO3-</label>
           <Controller
             name={`ingredients.water_profile.bicarbonate`}
-            defaultValue={0}
             control={control}
+            defaultValue="0"
             render={({ field }) => (
               <input
                 placeholder="0"
