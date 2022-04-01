@@ -149,6 +149,9 @@ const schema = yup.object().shape({
 //   (state: RootState) => state.storeUser,
 //   (storeUser) => storeUser.userData._id
 // );
+type State = {
+  id: string
+}
 
 type Props = {
   userId: string;
@@ -173,7 +176,7 @@ export const CreateRecipe: React.FC<Props> = ({ username, userId }) => {
 
   // EDIT RECIPE
   const [loading, setLoading] = useState<boolean>(false);
-  const { state } = useLocation();
+  const { state }:{state: State | null} = useLocation();
 
   const methods = useForm<Recipe>({
     resolver: yupResolver(schema),
@@ -209,7 +212,7 @@ export const CreateRecipe: React.FC<Props> = ({ username, userId }) => {
 
   const formSubmitHandler: SubmitHandler<Recipe> = async (data: Recipe) => {
     try {
-      if (state.id) {
+      if (state) {
         console.log(data);
       } else {
         console.log("FORM DATA IS", data);
