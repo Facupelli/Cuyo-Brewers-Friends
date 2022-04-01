@@ -176,7 +176,8 @@ export const CreateRecipe: React.FC<Props> = ({ username, userId }) => {
 
   // EDIT RECIPE
   const [loading, setLoading] = useState<boolean>(false);
-  const { state }:{state: State | null} = useLocation();
+  const location = useLocation()
+  const state = location.state as State;
 
   const methods = useForm<Recipe>({
     resolver: yupResolver(schema),
