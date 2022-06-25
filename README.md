@@ -2,6 +2,8 @@
 
 You can view the app deployed: cuyo-brewers-friends.vercel.app
 
+To use the recipe builder and some other functions you have to register.
+
 ## Is a "social network" for home brewers in Argentina, where you can create, post recipes and rate them. Inspired by brewersfriend.com
 
 I using MongoDB with Mongoose, Node.js and express for the backend,
